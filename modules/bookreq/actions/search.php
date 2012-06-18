@@ -29,7 +29,7 @@ $resultsHtml = $grid1->render();
 $runtime->saveMoment('Finished rendering data grid');
 
 $searchInfo['results'] = $resultsHtml;
-$page->add('main', $runtime->doTemplate($module, 'search', $searchInfo);
+$page->add('main', $runtime->txt->do_template($module, 'search', $searchInfo);
 
 
 

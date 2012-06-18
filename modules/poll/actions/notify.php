@@ -9,11 +9,11 @@ if ($poll <> 0) {
     # Get IDs of all people who have not yet responded to the poll
     if ($ids == '') {
       $respondents = $objP->list_pending_respondents(%_REQUEST);
-      $ids = Arrays::join_column(',', 'lngId', $respondents);
+      $ids = join_column(',', 'lngId', $respondents);
     }
     # Create notification and send it
-    $subject = $runtime->doTemplate($module, 'notification.subject', $pollInfo);
-    $digest = $runtime->doTemplate($module, 'notification.digest', $pollInfo);
+    $subject = $runtime->txt->do_template($module, 'notification.subject', $pollInfo);
+    $digest = $runtime->txt->do_template($module, 'notification.digest', $pollInfo);
     use objNotification;
     $objN = new objNotification($r);
     $nid = $objN->add_notification('poll', $poll, $subject, $digest);

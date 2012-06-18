@@ -21,8 +21,8 @@ if ($hotel > 0) {
       # Distribute notification about new attachment
       use objNotification;
       $objN = new objNotification($r);
-      $subject = $runtime->doTemplate($module, 'notification.attachment.added.subject', $hotelInfo);
-      $body = $runtime->doTemplate($module, 'notification.attachment.added.body', $attachmentInfo);
+      $subject = $runtime->txt->do_template($module, 'notification.attachment.added.subject', $hotelInfo);
+      $body = $runtime->txt->do_template($module, 'notification.attachment.added.body', $attachmentInfo);
       $nid = $objN->add_notification('hotel', $hotel, $subject, $body);
       $users = $acc->list_users_for_resource('followhotel', $hotel);
       foreach $employee (@users) {

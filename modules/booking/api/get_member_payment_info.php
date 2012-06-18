@@ -45,7 +45,7 @@ $client_id = $apiparams['client_id'] || '';
 if ($client_id <> '') {
   $fees = $runtime->s2a($controller, 'ListMaintenanceFees', $apiparams);
   if (count($fees) > 0) {
-    $memberPaymentInfo = ('fees' => $fees);
+    $memberPaymentInfo = array('fees' => $fees);
     $output = $runtime->dotmod($controller, 'API.MemberPaymentInfo', $memberPaymentInfo);
   } else {
     $result = 'ERR'; 

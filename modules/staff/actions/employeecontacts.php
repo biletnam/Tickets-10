@@ -12,13 +12,13 @@ if ($id > 0) {
   
       # Get list of user contacts
       $contacts = $objSM->get_employee_contact_info($id, '', 0, 1);
-      $defined_by_type = Arrays::slice_array($contacts, 'contact_type');
+      $defined_by_type = slice_array($contacts, 'contact_type');
 
       $allcontacts = $objSM->get_all_contact_types();
-      $all_by_type = Arrays::slice_array($allcontacts, 'type'); 
+      $all_by_type = slice_array($allcontacts, 'type'); 
 
       while (($key, $value) = each %all_by_type) {
-        $defined = @{$defined_by_type{$key}}; 
+        $defined = $defined_by_type{$key]; 
         if (exists $defined_by_type{$key}) {
           push @types, dot('employee.edit.contact.group', array('user_id' => $id, 'key' => $key, 'defined' => $defined));
         } else {
@@ -29,7 +29,7 @@ if ($id > 0) {
       print join('', @types);
     } else {
       $contacts = $objSM->get_employee_contact_info($id, '', 0, 1); 
-      $defined_by_type = Arrays::slice_array($contacts, 'contact_type');
+      $defined_by_type = slice_array($contacts, 'contact_type');
       $personInfo['contacts'] = $defined_by_type;
       print dot('employee.view.contact', $personInfo);
     }

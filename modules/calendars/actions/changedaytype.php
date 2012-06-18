@@ -5,10 +5,10 @@ if (count($eventInfo) > 0) {
   $rowsaffected = srun($module, 'ChangeDayType', array('id' => lavnn('id'), 'day_type' => lavnn('type')));
   if ($rowsaffected > 0) {
     %dateTypeInfo = $runtime->s2r($module, 'GetAbsenceTypeInfo', array('code' => lavnn('type'))); 
-    $alert = $runtime->doTemplate($module, 'alert.changetype');
+    $alert = $runtime->txt->do_template($module, 'alert.changetype');
   } else {
     %dateTypeInfo = $runtime->s2r($module, 'GetAbsenceTypeInfo', array('code' => $eventInfo['day_type']));
-    $alert = $runtime->doTemplate($module, 'alert.typenotchanged');
+    $alert = $runtime->txt->do_template($module, 'alert.typenotchanged');
   }
   print dot('daytype', $dateTypeInfo) . $alert;
 } else {

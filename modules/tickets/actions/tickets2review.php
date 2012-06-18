@@ -1,6 +1,6 @@
 <?php
 
-$pageParams = ('user_id' => $_REQUEST['user_id']);
+$pageParams = array('user_id' => $_REQUEST['user_id']);
 $tickets2review = $runtime->s2a($module, 'ListTickets2Review', $_REQUEST);
 if (count($tickets2review) > 0) {
   $pageParams['tickets2review'] = $tickets2review;

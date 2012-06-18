@@ -44,13 +44,13 @@ if ($gen_user_id == 0) {
   if (count($genUserInfo) > 0) {
     $generator_id = $genUserInfo['generator_id'];
     $genInfo = $runtime->s2r($controller, 'GetGeneratorInfo', array('generator_id' => $generator_id));
-    $sqlParams = (
+    $sqlParams = array(
       'contract_numbers' => $contract_id,
       'generator_id' => $generator_id,
     );
     delete $genUserInfo['password']; # Security, security, security...
     $contractInfo = $runtime->s2a($controller, 'GetSalesReport', $sqlParams); 
-    $firstentry = %{$contractInfo[0]};
+    $firstentry = $contractInfo[0];
     $entries = array();
     foreach $c (@contractInfo) {
       $payments = $runtime->s2a($controller, 'ListContractPayments', array('id' => $contract_id));
@@ -65,7 +65,7 @@ if ($gen_user_id == 0) {
       $genUserInfo['fu_comments2'] = $fucomments;
       $genUserInfo['fu_comments'] = Arrays::a2xml($fucomments, 'FUComments', 'FUComment');
     }
-    $firstentry = %{$contractInfo[0]};
+    $firstentry = $contractInfo[0];
 
     $output = $runtime->dotmod($controller, 'API.GetContract', $genUserInfo);    
   } else {

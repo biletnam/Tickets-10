@@ -3,11 +3,11 @@
 $searchInfo = %_REQUEST;
 
 if (get_cookie('booking_search_source_type') <> '') {
-  $linkingInfo = (
+  $linkingInfo = array(
     'source_type' => get_cookie('booking_search_source_type'),
     'source_id' => get_cookie('booking_search_source_id'),
   );
-  $searchInfo['linking'] .= $runtime->doTemplate($module, 'search.linking.'.$linkingInfo['source_type'], $linkingInfo); 
+  $searchInfo['linking'] .= $runtime->txt->do_template($module, 'search.linking.'.$linkingInfo['source_type'], $linkingInfo); 
 }
 
 $generators = $runtime->s2a($module, 'ListGenerators');
@@ -45,7 +45,7 @@ if (dot('search.checkfields', $_REQUEST) <> '') {
 
 }
 $searchInfo['results'] = $resultsHtml;
-$page->add('main', $runtime->doTemplate($module, 'search', $searchInfo);
+$page->add('main', $runtime->txt->do_template($module, 'search', $searchInfo);
 
 
 

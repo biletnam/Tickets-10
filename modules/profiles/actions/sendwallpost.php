@@ -7,7 +7,7 @@ if ($entitytype == '' || $entityid == 0) {
   go("?");
 } else {
   $supported = qw(employee office department hotel generator);
-  if (Arrays::in_array($entitytype, $supported)) {
+  if (in_array($entitytype, $supported)) {
     $newid = $_REQUEST['post_id'] = $objWall->send_post(%_REQUEST);
     $cnt_recipients = $objWall->distribute_post(%_REQUEST) if $newid > 0;
     go("?p=$module/$entitytype&id=$entityid");    

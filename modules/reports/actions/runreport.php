@@ -35,17 +35,17 @@ if ($id > 0) {
             $employeeData = $runtime->s2r('staff', 'GetEmployeeDetails', array('id' => $value));
             $p['employeeInfo'] = dotmod('staff', 'employee.name', $employeeData);
           }
-          $p['input'] = $runtime->doTemplate($module, 'runreport.params.employee.' . ($value == '' ? 'input' : 'hidden'), $$p);
+          $p['input'] = $runtime->txt->do_template($module, 'runreport.params.employee.' . ($value == '' ? 'input' : 'hidden'), $p);
         }
         $p['required'] = 'required' if $mandatory == 1;
-        $p['rendered'] = $runtime->doTemplate($module, "runreport.params.$type", $$p);
+        $p['rendered'] = $runtime->txt->do_template($module, "runreport.params.$type", $p);
         push @parsedParams, $p;
       }
       $ready = 1 if $missing == 0;
     } else {
       $ready = 1;
     }
-    $reportInfo['parameters'] = $runtime->doTemplate($module, 'runreport.params', array('params' => $parsedParams)) if count($reportParams) > 0;
+    $reportInfo['parameters'] = $runtime->txt->do_template($module, 'runreport.params', array('params' => $parsedParams)) if count($reportParams) > 0;
   
     if ($ready == 1) {
       $basequery = $txt->doText($reportInfo['query'], $_REQUEST); 
@@ -58,26 +58,26 @@ if ($id > 0) {
         if ($_REQUEST['xml'] <> '') {
           print $grid1->render_xml(); exit();
         }
-        $reportInfo['results'] = $runtime->doTemplate($module, 'runreport.link2excel', array('link2excel' => str_replace('p=', 'xml=', $ENV['QUERY_STRING']))).$grid1->render();
+        $reportInfo['results'] = $runtime->txt->do_template($module, 'runreport.link2excel', array('link2excel' => str_replace('p=', 'xml=', $ENV['QUERY_STRING']))).$grid1->render();
         $runtime->saveMoment('Finished rendering data grid');
       }
     } else {
-      $reportInfo['results'] = $runtime->doTemplate($module, 'runreport.notready');
+      $reportInfo['results'] = $runtime->txt->do_template($module, 'runreport.notready');
     }
-    $page->add('title',  $reportInfo['pagetitle'] = $runtime->doTemplate($module, 'title.runreport', $reportInfo);
+    $page->add('title',  $reportInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.runreport', $reportInfo);
   
     # register pageview
     $opresult = srun('main', 'RegisterPageview', array('entity_type' => 'runreport', 'entity_id' => $id, 'viewer_type' => 'U', 'viewer_id' => $r['userID']));
   } else {
-    #$page->add('title',  $pageParams['pagetitle'] = $runtime->doTemplate($module, 'title.runreport.notallowed', $pageParams);
+    #$page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.runreport.notallowed', $pageParams);
   }
 } else {
-  #$page->add('title',  $pageParams['pagetitle'] = $runtime->doTemplate($module, 'title.runreport.notfound', $pageParams);
+  #$page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.runreport.notfound', $pageParams);
 }
 
 
-$page['js'] .= $runtime->doTemplate($module, 'pageviews.js');
-$page->add('main', $runtime->doTemplate($module, 'runreport', $reportInfo);
+$page['js'] .= $runtime->txt->do_template($module, 'pageviews.js');
+$page->add('main', $runtime->txt->do_template($module, 'runreport', $reportInfo);
 
 
 print dotmod('main', 'index.wide', $page);

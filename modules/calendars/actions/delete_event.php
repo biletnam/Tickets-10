@@ -11,7 +11,7 @@ if ($id == '' || $year == '' || $month == '') {
   # do nothing to return empty string
 } else {
   # Get calendar id
-  $sqlParams = ('id' => $id);
+  $sqlParams = array('id' => $id);
   $eventInfo = $objCal->get_event_info(%sqlParams);
   if (count($eventInfo) > 0) {
     $calendar_id = $eventInfo['calendar'];

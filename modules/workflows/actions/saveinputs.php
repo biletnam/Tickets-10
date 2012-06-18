@@ -3,7 +3,7 @@ $id = lavnn('id', $_REQUEST, 0);
 if ($id > 0) {
   # Save changes to existing inputs
   for $input (lavnn('inputs')) {
-    $params = (
+    $params = array(
       'id' => $input, 
       'param_type' => lavnn("type_$input"), 
       'param_caption' => lavnn("caption_$input"), 
@@ -14,7 +14,7 @@ if ($id > 0) {
   
   # Also add new inputs if both name and type are provided\
   if (lavnn('new_type') <> '' && lavnn('new_name') <> '') {
-    $params = (
+    $params = array(
       'workflow' => $id, 
       'param_type' => lavnn('new_type'), 
       'param_caption' => lavnn('new_caption'),

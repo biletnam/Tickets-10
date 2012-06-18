@@ -6,7 +6,7 @@ if ($ticket_id > 0) {
   
   if (join(',', @existing) <> $ids) {
     foreach $id (lavnn('folder')) {
-      if (!Arrays::in_array($id, $existing)) {
+      if (!in_array($id, $existing)) {
         srun($module, 'InsertTicketFolderMapping', array('ticket_id' => $ticket_id, 'folder_id' => $id));
       }
     }

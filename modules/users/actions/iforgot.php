@@ -1,8 +1,8 @@
 <?php
 
 $page['nextURL'] = lavnn('url');
-$page->add('title',  $page['pagetitle'] = $runtime->doTemplate($module, 'title.iforgot', $page);
-$page->add('main', $runtime->doTemplate($module, 'iforgot', $page);
+$page->add('title',  $page['pagetitle'] = $runtime->txt->do_template($module, 'title.iforgot', $page);
+$page->add('main', $runtime->txt->do_template($module, 'iforgot', $page);
 
 
 

@@ -4,7 +4,7 @@ $_REQUEST['chars'] = 2 if (lavnn('chars') == '');
 $type = lavnn('type');
 if ($type == 'runreport') {
   $reports = $runtime->s2a('reports', 'ListPredefinedReports');
-  $params = ('reports' => $reports);
+  $params = array('reports' => $reports);
   print dotmod('reports', 'ajaxpageentity', $params);
 } elseif ($type == 'viewarticle') {
   print dotmod('articles', 'ajaxpageentity', $params);

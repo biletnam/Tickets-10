@@ -2,11 +2,11 @@
 
 $_REQUEST['user_id'] ||= $r['userID'];
 $user_id = $_REQUEST['user_id'];
-$pageParams = ('user_id' => $user_id);
+$pageParams = array('user_id' => $user_id);
 $userInfo = $runtime->s2r('staff', 'GetEmployeeDetails', array('id' => $user_id));
 
 if (count($userInfo) == 0) {
-  $page->add('main', $runtime->doTemplate($module, 'usertickets.nouser');
+  $page->add('main', $runtime->txt->do_template($module, 'usertickets.nouser');
 } elseif ($user_id == $r['userID'] || $acc->is_superadmin() || $userInfo['deputy_staff'] == $r['userID'] || $userInfo['line_manager'] == $r['userID']) {
   # Prepare search form
   $tickethandlers = $runtime->s2a($module, 'ListTicketHandlers', $pageParams);
@@ -27,9 +27,9 @@ if (count($userInfo) == 0) {
   $tickets2follow = $runtime->s2a($module, 'ListTickets2Follow', $_REQUEST); 
   if (count($tickets2follow)) {
     $pageParams['tickets2follow'] = $tickets2follow;
-    $pageParams['alltickets2follow'] = $runtime->doTemplate($module, 'tickets2follow.list', $pageParams);
+    $pageParams['alltickets2follow'] = $runtime->txt->do_template($module, 'tickets2follow.list', $pageParams);
   } else {
-    $pageParams['alltickets2follow'] = $runtime->doTemplate($module, 'tickets2follow.none', $pageParams);
+    $pageParams['alltickets2follow'] = $runtime->txt->do_template($module, 'tickets2follow.none', $pageParams);
   }
   use ctlDataGrid;
   $basequery = spreview($module, 'ListTickets2Follow', $_REQUEST);  print "<!-- $basequery -->";
@@ -47,20 +47,20 @@ if (count($userInfo) == 0) {
   
   # Add multiple operation controls - in case if grid is not empty
   if ($grid1['length'] > 0) {
-    $pageParams['multi'] = $runtime->doTemplate($module, 'tickets2follow.multi', $pageParams);
+    $pageParams['multi'] = $runtime->txt->do_template($module, 'tickets2follow.multi', $pageParams);
   }
   
   if ($user_id == $r['userID']) {
-    $page->add('title',  $pageParams['pagetitle'] = $runtime->doTemplate($module, 'title.mytickets2follow', $pageParams);  
-    $page->add('main', $runtime->doTemplate($module, 'mytickets2follow', $pageParams);  
+    $page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.mytickets2follow', $pageParams);  
+    $page->add('main', $runtime->txt->do_template($module, 'mytickets2follow', $pageParams);  
   } else {
     # TODO check if this user is somehow related to this person (HR? LM? DS?) and restrict access
-    $page->add('title',  $pageParams['pagetitle'] = $runtime->doTemplate($module, 'title.usertickets2follow', $userInfo);  
-    $page->add('main', $runtime->doTemplate($module, 'usertickets2follow', $pageParams);  
+    $page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.usertickets2follow', $userInfo);  
+    $page->add('main', $runtime->txt->do_template($module, 'usertickets2follow', $pageParams);  
   }
 } else {
-  $page->add('title',  $pageParams['pagetitle'] = $runtime->doTemplate($module, 'title.usertickets2follow', $userInfo);  
-  $page->add('main', $runtime->doTemplate($module, 'usertickets.denied', $pageParams);
+  $page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.usertickets2follow', $userInfo);  
+  $page->add('main', $runtime->txt->do_template($module, 'usertickets.denied', $pageParams);
 }
 
 

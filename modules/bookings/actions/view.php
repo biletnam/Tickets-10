@@ -6,11 +6,11 @@ $bookingInfo = $runtime->s2r($module, 'GetBookingInfo', $_REQUEST);
 
 # Add linking box
 if (get_cookie('booking_search_source_type') <> '') {
-  $linkingInfo = (
+  $linkingInfo = array(
     'source_type' => get_cookie('booking_search_source_type'),
     'source_id' => get_cookie('booking_search_source_id'),
   );
-  $bookingInfo['linking'] .= $runtime->doTemplate($module, 'booking.linking.'.$linkingInfo['source_type'], $linkingInfo); 
+  $bookingInfo['linking'] .= $runtime->txt->do_template($module, 'booking.linking.'.$linkingInfo['source_type'], $linkingInfo); 
 }
  
 #print spreview($module, 'GetBookingInfo', $_REQUEST) . Dumper($bookingInfo);
@@ -37,7 +37,7 @@ if (count($bookingInfo) > 0) {
 #  print Dumper($bookingInfo);
   $familymembers = $runtime->s2a($module, 'GetBookingFamily', $_REQUEST); 
   if (count($familymembers) > 0) {
-    $bookingInfo['moreguests'] = $runtime->doTemplate($module, 'booking.people.family', array('book_id' => $bookingInfo['book_id'], 'familymembers' => $familymembers));
+    $bookingInfo['moreguests'] = $runtime->txt->do_template($module, 'booking.people.family', array('book_id' => $bookingInfo['book_id'], 'familymembers' => $familymembers));
   }
   $tabBookingView->addTab('people', dot('booking.people.tabheader', $ticketInfo), dot('booking.people', $bookingInfo)); 
   $bookingInfo['user_id'] = $r['userID'];
@@ -50,10 +50,10 @@ if (count($bookingInfo) > 0) {
   $bookingInfo['tabcontrol'] = $tabBookingView->getHTML();
   $runtime->saveMoment('  tab control rendered');
   
-  $page->add('title',  $bookingInfo['pagetitle'] = $runtime->doTemplate($module, 'title.booking', $bookingInfo);
-  $page->add('main', $runtime->doTemplate($module, 'booking', $bookingInfo);
+  $page->add('title',  $bookingInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.booking', $bookingInfo);
+  $page->add('main', $runtime->txt->do_template($module, 'booking', $bookingInfo);
 } else {
-  $page->add('main', $runtime->doTemplate($module, 'booking.notfound', $bookingInfo);
+  $page->add('main', $runtime->txt->do_template($module, 'booking.notfound', $bookingInfo);
 }
 
 

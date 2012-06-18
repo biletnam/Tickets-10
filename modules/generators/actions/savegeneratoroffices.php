@@ -5,7 +5,7 @@ if ($generator > 0) {
   $ids = join(',', lavnn('office'));
   if (join(',', @existing) <> $ids) {
     foreach $id (lavnn('office')) {
-      if (!Arrays::in_array($id, $existing)) {
+      if (!in_array($id, $existing)) {
         srun($module, 'InsertGeneratorBookingOffice', array('office' => $id, 'generator' => $generator));
       }
     }

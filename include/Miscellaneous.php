@@ -97,17 +97,17 @@ function genOptions {
 
 function genCheckboxes {
   ($arr, $name, $keyfield, $valuefield, $ids)
-  $arr = @{$arr};
+  $arr = $arr};
   
   $output = array();
   $checkids = split(',', $ids);
 
   foreach $item (@arr) {
-    $checkbox = ('name' => $name);
+    $checkbox = array('name' => $name);
     ($key, $value, $checked);
     $checkbox['key'] = $key = $item->{$keyfield};
     $checkbox['value'] = $value = $item->{$valuefield};
-    if (Arrays::in_array($key, $checkids)) {
+    if (in_array($key, $checkids)) {
       $checkbox['checked'] = 'checked';
     }
     if ($key <> '' && $value <> '') {
@@ -129,13 +129,13 @@ function genMenu {
     foreach $line ($fs->getFileLines($filename)) {
       $lineparts = split(':', $line);
       $key = $lineparts[0]; $title = $lineparts[1]; $url = $lineparts[2];
-      $hash = ('url' => $url, 'selected' => ($key == $level2selector ? 'selected' : ''), 'title' => $title);
+      $hash = array('url' => $url, 'selected' => ($key == $level2selector ? 'selected' : ''), 'title' => $title);
       if ($url <> '' || $title <> '') {
         push @level1items, dotmod('main', 'navigation.level1.item', $hash);
       }    
     }
   }
-  $level1 = ('menuitems' => join('', @level1items));
+  $level1 = array('menuitems' => join('', @level1items));
   # Get second level menu items
   $level2items = array();
   ($module, $template) = split('\/', $level2desciptor);
@@ -151,19 +151,19 @@ function genMenu {
         ($module, $template) = split('\/', $templatepath);
         $filename = "modules/$module/templates/$template.html";
         if (-e $filename) {
-          $hash = ('text' => $txt->doText($fs->getFileContents($filename), $_REQUEST), 'align' => $align);
+          $hash = array('text' => $txt->doText($fs->getFileContents($filename), $_REQUEST), 'align' => $align);
           push @level2items, dotmod('main', 'navigation.level2.text', $hash);
         }
       } else {
         $url = $lineparts[2]; 
-        $hash = ('url' => $url, 'align' => $align, 'title' => $title);
+        $hash = array('url' => $url, 'align' => $align, 'title' => $title);
         if ($url <> '' || $title <> '') {
           push @level2items, dotmod('main', 'navigation.level2.link', $hash);
         }    
       }
     }
   }
-  $level2 = ('menuitems' => join('', @level2items));
+  $level2 = array('menuitems' => join('', @level2items));
   
   return dotmod('main', 'navigation.level1', $level1).dotmod('main', 'navigation.level2', $level2);
 }
@@ -172,7 +172,7 @@ function join_request_array {
   ($varname)
   
   $_varvalue = $_REQUEST{$varname};
-  $elements = @{$_varvalue};
+  $elements = $_varvalue};
   if (!exists $_REQUEST{$varname}) {
     $_varvalue = '';
   } elseif (count($elements) > 1) {

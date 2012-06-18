@@ -49,7 +49,7 @@ if ($gen_user_id == 0) {
   if (count($genUserInfo) > 0) {
     delete $genUserInfo['password']; # Security, security, security...
     $generator_id = $genUserInfo['generator_id'];
-    $sqlParams = (
+    $sqlParams = array(
       'lang' => $lang, 
       'generator_id' => $generator_id,
       'date_from' => $date_from,

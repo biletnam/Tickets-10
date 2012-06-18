@@ -11,7 +11,7 @@ if ($tag == '' && $prefix <> '') {
 $search = lavnn('search', $_REQUEST, '');
 
 # Get pagelet that renders articles
-$sqlParams = (
+$sqlParams = array(
   'id' => $r['userID'], 
   'office' => $r['userInfo']['lngWorkPlace'].'',
   'department' => $r['userInfo']['team_id'].'',
@@ -23,13 +23,13 @@ $articleblocks = $runtime->s2a($module, 'ListArticleBlocks');
 $blockdict = Arrays::array2map($articleblocks, 'code'); 
 
 $articles = $objA->search_articles(%sqlParams); 
-$articlesByBlock = Arrays::slice_array($articles, 'block');
+$articlesByBlock = slice_array($articles, 'block');
 $noblock = array(); $blocks = array();
 foreach $key (keys %articlesByBlock) {
   $block = lc($key, $_REQUEST, ''); 
-  $articles = @{$articlesByBlock{$key}};
+  $articles = $articlesByBlock{$key];
   if ($block <> '') {
-    $blockInfo = %{$blockdict{$block}}; 
+    $blockInfo = $blockdict{$block]; 
     $seqno = $blockInfo['seqno']; 
     if (exists($blockdict{$block})) {
       # Limit every block to 5 last articles
@@ -38,12 +38,12 @@ foreach $key (keys %articlesByBlock) {
       }
       # store generated block with its number 
       $blockInfo['block_content'] = loopt('blockarticle', @articles);
-      $blocks{$seqno} = $runtime->doTemplate($module, 'home.block', $blockInfo); 
+      $blocks{$seqno} = $runtime->txt->do_template($module, 'home.block', $blockInfo); 
     } else {
-      @noblock = (@noblock, @articles); 
+      @noblock = array(@noblock, @articles); 
     }
   } else {
-    @noblock = (@noblock, @articles); 
+    @noblock = array(@noblock, @articles); 
   }
 }
 # Limit Misc block to 5 items and add it to $blocks 
@@ -57,9 +57,9 @@ foreach $key (sort keys %blocks) {
 $pageParams['blocks'] = join('', @sortedblocks);
 
 # Render page from all calculated parts
-$page->add('title',  $pageParams['pagetitle'] = $runtime->doTemplate($module, 'title.home');
-$page->add('main',  $runtime->doTemplate($module, 'home', $pageParams);
-$page->add('css',  $runtime->doTemplate($module, 'css');
+$page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.home');
+$page->add('main',  $runtime->txt->do_template($module, 'home', $pageParams);
+$page->add('css',  $runtime->txt->do_template($module, 'css');
 
 
 

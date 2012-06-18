@@ -10,8 +10,8 @@ if ($id > 0) {
   $pageParams['sb'] = arr2ref(s2a($module, 'ListApartments', array('id' => $id, 'block' => 'SB')));
   $pageParams['sbtypes'] = arr2ref(s2a($module, 'ListApartmentTypes', array('id' => $id, 'block' => 'SB')));
 }
-$pageParams['pagetitle'] = $page->add('title',  $runtime->doTemplate($module, 'hbsb.title', $pageParams);
-$page->add('main', $runtime->doTemplate($module, 'hbsb', $pageParams);
+$pageParams['pagetitle'] = $page->add('title',  $runtime->txt->do_template($module, 'hbsb.title', $pageParams);
+$page->add('main', $runtime->txt->do_template($module, 'hbsb', $pageParams);
 
 
 

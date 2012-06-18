@@ -3,7 +3,7 @@
 # inline action called from main/dashboard
 
 $dashboard_articleage = $r['userInfo']['additionalData']['dashboard_articleage'] || 30; 
-$sqlParams = (
+$sqlParams = array(
   'id' => $r['userID'], 
   'office' => $r['userInfo']['lngWorkPlace'].'',
   'department' => $r['userInfo']['team_id'].'',
@@ -14,7 +14,7 @@ $sqlParams = (
 );
 
 $articles = $objA->search_articles(%sqlParams);
-$pageParams = ('days' => $dashboard_articleage);
+$pageParams = array('days' => $dashboard_articleage);
 $pageParams['articles'] = $articles;
 print dot('dashboard', $pageParams);
 

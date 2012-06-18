@@ -3,13 +3,13 @@
 use Calendar;
 
 $pageParams = array();
-$pageParams['pagetitle'] = $page->add('title',  $runtime->doTemplate($module, 'title.relatedstaff');
+$pageParams['pagetitle'] = $page->add('title',  $runtime->txt->do_template($module, 'title.relatedstaff');
 
 use objStaffManagement;
 $objSM = new objStaffManagement($r);
 $line_manager_for = $objSM->line_manager_for($r['userID']);
 $deputy_staff_for = $objSM->deputy_staff_for($r['userID']);
-$related_staff = (@line_manager_for, @deputy_staff_for);
+$related_staff = array(@line_manager_for, @deputy_staff_for);
 
 $pageParams['line_manager_for'] = $line_manager_for;
 $pageParams['deputy_staff_for'] = $deputy_staff_for;
@@ -22,8 +22,8 @@ if (count($line_manager_for) > 0 || count($deputy_staff_for) > 0) {
   $pageParams['days'] = $days;
   $emptyrow = looptmod('staff', 'officeabsences.employee.emptyday', @days);
   # List all absences of related staff, group them by employee
-  $absences = $runtime->s2a('staff', 'ListPeopleAbsences', array('ids' => Arrays::join_column(',', 'lngId', $related_staff), 'Y' => $Y, 'M' => $M));
-  $empabsences = Arrays::slice_array($absences, 'employee');
+  $absences = $runtime->s2a('staff', 'ListPeopleAbsences', array('ids' => join_column(',', 'lngId', $related_staff), 'Y' => $Y, 'M' => $M));
+  $empabsences = slice_array($absences, 'employee');
   
   $rows = array();
   $nocalendars = array();
@@ -33,17 +33,17 @@ if (count($line_manager_for) > 0 || count($deputy_staff_for) > 0) {
       $dateFired = $employee['dateFired'] || '';
       if ($dateFired == '' || ($dateFired gt $firstDay)) { 
         $cnt++; $blockcnt++;
-        $aa = @{$empabsences{$employee_id}}; 
+        $aa = $empabsences{$employee_id]; 
         if (count($aa) > 0) {
           $employee['absences'] = $objSM->render_employee_absences($days, $empabsences{$employee_id});
         } else {
           $employee['absences'] = $emptyrow; 
         }
-        push @rows, dotmod('staff', 'officeabsences.employee.edit', $$employee);   
+        push @rows, dotmod('staff', 'officeabsences.employee.edit', $employee);   
         # Also, check if employee has birthday this month
         if ($employee['MonthBirth'] == $M) {
           $D = $employee['DayBirth'];
-          push @{$birthdays{$D}}, $employee;
+          push $birthdays{$D}}, $employee;
         } 
       }
     } else {
@@ -59,9 +59,9 @@ if (count($line_manager_for) > 0 || count($deputy_staff_for) > 0) {
 
   $page->add('css',  dotmod('main', 'monthmatrix.css');
   $page->add('css',  dotmod('main', 'monthmatrix.legend.css', $pageParams);
-  $page->add('main', $runtime->doTemplate('main', 'relatedstaff', $pageParams);
+  $page->add('main', $runtime->txt->do_template('main', 'relatedstaff', $pageParams);
 } else {  
-  $page->add('main', $runtime->doTemplate('main', 'relatedstaff.none', $pageParams);
+  $page->add('main', $runtime->txt->do_template('main', 'relatedstaff.none', $pageParams);
 }
 $runtime->saveMoment(' rendered main part of the page');
 

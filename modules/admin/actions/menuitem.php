@@ -17,11 +17,11 @@ if ($id > 0) {
   $page->add('css',  dotmod('main', 'tabcontrol.css');
   $page->add('css',  dotmod('main', 'linkpeople.css');
 
-  $page->add('title',  $menuitemInfo['pagetitle'] = $runtime->doTemplate($module, 'menuitem.title', $menuitemInfo);
-  $page->add('main', $runtime->doTemplate($module, 'menuitem', $menuitemInfo);
+  $page->add('title',  $menuitemInfo['pagetitle'] = $runtime->txt->do_template($module, 'menuitem.title', $menuitemInfo);
+  $page->add('main', $runtime->txt->do_template($module, 'menuitem', $menuitemInfo);
 } else {
-  $page->add('title',  $menuitemInfo['pagetitle'] = $runtime->doTemplate($module, 'menuitem.title.new', $menuitemInfo);
-  $page->add('main', $runtime->doTemplate($module, 'menuitem.new', $menuitemInfo);
+  $page->add('title',  $menuitemInfo['pagetitle'] = $runtime->txt->do_template($module, 'menuitem.title.new', $menuitemInfo);
+  $page->add('main', $runtime->txt->do_template($module, 'menuitem.new', $menuitemInfo);
 }
 
 

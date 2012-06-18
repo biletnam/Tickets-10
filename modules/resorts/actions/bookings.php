@@ -6,7 +6,7 @@ $pageParams = array();
 $id = lavnn('hotel');
 if ($id <> '') {
   %pageParams = $runtime->s2r('resorts', 'GetHotelInfo', array('id' => $id)); 
-  $pageParams['pagetitle'] = $page->add('title',  $runtime->doTemplate($module, 'bookings.title', $pageParams); 
+  $pageParams['pagetitle'] = $page->add('title',  $runtime->txt->do_template($module, 'bookings.title', $pageParams); 
   $pageParams['locations'] = arr2ref(genOptions(arr2ref(s2a($module, 'ListLocations')), 'id', 'location_name', $pageParams['location_id']));
 }
 
@@ -30,7 +30,7 @@ $tabHotelBookings->setDefaultTab(lavnn('tab') || 'reqhandlers');
 $pageParams['tabcontrol'] = $tabHotelBookings->getHTML();
 $runtime->saveMoment('  tab control rendered');
 
-$page->add('main', $runtime->doTemplate($module, 'bookings', $pageParams);
+$page->add('main', $runtime->txt->do_template($module, 'bookings', $pageParams);
 
 
 

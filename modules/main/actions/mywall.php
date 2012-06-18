@@ -3,10 +3,10 @@
 use objWall;
 $objWall = new objWall($r);
 
-$pageParams['pagetitle'] = $page->add('title',  $runtime->doTemplate($module, 'title.mywall');
+$pageParams['pagetitle'] = $page->add('title',  $runtime->txt->do_template($module, 'title.mywall');
 $posts = $objWall->get_posts(('entity_type' => 'employee', 'entity_id' => $r['userID'], 'can_edit' => '1')); #print Dumper($posts);
 $pageParams['wall'] = $objWall->render($posts);
-$page->add('main', $runtime->doTemplate('main', 'mywall', $pageParams);
+$page->add('main', $runtime->txt->do_template('main', 'mywall', $pageParams);
 $runtime->saveMoment(' rendered main part of the page');
 
 

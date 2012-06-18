@@ -31,12 +31,12 @@ use Calendar;
 #   data, customdata 
 #
 
-$calendarData = %{$apiparams['data']};
-$officeCalendarData = %{$apiparams['officedata']};
-$customCalendarData = %{$apiparams['customdata']};
+$calendarData = $apiparams['data'];
+$officeCalendarData = $apiparams['officedata'];
+$customCalendarData = $apiparams['customdata'];
 
-$weekenddays = @{$apiparams['weekend_days']};
-$calendarParams = %{$apiparams['params']};
+$weekenddays = $apiparams['weekend_days'];
+$calendarParams = $apiparams['params'];
 
 $parsedDate = array();
 if ($apiparams['month'] <> '' && $apiparams['year'] <> '') {
@@ -69,30 +69,30 @@ $year = $apiresults['year'] = $parsedDate['year'];
 $months = $runtime->getSortedDictArr('main', 'month', $month); 
 $apiresults['months'] = $months;
 # prepare years
-$year_start = ($apiparams['yearfrom'] || 1900);
-$year_end = ($apiparams['yearto'] || 2020);
+$year_start = array($apiparams['yearfrom'] || 1900);
+$year_end = array($apiparams['yearto'] || 2020);
 $years = Calendar::getYears($year_start, $year_end, $year); 
 $apiresults['years'] = $years;
 # prepare previous month link if needed
 if (($year - $year_start) * 12 + $month > 1) {
-  $linkparams = ('month' => $month - 1, 'year' => $year);
+  $linkparams = array('month' => $month - 1, 'year' => $year);
   if (0 == $month - 1) {
-    %linkparams = ('month' => 12, 'year' => $year - 1);
+    %linkparams = array('month' => 12, 'year' => $year - 1);
   }
   $apiresults['prevmonth'] = $r['txt']doText($templatePrevMonth, $linkparams);
 }
 # prepare next month link if needed
 if (($year_end + 1 - $year) * 12 - $month > 0) {
-  $linkparams = ('month' => $month + 1, 'year' => $year);
+  $linkparams = array('month' => $month + 1, 'year' => $year);
   if ($month == 12) {
-    %linkparams = ('month' => 1, 'year' => $year + 1);
+    %linkparams = array('month' => 1, 'year' => $year + 1);
   }
   $apiresults['nextmonth'] = $r['txt']doText($templateNextMonth, $linkparams);
 }
 
 # gather some useful statistics about this month
 $days = $runtime->s2a('main', 'GetEpochMonth', $parsedDate);
-$firstday = %{@days[0]};
+$firstday = $@days[0];
 $base = $firstday['DoW'];
 $num_of_days = count($days);
 
@@ -105,7 +105,7 @@ if (count($officeData) > 0) {
   undef @weekenddays;
 } else {
   for ($i = 1; $i <= 7; $i++) {
-    $apiresults{"weekend_$i"} = (Arrays::in_array($i, $weekenddays) ? "weekend" : "");
+    $apiresults{"weekend_$i"} = array(in_array($i, $weekenddays) ? "weekend" : "");
   }
 }
 # blank days before 1st day
@@ -115,8 +115,8 @@ for ($i = 1; $i < $base; $i++) {
 # normal month days
 for ($i = 1; $i <= $num_of_days; $i++) {
   $dayParams = %calendarParams;
-  $customData = %{$customCalendarData{$i}};
-  $officeData = @{$officeCalendarData{$i}};
+  $customData = $customCalendarData{$i];
+  $officeData = $officeCalendarData{$i];
   while (($key, $value) = each %customData) {
     $dayParams{$key} = $value;
   }
@@ -125,13 +125,13 @@ for ($i = 1; $i <= $num_of_days; $i++) {
   $dayParams['year'] = $apiresults['year'];
   
   if (count($officeData) > 0) {
-    $hash = %{$officeData[0]};
+    $hash = $officeData[0];
     $dayParams['OfficeDayType'] = 'OfficeDayType_'.$hash['day_type'];
     if ($hash['day_type'] <> 'WE') {
       $dayParams['data'] .= $runtime->dotmod($module, 'api.monthcalendar.day.offevent', $hash);
     }
   } else {
-    $dayParams['weekend'] = (Arrays::in_array(1 + (($i + $base - 2) % 7), $weekenddays) ? "weekend" : "");
+    $dayParams['weekend'] = array(in_array(1 + (($i + $base - 2) % 7), $weekenddays) ? "weekend" : "");
   }
   
 
@@ -153,7 +153,7 @@ for ($i = 1; $i <= $num_of_days; $i++) {
 }
 # blank days after last day
 if (($i + $base - 2) % 7 > 0) {
-  for ($j = (($i + $base - 2) % 7) + 1; $j <= 7; $j++) {
+  for ($j = array(($i + $base - 2) % 7) + 1; $j <= 7; $j++) {
     $week .= $templateEmpty;
   }
 }

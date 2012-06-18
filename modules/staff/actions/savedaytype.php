@@ -7,7 +7,7 @@ if ($id > 0) {
   $existing = Arrays::cut_column(arr2ref(s2a($module, 'ListCalendarDayTypeOffices', array('id' => $id))), 'lngId');
   if (join(',', @existing) <> $ids) {
     foreach $off (lavnn('office')) {
-      if (!Arrays::in_array($id, $existing)) {
+      if (!in_array($id, $existing)) {
         srun($module, 'InsertCalendarDayTypeOffice', array('office' => $off, 'daytype' => $id));
       }
     }

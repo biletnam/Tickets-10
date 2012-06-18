@@ -3,8 +3,8 @@ use objTicketing;
 $objT = new objTicketing($r);
 
 # Check if any client was given
-$clients = $runtime->trim(lavnn('clients'), $_REQUEST, '');
-$contracts = $runtime->trim(lavnn('contracts'), $_REQUEST, '');
+$clients = trim(lavnn('clients'), $_REQUEST, '');
+$contracts = trim(lavnn('contracts'), $_REQUEST, '');
 $title = lavnn('title') || 'New Marketing Campaign';
 $summary = lavnn('summary');
 $duedate = lavnn('duedate');
@@ -13,7 +13,7 @@ if ($clients.$contracts == '' ) {
 } else {
 
   # Create a project
-  $sqlParams = (
+  $sqlParams = array(
     'user_id' => $r['userInfo']['staff_id'],
     'moderator' => (lavnn('moderator') || $r['userInfo']['staff_id']),
     'title' => $title,
@@ -25,12 +25,12 @@ if ($clients.$contracts == '' ) {
     # Create all the tickets - by clients
     $ids = split(/\n/, $clients);
     foreach $id (@ids) {
-      $client_id = $runtime->trim($id);
+      $client_id = trim($id);
       if ($client_id <> '') {
         $clientInfo = $runtime->s2r($module, 'GetClientInfo', array('id' => $client_id));
         if (count($clientInfo) > 0) {
-          $tickettitle = $runtime->doTemplate($module, 'ticket.title.client', $clientInfo); 
-          %sqlParams = (
+          $tickettitle = $runtime->txt->do_template($module, 'ticket.title.client', $clientInfo); 
+          %sqlParams = array(
             'title' => $tickettitle,
             'contents' => $summary,
             'destination' => 'project',
@@ -49,12 +49,12 @@ if ($clients.$contracts == '' ) {
     # Create all the tickets - by contracts
     $ids = split(/\n/, $contracts);
     foreach $id (@ids) {
-      $contract_id = $runtime->trim($id);
+      $contract_id = trim($id);
       if ($contract_id <> '') {
         $contractInfo = $runtime->s2r($module, 'GetContractInfo', array('id' => $contract_id));
         if (count($contractInfo) > 0) {
-          $tickettitle = $runtime->doTemplate($module, 'ticket.title.contract', $contractInfo); 
-          %sqlParams = (
+          $tickettitle = $runtime->txt->do_template($module, 'ticket.title.contract', $contractInfo); 
+          %sqlParams = array(
             'title' => $tickettitle,
             'contents' => $summary,
             'destination' => 'project',

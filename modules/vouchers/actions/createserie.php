@@ -12,7 +12,7 @@ if (lavnn('name') == '' || lavnn('code') == '' ) {
     if ($tags <> '') {
       $tt = split(',', $tags);
       foreach $t (@tt) {
-        $objVouchers->add_serie_tag(('serie' => $id, 'fulltag' => $runtime->trim($t)));
+        $objVouchers->add_serie_tag(('serie' => $id, 'fulltag' => trim($t)));
       }
     }
     set_cookie('flash', 'New voucher serie is registered, please proceed with adding vouchers');

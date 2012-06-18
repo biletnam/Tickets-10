@@ -8,7 +8,7 @@ if ($special == 'previous') {
 } elseif ($special == 'next') { 
   $activedate = Calendar::addDate($activedate, 1);
 }
-$pageParams = ('activedate' => $activedate);
+$pageParams = array('activedate' => $activedate);
 $date = Calendar::parseDate($activedate);
 
 $office = $pageParams['office'] = lavnn("office", $_REQUEST, 0);
@@ -21,14 +21,14 @@ if ($office <> 0) {
   # List all absences in the office, group them by employee
   $absences = $runtime->s2a($module, 'ListOfficeAbsences', array('office' => $office, 'Y' => $Y, 'M' => $M, 'D' => $D));
   $pageParams['absences'] = $absences;
-  $empabsences = Arrays::slice_array($absences, 'employee'); 
+  $empabsences = slice_array($absences, 'employee'); 
   $staff = $runtime->s2a($module, 'ListStaff', array('office' => $office, 'fired' => '*', 'sort' => 'st.DepartmentName, p.strLastName')); # check fired status in cycle
-  $ee = Arrays::slice_array($staff, 'DepartmentName');
+  $ee = slice_array($staff, 'DepartmentName');
   $thisDay = sprintf("%04s-%02s-%02s 00:00:00", $Y, $M, $D);
   
   foreach $departmentName (keys %ee) {
-    $staff = @{$ee{$departmentName}};
-    $departmentName ||= $runtime->doTemplate($module, 'officeabsences.department.untitled');
+    $staff = $ee{$departmentName];
+    $departmentName ||= $runtime->txt->do_template($module, 'officeabsences.department.untitled');
     $deprows = array(); $cnt = 0; $processed = array();
     foreach $employee (@staff) { 
       if ($employee['AbsenceCalendarID'] <> '') { # Ignore staff without absence calendar 
@@ -37,30 +37,30 @@ if ($office <> 0) {
           $dateFired = $employee['dateFired'] || '';
           if ($dateFired == '' || ($dateFired gt $thisDay)) { 
             $cnt++; $employee['_i_'] = $cnt; $employee['_mod2_'] = $cnt % 2;
-            $aa = @{$empabsences{$employee_id}}; 
+            $aa = $empabsences{$employee_id]; 
             if (count($aa) > 0) {
-              $hash = %{$aa[0]}; 
+              $hash = $aa[0]; 
               if ($hash['OffDayType'] <> '') { 
                 # There is a special day for an office, but employee might have overwork!
                 if ($hash['EmpDayType'] == 'OW') {
-                  $employee['absence'] = $runtime->doTemplate($module, 'editofficeabsences.employee.overwork', $hash);
+                  $employee['absence'] = $runtime->txt->do_template($module, 'editofficeabsences.employee.overwork', $hash);
                 } else {
-                  $employee['absence'] = $runtime->doTemplate($module, 'editofficeabsences.employee.officeday', $hash);
+                  $employee['absence'] = $runtime->txt->do_template($module, 'editofficeabsences.employee.officeday', $hash);
                 }
               } else {
-                $employee['absence'] = $runtime->doTemplate($module, 'editofficeabsences.employee.absence', $hash);
+                $employee['absence'] = $runtime->txt->do_template($module, 'editofficeabsences.employee.absence', $hash);
               }
             } else {
-              $employee['absence'] = $runtime->doTemplate($module, 'editofficeabsences.employee.select', $$employee); 
+              $employee['absence'] = $runtime->txt->do_template($module, 'editofficeabsences.employee.select', $employee); 
             }
-            push @deprows, dot('editofficeabsences.employee', $$employee);   
+            push @deprows, dot('editofficeabsences.employee', $employee);   
             $processed{$employee_id} = $employee_id; 
           }
         } 
       }
     }
     push @rows, dot('officeabsences.department', array('name' => $departmentName, 'cnt' => $cnt, 'colspan' => 1));
-    @rows = (@rows, @deprows);
+    @rows = array(@rows, @deprows);
   }
   $pageParams['employees'] = join('', @rows);
   $absencetypes = $runtime->s2a($module, 'ListOfficeAbsenceTypes', array('office' => $office)); 
@@ -69,7 +69,7 @@ if ($office <> 0) {
 }
 
  
-$page->add('title',  $pageParams['pagetitle'] = $runtime->doTemplate($module, 'title.editofficeabsences');
-$page->add('main', $runtime->doTemplate($module, 'editofficeabsences', $pageParams);
+$page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.editofficeabsences');
+$page->add('main', $runtime->txt->do_template($module, 'editofficeabsences', $pageParams);
 
 ?>

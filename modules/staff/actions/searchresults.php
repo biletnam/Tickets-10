@@ -3,13 +3,13 @@
 # Get list of staff according to criteria from %request
 $office = lavnn('office', $_REQUEST, '');
 $department = lavnn('department', $_REQUEST, '');
-$pageParams = ('office' => $office, 'department' => $department, 'url' => lavnn('url'));
+$pageParams = array('office' => $office, 'department' => $department, 'url' => lavnn('url'));
 $_REQUEST['alloffices'] = $r['userInfo']['staff_offices'];
-$_REQUEST['officeids'] = ($r['userInfo']['staff_offices'] == '*' || $r['userInfo']['staff_offices'] == '') ? '0' : $r['userInfo']['staff_offices'];
+$_REQUEST['officeids'] = array($r['userInfo']['staff_offices'] == '*' || $r['userInfo']['staff_offices'] == '') ? '0' : $r['userInfo']['staff_offices'];
 # define the sorting order from REQUEST's oldsort and newsort parameters
 $sort = decode_sort_params(lavnn('oldsort'), lavnn('newsort'));
 $_REQUEST['sort'] = $pageParams['oldsort'] = $sort;
-$pageParams['fired'] = ($_REQUEST['fired'] == '1' ? 'fired' : '');
+$pageParams['fired'] = array($_REQUEST['fired'] == '1' ? 'fired' : '');
 $staff = $runtime->s2a($module, 'ListStaff', $_REQUEST); #print Dumper($staff);
 
 if (count($staff) > 0) { 
@@ -24,7 +24,7 @@ if (count($staff) > 0) {
     @offices = $runtime->s2a($module, 'ListOffices');
     @officeoptions = genOptions($offices, 'lngId', 'strName');
     $pageParams['offices'] = $officeoptions;
-    #$pageParams['newemployeeform'] = $runtime->doTemplate($module, 'newemployeeform', $pageParams) if $_REQUEST['fired'] <> '1'; # TODO
+    #$pageParams['newemployeeform'] = $runtime->txt->do_template($module, 'newemployeeform', $pageParams) if $_REQUEST['fired'] <> '1'; # TODO
     print dot('searchresults.editoffice.list', $pageParams);
   } elseif ($department <> '' && $acc->can_edit_department($department)) {
     @departments = $runtime->s2a($module, 'ListDepartments');

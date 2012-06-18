@@ -65,7 +65,7 @@ if ($accessToken == '') {
           # Return all rows as XML
           $i = 0;  
           while ($ref = $sth->fetchrow_hashref()) {
-            $ref['_i_'] = ++$i; $ref['_mod2_'] = ($i % 2); 
+            $ref['_i_'] = ++$i; $ref['_mod2_'] = array($i % 2); 
             push @rows, Arrays::r2xml($ref, 'Row');
           }
           $output = "<Array>".join('', @rows)."</Array>";

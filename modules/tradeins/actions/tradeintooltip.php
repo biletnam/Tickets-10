@@ -6,10 +6,10 @@ if ($id > 0) {
   if ($weekInfo['external_resort'] <> '') {
     $extseasons = arr2ref(s2a($module, 'ListExtSeasons', array('resort' => $weekInfo['external_resort']))); 
     $extseasonoptions = arr2ref(genOptions($extseasons, 'id', 'name', $weekInfo['external_resort']));
-    $weekInfo['preselectseason'] = $runtime->doTemplate($module, 'tradeintooltip.extseason', array('extseasons' => $extseasonoptions));
+    $weekInfo['preselectseason'] = $runtime->txt->do_template($module, 'tradeintooltip.extseason', array('extseasons' => $extseasonoptions));
   }  
 } else {
-  $weekInfo['preselectseason'] = $runtime->doTemplate($module, 'tradeintooltip.extseason.wait');
+  $weekInfo['preselectseason'] = $runtime->txt->do_template($module, 'tradeintooltip.extseason.wait');
 }
 
 $arrtypeoptions = arr2ref(s2a($module, 'ListAptTypes')); 

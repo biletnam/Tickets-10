@@ -2,7 +2,7 @@
 
 $pageParams  = array();
 
-$page->add('title',  $pageParams['pagetitle'] = $runtime->doTemplate($module, 'title.home');
+$page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.home');
 
 use ctlTab;
 $tabVouchers = new ctlTab($r, 'ctVouchers');
@@ -27,7 +27,7 @@ $pageParams['tabcontrol'] = $tabVouchers->getHTML();
 $page['js'] = dotmod('main', 'tabcontrol.js');
 $page['css'] = dotmod('main', 'tabcontrol.css');    
 
-$page->add('main', $runtime->doTemplate($module, 'home', $pageParams);
+$page->add('main', $runtime->txt->do_template($module, 'home', $pageParams);
 
 
 

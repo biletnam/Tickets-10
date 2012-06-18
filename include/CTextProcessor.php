@@ -116,39 +116,39 @@ class CTextProcessor {
         switch ($tagname) {
             case '_': // based on no value - simple way to include child templates
                 $value = '';
-                $output = (count($filters) > 0) ? $this->do_filter($value, $filters, $params) : $value;
+                $output = array(count($filters) > 0) ? $this->do_filter($value, $filters, $params) : $value;
                 break;
             case 'v': // named element from associative array $params
                 $value = $params[$tagvalue];
-                $output = (count($filters) > 0) ? $this->do_filter($value, $filters, $params) : $value;
+                $output = array(count($filters) > 0) ? $this->do_filter($value, $filters, $params) : $value;
                 break;
             case 'a': // named element (of array type) from associative array $params
                 $value = $params[$tagvalue];
-                $output = (count($filters) > 0) ? $this->do_filter($value, $filters, $params) : $value;
+                $output = array(count($filters) > 0) ? $this->do_filter($value, $filters, $params) : $value;
                 break;
             case 'srv':
             case 'server': // named element from $_REQUEST array
                 $value = $_SERVER[$tagvalue];
-                $output = (count($filters) > 0) ? $this->do_filter($value, $filters, $params) : $value;
+                $output = array(count($filters) > 0) ? $this->do_filter($value, $filters, $params) : $value;
                 break;
             case 'req':
             case 'request': // named element from $_REQUEST array
                 $value = $_REQUEST[$tagvalue];
-                $output = (count($filters) > 0) ? $this->do_filter($value, $filters, $params) : $value;
+                $output = array(count($filters) > 0) ? $this->do_filter($value, $filters, $params) : $value;
                 break;
             case 'sess':
             case 'session': // named element from $_SESSION array
                 $value = $_SESSION[$tagvalue];
-                $output = (count($filters) > 0) ? $this->do_filter($value, $filters, $params) : $value;
+                $output = array(count($filters) > 0) ? $this->do_filter($value, $filters, $params) : $value;
                 break;
             case 'cookie': // named cookie
                 $value = $_COOKIE[$tagvalue];
-                $output = (count($filters) > 0) ? $this->do_filter($value, $filters, $params) : $value;
+                $output = array(count($filters) > 0) ? $this->do_filter($value, $filters, $params) : $value;
                 break;
             case 'cfg':
             case 'config': // named element from configuration array as runtime object knows it
                 $value = $this->r->config[$tagvalue];
-                $output = (count($filters) > 0) ? $this->do_filter($value, $filters, $params) : $value;
+                $output = array(count($filters) > 0) ? $this->do_filter($value, $filters, $params) : $value;
                 break;
         }
         return $output;

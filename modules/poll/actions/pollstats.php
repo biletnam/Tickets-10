@@ -9,7 +9,7 @@ if ($id > 0) {
   $allviewers = $acc->list_users_for_resource('viewpoll', $id);
   $pollInfo['cnt'] = count($allviewers);
   if (count($responders) == 0) {
-    $pollInfo['tabcontrol'] = $runtime->doTemplate($module, 'pollstats.notstarted', $pollInfo);
+    $pollInfo['tabcontrol'] = $runtime->txt->do_template($module, 'pollstats.notstarted', $pollInfo);
   } else {
     $pollInfo['percentage'] = count($responders) * 100.0 / $pollInfo['cnt'];
     $pending = $objP->list_pending_respondents(('poll' => $id));
@@ -20,20 +20,20 @@ if ($id > 0) {
     $tabPollStats->addTab('questions', dot('pollstats.questions.tabheader'), $objP->render('id' => $id, 'mode' => 'stats')); 
     $tabPollStats->addTab('pending', dot('pollstats.pending.tabheader', $pollInfo), dot('pollstats.pending', $pollInfo)) if count($pending) > 0; 
     $tabPollStats->setDefaultTab(lavnn('tab') || 'persons');
-    $pollInfo['tabcontrol'] = $runtime->doTemplate($module, 'pollstats.usage', $pollInfo) . $tabPollStats->getHTML();
+    $pollInfo['tabcontrol'] = $runtime->txt->do_template($module, 'pollstats.usage', $pollInfo) . $tabPollStats->getHTML();
     $runtime->saveMoment('  tab control rendered');
   }
   
   
   $page['js'] .= dotmod('main', 'tabcontrol.js');
   $page->add('css',  dotmod('main', 'tabcontrol.css');
-  $page->add('title',  $pollInfo['pagetitle'] = $runtime->doTemplate($module, 'title.pollstats', $pollInfo);
-  $page->add('main', $runtime->doTemplate($module, 'pollstats', $pollInfo);
+  $page->add('title',  $pollInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.pollstats', $pollInfo);
+  $page->add('main', $runtime->txt->do_template($module, 'pollstats', $pollInfo);
 } else {
   $pollInfo = array();
-  $page->add('title',  $pollInfo['pagetitle'] = $runtime->doTemplate($module, 'title.pollstats.notfound', $pollInfo);
-  $pollInfo['tabcontrol'] = $runtime->doTemplate($module, 'pollstats.notfound', $pollInfo);
-  $page->add('main', $runtime->doTemplate($module, 'pollstats', $pollInfo);
+  $page->add('title',  $pollInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.pollstats.notfound', $pollInfo);
+  $pollInfo['tabcontrol'] = $runtime->txt->do_template($module, 'pollstats.notfound', $pollInfo);
+  $page->add('main', $runtime->txt->do_template($module, 'pollstats', $pollInfo);
 }
 
 

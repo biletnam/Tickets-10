@@ -4,7 +4,7 @@ foreach $ref (@refs) {
   $comment = lavnn("comment_$ref");
   $name = lavnn("name_$ref");
   $amount = lavnn("amount_$ref");
-  $sqlParams = (
+  $sqlParams = array(
     'editor' => $r['userID'],
     'ref_no' => $ref,
     'amount' => $amount,

@@ -1,6 +1,6 @@
 <?php
 
-$page->add('title',  $pageParams['pagetitle'] = $runtime->doTemplate($module, 'editables.title');
+$page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'editables.title');
 if ($acc->can_access_menu('admin-setup-tables')) {
   $tableInfo = array();
   $id = lavnn('id', $_REQUEST, 0);
@@ -23,15 +23,15 @@ if ($acc->can_access_menu('admin-setup-tables')) {
     $page->add('css',  dotmod('main', 'tabcontrol.css');
     $page->add('css',  dotmod('main', 'linkpeople.css');
   
-    $page->add('title',  $tableInfo['pagetitle'] = $runtime->doTemplate($module, 'editable.title', $tableInfo);
+    $page->add('title',  $tableInfo['pagetitle'] = $runtime->txt->do_template($module, 'editable.title', $tableInfo);
     $tableInfo['tabcontrol'] = $tabEditable->getHTML();
   } else {
-    $page->add('title',  $tableInfo['pagetitle'] = $runtime->doTemplate($module, 'editable.title.new', $tableInfo);
-    $tableInfo['tabcontrol'] = $runtime->doTemplate($module, 'editable.edit', $tableInfo);
+    $page->add('title',  $tableInfo['pagetitle'] = $runtime->txt->do_template($module, 'editable.title.new', $tableInfo);
+    $tableInfo['tabcontrol'] = $runtime->txt->do_template($module, 'editable.edit', $tableInfo);
   }
-  $page->add('main', $runtime->doTemplate($module, 'editable', $tableInfo);
+  $page->add('main', $runtime->txt->do_template($module, 'editable', $tableInfo);
 } else {
-  $page->add('main', $runtime->doTemplate($module, 'noaccess', $pageParams);
+  $page->add('main', $runtime->txt->do_template($module, 'noaccess', $pageParams);
 }
 $pageParams  = array();
 

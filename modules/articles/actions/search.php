@@ -11,7 +11,7 @@ if ($tag == '' && $prefix <> '') {
 }
 
 # Get pagelet that renders articles
-$sqlParams = (
+$sqlParams = array(
   'id' => $r['userID'], 
   'office' => $r['userInfo']['lngWorkPlace'].'',
   'department' => $r['userInfo']['team_id'].'',
@@ -24,9 +24,9 @@ $sqlParams = (
 # If articles are filtered by block, we might show special form
 if ($prefix == 'block') {
   $pageParams['blockinfo'] = hash2ref(s2r($module, 'GetArticleBlockInfo', array('code' => $tag)));
-  $pageParams['searchform'] = $runtime->doTemplate($module, 'search.form.block', $pageParams);
+  $pageParams['searchform'] = $runtime->txt->do_template($module, 'search.form.block', $pageParams);
 } else {
-  $pageParams['searchform'] = $runtime->doTemplate($module, 'search.form', $pageParams);
+  $pageParams['searchform'] = $runtime->txt->do_template($module, 'search.form', $pageParams);
 }
 
 if ($tagfilter <> '' || $search <> '') {
@@ -39,18 +39,18 @@ if ($tagfilter <> '' || $search <> '') {
     $articleInfo = $runtime->s2r($module, 'GetArticleData', array('id' => $articles[0]['id'])); 
     $articletags = $runtime->s2a($module, 'GetArticleTags', $articleInfo); 
     $articleInfo['preparedview'] = $objA->view_article($articleInfo, $articletags); 
-    $pageParams['onearticle'] = $runtime->doTemplate($module, 'search.onearticle', $articleInfo);  
+    $pageParams['onearticle'] = $runtime->txt->do_template($module, 'search.onearticle', $articleInfo);  
   } else {
-    $pageParams['noarticles'] = $runtime->doTemplate($module, 'search.noarticles', array('fulltag' => $fulltag));
+    $pageParams['noarticles'] = $runtime->txt->do_template($module, 'search.noarticles', array('fulltag' => $fulltag));
   }
 } else {
-  $pageParams['nocriteria'] = $runtime->doTemplate($module, 'search.nocriteria');
+  $pageParams['nocriteria'] = $runtime->txt->do_template($module, 'search.nocriteria');
 }
 
 # Render page from all calculated parts
-$page->add('title',  $pageParams['pagetitle'] = $runtime->doTemplate($module, 'title.search');
-$page->add('main',  $runtime->doTemplate($module, 'search', $pageParams);
-$page->add('css',  $runtime->doTemplate($module, 'css');
+$page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.search');
+$page->add('main',  $runtime->txt->do_template($module, 'search', $pageParams);
+$page->add('css',  $runtime->txt->do_template($module, 'css');
 
 
 

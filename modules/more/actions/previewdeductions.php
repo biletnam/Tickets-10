@@ -1,18 +1,18 @@
 <?php
 $pageParams = %_REQUEST;
-$page->add('title',  $pageParams['pagetitle'] = $runtime->doTemplate($module, 'title.previewdeductions');
+$page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.previewdeductions');
 $amounts = lavnn('amounts');
 $months = $runtime->getDict('main', 'month');
 $month = lavnn('month'); $year = lavnn('year');
-$month = $runtime->trim($months{$month}) || lavnn('month');
+$month = trim($months{$month}) || lavnn('month');
 
 $deductions = array(); $refs = array();
 foreach $line (split('\n', $amounts)) {
-  $line = $runtime->trim($line);
+  $line = trim($line);
   if ($line <> '') {
     $parts = split('\t', $line);
     ($phone, $ref_no, $amount, $trash) = @parts;
-    $row = (
+    $row = array(
       'phone' => $phone,
       'ref_no' => $ref_no,
       'amount' => $amount,
@@ -28,7 +28,7 @@ if (count($refs) > 0) {
   $pageParams['deductions'] = $deductions;
   $pageParams['refs'] = join(',', @refs);
 }
-$page->add('main', $runtime->doTemplate($module, 'previewdeductions', $pageParams);
+$page->add('main', $runtime->txt->do_template($module, 'previewdeductions', $pageParams);
 
 
 

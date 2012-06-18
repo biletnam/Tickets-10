@@ -23,7 +23,7 @@ if (count($ticketInfo) > 0) {
   $isCreator = $ticketInfo['creator'] == $r['userInfo']['staff_id'];
   $isReviewer = $ticketInfo['reviewer'] == $r['userInfo']['staff_id'];
   $isHandler = $ticketInfo['handler'] == $r['userInfo']['staff_id'];
-  $privateTicket = ($isCreator && $isReviewer && $isHandler);
+  $privateTicket = array($isCreator && $isReviewer && $isHandler);
   
   # Get old values from ticket info
   $old_status = $ticketInfo['status'];
@@ -203,7 +203,7 @@ if (count($ticketInfo) > 0) {
   # add time reporting if any
   $reported_hours = lavnn('reported_hours', $_REQUEST, '');  
   $reported_minutes = lavnn('reported_minutes', $_REQUEST, '');  
-  $reportedtime_given = ($_REQUEST['reported_hours'].$_REQUEST['reported_minutes'] <> '');
+  $reportedtime_given = array($_REQUEST['reported_hours'].$_REQUEST['reported_minutes'] <> '');
   if ($reportedtime_given && !$ignoreChanges) {
     if (("0$reported_hours" =~ /^-?\d+$/) && ("0$reported_minutes" =~ /^-?\d+$/)) {
       $_REQUEST['total_minutes'] = $total_minutes = $reported_hours * 60 + $reported_minutes;
@@ -227,7 +227,7 @@ if (count($ticketInfo) > 0) {
   # Change minutes left
   $hours_left = $_REQUEST['timeleft_hours'] || 0;
   $minutes_left = $_REQUEST['timeleft_minutes'] || 0;
-  $new_timeleft_given = ($_REQUEST['timeleft_hours'].$_REQUEST['timeleft_hours'] <> '');
+  $new_timeleft_given = array($_REQUEST['timeleft_hours'].$_REQUEST['timeleft_hours'] <> '');
   $new_minutesleft = 0;
   if (("0$hours_left" =~ /^-?\d+$/) && ("0$minutes_left" =~ /^-?\d+$/)) {
     $new_minutesleft = $hours_left * 60 + $minutes_left;
@@ -266,14 +266,14 @@ if (count($ticketInfo) > 0) {
 
   # if something changed, write to history
   if (count($flash) > 0 && !$ignoreChanges) {
-    %sqlParams = (
+    %sqlParams = array(
       'action' => 'changeticket',
       'ticket' => $ticket_id,
       'editor' => $r['userInfo']['staff_id'],
       'new_creator' => $new_creator,
       'new_reviewer' => $new_reviewer,
       'new_handler' => $new_handler,
-      'new_status' => $runtime->trim($new_status),
+      'new_status' => trim($new_status),
       'new_project' => $new_project,
       'new_priority' => $new_priority,
       'new_duedate' => $new_duedate,

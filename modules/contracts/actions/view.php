@@ -13,11 +13,11 @@ if ($id > 0) {
   if (count($obligations) > 0) {
     $contractData['obligations'] = $obligations; 
   } else {
-    $contractData['copyobligations'] = $runtime->doTemplate($module, 'view.obligations.copy', $contractData); 
+    $contractData['copyobligations'] = $runtime->txt->do_template($module, 'view.obligations.copy', $contractData); 
   } 
   if ($contractData['merlin_id'] == '') {
     $contractData['merlin_upload_options'] = arr2ref($runtime->getDictArr('main', 'yesno', $contractData['merlin_upload_ready']));
-    $contractData['mark_merlin_import_ready'] = $runtime->doTemplate($module, 'view.details.merlinready', $contractData);
+    $contractData['mark_merlin_import_ready'] = $runtime->txt->do_template($module, 'view.details.merlinready', $contractData);
   }
 
   $fucomments = $runtime->s2a($module, 'ListFollowUpComments', array('contract_no' => $id));
@@ -41,7 +41,7 @@ if ($id > 0) {
   $runtime->saveMoment('  tab control rendered');
 
   # Render the whole page
-  $page->add('main', $runtime->doTemplate($module, 'view', $contractData);
+  $page->add('main', $runtime->txt->do_template($module, 'view', $contractData);
 }
 
 

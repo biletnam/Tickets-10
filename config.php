@@ -14,10 +14,10 @@ $config = array(
         'public' => 'public/'
     ),
     'errorpages' => array(
-        'DB_CONNECT_FAILED' => '../public/closed.dbdown.html',
-        'CLOSED_FOR_MAINTENANCE' => '../public/closed.maintenance.html'
+        'DB_CONNECT_FAILED' => 'public/closed.dbdown.html',
+        'CLOSED_FOR_MAINTENANCE' => 'public/closed.maintenance.html'
     ),
-    'CLOSED' => 1, // 0 - open, 1 - closed
+    'CLOSED' => 0, // 0 - open, 1 - closed
     'DEBUG' => false,
     'DEBUG_MAILSCRIPT' => 1,
     'DEBUGLEVEL' => array(

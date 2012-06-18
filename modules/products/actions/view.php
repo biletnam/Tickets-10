@@ -17,8 +17,8 @@ if ($id > 0) {
   $page['js'] = dotmod('main', 'tabcontrol.js');
   $page['css'] = dotmod('main', 'tabcontrol.css');    
 
-  $page->add('title',  $productInfo['pagetitle'] = $runtime->doTemplate($module, 'title.view', $productInfo);
-  $page->add('main', $runtime->doTemplate($module, 'view', $productInfo);
+  $page->add('title',  $productInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.view', $productInfo);
+  $page->add('main', $runtime->txt->do_template($module, 'view', $productInfo);
 }
 
 

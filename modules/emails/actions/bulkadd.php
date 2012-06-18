@@ -7,7 +7,7 @@ if ($domain > 0) {
     set_cookie('error', 'Invalid domain name given, adding failed');
   } else {
     $domainname = $domainInfo['domain_name']; 
-    $usernames = $runtime->trim(lavnn('usernames'));
+    $usernames = trim(lavnn('usernames'));
     $emails = lavnn('emails');
     $success = ''; $failures = array();
     # Try usernames first
@@ -16,7 +16,7 @@ if ($domain > 0) {
         $result = sid($module, 'InsertEmailAddress', array(
           'domain' => $domain, 
           'username' => $username, 
-          'email' => $runtime->trim($username).'@'.$domainname,
+          'email' => trim($username).'@'.$domainname,
           'reason' => lavnn('reason')
         ));
         if ($result > 0) {
@@ -50,7 +50,7 @@ if ($domain > 0) {
     if (count($failures) > 0) {
       $firstuser = pop(@failures); 
       $others = count($failures);
-      $msg = (count($failures) > 0 ? " and $others more usernames/emails " : '') . ' failed to be added';
+      $msg = array(count($failures) > 0 ? " and $others more usernames/emails " : '') . ' failed to be added';
       $msg .= ($success > 0) ? " (and $success usernames/emails were added successfully)" : '';
       set_cookie('error', $firstuser.$msg);
     } else {

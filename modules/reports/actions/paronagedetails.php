@@ -1,7 +1,7 @@
 <?php
 $paronageDetails = $runtime->s2r($module, 'GetParonageDetails', $_REQUEST);
 
-$popupParams = (
+$popupParams = array(
   'title' => "Paronage commission details",
   'content' => dot('paronagedetails', $paronageDetails),
 );

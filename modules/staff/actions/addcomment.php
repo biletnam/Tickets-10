@@ -6,7 +6,7 @@ $objSM = new objStaffManagement($r);
 $user_id = lavnn('user_id', $_REQUEST, '');
 $comment = lavnn('comment', $_REQUEST, '');
 if ($user_id <> '' && $comment <> '') {
-  $sqlParams = ('id' => $user_id, 'editor' => $r['userID'], 'comment' => $comment);
+  $sqlParams = array('id' => $user_id, 'editor' => $r['userID'], 'comment' => $comment);
   $result = $objSM->add_comment(%sqlParams); 
   if ($result > 0) {
     set_cookie('flash', 'Comment added');

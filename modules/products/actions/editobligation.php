@@ -18,14 +18,14 @@ if ($product_id > 0) {
   $arrtypeoptions = arr2ref(s2a($module, 'ListAptTypes')); 
   $obligationInfo['apttypeoptions'] = arr2ref(genOptions($arrtypeoptions, 'type_id', 'type_name', $obligationInfo['apt_type_id']));
   if ($id > 0) {
-    $page->add('title',  $obligationInfo['pagetitle'] = $runtime->doTemplate($module, 'title.editobligation', $obligationInfo);
+    $page->add('title',  $obligationInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.editobligation', $obligationInfo);
   } else {
     $obligationInfo['product_id'] = $product_id; 
-    $page->add('title',  $obligationInfo['pagetitle'] = $runtime->doTemplate($module, 'title.editobligation.new', $obligationInfo);
+    $page->add('title',  $obligationInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.editobligation.new', $obligationInfo);
   } 
 }
 
-$page->add('main', $runtime->doTemplate($module, 'editobligation', $obligationInfo);
+$page->add('main', $runtime->txt->do_template($module, 'editobligation', $obligationInfo);
 
 
 

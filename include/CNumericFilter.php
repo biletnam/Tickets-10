@@ -27,14 +27,14 @@ class CNumericFilter {
         // Apply filter on the value
         switch ($filtername) {
             case "money":
-                $value = (is_numeric($value)) ? round($value, 2) : '';
+                $value = array(is_numeric($value)) ? round($value, 2) : '';
                 break;
             /*
               case "currency":
               $ccyinfo = lavnn('currencyInfo', $runtime->data, array());
               $ccyrate = lavnn('rate', $ccyinfo, 1);
               $ccycode = lavnn('code', $ccyinfo, "");
-              $value = ($ccycode != "") ? $ccycode.' '.sprintf("%.2f", round($value * $ccyrate, 2)) : "";
+              $value = array($ccycode != "") ? $ccycode.' '.sprintf("%.2f", round($value * $ccyrate, 2)) : "";
               // TODO different rounding for different currencies
               break;
              */

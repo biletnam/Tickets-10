@@ -1,7 +1,7 @@
 <?php
 
 # initialize page params using request parameters
-%pageParams = (
+%pageParams = array(
   'gen_id' => $gen_id,
   'baseurl' => 'http://' . $ENV['SERVER_NAME'] . $r['config']['BASEURL_SCRIPTS'] ,
   'logoffurl' => 'http://www.clubabsolute.ru/logoff.php', 
@@ -29,10 +29,10 @@ if ($lang == 'ru') {
 $pageParams['countries'] = arr2ref(genOptions($arr, 'country_id', 'country_name'), $_REQUEST['country_id']);
 
 # render the form
-$page['js'] .= $runtime->doTemplate($module, 'newrequest.addperson.js', $pageParams);
-$page['js'] .= $runtime->doTemplate($module, 'newrequest.validation.js');
+$page['js'] .= $runtime->txt->do_template($module, 'newrequest.addperson.js', $pageParams);
+$page['js'] .= $runtime->txt->do_template($module, 'newrequest.validation.js');
 $page['baseurl'] = $pageParams['baseurl'];
-$page->add('main', $runtime->doTemplate($module, 'newrequest', $pageParams);
+$page->add('main', $runtime->txt->do_template($module, 'newrequest', $pageParams);
 print dotmod($module, 'index', $page);
 
 ?>

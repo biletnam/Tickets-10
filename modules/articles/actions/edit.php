@@ -11,13 +11,13 @@ if ($id <> '') {
 
     # Check more access - only review, because preview is included by default  
     if ($acc->check_resource("articlereviewers:$id", $r['userID'])) {
-      $articleInfo['moreaccess'] .= $runtime->doTemplate($module, 'moreaccess.review', $articleInfo);
+      $articleInfo['moreaccess'] .= $runtime->txt->do_template($module, 'moreaccess.review', $articleInfo);
     }
   
     # parse tags to cut out special tags to present them separately
     $articleblocks = array();
     $simpletags = array(); $articletype = '';
-    foreach $tagInfo (@{$articleInfo['tags']}) {
+    foreach $tagInfo ($articleInfo['tags']}) {
       $prefix = $tagInfo['prefix'];
       $tag = $tagInfo['tag'];
       if ($prefix == 'type') {
@@ -41,7 +41,7 @@ if ($id <> '') {
     $runtime->saveMoment('  prepared option lists for special tags');
     # If article is not draft or deleted, show sendflag checkbox
     if ($articleInfo['draft'] <> 1 && $articleInfo['deleted'] <> 1) {
-      $articleInfo['sendnotifications'] = $runtime->doTemplate($module, 'read.edit.sendnotifications');
+      $articleInfo['sendnotifications'] = $runtime->txt->do_template($module, 'read.edit.sendnotifications');
     }
 
     # draft options
@@ -51,7 +51,7 @@ if ($id <> '') {
     $notifications = $runtime->s2a($module, 'ListArticleNotifications', $articleInfo);
     if (count($notifications) > 0 ) {
       $articleInfo['notifications'] = $notifications;
-      $articleInfo['notificationhistory'] = $runtime->doTemplate($module, "article.notifications", $articleInfo); 
+      $articleInfo['notificationhistory'] = $runtime->txt->do_template($module, "article.notifications", $articleInfo); 
     }
     # Get history of pageviews
     use ctlDataGrid;
@@ -77,23 +77,23 @@ if ($id <> '') {
     $tcArticle->setDefaultTab(lavnn('tab')) if (lavnn('tab') <> '');
     $articleInfo['tabcontrol'] = $tcArticle->getHTML();
     $runtime->saveMoment('  rendered tab control');
-    $page->add('title',  $articleInfo['pagetitle'] = $runtime->doTemplate($module, 'title.edit', $articleInfo);
-    $page->add('main', $runtime->doTemplate($module, 'edit', $articleInfo);
+    $page->add('title',  $articleInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.edit', $articleInfo);
+    $page->add('main', $runtime->txt->do_template($module, 'edit', $articleInfo);
 
     # register pageview
     srun('main', 'RegisterPageview', array('entity_type' => 'viewarticle', 'entity_id' => $id, 'viewer_type' => 'U', 'viewer_id' => $r['userID']));
   }  
 } else {
-  $page->add('title',  $articleInfo['pagetitle'] = $runtime->doTemplate($module, 'title.notfound');
-  $page->add('main', $runtime->doTemplate($module, 'notfound', $articleInfo);
+  $page->add('title',  $articleInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.notfound');
+  $page->add('main', $runtime->txt->do_template($module, 'notfound', $articleInfo);
 }
 
-$page['js'] .= $runtime->doTemplate($module, 'read.js');
+$page['js'] .= $runtime->txt->do_template($module, 'read.js');
 $page['js'] .= dotmod('main', 'tabcontrol.js');
 $page['js'] .= dotmod('main', 'linkpeople.js');
 $page->add('css',  dotmod('main', 'tabcontrol.css');
 $page->add('css',  dotmod('main', 'linkpeople.css');
-$page->add('css',  $runtime->doTemplate($module, 'css');
+$page->add('css',  $runtime->txt->do_template($module, 'css');
 
 
   

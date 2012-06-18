@@ -4,8 +4,8 @@ if ($id > 0) {
   use objTicketing;
   $objT = new objTicketing($r);
   $creator = lavnn('creator');
-  $destination = ($creator == '') ? 'none' : 'self';
-  $sqlParams = (
+  $destination = array($creator == '') ? 'none' : 'self';
+  $sqlParams = array(
     'creator' => $creator,
     'destination' => $destination,
     'title' => lavnn('title'),

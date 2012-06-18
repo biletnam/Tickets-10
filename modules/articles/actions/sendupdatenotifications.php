@@ -11,7 +11,7 @@ if ($id <> '') {
   # Do the notification staff - if article is not draft nor is deleted!
   if ($articleInfo['draft'] <> 1 && $articleInfo['deleted'] <> 1) {
     # Clean up notifications that might be on a dashboard
-    $sqlParams = ('user' => $r['userID'], 'id' => $id);
+    $sqlParams = array('user' => $r['userID'], 'id' => $id);
     $runtime->srun($module, 'DeleteArticleNotifications', $sqlParams);
 
     # Add new notification about updated article

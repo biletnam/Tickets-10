@@ -5,14 +5,14 @@ $priceInfo = array();
 if ($id > 0) {
   %priceInfo = $runtime->s2r($module, 'GetPriceInfo', array('id' => $id)); 
   $hotelid = $priceInfo['hotel_id'];
-  $priceInfo['formtitle'] = $runtime->doTemplate($module, 'editprice.formtitle.edit');
+  $priceInfo['formtitle'] = $runtime->txt->do_template($module, 'editprice.formtitle.edit');
 } else {
-  %priceInfo = ('hotel_id' => $hotelid);
-  $priceInfo['formtitle'] = $runtime->doTemplate($module, 'editprice.formtitle.add');
+  %priceInfo = array('hotel_id' => $hotelid);
+  $priceInfo['formtitle'] = $runtime->txt->do_template($module, 'editprice.formtitle.add');
 }
 if ($hotelid > 0) {
   $officeoptions = arr2ref(s2a($module, 'ListHotelBookingOffices', array('id' => $hotelid))); 
-  $priceInfo['alloffices'] = $runtime->doTemplate($module, 'editprices.alloffices') if ($id == 0);
+  $priceInfo['alloffices'] = $runtime->txt->do_template($module, 'editprices.alloffices') if ($id == 0);
   $priceInfo['offices'] = arr2ref(genOptions($officeoptions, 'lngId', 'strName', $priceInfo['office_id'])); 
   $arrtypeoptions = arr2ref(s2a($module, 'ListAptTypes'));
   $priceInfo['blockpricetypes'] = arr2ref($runtime->getDictArr($module, 'BlockPriceType'));

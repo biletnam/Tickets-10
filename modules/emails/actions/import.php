@@ -6,10 +6,10 @@ $actual_domains = array();
 foreach $e (@employees) {
   $email = $e['strLocalOfficeEmail'];
   ($username, $domain) = split('@', $email, 2);
-  $username = lc($runtime->trim($username));
-  $domain = lc($runtime->trim($domain));
+  $username = lc(trim($username));
+  $domain = lc(trim($domain));
   $actual_domains{$domain} = arr2ref(()) if !exists $actual_domains{$domain};
-  $user = ('id' => $e['lngId'], 'username' => $username, 'email' => $email);
+  $user = array('id' => $e['lngId'], 'username' => $username, 'email' => $email);
   push $actual_domains{$domain}, $user;
 }
 print "<pre>";

@@ -9,7 +9,7 @@ if ($id <> '') {
   %pageParams = $runtime->s2r($module, 'GetLocalTypeInfo', array('id' => $id)); 
   $hotel = $pageParams['hotel_id'];
 } elseif($hotel <> '') {
-  %pageParams = ('hotel_id' => $hotel);
+  %pageParams = array('hotel_id' => $hotel);
 }
 if ($hotel <> '') {
   $pageParams['hotelinfo'] = hash2ref(s2r($module, 'GetHotelInfo', array('id' => $hotel))); 
@@ -19,12 +19,12 @@ if ($hotel <> '') {
 }
 if ($id <> '') {
   # Editing local type 
-  $pageParams['pagetitle'] = $page->add('title',  $runtime->doTemplate($module, 'title.localtype.edit', $pageParams);
-  $page->add('main', $runtime->doTemplate($module, 'editlocaltype', $pageParams);
+  $pageParams['pagetitle'] = $page->add('title',  $runtime->txt->do_template($module, 'title.localtype.edit', $pageParams);
+  $page->add('main', $runtime->txt->do_template($module, 'editlocaltype', $pageParams);
 } else {
   # Just adding local type -> can't show anything but create form
-  $pageParams['pagetitle'] = $page->add('title',  $runtime->doTemplate($module, 'title.localtype.add', $pageParams);
-  $page->add('main', $runtime->doTemplate($module, 'editlocaltype', $pageParams);
+  $pageParams['pagetitle'] = $page->add('title',  $runtime->txt->do_template($module, 'title.localtype.add', $pageParams);
+  $page->add('main', $runtime->txt->do_template($module, 'editlocaltype', $pageParams);
 }
 
 

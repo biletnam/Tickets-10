@@ -9,7 +9,7 @@ if ($id <> '') {
   %pageParams = $runtime->s2r($module, 'GetHardBlockInfo', array('id' => $id));
   $hotel = $pageParams['hotel_id'];
 } elseif($hotel <> '') {
-  %pageParams = ('hotel_id' => $hotel);
+  %pageParams = array('hotel_id' => $hotel);
 }
 if ($hotel <> '') {
   $pageParams['hotelinfo'] = hash2ref(s2r($module, 'GetHotelInfo', array('id' => $hotel))); 
@@ -31,18 +31,18 @@ if ($id <> '') {
   $hbb = $runtime->s2a($module, 'ListHardBlockBookings', array('id' => $id)); 
   $pageParams['bookings'] = $hbb;
   $hbstats = $runtime->s2r($module, 'GetHardBlockStats', array('id' => $id));
-  $pageParams['stats'] = $runtime->doTemplate($module, 'hardblock.stats', $hbstats);
+  $pageParams['stats'] = $runtime->txt->do_template($module, 'hardblock.stats', $hbstats);
   $tabHardBlockView->addTab('report', dot('hardblock.report.tabheader'), dot('hardblock.report', $pageParams)); 
   $tabHardBlockView->setDefaultTab(lavnn('tab') || 'edit');
   $pageParams['tabcontrol'] = $tabHardBlockView->getHTML();
   $runtime->saveMoment('  tab control rendered');
-  $pageParams['pagetitle'] = $page->add('title',  $runtime->doTemplate($module, 'title.hardblock.edit', $pageParams); 
-  $page->add('main', $runtime->doTemplate($module, 'hardblock', $pageParams);
+  $pageParams['pagetitle'] = $page->add('title',  $runtime->txt->do_template($module, 'title.hardblock.edit', $pageParams); 
+  $page->add('main', $runtime->txt->do_template($module, 'hardblock', $pageParams);
 } else {
   # Just adding block -> can't show anything but create form
-  $pageParams['tabcontrol'] = $runtime->doTemplate($module, 'hardblock.edit', $pageParams);
-  $pageParams['pagetitle'] = $page->add('title',  $runtime->doTemplate($module, 'title.hardblock.add', $pageParams);
-  $page->add('main', $runtime->doTemplate($module, 'hardblock', $pageParams);
+  $pageParams['tabcontrol'] = $runtime->txt->do_template($module, 'hardblock.edit', $pageParams);
+  $pageParams['pagetitle'] = $page->add('title',  $runtime->txt->do_template($module, 'title.hardblock.add', $pageParams);
+  $page->add('main', $runtime->txt->do_template($module, 'hardblock', $pageParams);
 }
 
 

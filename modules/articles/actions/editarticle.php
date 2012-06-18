@@ -6,12 +6,12 @@ $offices;
 $tags = array();
 if ($id <> '') {
   %article = $runtime->s2r($module, 'GetArticleData', $_REQUEST); 
-  $page->add('title',  $article['pagetitle'] = $runtime->doTemplate($module, 'title.editarticle', $article);  
+  $page->add('title',  $article['pagetitle'] = $runtime->txt->do_template($module, 'title.editarticle', $article);  
   $offices = $article['Offices'];
   @tags = $runtime->s2a($module, 'GetArticleTags', $_REQUEST);
 } else {
   %article = array();
-  $page->add('title',  $article['pagetitle'] = $runtime->doTemplate($module, 'title.newarticle');
+  $page->add('title',  $article['pagetitle'] = $runtime->txt->do_template($module, 'title.newarticle');
   $offices = '';
   @tags = array();
 }
@@ -57,8 +57,8 @@ if ($id <> '') {
 # Render page from all calculated parts
 
 $page->add('title',  $article['pagetitle'];
-$page->add('main', $runtime->doTemplate($module, 'myarticles.list', $pageParams);
-$page->add('main',  $runtime->doTemplate($module, 'editarticle', $article);
+$page->add('main', $runtime->txt->do_template($module, 'myarticles.list', $pageParams);
+$page->add('main',  $runtime->txt->do_template($module, 'editarticle', $article);
 
 
 

@@ -20,12 +20,12 @@ if ($id > 0) {
   $page['js'] .= dotmod('main', 'linkpeople.js');
   $page->add('css',  dotmod('main', 'tabcontrol.css');
   $page->add('css',  dotmod('main', 'linkpeople.css');
-  $page->add('title',  $reportInfo['pagetitle'] = $runtime->doTemplate($module, 'title.editreport', $reportInfo);
-  $page->add('main', $runtime->doTemplate($module, 'editreport', $reportInfo);
+  $page->add('title',  $reportInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.editreport', $reportInfo);
+  $page->add('main', $runtime->txt->do_template($module, 'editreport', $reportInfo);
 } else {
   $pageParams = array();
-  $page->add('title',  $pageParams['pagetitle'] = $runtime->doTemplate($module, 'title.newreport');
-  $page->add('main', $runtime->doTemplate($module, 'newreport', $pageParams);
+  $page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.newreport');
+  $page->add('main', $runtime->txt->do_template($module, 'newreport', $pageParams);
 }
 
 
@@ -41,7 +41,7 @@ function render_report_parameters {
   foreach $p (s2a($module, 'ListReportParameters', array('id' => $id))) {
     $mandatoryoptions = $runtime->getDictArr('main', 'yesno', $p['mandatory']); 
     $p['mandatoryoptions'] = $mandatoryoptions; 
-    $p['rendered'] = $runtime->doTemplate($module, 'renderparameter', $$p);
+    $p['rendered'] = $runtime->txt->do_template($module, 'renderparameter', $p);
     push @output, $p;
   }
   

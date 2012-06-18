@@ -3,7 +3,7 @@
 # Save module context for later use
 our %_OLDMODULE = %_MODULE;
 
-%_MODULE = (
+%_MODULE = array(
   'name' => 'calendars'
 );
 

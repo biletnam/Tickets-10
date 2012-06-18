@@ -73,7 +73,7 @@ if ($gen_user_id > 0) {
     $office_id = $apiparams['office_id'] || '';
     $date_to = $apiparams['date_to'] || $todayArr['fulldate'];
     $date_from = $apiparams['date_from'] || Calendar::addDate($date_to, -30);
-    $sqlParams = (
+    $sqlParams = array(
       'generator_id' => $generator_id,
       'first_gen_id' => $first_gen_id, 
       'office_id' => $office_id,

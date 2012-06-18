@@ -11,7 +11,7 @@ if ($id > 0) {
   if (count($articleData) > 0) {
     $articleData['gen_id'] = $gen_user_id;
     $articleData['baseurl'] = 'http://' . $ENV['SERVER_NAME'] . $r['config']['BASEURL_SCRIPTS'];
-    $page->add('main', $runtime->doTemplate($module, 'article', $articleData);
+    $page->add('main', $runtime->txt->do_template($module, 'article', $articleData);
 
     # register pageview
     srun('main', 'RegisterPageview', array('entity_type' => 'viewarticle', 'entity_id' => $id, 'viewer_type' => 'G', 'viewer_id' => $gen_user_id));

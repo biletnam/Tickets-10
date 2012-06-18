@@ -1,7 +1,7 @@
 <?php
 $pageParams = %_REQUEST;
 $page['menu'] = '';
-$page->add('main', $runtime->doTemplate($module, 'promptlogin', $pageParams);
+$page->add('main', $runtime->txt->do_template($module, 'promptlogin', $pageParams);
 print dotmod($module, 'index', $page);
 
 ?>

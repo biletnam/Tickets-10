@@ -7,12 +7,12 @@ use DateChemistry;
 
 %pageParams = array();
 
-$settingOptions = %{$r['userInfo']['additionalData']};
+$settingOptions = $r['userInfo']['additionalData'];
 $defaultview = $settingOptions['dashboard_defaultview'];
 $defaultviewoptions = $runtime->getSortedDictArr('main', 'dashboard.tabs', $defaultview);
 $isexternal = $settingOptions['dashboard_isexternal'];
 if ($isexternal == "") {
-  $isexternal = ($r['userInfo']['lngWorkPlace'] == -1234) ? "0" : "1";
+  $isexternal = array($r['userInfo']['lngWorkPlace'] == -1234) ? "0" : "1";
 } 
 $locationoptions = $runtime->getSortedDictArr('main', 'officelocation', $isexternal);
 $settingOptions['dashboard_defaultview'] ||= $_CONFIG['DEFAULT_DASHBOARD_DEFAULTVIEW'];
@@ -30,16 +30,16 @@ $nn = $objN->list($r['userInfo']['staff_id'], $notification_age);
 $runtime->saveMoment('  fetched notifications from db');
 $notifications = array(); $notification_cnt = 0;
 foreach $eD (reverse sort keys %nn) {
-  $n = @{$nn{$eD}};
+  $n = $nn{$eD];
   $notification_cnt += count($n);
 #  print $eD, Dumper($n);
-  $nhash = ('notifications' => loopt('dashboard.notification', @n));
+  $nhash = array('notifications' => loopt('dashboard.notification', @n));
   if ($n[0]['daysdiff'] == 0) {
-    $nhash['day'] = $runtime->doTemplate($module, 'dashboard.notification.today');
+    $nhash['day'] = $runtime->txt->do_template($module, 'dashboard.notification.today');
   } elseif ($n[0]['daysdiff'] == 1) {
-    $nhash['day'] = $runtime->doTemplate($module, 'dashboard.notification.yesterday');
+    $nhash['day'] = $runtime->txt->do_template($module, 'dashboard.notification.yesterday');
   } else {
-    $nhash['day'] = $runtime->doTemplate($module, 'dashboard.notification.day', ${$n[0]});
+    $nhash['day'] = $runtime->txt->do_template($module, 'dashboard.notification.day', ${$n[0]});
   }
   push @notifications, dot('dashboard.notification.list', $nhash);
 }
@@ -63,8 +63,8 @@ $page['js'] .= dotmod('main', 'notifications.js');
 $page->add('css',  dotmod('main', 'notifications.css');
 $runtime->saveMoment(' included custom JavaScript and CSS');
 
-$pageParams['pagetitle'] = $page->add('title',  $runtime->doTemplate($module, 'title.dashboard');
-$page->add('main', $runtime->doTemplate('main', 'dashboard', $pageParams);
+$pageParams['pagetitle'] = $page->add('title',  $runtime->txt->do_template($module, 'title.dashboard');
+$page->add('main', $runtime->txt->do_template('main', 'dashboard', $pageParams);
 $runtime->saveMoment(' rendered main part of the page');
 
 

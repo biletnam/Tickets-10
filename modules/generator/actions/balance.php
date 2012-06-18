@@ -2,7 +2,7 @@
 
 $gen_user_id = $runtime->get_cookie('gen_user_id', $_REQUEST, 0);
 
-$pageParams = ( 
+$pageParams = array( 
   'gen_id' => $gen_user_id,
   'baseurl' => 'http://' . $ENV['SERVER_NAME'] . $r['config']['BASEURL_SCRIPTS'],
 );
@@ -13,7 +13,7 @@ $lang = 'en';
 if ($gen_user_id > 0) {
   $genUserInfo = $runtime->s2r($module, 'GetGeneratorUserInfo', array('id' => $gen_user_id));
   $generator_id = $genUserInfo['generator_id'];
-  $sqlParams = (
+  $sqlParams = array(
     'lang' => $lang, 
     'generator_id' => $generator_id,
     'date_from' => (lavnn('date_from') || ''),
@@ -67,17 +67,17 @@ if ($gen_user_id > 0) {
           $e['out_'.$currabbr} = -$curramount if ($curramount < 0);
           $b{$currabbr} += $curramount;
           $e['balance_'.$currabbr} = -$b{$currabbr};
-          $e['amounts'] = $r['txt']doText($amountsTemplate, $$e);
-          push @ee, $r['txt']doText($rowTemplate, $$e);
+          $e['amounts'] = $r['txt']doText($amountsTemplate, $e);
+          push @ee, $r['txt']doText($rowTemplate, $e);
         }
         $pageParams['expenses'] = join('', @ee);
-        $pageParams['expenselist'] = $runtime->doTemplate($module, 'expenses.list', $pageParams);
+        $pageParams['expenselist'] = $runtime->txt->do_template($module, 'expenses.list', $pageParams);
       }
       
       # Check if there are more expenses for the same generator but on other dates
       $otherexpenses = $runtime->s2r($module, 'CountOtherExpenses', $sqlParams);
       if ($otherexpenses['cnt'] > 0) {
-        $pageParams['otherexpenses'] = $runtime->doTemplate($module, 'expenses.other', $otherexpenses);
+        $pageParams['otherexpenses'] = $runtime->txt->do_template($module, 'expenses.other', $otherexpenses);
       }
       
     } else {
@@ -85,7 +85,7 @@ if ($gen_user_id > 0) {
       $interc = $runtime->s2a($module, 'Intercompany', $sqlParams);
       if (count($interc) > 0) {
         $pageParams['interc'] = $interc;
-        $pageParams['intercompany'] = $runtime->doTemplate($module, 'intercompany', $pageParams);
+        $pageParams['intercompany'] = $runtime->txt->do_template($module, 'intercompany', $pageParams);
       }
     }
 
@@ -98,7 +98,7 @@ if ($gen_user_id > 0) {
 
 }
 
-$page->add('main', $runtime->doTemplate($module, 'balance', $pageParams);
+$page->add('main', $runtime->txt->do_template($module, 'balance', $pageParams);
 $page['baseurl'] = $pageParams['baseurl'];
 print dotmod($module, 'index', $page);
 

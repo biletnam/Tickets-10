@@ -12,7 +12,7 @@ $processed = array();
 $employees = lavnn('id'); 
 foreach $employee (@employees) {
   $employeeInfo = $objSM->get_user_info($employee); 
-  $sqlParams = (
+  $sqlParams = array(
     'calendar' => $employeeInfo['absencecalendar'], 
     'day' => $day, 
     'month' => $month, 
@@ -21,14 +21,14 @@ foreach $employee (@employees) {
   );
   $event_id = $objCal->create_event(%sqlParams);
   if ($event_id > 0) {
-    $eventparams = (
+    $eventparams = array(
       'event_type' => 'employeeabsence', 
       'event_id' => $event_id, 
       'day_type' => lavnn('absence_type'), 
       'qty' => lavnn('qty'),
     ); 
     $objCal->extend_event(%eventparams);
-    $events = ($event_id);
+    $events = array($event_id);
     $objSM->request_absence($employee, $events, '[automatic request from Edit Office Absence page] '.$comment);
     push @processed, $employeeInfo['strNick'];
   }

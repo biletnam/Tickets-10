@@ -22,8 +22,8 @@ if ($serie > 0) {
   $page['js'] = dotmod('main', 'tabcontrol.js');
   $page->add('css',  dotmod('main', 'tabcontrol.css');
 
-  $page->add('title',  $serieInfo['pagetitle'] = $runtime->doTemplate($module, 'title.serie', $serieInfo);
-  $page->add('main', $runtime->doTemplate($module, 'serie', $serieInfo);
+  $page->add('title',  $serieInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.serie', $serieInfo);
+  $page->add('main', $runtime->txt->do_template($module, 'serie', $serieInfo);
 }
 
 

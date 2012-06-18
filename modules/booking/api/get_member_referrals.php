@@ -44,7 +44,7 @@ $contenttype = $apiparams['_contenttype_'] || 'text/xml';
 $charset = $apiparams['_charset_'] || 'utf-8';
 $format = $apiparams['_format_'] || '';
 
-$expiration_days = $apiparams['expiration_days'] = ($apiparams['expiration_days'] || 28);
+$expiration_days = $apiparams['expiration_days'] = array($apiparams['expiration_days'] || 28);
  
 # Initialize first-level variables that appear in API output 
 $result = 'OK';

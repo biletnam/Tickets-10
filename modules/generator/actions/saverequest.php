@@ -14,11 +14,11 @@ if ($gen_user_id > 0) {
   $hotelInfo = $runtime->s2r($module, 'GetHotelInfo', array('id' => $sqlParams['hotel']));
   $sqlParams['hotel_name'] = $hotelInfo['hotel_name'];
   $langInfo = $runtime->s2r($module, 'GetLangInfoByCode', array('code' => $lang));
-  $langid = $sqlParams['lang_id'] = ($langInfo['id'] || 0);
+  $langid = $sqlParams['lang_id'] = array($langInfo['id'] || 0);
   # Gather data about MorePeople coming - this data will be packed into one special field
   $moreguests = array();
   foreach $n (@morepeople) {
-    $person = (
+    $person = array(
       'fname' => $runtime->urlencode((lavnn("fname_$n") || '')),
       'lname' => $runtime->urlencode((lavnn("lname_$n") || '')),
       'rel' => (lavnn("rel_$n") || ''),
@@ -44,8 +44,8 @@ if ($gen_user_id > 0) {
       # send notification to dashboards of request handlers
       use objNotification;
       $objN = new objNotification($r);
-      $subject = $runtime->doTemplate($module, 'bookreq.notification.subject', $sqlParams);
-      $digest = $runtime->doTemplate($module, 'bookreq.notification.digest', $sqlParams);
+      $subject = $runtime->txt->do_template($module, 'bookreq.notification.subject', $sqlParams);
+      $digest = $runtime->txt->do_template($module, 'bookreq.notification.digest', $sqlParams);
       $nid = $objN->add_notification('bookreq', $bookreq_id, $subject, $digest);
       $reqhandlers = $runtime->s2a($module, 'ListRequestHandlers', $sqlParams);
       if (count($reqhandlers) > 0) {

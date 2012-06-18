@@ -6,10 +6,10 @@ $pageParams = array();
 $id = lavnn('id', $_REQUEST, '');
 if ($id <> '') {
   %pageParams = $runtime->s2r('resorts', 'GetHotelInfo', array('id' => $id));
-  $pageParams['pagetitle'] = $page->add('title',  $runtime->doTemplate($module, 'edithotel.title', $pageParams); 
+  $pageParams['pagetitle'] = $page->add('title',  $runtime->txt->do_template($module, 'edithotel.title', $pageParams); 
   $pageParams['locations'] = arr2ref(genOptions(arr2ref(s2a($module, 'ListLocations')), 'id', 'location_name', $pageParams['location_id']));
 } else {
-  $pageParams['pagetitle'] = $page->add('title',  $runtime->doTemplate($module, 'edithotel.new.title', $pageParams); 
+  $pageParams['pagetitle'] = $page->add('title',  $runtime->txt->do_template($module, 'edithotel.new.title', $pageParams); 
   $pageParams['locations'] = arr2ref(genOptions(arr2ref(s2a($module, 'ListLocations')), 'id', 'location_name'));
 }
 
@@ -24,7 +24,7 @@ if ($id <> '') {
   # Edit offices where the hotel belongs to
   $alloffices = $runtime->s2a($module, 'ListAllBookingOffices');
   $hoteloffices = $runtime->s2a($module, 'ListHotelBookingOffices', array('id' => $id));
-  $ids = Arrays::join_column(',', 'lngId', $hoteloffices);
+  $ids = join_column(',', 'lngId', $hoteloffices);
   $pageParams['id'] = $id;
   $pageParams['offices'] = arr2ref(genCheckboxes($alloffices, 'office', 'lngId', 'strName', $ids));
   $tabEditHotel->addTab('offices', dot('edithotel.offices.tabheader'), dot('edithotel.offices', $pageParams));
@@ -59,7 +59,7 @@ $tabEditHotel->setDefaultTab(lavnn('tab') || 'edit');
 $pageParams['tabcontrol'] = $tabEditHotel->getHTML();
 $runtime->saveMoment('  tab control rendered');
 
-$page->add('main', $runtime->doTemplate($module, 'edithotel', $pageParams);
+$page->add('main', $runtime->txt->do_template($module, 'edithotel', $pageParams);
 
 
 

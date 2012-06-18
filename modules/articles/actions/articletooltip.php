@@ -3,9 +3,9 @@
 $id = lavnn('id', $_REQUEST, '');
 if ($id <> '') {
     $articleInfo = $runtime->s2r($module, 'GetArticleData', $_REQUEST);
-    $html = $runtime->doTemplate($module, 'articletooltip.articleinfo', $articleInfo);
+    $html = $runtime->txt->do_template($module, 'articletooltip.articleinfo', $articleInfo);
 } else {
-    $html = $runtime->doTemplate($module, 'articletooltip.notfound');
+    $html = $runtime->txt->do_template($module, 'articletooltip.notfound');
 }
 
 print $html;

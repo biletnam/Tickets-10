@@ -8,7 +8,7 @@ if ($special == 'employeeabsence') {
   $employee_id = lavnn('employee_id') || $r['userID'];
   $specialInfo = $runtime->s2r($module, 'GetCalendarsByObject', array('object_type' => 'employeeabsence', 'object_id' => $employee_id));
   if (count($specialInfo) == 0) {
-    $page->add('main', $runtime->doTemplate($module, 'view.create.absence.calendar', array('id' => $employee_id));
+    $page->add('main', $runtime->txt->do_template($module, 'view.create.absence.calendar', array('id' => $employee_id));
   } else {
     $id = $specialInfo['id'];
     # register pageview
@@ -55,7 +55,7 @@ if ($id <> '') {
 #    print '  access checked with result: '.$access;
 
     if ($access == 'none') {
-      $page->add('main', $runtime->doTemplate($module, 'view.noaccess');
+      $page->add('main', $runtime->txt->do_template($module, 'view.noaccess');
     } else {
 
       #TODO we need to put date parameters into HTML    
@@ -82,12 +82,12 @@ if ($id <> '') {
       $calendarInfo['tabcontrol'] = $tcCalendar->getHTML();
       $runtime->saveMoment('  rendered tab control');
       # render the page
-      $page->add('title',  $calendarInfo['pagetitle'] = $runtime->doTemplate($module, 'title.view', $calendarInfo);
-      $page->add('main', $runtime->doTemplate($module, 'view', $calendarInfo);
+      $page->add('title',  $calendarInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.view', $calendarInfo);
+      $page->add('main', $runtime->txt->do_template($module, 'view', $calendarInfo);
     }
   } else {
-    $page->add('title',  $calendarInfo['pagetitle'] = $runtime->doTemplate($module, 'title.view.notfound');
-    $page->add('main', $runtime->doTemplate($module, 'view.notfound', $calendarInfo);
+    $page->add('title',  $calendarInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.view.notfound');
+    $page->add('main', $runtime->txt->do_template($module, 'view.notfound', $calendarInfo);
   }
   
   $page['js'] .= dotmod('main', 'tabcontrol.js');
@@ -96,7 +96,7 @@ if ($id <> '') {
   $page->add('css',  dotmod('main', 'tabcontrol.css');
   $page->add('css',  dotmod('main', 'linkpeople.css');
   $page->add('css',  dotmod($module, 'calendar.css');
-  $page->add('css',  $runtime->doTemplate($module, 'css');
+  $page->add('css',  $runtime->txt->do_template($module, 'css');
   $page['cssfiles'] = $runtime->link_cssfiles(qw(calendar));
 }
 

@@ -10,7 +10,7 @@ if ($id > 0) {
   set_cookie('flash', 'Office calendar updated');
 } elseif ($office_id <> 0) {
   $officeInfo = $runtime->s2r($module, 'GetOfficeDetails', array('office' => $office_id));
-  $calendarParams = (
+  $calendarParams = array(
     'creator' => $r['userID'], 
     'object_type' => 'office', 
     'object_id' => $office_id, 
@@ -33,7 +33,7 @@ if ($id > 0) {
 # Also, add information about additional absence types into zOfficeCalendarDays
 while (($request_key, $request_value) = each %_REQUEST) {
   my($prefix, $suffix) = split('_', $request_key);
-  $sqlParams = ('officecalendar' => $id, 'day_type' => $suffix, 'days_cnt' => $request_value);
+  $sqlParams = array('officecalendar' => $id, 'day_type' => $suffix, 'days_cnt' => $request_value);
   if ($prefix == 'type' && $suffix <> '' && $id > 0) {
     $existing = $runtime->s2r($module, 'GetCalendarTypeDays', $sqlParams);
     if (count($existing) > 0) {

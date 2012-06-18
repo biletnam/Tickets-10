@@ -14,7 +14,7 @@ if ($id <> '') {
   $personInfo['teams'] = $teams;
   $personInfo['teamoptions'] = $teamoptions;
   checkDates($errors, @teams);
-  $personInfo['problems'] = $runtime->doTemplate($module, 'employeeteams.problems', array('errors' => $errors)) if (count($errors) > 0); 
+  $personInfo['problems'] = $runtime->txt->do_template($module, 'employeeteams.problems', array('errors' => $errors)) if (count($errors) > 0); 
   
   print dot('employeeteams', $personInfo);
 }

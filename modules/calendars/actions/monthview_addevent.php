@@ -20,18 +20,18 @@ if ($id == '' || $year == '' || $month == '') {
   } else {
     $object_type = $calendarInfo['object_type'];
     foreach $day (split(',', lavnn('days'))) {
-      $sqlParams = ('calendar' => $id, 'day' => $day, 'month' => $month, 'year' => $year, 'comment' => $comment);
+      $sqlParams = array('calendar' => $id, 'day' => $day, 'month' => $month, 'year' => $year, 'comment' => $comment);
       $event_id = $objCal->create_event(%sqlParams);
       # Process special types of calendars 
       if ($object_type == 'employeeabsence') {
-        $eventparams = (
+        $eventparams = array(
           'event_type' => 'employeeabsence', 'event_id' => $event_id, 
           'day_type' => lavnn('day_type'), 'qty' => lavnn('qty'),
         ); 
         $objCal->extend_event(%eventparams);
       }
       if ($object_type == 'office') {
-        $eventparams = (
+        $eventparams = array(
           'event_type' => 'office', 'event_id' => $event_id, 
           'day_type' => lavnn('day_type'), 'mandatory_vacation' => lavnn('mandatory_vacation'), 'transferable' => lavnn('transferable'),
         ); 

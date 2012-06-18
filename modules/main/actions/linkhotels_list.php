@@ -3,16 +3,16 @@
 $source = lavnn('src');
 $controlname = lavnn('controlname');
 if ($source <> '' && $controlname <> '') {
-  $pageParams = ('src' => $source, 'controlname' => $controlname);
+  $pageParams = array('src' => $source, 'controlname' => $controlname);
   $links = $runtime->s2a($module, 'ListHotelsLinks', $_REQUEST);
   if (count($links) > 0) {
-    $links_bylinktype = Arrays::slice_array($links, 'link_type');
+    $links_bylinktype = slice_array($links, 'link_type');
     @links = array();
-    foreach $link (@{$links_bylinktype['1']}) {
+    foreach $link ($links_bylinktype['1']}) {
       $link['locations'] = explainLocations($link['locations']) || dot('linkhotels.locations.all');
       $link['hotels'] = explainHotels($link['hotels']) || dot('linkhotels.hotels.all');
       $link['controlname'] = $controlname;
-      push @links, dot('linkhotels.listitem.location', $$link);
+      push @links, dot('linkhotels.listitem.location', $link);
     }
     print dot('linkhotels.list', array('controlname' => $controlname, 'links' => join('', @links)));
   } else {
@@ -26,7 +26,7 @@ function explainLocations {
   if ($ids <> '') {
     $locations = $runtime->s2a($module, 'ListHotelLocations', array('ids' => $ids));  
     if (count($locations) > 0) {
-      return Arrays::join_column(', ', 'location_name', $locations);
+      return join_column(', ', 'location_name', $locations);
     }
   }
   return '';
@@ -38,7 +38,7 @@ function explainHotels {
   if ($ids <> '') {
     $hotels = $runtime->s2a($module, 'ListHotels', array('ids' => $ids));  
     if (count($hotels) > 0) {
-      return Arrays::join_column(', ', 'hotel_name', $hotels);
+      return join_column(', ', 'hotel_name', $hotels);
     }
   }
   return '';

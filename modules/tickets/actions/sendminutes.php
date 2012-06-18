@@ -8,19 +8,19 @@ if ($id > 0) {
   if (count($meetingInfo) > 0) {
     $meetingHtml = $objT->print_meeting(%meetingInfo);
     $participants = $acc->list_users_for_resource('meetingparticipants', $id); 
-    $to = Arrays::join_column(', ', 'strLocalOfficeEmail', $participants);
+    $to = join_column(', ', 'strLocalOfficeEmail', $participants);
 
 #    $to = 'barcodex@gmail.com';
     
-    $subj = $runtime->doTemplate($module, 'mail.subj.minutes');
-    $body = $runtime->doTemplate($module, 'mail.body.minutes', array('id' => $id, 'body' => $meetingHtml));
+    $subj = $runtime->txt->do_template($module, 'mail.subj.minutes');
+    $body = $runtime->txt->do_template($module, 'mail.body.minutes', array('id' => $id, 'body' => $meetingHtml));
 
     $result = 0;
     if (lavnn('withpdf') > 0) {
       $html = dotmod('main', 'index.pdf', array('main' => $meetingHtml));
       $pdfname = $r['fs']pdf($html, "Meeting.$id.pdf", 1);
-      $f = ('filename' => 'Test.pdf', 'type' => 'application/pdf', 'path' => $pdfname);
-      $files = ($f);
+      $f = array('filename' => 'Test.pdf', 'type' => 'application/pdf', 'path' => $pdfname);
+      $files = array($f);
       $result = mail_withfiles($to, '', $subj, $body, $files);
     } else {
       $result = mail($to, '', $subj, $body);

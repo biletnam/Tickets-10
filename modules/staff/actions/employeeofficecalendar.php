@@ -10,7 +10,7 @@ $officecalendars = array();
 if ($id > 0) {
   %employeeOfficeCalendarInfo = $runtime->s2r($module, 'GetEmployeeOfficeCalendarInfo', $_REQUEST); 
   $office_id = $employeeOfficeCalendarInfo['office_id'];
-  $employeeOfficeCalendarInfo['pagetitle'] = $runtime->doTemplate($module, 'title.employeeofficecalendar.edit', $employeeOfficeCalendarInfo);
+  $employeeOfficeCalendarInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.employeeofficecalendar.edit', $employeeOfficeCalendarInfo);
   
   $paidabsencetypes = $runtime->s2a($module, 'ListEmployeeOfficeCalendarDays', array(
     'office' => $office_id, 
@@ -26,7 +26,7 @@ if ($id > 0) {
   $employeeOfficeCalendarInfo['strFirstName'] = $employeeInfo['strFirstName'];
   $employeeOfficeCalendarInfo['strLastName'] = $employeeInfo['strLastName'];
   $employeeOfficeCalendarInfo['strNick'] = $employeeInfo['strNick'];
-  $employeeOfficeCalendarInfo['pagetitle'] = $runtime->doTemplate($module, 'title.employeeofficecalendar.new', $employeeInfo);
+  $employeeOfficeCalendarInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.employeeofficecalendar.new', $employeeInfo);
 }
 if ($office_id <> 0) {
   @officecalendars = $runtime->s2a($module, 'ListOfficeCalendars', array('office' => $office_id));
@@ -34,7 +34,7 @@ if ($office_id <> 0) {
 }
 #print Dumper($employeeOfficeCalendarInfo);
 $page->add('title',  $employeeOfficeCalendarInfo['pagetitle'];
-$page->add('main', $runtime->doTemplate($module, 'employeeofficecalendar', $employeeOfficeCalendarInfo);
+$page->add('main', $runtime->txt->do_template($module, 'employeeofficecalendar', $employeeOfficeCalendarInfo);
 
 
 ?>

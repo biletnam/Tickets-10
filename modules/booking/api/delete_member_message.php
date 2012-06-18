@@ -51,7 +51,7 @@ if ($client_id == 0) {
     # Fetch this message anew to see if it was deleted
     @messages = $runtime->s2a($controller, 'ListMemberMessages', $apiparams);
     if (count($messages) == 1) {
-      $message = %{$messages[0]}; 
+      $message = $messages[0]; 
       if ($message['DateDeleted'] == '') {
         $result = 'ERR'; 
         push @errors, $runtime->hash2ref( ('code' => 'DeleteMemberMessage.Failure', 'text' => 'Could not complete DELETE operation:' . $runtime->spreview($controller, 'DeleteMemberMessage', $apiparams)) );

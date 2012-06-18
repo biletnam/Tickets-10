@@ -6,7 +6,7 @@ $k = lavnn('k');
 function distribute {
   ($amplitude, @prev)
   
-  $this = (1); 
+  $this = array(1); 
   for ($i = 1; $i <= $amplitude - 1; $i++) {
     push @this, $prev[$i-1] + $prev[$i];
   }
@@ -40,10 +40,10 @@ function findoffset {
 }
 
 $first = distribute(1);
-$distributions = ( '1' => $first );
+$distributions = array( '1' => $first );
 $last = @first;  
 for ($i = 2; $i <= $n; $i++) {
-  $next = @last = distribute($i, @{$distributions{$i-1}});
+  $next = @last = distribute($i, $distributions{$i-1}});
   $distributions{$i} = $next;
 }
 
@@ -73,7 +73,7 @@ if ($ones == 0) {
   $k -= $offset;
   print "remainder to go through the tree: $k;  \n";
   for($i = $n - 1; $i > 0; $i--) {
-    $distribution = @{$distributions{$i}}; 
+    $distribution = $distributions{$i]; 
     print "distribution $i: " . Dumper($distribution);
     $goleft = $distribution[$ones-1];
     $gowrite = $distribution[$ones];
@@ -88,7 +88,7 @@ if ($ones == 0) {
     }
 
 
-#    $previous = @{$distributions{$i-1}}; 
+#    $previous = $distributions{$i-1]; 
 #    print Dumper($previous);
   #  print "which is $ones element of distribution $i? " . $distribution[$ones];
 

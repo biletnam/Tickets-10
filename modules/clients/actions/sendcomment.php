@@ -16,7 +16,7 @@ if ($client_id > 0) {
         $op = ''; # Ticket not given, so we'll add FU comment instead
       }
     } elseif ($op == 'mfee') {
-      %sqlParams = (
+      %sqlParams = array(
         'creator' => $r['userInfo']['staff_id'],
         'title' => "Maintenance fee problem for client $client_id",
         'contents' => lavnn('commentary'),
@@ -25,7 +25,7 @@ if ($client_id > 0) {
       );
       $ticket_id = $objT->create_ticket(%sqlParams);
     } elseif ($op == 'cert') {
-      %sqlParams = (
+      %sqlParams = array(
         'creator' => $r['userInfo']['staff_id'],
         'title' => "Certificate problem for client $client_id",
         'contents' => lavnn('commentary'),
@@ -34,7 +34,7 @@ if ($client_id > 0) {
       );
       $ticket_id = $objT->create_ticket(%sqlParams);
     } elseif ($op == 'book') {
-      %sqlParams = (
+      %sqlParams = array(
         'creator' => $r['userInfo']['staff_id'],
         'title' => "Booking problem for client $client_id",
         'contents' => lavnn('commentary'),
@@ -45,7 +45,7 @@ if ($client_id > 0) {
     }
     # Add comment for the ticket
     if ($ticket_id > 0) {
-      %sqlParams = ('comment' => lavnn('commentary'));
+      %sqlParams = array('comment' => lavnn('commentary'));
       $objT->add_comment($ticket_id, $sqlParams);
     }
   } 

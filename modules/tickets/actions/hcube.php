@@ -83,15 +83,15 @@ push @fields, hash2ref((
 
 
 $hcube = new ctlHypercube($r, $basequery, $fields);
-$cubeParams = (
+$cubeParams = array(
   'module' => $module,
   'template_list' => $runtime->gettmod($module, 'hcube.list'),        # obsolete at the moment
   'template_item' => $runtime->gettmod($module, 'hcube.list.item'),   # obsolete at the moment
 );
-$pageParams = ('cube' => $hcube->render($cubeParams));
-$pageParams['pagetitle'] = $page->add('title',  $runtime->doTemplate($module, 'hcube.title');
-$page->add('main', $runtime->doTemplate($module, 'hcube', $pageParams);
+$pageParams = array('cube' => $hcube->render($cubeParams));
+$pageParams['pagetitle'] = $page->add('title',  $runtime->txt->do_template($module, 'hcube.title');
+$page->add('main', $runtime->txt->do_template($module, 'hcube', $pageParams);
 
-$page['css'] = $runtime->doTemplate($module, 'hcube.css');
+$page['css'] = $runtime->txt->do_template($module, 'hcube.css');
 
 ?>

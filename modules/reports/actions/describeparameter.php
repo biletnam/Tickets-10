@@ -12,14 +12,14 @@ if ($id > 0) {
 }
 
 if ($type == 'number') {
-#  $paramInfo['input'] = $runtime->doTemplate($module, 'describeparameter.input.number', $paramInfo);
+#  $paramInfo['input'] = $runtime->txt->do_template($module, 'describeparameter.input.number', $paramInfo);
 } elseif ($type == 'string') {
-#  $paramInfo['input'] = $runtime->doTemplate($module, 'describeparameter.input.string', $paramInfo);
+#  $paramInfo['input'] = $runtime->txt->do_template($module, 'describeparameter.input.string', $paramInfo);
 } elseif ($type == 'dblookup') {
-  $paramInfo['input'] = $runtime->doTemplate($module, 'describeparameter.input.dblookup', $paramInfo);
+  $paramInfo['input'] = $runtime->txt->do_template($module, 'describeparameter.input.dblookup', $paramInfo);
   print dot('describeparameter', $paramInfo);
 } elseif ($type == 'employee') {
-#  $paramInfo['input'] = $runtime->doTemplate($module, 'describeparameter.input.employee', $paramInfo);
+#  $paramInfo['input'] = $runtime->txt->do_template($module, 'describeparameter.input.employee', $paramInfo);
 }
 
 1;

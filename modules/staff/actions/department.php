@@ -3,9 +3,9 @@
 $id = lavnn('id', $_REQUEST, 0);
 if ($id <> 0) {
   $departmentInfo = $runtime->s2r($module, 'GetDepartmentDetails', $_REQUEST);
-  $page->add('title',  $departmentInfo['pagetitle'] = $runtime->doTemplate($module, 'title.department', $departmentInfo);
+  $page->add('title',  $departmentInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.department', $departmentInfo);
   if ($acc->can_edit_department($id)) {
-    $departmentInfo['editform'] = $runtime->doTemplate($module, 'department.editform', $departmentInfo);
+    $departmentInfo['editform'] = $runtime->txt->do_template($module, 'department.editform', $departmentInfo);
     $departmentInfo['subteams'] = arr2ref(s2a($module, 'ListSubteams', $_REQUEST));
     use ctlTab;
     $tabDepartment = new ctlTab($r, 'ctDepartment');
@@ -22,12 +22,12 @@ if ($id <> 0) {
     $page->add('css',  dotmod('main', 'tabcontrol.css');
     $page->add('css',  dotmod('main', 'linkpeople.css');
   } else {
-    $departmentInfo['tabcontrol'] = $runtime->doTemplate($module, 'department.details', $departmentInfo) . dot('department.staff', $departmentInfo);
+    $departmentInfo['tabcontrol'] = $runtime->txt->do_template($module, 'department.details', $departmentInfo) . dot('department.staff', $departmentInfo);
   }
-  $page['js'] .= $runtime->doTemplate($module, 'search.sort.js');
-  $page->add('main', $runtime->doTemplate($module, 'department', $departmentInfo);
+  $page['js'] .= $runtime->txt->do_template($module, 'search.sort.js');
+  $page->add('main', $runtime->txt->do_template($module, 'department', $departmentInfo);
 } else {
-  $page->add('main', $runtime->doTemplate($module, 'department.notfound', $departmentInfo);
+  $page->add('main', $runtime->txt->do_template($module, 'department.notfound', $departmentInfo);
 }
 
 

@@ -101,7 +101,7 @@ if ($contract_no <> '') {
     $obligations = $runtime->s2a($controller, 'GetProductObligations', $apiparams);
     $apiparams['obligations'] = $obligations;
     if (count($obligations) > 0) {
-      $ids = $apiparams['obligation_ids'] = Arrays::join_column(',', 'id', $obligations);
+      $ids = $apiparams['obligation_ids'] = join_column(',', 'id', $obligations);
       $usages = $runtime->s2a($controller, 'GetProductUsages', $apiparams);
       $apiparams['usages'] = $usages;
     }

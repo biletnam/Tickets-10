@@ -41,7 +41,7 @@ $editor = $apiparams['editor'] || 0;
 if ($editor > 0) {
   $destination = $apiparams['destination'] || '';
   $allowed = qw('self' 'project' 'employee');
-  if (Arrays::in_array($destination, $allowed) {
+  if (in_array($destination, $allowed) {
     $title = $apiparams['title'] || '';
     if ($title <> '') {
       $newid = $objT->create_ticket(%apiparams);
@@ -50,7 +50,7 @@ if ($editor > 0) {
         if ($notifiedPersons <> '') {
           $nps = split(',', $notifiedPersons);
           foreach $np (@nps) {
-            $objT->add_notification_recipient($newid, array('editor' => $editor, 'staff_id' => $runtime->trim($np)));
+            $objT->add_notification_recipient($newid, array('editor' => $editor, 'staff_id' => trim($np)));
           }
         }
         # Return new ticket information

@@ -12,7 +12,7 @@ if ($tablename <> '') {
       'include_dates' => $tableInfo['include_dates'],
       'include_numbers' => $tableInfo['include_numbers'],
     ));
-    $dirty = @{$_REQUEST{$tablename.'_dirty']}; 
+    $dirty = $_REQUEST{$tablename.'_dirty']; 
     foreach $i (@dirty) {
       if ($i <> '') {
         $fields = array();

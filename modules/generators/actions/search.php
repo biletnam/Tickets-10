@@ -18,7 +18,7 @@ $grid1->set_custom_template('nodata' => $runtime->gettmod($module, 'search.none'
 $resultsHtml = $grid1->render(('rowcount' => 'yes'));
   
 $searchInfo['results'] = $resultsHtml;
-$page->add('main', $runtime->doTemplate($module, 'search', $searchInfo);
+$page->add('main', $runtime->txt->do_template($module, 'search', $searchInfo);
 
 
 

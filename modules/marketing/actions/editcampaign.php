@@ -3,7 +3,7 @@ $id = lavnn('id', $_REQUEST, 0);
 $campaignInfo = array();
 if ($id > 0) {
   %campaignInfo = $runtime->s2r($module, 'GetCampaignInfo', $_REQUEST);
-  $page->add('title',  $campaignInfo['pagetitle'] = $runtime->doTemplate($module, 'title.editcampaign', $campaignInfo);
+  $page->add('title',  $campaignInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.editcampaign', $campaignInfo);
   use ctlTab;
   $tabCampaign = new ctlTab($r, 'ctCampaign');
   $tabCampaign->addTab('details', dot('editcampaign.tab.details'), dot('editcampaign.details', $campaignInfo));
@@ -15,9 +15,9 @@ if ($id > 0) {
   $tabCampaign->setDefaultTab(lavnn('tab') || 'details');
   $campaignInfo['tabcontrol'] = $tabCampaign->getHTML();
 } else {
-  $page->add('title',  $campaignInfo['pagetitle'] = $runtime->doTemplate($module, 'title.editcampaign.new');
-  $campaignInfo['tabcontrol'] = $runtime->doTemplate($module, 'editcampaign.details'); 
+  $page->add('title',  $campaignInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.editcampaign.new');
+  $campaignInfo['tabcontrol'] = $runtime->txt->do_template($module, 'editcampaign.details'); 
 }
-$page->add('main', $runtime->doTemplate($module, 'editcampaign', $campaignInfo);
+$page->add('main', $runtime->txt->do_template($module, 'editcampaign', $campaignInfo);
 
 ?>

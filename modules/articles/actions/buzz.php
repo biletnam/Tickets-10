@@ -9,8 +9,8 @@ if ($id > 0) {
   $objN = new objNotification($r);
   $articleInfo['buzz'] = lavnn('message');
   $userInfo = $runtime->s2r('staff', 'GetEmployeeDetails', array('id' => $r['userID']));
-  $articleInfo['sender'] = $runtime->doTemplate($module, 'employee.fullname', $userInfo);
-  $msgbody = $runtime->doTemplate($module, 'buzz.message', $articleInfo);
+  $articleInfo['sender'] = $runtime->txt->do_template($module, 'employee.fullname', $userInfo);
+  $msgbody = $runtime->txt->do_template($module, 'buzz.message', $articleInfo);
   $notification_id = $objN->add_notification('articlereviewbuzz', $id, dot('buzz.subject', $articleInfo), $msgbody);
   if ($notification_id > 0) {
     $receivers = array();

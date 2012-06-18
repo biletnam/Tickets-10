@@ -1,6 +1,6 @@
 <?php
 
-$html = $runtime->doTemplate($module, 'ajaxtarget.notfound');
+$html = $runtime->txt->do_template($module, 'ajaxtarget.notfound');
 $inline = '';
 $id = lavnn('ticket', $_REQUEST, 0);
 if ($id > 0) {
@@ -10,17 +10,17 @@ if ($id > 0) {
     if ($type == 'meeting') { 
       $meetings = $runtime->s2a('tickets', 'ListMeetings', array('user_id' => $r['userID'])); 
       $_REQUEST['meetingoptions'] = arr2ref(genOptions($meetings, 'id', 'name', ''));
-      $inline = $runtime->doTemplate($module, 'ajaxtarget.meeting', $_REQUEST);
+      $inline = $runtime->txt->do_template($module, 'ajaxtarget.meeting', $_REQUEST);
     } elseif ($type == 'employee') { 
-      $inline = $runtime->doTemplate($module, 'ajaxtarget.employee', $_REQUEST);
+      $inline = $runtime->txt->do_template($module, 'ajaxtarget.employee', $_REQUEST);
     } elseif ($type == 'client') { 
-      $inline = $runtime->doTemplate($module, 'ajaxtarget.client', $_REQUEST);
+      $inline = $runtime->txt->do_template($module, 'ajaxtarget.client', $_REQUEST);
     } elseif ($type == 'contract') { 
-      $inline = $runtime->doTemplate($module, 'ajaxtarget.contract', $_REQUEST);
+      $inline = $runtime->txt->do_template($module, 'ajaxtarget.contract', $_REQUEST);
     } elseif ($type == 'generator') { 
-      $inline = $runtime->doTemplate($module, 'ajaxtarget.generator', $_REQUEST);
+      $inline = $runtime->txt->do_template($module, 'ajaxtarget.generator', $_REQUEST);
     } else {
-      $html = $runtime->doTemplate($module, 'ajaxtarget', $ticketInfo);
+      $html = $runtime->txt->do_template($module, 'ajaxtarget', $ticketInfo);
     }
   }
 }
@@ -28,7 +28,7 @@ if ($id > 0) {
 if ($inline <> '') {
   print $inline;
 } else {
-  $popupParams = (
+  $popupParams = array(
     'title' => "Adding targets for ticket",
     'content' => $html,
   );

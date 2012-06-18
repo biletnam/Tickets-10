@@ -11,7 +11,7 @@ $searchInfo['commentoptions'] = arr2ref($runtime->getSortedDictArr('main', 'yesn
 $searchInfo['attachmentoptions'] = arr2ref($runtime->getSortedDictArr('main', 'yesno', lavnn('has_attachments'))); 
 
 $page->add('title',  $searchInfo['pagetitle'] =  dot('title.search');
-$paramstr = $runtime->doTemplate($module, 'search.checkparams', $searchInfo);
+$paramstr = $runtime->txt->do_template($module, 'search.checkparams', $searchInfo);
 $resultsHtml = '';
 if ($paramstr <> '') {
 
@@ -31,7 +31,7 @@ if ($paramstr <> '') {
 
 }
 $searchInfo['results'] = $resultsHtml;
-$page->add('main', $runtime->doTemplate($module, 'search', $searchInfo);
+$page->add('main', $runtime->txt->do_template($module, 'search', $searchInfo);
 
 
 

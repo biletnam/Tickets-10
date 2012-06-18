@@ -4,7 +4,7 @@ $id = lavnn('id', $_REQUEST, 0);
 if ($id > 0) {
   $actionInfo = $runtime->s2r($module, 'GetActionInfo', $_REQUEST);
   if (count($actionInfo) > 0) {
-    $page->add('title',  $actionInfo['pagetitle'] = $runtime->doTemplate($module, 'editaction.title', $actionInfo);
+    $page->add('title',  $actionInfo['pagetitle'] = $runtime->txt->do_template($module, 'editaction.title', $actionInfo);
     $atype = $actionInfo['action_type'];
     $params = $runtime->s2r($module, 'GetActionParams', $_REQUEST); 
     $paramvalues = Arrays::array2hash($params, 'name', 'value');
@@ -24,17 +24,17 @@ if ($id > 0) {
     }
     if (count($actionparams) > 0) {
       $actionInfo['parameters'] = join('', @actionparams);
-      $actionInfo['actionparams'] = $runtime->doTemplate($module, "editaction.parameters", $actionInfo);
+      $actionInfo['actionparams'] = $runtime->txt->do_template($module, "editaction.parameters", $actionInfo);
     }
-    $page->add('main', $runtime->doTemplate($module, "editaction", $actionInfo);
+    $page->add('main', $runtime->txt->do_template($module, "editaction", $actionInfo);
   } else {
     $id = 0;
   }
 }
 if ($id == 0) {
   %pageParams = array();
-  $page->add('title',  $pageParams['pagetitle'] = $runtime->doTemplate($module, 'editaction.title.notfound');
-  $page->add('main', $runtime->doTemplate($module, 'editaction.notfound', $pageParams);
+  $page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'editaction.title.notfound');
+  $page->add('main', $runtime->txt->do_template($module, 'editaction.notfound', $pageParams);
 }
 
 

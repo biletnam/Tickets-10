@@ -3,13 +3,13 @@
 use ctlDataGrid;
 
 $pageParams = array();  
-$page->add('title',  $pageParams['pagetitle'] = $runtime->doTemplate($module, 'title.pageviews');
+$page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.pageviews');
 
-$viewertype = $pageParams['viewer_type'] = (lavnn('viewer_type') || '');
+$viewertype = $pageParams['viewer_type'] = array(lavnn('viewer_type') || '');
 $viewertypes = $runtime->getDictArr('main', 'pageviewer.type', $viewertype);
 $pageParams['viewertypes'] = $viewertypes;
 $pageParams['viewer_id'] = lavnn('viewer_id');
-$entitytype = $pageParams['entity_type'] = (lavnn('entity_type') || '');
+$entitytype = $pageParams['entity_type'] = array(lavnn('entity_type') || '');
 $entitytypes = $runtime->s2a($module, 'PageviewEntityTypes');
 $entitytypeoptions = genOptions($entitytypes, 'entity_type', 'entity_type', $entitytype);
 $pageParams['entitytypes'] = $entitytypeoptions;
@@ -28,9 +28,9 @@ $pageParams['results'] = $grid1->render();
 $runtime->saveMoment('Finished rendering data grid');
 
 $pageParams['reportname'] = $report;
-$page->add('main', $runtime->doTemplate($module, 'pageviews', $pageParams);
+$page->add('main', $runtime->txt->do_template($module, 'pageviews', $pageParams);
 
-$page['js'] .= $runtime->doTemplate($module, 'pageviews.js');
+$page['js'] .= $runtime->txt->do_template($module, 'pageviews.js');
 
 
 

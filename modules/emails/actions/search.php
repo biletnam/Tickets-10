@@ -28,10 +28,10 @@ if ($domain > 0) {
   $grid1->set_custom_template('nodata' => $runtime->gettmod($module, 'search.none'));
   $resultsHtml = $grid1->render(('rowcount' => 'yes'));
     
-  $searchInfo['results'] = $runtime->doTemplate($module, 'search.results', array('results' => $resultsHtml));
-  $searchInfo['bulkadd'] = $runtime->doTemplate($module, 'search.bulkadd', $_REQUEST);
+  $searchInfo['results'] = $runtime->txt->do_template($module, 'search.results', array('results' => $resultsHtml));
+  $searchInfo['bulkadd'] = $runtime->txt->do_template($module, 'search.bulkadd', $_REQUEST);
 }
-$page->add('main', $runtime->doTemplate($module, 'search', $searchInfo);
+$page->add('main', $runtime->txt->do_template($module, 'search', $searchInfo);
 
 
 

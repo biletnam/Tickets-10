@@ -2,7 +2,7 @@
 
 $ids = lavnn('ids'); $cnt = 0;
 foreach $id (split(',', $ids)) {
-  $sqlParams = ('id' => $id);
+  $sqlParams = array('id' => $id);
   $dirty = lavnn("_dirty_$id");
   if ($dirty == '1') {
     $sqlParams['seqno'] = lavnn("seqno_$id");

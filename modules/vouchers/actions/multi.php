@@ -53,14 +53,14 @@ if ($access <> 'none') { # default for authorized users
           if ($count_success > 0 && $doc_location_type == 'employee' && $doc_location_id <> $r['userID']) {
             # Send notification about new vouchers to be arrived
             $delivery_method ||= '[unknown delivery method]';
-            $msgsubj = $runtime->doTemplate($module, 'mail.sentvouchers.subject', array(
+            $msgsubj = $runtime->txt->do_template($module, 'mail.sentvouchers.subject', array(
               'cnt' => $count_success, 
               'delivery_method' => $delivery_method,
             ));
             $mailBodyParams = $runtime->s2r('staff', 'GetEmployeeDetails', array('id' => $r['userID'])); 
             $mailBodyParams['cnt'] = $count_success;
             $mailBodyParams['delivery_method'] = $delivery_method;  
-            $msgbody = $runtime->doTemplate($module, 'mail.sentvouchers.body', $mailBodyParams);
+            $msgbody = $runtime->txt->do_template($module, 'mail.sentvouchers.body', $mailBodyParams);
             use objNotification;
             $objN = new objNotification($r);
             $notification_id = $objN->add_notification('sentdocs', $r['userID'], $msgsubj, $msgbody);

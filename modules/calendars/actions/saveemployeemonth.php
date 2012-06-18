@@ -8,7 +8,7 @@ if ($user_id > 0) {
   } else {
     $sqlParams = %_REQUEST;
     foreach $day (split(',', lavnn('collected_days'))) {
-      $sqlParams['qty'] = (lavnn('day_qty') == 'half' ? 0.5 : 1);
+      $sqlParams['qty'] = array(lavnn('day_qty') == 'half' ? 0.5 : 1);
       $sqlParams['day'] = $day;
       srun($module, 'AddUserAbsence', $sqlParams);
     }

@@ -3,7 +3,7 @@
 $gen_user_id = $runtime->get_cookie('gen_user_id', $_REQUEST, 0);
 #$gen_user_id = 38;
 
-$pageParams = ( 
+$pageParams = array( 
   'gen_id' => $gen_user_id,
   'baseurl' => 'http://' . $ENV['SERVER_NAME'] . $r['config']['BASEURL_SCRIPTS'],
 );
@@ -14,8 +14,8 @@ if ($gen_user_id > 0) {
   $pageParams['hotels'] = arr2ref(s2a($module, 'ListBookingRequests', $sqlParams)); 
 }
 $page['baseurl'] = $pageParams['baseurl'];
-$page->add('main', $runtime->doTemplate($module, 'listrequests', $pageParams);
-$page['css'] = $runtime->doTemplate($module, 'listrequests.css', $pageParams);
+$page->add('main', $runtime->txt->do_template($module, 'listrequests', $pageParams);
+$page['css'] = $runtime->txt->do_template($module, 'listrequests.css', $pageParams);
 print dotmod($module, 'index', $page);
 
 ?>

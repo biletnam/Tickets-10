@@ -1,6 +1,6 @@
 <?php
 
-$popupParams = (
+$popupParams = array(
   'title' => 'Quick Search',
   'content' => dot('quicksearch', $ticketInfo),
 );

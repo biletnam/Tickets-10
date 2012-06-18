@@ -10,8 +10,8 @@ if ($provider > 0) {
   $providerInfo['series'] = $series;
   $locationoptions = genOptions(arr2ref(s2a($module, 'ListLocations')), 'id', 'location_name', $providerInfo['location']);
   $providerInfo['locationoptions'] = $locationoptions;
-  $page->add('title',  $providerInfo['pagetitle'] = $runtime->doTemplate($module, 'title.providerdetails', $providerInfo);
-  $page->add('main', $runtime->doTemplate($module, 'providerdetails', $providerInfo);
+  $page->add('title',  $providerInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.providerdetails', $providerInfo);
+  $page->add('main', $runtime->txt->do_template($module, 'providerdetails', $providerInfo);
 }
 
 

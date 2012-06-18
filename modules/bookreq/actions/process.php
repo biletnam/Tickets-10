@@ -35,12 +35,12 @@ if ($id <> 0) {
     $bookid = sid($module, 'InsertBooking', $_REQUEST);
     if ($bookid > 0) {
       # Add family members
-      $sqlParams = (
+      $sqlParams = array(
         'book_id' => $bookid, 'first_name' => $_REQUEST['fname1'], 'last_name' => $_REQUEST['lname1'], 'rel' => $_REQUEST['rel1'],
         'passport' => $_REQUEST['passport1'], 'job' => $_REQUEST['occupation1'], 'date_birth' => $_REQUEST['dob1']
       );
       $id1 = sid($module, 'InsertFamilyGuest', $sqlParams) if ($_REQUEST['fname1'] . $_REQUEST['lname1'] <> '');
-      $sqlParams = (
+      $sqlParams = array(
         'book_id' => $bookid, 'first_name' => $_REQUEST['fname2'], 'last_name' => $_REQUEST['lname2'], 'rel' => $_REQUEST['rel2'], 
         'passport' => $_REQUEST['passport2'], 'job' => $_REQUEST['occupation2'], 'date_birth' => $_REQUEST['dob2']
       );
@@ -49,7 +49,7 @@ if ($id <> 0) {
       if ($_REQUEST['morepeople'] <> '') {
         $morepeople = Arrays::xml2a($_REQUEST['morepeople'], 'person');
         foreach $fm (@morepeople) {
-          %sqlParams = (
+          %sqlParams = array(
             'book_id' => $bookid, 'first_name' => $runtime->urldecode($fm['fname']), 'last_name' => $runtime->urldecode($fm['lname']), 
             'rel' => $fm['rel'],
             'passport' => $fm['passport'], 'date_birth' => $fm['dob']

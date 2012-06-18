@@ -17,7 +17,7 @@ if ($id > 0) {
   
   # edit details form
   $emails = Arrays::list2array(arr2ref(split(';', $generatorData['email'])), 'email'); 
-  $generatorData['emails'] = (count($emails) > 0) ? loopt('view.details.email', @emails) : dot('view.details.email');
+  $generatorData['emails'] = array(count($emails) > 0) ? loopt('view.details.email', @emails) : dot('view.details.email');
   $tabGeneratorView->addTab('details', dot('view.details.tabheader'), dot('view.details', $generatorData)); 
 
   # web access for this generator  
@@ -27,7 +27,7 @@ if ($id > 0) {
   
   $alloffices = $runtime->s2a($module, 'ListAllBookingOffices');
   $generatoroffices = $runtime->s2a($module, 'ListGeneratorBookingOffices', array('id' => $id)); # print Dumper($generatoroffices);
-  $ids = Arrays::join_column(',', 'lngId', $generatoroffices); 
+  $ids = join_column(',', 'lngId', $generatoroffices); 
   $generatorData['offices'] = arr2ref(genCheckboxes($alloffices, 'office', 'lngId', 'strName', $ids));
   $tabGeneratorView->addTab('offices', dot('view.offices.tabheader'), dot('view.offices', $generatorData));
      
@@ -52,9 +52,9 @@ if ($id > 0) {
   $runtime->saveMoment('  tab control rendered');
 
   # Render the whole page
-  $page->add('main', $runtime->doTemplate($module, 'view', $generatorData);
+  $page->add('main', $runtime->txt->do_template($module, 'view', $generatorData);
 }
-$page['js'] .= $runtime->doTemplate($module, 'view.addcomment.js');
+$page['js'] .= $runtime->txt->do_template($module, 'view.addcomment.js');
 
 
 

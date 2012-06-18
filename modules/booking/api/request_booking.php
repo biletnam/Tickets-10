@@ -96,7 +96,7 @@ $moreguests = array(); # array for guests' data
 $morepax = $apiparams['morepax'] || 0;
 if ($morepax > 0) {
   for ($i = 1; $i <= $morepax; $i++) {   
-    $g = (
+    $g = array(
       'fname' => $apiparams{"morepeople_$i_fname"} || '',
       'lname' => $apiparams{"morepeople_$i_lname"} || '',
       'rel' => $apiparams{"morepeople_$i_rel"} || '',

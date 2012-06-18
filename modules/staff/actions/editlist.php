@@ -16,13 +16,13 @@ if ($id > 0) {
     $page['js'] .= dotmod('main', 'linkpeople.js');
     $page->add('css',  dotmod('main', 'linkpeople.css');
   } else {
-    $pageParams['tabcontrol'] = $runtime->doTemplate($module, 'editlist.notfound');
+    $pageParams['tabcontrol'] = $runtime->txt->do_template($module, 'editlist.notfound');
   }
 } else {
-  $pageParams['tabcontrol'] = $runtime->doTemplate($module, 'editlist.details');
+  $pageParams['tabcontrol'] = $runtime->txt->do_template($module, 'editlist.details');
 }
-$page->add('title',  $pageParams['pagetitle'] = $runtime->doTemplate($module, 'title.editlist');
-$page->add('main', $runtime->doTemplate($module, 'editlist', $pageParams);
+$page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.editlist');
+$page->add('main', $runtime->txt->do_template($module, 'editlist', $pageParams);
 
 
 

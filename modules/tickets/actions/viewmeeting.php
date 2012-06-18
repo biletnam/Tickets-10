@@ -17,7 +17,7 @@ if ($id <> '') {
   $runtime->saveMoment('  access checked with result: '.$access);
 
   if ($access == 'none') {
-    $meetingInfo['tabcontrol'] = $runtime->doTemplate($module, 'viewmeeting.noaccess');
+    $meetingInfo['tabcontrol'] = $runtime->txt->do_template($module, 'viewmeeting.noaccess');
   } elseif ($access == 'edit') { 
     # Prepare tab control with editing controls
     use ctlTab;
@@ -44,18 +44,18 @@ if ($id <> '') {
   } elseif ($access == 'view') {
     $issues = $runtime->s2a($module, 'ListMeetingTickets', $_REQUEST);
     $meetingInfo['issues'] = $issues;
-    $meetingInfo['tabcontrol'] = $runtime->doTemplate($module, 'viewmeeting.issues.view', $meetingInfo);
+    $meetingInfo['tabcontrol'] = $runtime->txt->do_template($module, 'viewmeeting.issues.view', $meetingInfo);
   }   
 
   
-  $page->add('title',  $meetingInfo['pagetitle'] = $runtime->doTemplate($module, 'title.viewmeeting', $meetingInfo);
-  $page->add('main', $runtime->doTemplate($module, 'viewmeeting', $meetingInfo);
+  $page->add('title',  $meetingInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.viewmeeting', $meetingInfo);
+  $page->add('main', $runtime->txt->do_template($module, 'viewmeeting', $meetingInfo);
   $page['js'] .= dotmod('main', 'tabcontrol.js');
   $page->add('css',  dotmod('main', 'tabcontrol.css');
   $page['js'] .= dotmod('main', 'linkpeople.js');
   $page->add('css',  dotmod('main', 'linkpeople.css');
 } else {
-  $page->add('title',  $meetingInfo['pagetitle'] = $runtime->doTemplate($module, 'title.viewmeeting.notfound');
+  $page->add('title',  $meetingInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.viewmeeting.notfound');
 }
 
 

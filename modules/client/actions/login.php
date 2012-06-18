@@ -1,8 +1,8 @@
 <?php
 
-$pageParams = ('url' => lavnn('url'));
-$pageParams['title'] = $pageParams['pagetitle'] = $runtime->doTemplate($module, 'title.login');
-$pageParams['main'] = $runtime->doTemplate($module, 'login', $pageParams);
+$pageParams = array('url' => lavnn('url'));
+$pageParams['title'] = $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.login');
+$pageParams['main'] = $runtime->txt->do_template($module, 'login', $pageParams);
 print dotmod('main', 'client', $pageParams);
  
 ?>

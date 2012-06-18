@@ -1,8 +1,8 @@
 <?php
 
 
-$page->add('title',  $pageParams['pagetitle'] = $runtime->doTemplate($module, 'title.new', $pageParams);
-$page->add('main', $runtime->doTemplate($module, 'new', $pageParams);
+$page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.new', $pageParams);
+$page->add('main', $runtime->txt->do_template($module, 'new', $pageParams);
  
 
 ?>

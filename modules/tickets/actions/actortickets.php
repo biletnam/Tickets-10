@@ -10,9 +10,9 @@ if ($id > 0) {
     $pageParams['tickets'] = $tickets;
     $runtime->saveMoment('  employee info fetched from db');
     if (count($employeeInfo) > 0) {
-        $pagetitle = $pageParams['pagetitle'] = $runtime->doTemplate($module, 'title.actortickets', $employeeInfo);
+        $pagetitle = $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.actortickets', $employeeInfo);
         $page->add('title', $pagetitle);
-        $page->add('main', $runtime->doTemplate($module, 'actortickets', $pageParams));
+        $page->add('main', $runtime->txt->do_template($module, 'actortickets', $pageParams));
     }
 }
 

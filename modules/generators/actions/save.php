@@ -4,7 +4,7 @@ $id = lavnn('generator_id', $_REQUEST, 0);
 if ($id > 0) {
   # join addresses if they are several of them
   if (ref($_REQUEST['emails[]']) == 'ARRAY') {
-    $_REQUEST['email'] = join(';', @{$_REQUEST['emails[]']});
+    $_REQUEST['email'] = join(';', $_REQUEST['emails[]']});
   } else {
     $_REQUEST['email'] = $_REQUEST['emails[]'];
   }

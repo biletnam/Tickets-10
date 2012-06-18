@@ -4,7 +4,7 @@ $doctypeInfo  = array();
 $id = lavnn('id', $_REQUEST, 0);
 if ($id > 0) {
   %doctypeInfo = $runtime->s2r($module, 'GetDocTypeInfo', $_REQUEST);
-  $page->add('title',  $doctypeInfo['pagetitle'] = $runtime->doTemplate($module, 'editdoctype.title.edit', $doctypeInfo);
+  $page->add('title',  $doctypeInfo['pagetitle'] = $runtime->txt->do_template($module, 'editdoctype.title.edit', $doctypeInfo);
 
   # Prepare tab control with editing controls
   use ctlTab;
@@ -18,11 +18,11 @@ if ($id > 0) {
   $page['js'] .= dotmod('main', 'linkpeople.js');
   $page->add('css',  dotmod('main', 'linkpeople.css');
 } else {
-  $doctypeInfo['title'] = $doctypeInfo['pagetitle'] = $runtime->doTemplate($module, 'editdoctype.title.new');
-  $doctypeInfo['tabcontrol'] = $runtime->doTemplate($module, 'editdoctype.details');
+  $doctypeInfo['title'] = $doctypeInfo['pagetitle'] = $runtime->txt->do_template($module, 'editdoctype.title.new');
+  $doctypeInfo['tabcontrol'] = $runtime->txt->do_template($module, 'editdoctype.details');
 }
 #$pageParams['doctypes'] = arr2ref(s2a($module, 'ListDocTypes'));
-$page->add('main', $runtime->doTemplate($module, 'editdoctype', $doctypeInfo);
+$page->add('main', $runtime->txt->do_template($module, 'editdoctype', $doctypeInfo);
 
 
 

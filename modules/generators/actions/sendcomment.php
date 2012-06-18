@@ -17,7 +17,7 @@ if ($gen_id > 0) {
         $op = ''; # Ticket not given, so we'll add usul generator comment instead
       }
     } elseif (substr($op, 0, 8) == 'project_') { 
-      %sqlParams = (
+      %sqlParams = array(
         'creator' => $r['userInfo']['staff_id'],
         'title' => ($r['txt']words_shortener($commentary, 5, 1) || "Automated ticket for generator $generator_id"),
         'contents' => $commentary,
@@ -29,14 +29,14 @@ if ($gen_id > 0) {
     }
     # Add comment for the ticket
     if ($ticket_id > 0) {
-      %sqlParams = ('comment' => $commentary);
+      %sqlParams = array('comment' => $commentary);
       $objT->add_comment($ticket_id, $sqlParams);
     }
   } 
 
   # The following code is not an "else" branch, because $op can change while processing original "if" part  
   if ($op == '') {
-    $sqlParams = ('id' => $gen_id, 'editor' => $r['userID'], 'comment' => $commentary);
+    $sqlParams = array('id' => $gen_id, 'editor' => $r['userID'], 'comment' => $commentary);
     $id = sid($module, 'AddGeneratorComment', $sqlParams);
     if ($id > 0) {
       set_cookie('flash', 'Comment added');

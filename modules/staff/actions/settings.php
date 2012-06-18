@@ -2,7 +2,7 @@
 if ($acc->is_superadmin()) {
   $pageParams = array();
   
-  $page->add('title',  $pageParams['pagetitle'] = $runtime->doTemplate($module, 'title.settings');
+  $page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.settings');
   
   # Get list of contact types and day types
   $contacttypes = $runtime->s2a($module, 'ListContactTypes');
@@ -19,9 +19,9 @@ if ($acc->is_superadmin()) {
   
   $page['js'] = dotmod('main', 'tabcontrol.js');
   $page['css'] = dotmod('main', 'tabcontrol.css');    
-  $page->add('main', $runtime->doTemplate($module, 'settings', $pageParams);
+  $page->add('main', $runtime->txt->do_template($module, 'settings', $pageParams);
 } else {
-  $page->add('main', $runtime->doTemplate($module, 'settings.notallowed', $pageParams);
+  $page->add('main', $runtime->txt->do_template($module, 'settings.notallowed', $pageParams);
 }
 
 

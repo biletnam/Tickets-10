@@ -18,7 +18,7 @@ if ($poll > 0) {
 #    formdebug($_REQUEST); 
     foreach $id (@ids) {
       $qtype = lavnn("type_$id") || 'generic';
-      $answerInfo = ('question_id' => $id, 'user_id' => $r['userID'], 'user_type' => 'U', 'answer_id' => lavnn("answer_id_$id"));
+      $answerInfo = array('question_id' => $id, 'user_id' => $r['userID'], 'user_type' => 'U', 'answer_id' => lavnn("answer_id_$id"));
       if ($qtype == 'dropdown' || $qtype == 'yesno') {
         $answerInfo['numeric_answer'] = lavnn("answer_$id");
       } elseif ($qtype == 'generic') {

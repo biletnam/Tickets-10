@@ -45,7 +45,7 @@ $errors = array();
 $user_id = $apiparams['user_id'] || 0;
 $access = $apiparams['access'] || 'both';
 $allowed = qw('read' 'edit' 'both');
-$apiparams['access'] = 'both' if (!Arrays::in_array($access, $allowed);
+$apiparams['access'] = 'both' if (!in_array($access, $allowed);
 if ($user_id == 0) {
   $result = 'ERR'; 
   push @errors, $runtime->hash2ref( ('code' => 'UserProjects.InvalidInputParams', 'text' => 'User ID not specified.') );

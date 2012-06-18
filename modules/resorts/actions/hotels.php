@@ -1,6 +1,6 @@
 <?php
 
-$pageParams = (
+$pageParams = array(
   'name' => lavnn('name') || '', 
   'validity_check_date' => lavnn('validity_check_date') || '',
   'ids' => lavnn('ids') || ''
@@ -12,11 +12,11 @@ $doctypes = $runtime->s2a('admin', 'ListDocTypes');
 $pageParams['doctypeoptions'] = arr2ref(genOptions($doctypes, 'id', 'name', lavnn('doctype_id')));
 
 $pageParams['hotels'] = arr2ref(s2a($module, 'ListHotels', $_REQUEST));
-$pageParams['pagetitle'] = $page->add('title',  $runtime->doTemplate($module, 'hotels.title');
+$pageParams['pagetitle'] = $page->add('title',  $runtime->txt->do_template($module, 'hotels.title');
 $languages = $runtime->s2a($module, 'ListBookingRequestLanguages');
 $pageParams['languages'] = arr2ref(genOptions($languages, 'id', 'name'));
 
-$page->add('main', $runtime->doTemplate($module, 'hotels', $pageParams);
+$page->add('main', $runtime->txt->do_template($module, 'hotels', $pageParams);
 
 
 

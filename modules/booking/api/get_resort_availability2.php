@@ -59,7 +59,7 @@ $apt_type_id = $apiparams['apt_type_id'] || ''; # optional
 if ($resort_id <> '' && $travel_date <> '') {
   $slotgroups = array();
   for ($i = -$flexible; $i <= $flexible; $i++) {
-    $nestedcallparams = (
+    $nestedcallparams = array(
       'resort_id' => $resort_id, 
       'travel_date' => $travel_date, 
       'flexible' => $i, 
@@ -67,7 +67,7 @@ if ($resort_id <> '' && $travel_date <> '') {
     );
     $slots = $runtime->s2a($controller, 'GetAvailabilitySlots2', $nestedcallparams);
     if (count($slots) > 0) {
-      $availabilityInfo = %{$slots[0]}; 
+      $availabilityInfo = $slots[0]; 
       $availabilityInfo['slots'] = $slots;
       push @slotgroups, $runtime->dotmod($controller, 'API.AvailabilityInfo2.SlotGroup', $availabilityInfo);
     } 

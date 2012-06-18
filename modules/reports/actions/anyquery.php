@@ -4,8 +4,8 @@ use ctlDataGrid;
 
 # TODO: prefetch query from the gallery by key
 
-$basequery = $runtime->trim(lavnn('query')); 
-$pageParams = ('query' => $basequery);
+$basequery = trim(lavnn('query')); 
+$pageParams = array('query' => $basequery);
 
 if ($basequery <> '') {
   $grid1 = new ctlDataGrid($r, 'anyquery', $basequery, $module);
@@ -17,9 +17,9 @@ if ($basequery <> '') {
 }
 
 
-$page['js'] .= $runtime->doTemplate($module, 'pageviews.js');
-$page->add('title',  $pageParams['pagetitle'] = $runtime->doTemplate($module, 'title.anyquery', $pageParams);
-$page->add('main', $runtime->doTemplate($module, 'anyquery', $pageParams);
+$page['js'] .= $runtime->txt->do_template($module, 'pageviews.js');
+$page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.anyquery', $pageParams);
+$page->add('main', $runtime->txt->do_template($module, 'anyquery', $pageParams);
 
 
 

@@ -7,7 +7,7 @@ if ($id <> '') {
 
   # prepare offices
   $_offices = $_REQUEST['office'];
-  $offices = @{$_offices};
+  $offices = $_offices};
   if (!exists $_REQUEST['office']) {
     $_offices = '';
   } elseif (count($offices) > 1) {
@@ -17,7 +17,7 @@ if ($id <> '') {
 
   # prepare departments
   $_departments = $_REQUEST['department'];
-  $departments = @{$_departments};
+  $departments = $_departments};
   if (!exists $_REQUEST['department']) {
     $_departments = '';
   } elseif (count($departments) > 1) {

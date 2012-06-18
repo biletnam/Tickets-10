@@ -12,7 +12,7 @@ if ($id == '' || $year == '' || $month == '') {
   if ($comment == '') {
     set_cookie('error', 'Please provide new comment to rename event');  
   } else {
-    $sqlParams = ('id' => $id, 'comment' => $comment);
+    $sqlParams = array('id' => $id, 'comment' => $comment);
     $eventInfo = $objCal->get_event_info(%sqlParams);
     if (count($eventInfo) > 0) {
       $calendar_id = $eventInfo['calendar'];

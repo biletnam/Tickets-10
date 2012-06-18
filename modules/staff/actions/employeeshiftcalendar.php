@@ -1,9 +1,9 @@
 <?php
 
 $pageParams = array();
-$page['js'] .= $runtime->doTemplate($module, 'employeeshiftcalendar.js', $pageParams);
-$page->add('title',  $pageParams['pagetitle'] = $runtime->doTemplate($module, 'title.employeeshiftcalendar', $pageParams);
-$page->add('main', $runtime->doTemplate($module, 'employeeshiftcalendar', $pageParams);
+$page['js'] .= $runtime->txt->do_template($module, 'employeeshiftcalendar.js', $pageParams);
+$page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.employeeshiftcalendar', $pageParams);
+$page->add('main', $runtime->txt->do_template($module, 'employeeshiftcalendar', $pageParams);
 
 
 

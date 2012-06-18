@@ -25,7 +25,7 @@ if ($stock > 0) {
     $runtime->saveMoment('  access checked with result: '.$access);  
     # render the stock depending access level
     if ($access == 'none') {
-      $page->add('main', $runtime->doTemplate($module, 'stock.noaccess');
+      $page->add('main', $runtime->txt->do_template($module, 'stock.noaccess');
     } else {
       use ctlTab;
       $tabVoucherStock = new ctlTab($r, 'ctVoucherStock');
@@ -45,8 +45,8 @@ if ($stock > 0) {
       $page['js'] .= dotmod('main', 'linkpeople.js');
       $page->add('css',  dotmod('main', 'tabcontrol.css');
       $page->add('css',  dotmod('main', 'linkpeople.css');
-      $page->add('title',  $stockInfo['pagetitle'] = $runtime->doTemplate($module, 'title.stock', $stockInfo);
-      $page->add('main', $runtime->doTemplate($module, 'stock', $stockInfo);
+      $page->add('title',  $stockInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.stock', $stockInfo);
+      $page->add('main', $runtime->txt->do_template($module, 'stock', $stockInfo);
     }
     $runtime->saveMoment('  stock page constructed');  
   }

@@ -4,7 +4,7 @@ use CFileUploader;
 $fu = new CFileUploader($r);
 
 $ticket = lavnn('ticket', $_REQUEST, '');
-$editor = $_REQUEST['editor'] = ($r['userID'] || 0);
+$editor = $_REQUEST['editor'] = array($r['userID'] || 0);
 if ($ticket <> '') {
   $fileid = $fu->uploadfile("attachment");
   if ($fileid > 0) {

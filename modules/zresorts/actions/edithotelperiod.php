@@ -6,13 +6,13 @@ $hotel = lavnn('hotel', $_REQUEST, '');
 if ($id <> '') {
   %pageParams = $runtime->s2r($module, 'GetHotelPeriodInfo', array('id' => $id));
   $hotel = $pageParams['hotel'] || '';
-  $pageParams['pagetitle'] = $page->add('title',  $runtime->doTemplate($module, 'edithotelperiod.title', $pageParams); 
+  $pageParams['pagetitle'] = $page->add('title',  $runtime->txt->do_template($module, 'edithotelperiod.title', $pageParams); 
 } else {
   $pageParams['hotel'] = $hotel;
-  $pageParams['pagetitle'] = $page->add('title',  $runtime->doTemplate($module, 'edithotelperiod.new.title', $pageParams); 
+  $pageParams['pagetitle'] = $page->add('title',  $runtime->txt->do_template($module, 'edithotelperiod.new.title', $pageParams); 
 }
 $pageParams['hotelinfo'] = hash2ref(s2r($module, 'GetHotelInfo', array('id' => $hotel)));
-$page->add('main', $runtime->doTemplate($module, 'edithotelperiod', $pageParams);
+$page->add('main', $runtime->txt->do_template($module, 'edithotelperiod', $pageParams);
 
 
 

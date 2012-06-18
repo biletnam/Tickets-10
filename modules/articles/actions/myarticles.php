@@ -3,7 +3,7 @@
 $pageParams = array();
 
 # Get pagelet that renders articles
-$sqlParams = (
+$sqlParams = array(
   'id' => $r['userID'], 
   'office' => $r['userInfo']['lngWorkPlace'].'',
   'department' => $r['userInfo']['team_id'].'',
@@ -34,8 +34,8 @@ $tcArticles->addTab('drafts', dot('myarticles.tab.drafts', $articleInfo), dot('m
 $tcArticles->addTab('deleted', dot('myarticles.tab.deleted', $articleInfo), dot('myarticles.deleted', $pageParams));
 $pageParams['tabcontrol'] = $tcArticles->getHTML();     
 
-$pageParams['pagetitle'] = $page->add('title',  $runtime->doTemplate($module, 'title.myarticles');
-$page->add('main', $runtime->doTemplate($module, 'myarticles', $pageParams);
+$pageParams['pagetitle'] = $page->add('title',  $runtime->txt->do_template($module, 'title.myarticles');
+$page->add('main', $runtime->txt->do_template($module, 'myarticles', $pageParams);
 
 $page['js'] .= dotmod('main', 'tabcontrol.js');
 $page->add('css',  dotmod('main', 'tabcontrol.css');

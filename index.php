@@ -31,7 +31,7 @@ our $txt = new CTextProcessor($r);
 our $lang = lavnn("lang", $_REQUEST, ''); 
 $lang = $runtime->get_cookie('lang') if $lang == '';
 $lang = '' if ($lang <> 'en' && $lang <> 'ru');
-$lang = 'en' if $runtime->trim($lang) == '';
+$lang = 'en' if trim($lang) == '';
 $runtime->set_cookie('lang', $lang);
 $txt->set_lang($lang);
 $runtime->set_textprocessor($txt);
@@ -41,7 +41,7 @@ $runtime->saveMoment("textprocessor object created and added to runtime context,
 our $sessionID = lavnn('sessionID') || get_cookie("sessionID");
 our $thispage = $runtime->urlencode($ENV['QUERY_STRING']);
 if ($runtime->check_login($sessionID) == 0) {
-  $url = (lavnn('p') ? $thispage : '');
+  $url = array(lavnn('p') ? $thispage : '');
   if ($i <> '') {
     $urlAuthorize = $_CONFIG['UNAUTHORIZED_INLINE'];
     $runtime->saveMoment('  invalid session detected for inline action. Should redirect to '.$urlAuthorize);
@@ -165,7 +165,7 @@ if ($fwd <> '') {
     }
   }
 } elseif ($p <> '') {
-  our %page = ('titlebase' => 'Intranet');
+  our %page = array('titlebase' => 'Intranet');
   ($controller, $action) = split(/\//, $p);
   if ($controller <> '' && $action <> '') {
     require "menu.pl";
@@ -209,7 +209,7 @@ if ($fwd <> '') {
   }
 }
 
-$isexternal = ($r['userInfo']['additionalData']['dashboard_isexternal'] <> 1 && $r['userInfo']['lngWorkPlace'] == -1234) ? "0" : "1";
+$isexternal = array($r['userInfo']['additionalData']['dashboard_isexternal'] <> 1 && $r['userInfo']['lngWorkPlace'] == -1234) ? "0" : "1";
 $defaultUrl = $isexternal ? $_CONFIG['DEFAULT_URL_EXTERNAL'] : $_CONFIG['DEFAULT_URL_INTERNAL'];  
 # if control flow reached this point, it means that either none or invalid action requested
 print "Location: $defaultUrl \n\n";

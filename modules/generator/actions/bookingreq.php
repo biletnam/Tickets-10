@@ -4,7 +4,7 @@ $book_id = $pageParams['book_id'] || 0;
 if ($book_id > 0) {
   use objBooking;
   $objB = new objBooking($r, $book_id);
-  $pageParams['bookingsection'] = $runtime->doTemplate($module, 'bookingreq.booking', ${$objB['bookingdata']});
+  $pageParams['bookingsection'] = $runtime->txt->do_template($module, 'bookingreq.booking', ${$objB['bookingdata']});
 } 
 $xmlstr = $pageParams['morepeople'] || '';
 if ($xmlstr <> '') {
@@ -14,7 +14,7 @@ if ($xmlstr <> '') {
     $pageParams['morepeoplehtml'] = loopt('bookingreq.additionalperson', @morepeople);
   }
 }
-$page->add('main', $runtime->doTemplate($module, 'bookingreq', $pageParams);
+$page->add('main', $runtime->txt->do_template($module, 'bookingreq', $pageParams);
 print dotmod($module, 'index', $page);
 
 ?>

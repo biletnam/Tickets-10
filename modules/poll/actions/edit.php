@@ -20,20 +20,20 @@ if ($id <> '') {
       $access = 'view';
     }
   } else {
-    $page->add('title',  $pageParams['pagetitle'] = $runtime->doTemplate($module, 'title.notfound', $pageParams);
-    $page->add('main', $runtime->doTemplate($module, 'notfound', $pageParams);
+    $page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.notfound', $pageParams);
+    $page->add('main', $runtime->txt->do_template($module, 'notfound', $pageParams);
   }
   $runtime->saveMoment('  access checked with result: '.$access);
   
   if ($access == 'none') {
-    $page->add('title',  $pageParams['pagetitle'] = $runtime->doTemplate($module, 'title.noaccess', $pageParams);
-    $page->add('main', $runtime->doTemplate($module, 'noaccess', $pageParams);
+    $page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.noaccess', $pageParams);
+    $page->add('main', $runtime->txt->do_template($module, 'noaccess', $pageParams);
   } elseif ($access == 'view') { 
-    $page->add('title',  $pollInfo['pagetitle'] = $runtime->doTemplate($module, 'title.view', $pollInfo);
+    $page->add('title',  $pollInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.view', $pollInfo);
     $pollInfo['questions'] = $objP->render(('id' => $id, 'mode' => 'view')) || 'None.';
-    $page->add('main', $runtime->doTemplate($module, 'view', $pollInfo);
+    $page->add('main', $runtime->txt->do_template($module, 'view', $pollInfo);
   } elseif ($access == 'edit') { 
-    $page->add('title',  $pollInfo['pagetitle'] = $runtime->doTemplate($module, 'title.edit', $pollInfo);
+    $page->add('title',  $pollInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.edit', $pollInfo);
     $pollInfo['questions'] = $objP->render(('id' => $id, 'mode' => 'edit')) || 'None.';
     $page['js'] .= dotmod('main', 'tabcontrol.js');
     $page->add('css',  dotmod('main', 'tabcontrol.css');
@@ -53,14 +53,14 @@ if ($id <> '') {
     $pollInfo['tabcontrol'] = $tabEditPoll->getHTML();
     $runtime->saveMoment('  tab control rendered');
     
-    $page->add('main', $runtime->doTemplate($module, 'edit', $pollInfo);
+    $page->add('main', $runtime->txt->do_template($module, 'edit', $pollInfo);
   }
 } else {
   $pageParams['lmreviewoptions'] = arr2ref(genOptions($yesno, 'key', 'value'));
   $pageParams['templateoptions'] = arr2ref(genOptions($yesno, 'key', 'value'));
   $pageParams['editableoptions'] = arr2ref(genOptions($yesno, 'key', 'value'));
-  $page->add('title',  $pageParams['pagetitle'] = $runtime->doTemplate($module, 'title.new', $pageParams);
-  $page->add('main', $runtime->doTemplate($module, 'new', $pageParams);
+  $page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.new', $pageParams);
+  $page->add('main', $runtime->txt->do_template($module, 'new', $pageParams);
 }
 
 

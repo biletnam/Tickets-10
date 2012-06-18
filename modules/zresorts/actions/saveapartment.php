@@ -14,7 +14,7 @@ if ($id > 0) {
     $apttype = lavnn('apartment_type'); 
     $cnt = 0;
     foreach $name (split('\n', $names)) {
-      $hash = ('hotel' => $hotel, 'apartment_type' => $apttype, 'name' => $name);
+      $hash = array('hotel' => $hotel, 'apartment_type' => $apttype, 'name' => $name);
       $id = sid($module, 'InsertHotelApartment', $hash);
       $cnt++ if ($id > 0);
     }    

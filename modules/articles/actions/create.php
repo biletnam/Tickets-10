@@ -17,7 +17,7 @@ if ($id > 0) {
       if ($tag == '') { #obviously, this means that tag without prefix was used
         $tag = $prefix; $prefix = ''; $newtag = ":$t";
       }
-      %taginfo = ('article' => $id, 'fulltag' => $t, 'prefix' => $prefix, 'tag' => $tag);
+      %taginfo = array('article' => $id, 'fulltag' => $t, 'prefix' => $prefix, 'tag' => $tag);
       srun($module, 'AddArticleTag', $taginfo);
     }
   }

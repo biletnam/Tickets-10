@@ -1,6 +1,6 @@
 <?php
 
-$popupParams = (
+$popupParams = array(
   'title' => 'Lorem ipsum',
   'content' => dotmod('test', 'lorem.ipsum'),
 );

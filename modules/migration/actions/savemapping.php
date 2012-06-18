@@ -10,7 +10,7 @@ foreach $id_field_value (@ids) {
   if ($dirty <> '') {
     $id = lavnn("id_$id_field_value");
     $merlinvalue = ''.lavnn("merlin_value_$id_field_value");
-    $sqlParams = (
+    $sqlParams = array(
       'id' => $id, 
       'id_field_value' => $id_field_value, 
       'merlin_value' => $merlinvalue, 

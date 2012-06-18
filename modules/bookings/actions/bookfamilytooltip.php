@@ -1,6 +1,6 @@
 <?php
 
-$familymemberInfo = ('book_id' => $_REQUEST['book_id']);
+$familymemberInfo = array('book_id' => $_REQUEST['book_id']);
 if (lavnn('id') <> '') {
   %familymemberInfo = $runtime->s2r($module, 'GetFamilyMemberInfo', $_REQUEST);
 }

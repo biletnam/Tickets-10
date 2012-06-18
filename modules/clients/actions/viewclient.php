@@ -57,10 +57,10 @@ if ($id > 0) {
   $runtime->saveMoment('  tab control rendered');
 
   # Render the whole page
-  $page->add('main', $runtime->doTemplate($module, 'viewclient', $clientData);
+  $page->add('main', $runtime->txt->do_template($module, 'viewclient', $clientData);
 }
 
-$page['js'] .= $runtime->doTemplate($module, 'addcomment.js');
+$page['js'] .= $runtime->txt->do_template($module, 'addcomment.js');
 
 
 

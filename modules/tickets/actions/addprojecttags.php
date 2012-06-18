@@ -1,7 +1,7 @@
 <?php
 $id = lavnn('id', $_REQUEST, 0);
 if ($id > 0) {
-  $newtags = $runtime->trim(lavnn('newtags'), $_REQUEST, '');
+  $newtags = trim(lavnn('newtags'), $_REQUEST, '');
   if ($newtags <> '') {
     $tags = split(',', $newtags);
     $success = 0;

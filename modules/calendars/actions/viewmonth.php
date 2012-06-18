@@ -48,7 +48,7 @@ if ($id > 0) {
 
   if ($access <> 'none') {
     # Get list of events in this calendar
-    $sqlParams = ('calendar' => $id, 'year' => lavnn('year'), 'month' => lavnn('month'));
+    $sqlParams = array('calendar' => $id, 'year' => lavnn('year'), 'month' => lavnn('month'));
     $office_events = array();
     $events = $objCal->list_events(%sqlParams);
     $runtime->saveMoment('  fetched list of calendar events from db');
@@ -60,7 +60,7 @@ if ($id > 0) {
   
     # prepare parameters for API call
     $weekend_days = qw(6 7);
-    $apiparams = (
+    $apiparams = array(
         'weekend_days' => $weekend_days,
         'month' => ($month || ''), 
         'year' => ($year || ''), 
@@ -69,13 +69,13 @@ if ($id > 0) {
     );
     # if office calendar is known, prepare %officedata
     if (count($office_events) > 0) {
-      $apiparams['officedata'] = hash2ref(Arrays::slice_array($office_events, 'D'));
+      $apiparams['officedata'] = hash2ref(slice_array($office_events, 'D'));
     }
     # prepare both data and custom data for this day
     $data = array(); $customdata = array();
     foreach $event (@events) {
       $day = $event['D'];
-      $data{$day} .= $runtime->doTemplate($module, "month.event.$object_type", $$event);
+      $data{$day} .= $runtime->txt->do_template($module, "month.event.$object_type", $event);
     }
     $apiparams['data'] = $data;
     $apiparams['year'] = $_REQUEST['year']; 
@@ -97,15 +97,15 @@ if ($id > 0) {
       $balanceInfo['absencebalances'] = $absencebalances;     
       $balanceInfo['day_type_options'] = arr2ref(genOptions($daytypes, 'code', 'name', 'V'));
       $balanceInfo['qty_options'] = arr2ref($runtime->getDictArr($module, 'absence.qty', '1.0'));
-      $result['morefields'] = $runtime->doTemplate($module, 'view.month.edit.employeeabsence', $balanceInfo);
+      $result['morefields'] = $runtime->txt->do_template($module, 'view.month.edit.employeeabsence', $balanceInfo);
     } elseif ($object_type == 'office') {
       $opt = $runtime->getDictArr($module, 'office.day_type'); 
       $result['day_type_options'] = arr2ref($runtime->getDictArr($module, 'office.day_type', 'WE'));
       $result['mandatory_vacation_options'] = arr2ref($runtime->getDictArr('main', 'yesno', '0'));
       $result['transferable_options'] = arr2ref($runtime->getDictArr('main', 'yesno', '1'));
-      $result['morefields'] = $runtime->doTemplate($module, 'view.month.edit.office', $result);
+      $result['morefields'] = $runtime->txt->do_template($module, 'view.month.edit.office', $result);
     }
-    $result['edit'] = $runtime->doTemplate($module, 'view.month.edit', $result) if $access == 'edit';
+    $result['edit'] = $runtime->txt->do_template($module, 'view.month.edit', $result) if $access == 'edit';
     $result['object_type'] = $object_type;
     $result['object_id'] = $object_id;
     print dot('month', $result);

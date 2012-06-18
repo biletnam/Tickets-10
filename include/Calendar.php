@@ -28,7 +28,7 @@ function getYears {
   
   $output = array();
   for ($year = $yearfrom; $year <= $yearto; $year++) {
-    $hash = ('key' => $year, 'value' => $year);
+    $hash = array('key' => $year, 'value' => $year);
     if ($year == $yearselect) {
       $hash['selected'] = 'selected';
     }
@@ -42,7 +42,7 @@ function getMonthInfo {
   ($month, $year)
   
   $starts = dayOfWeek($year, $month, 1);
-  $monthInfo['starts'] = ($starts > 0) ? $starts : 7;
+  $monthInfo['starts'] = array($starts > 0) ? $starts : 7;
   $monthInfo['length'] = daysInMonth($year, $month); 
 
   return %monthInfo;
@@ -66,7 +66,7 @@ function daysInMonth {
   
   $output = 31;
   if ($m == 2) {
-    $output = ($y % 4 == 0 && $y % 100 > 0 || $y % 400 == 0) ? 29 : 28;
+    $output = array($y % 4 == 0 && $y % 100 > 0 || $y % 400 == 0) ? 29 : 28;
   } elseif ($m == 4 || $m == 6 || $m == 9 || $m == 11) {
     $output = 30;    
   }

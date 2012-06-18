@@ -12,8 +12,8 @@ $pageParams['tabcontrol'] = $tabQueries->getHTML();
   
 $page['js'] = dotmod('main', 'tabcontrol.js');
 $page['css'] = dotmod('main', 'tabcontrol.css');
-$page->add('title',  $pageParams['pagetitle'] = $runtime->doTemplate($module, 'title.queries');
-$page->add('main', $runtime->doTemplate($module, 'queries', $pageParams);
+$page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.queries');
+$page->add('main', $runtime->txt->do_template($module, 'queries', $pageParams);
 
 
 

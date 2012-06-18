@@ -70,10 +70,10 @@ if ($id > 0) {
     $years = Calendar::getYears(2010, 2020, $year); 
     $pageParams['years'] = $years;
     # Get list of events in this calendar
-    $sqlParams = ('calendar' => $id, 'year' => lavnn('year'));
+    $sqlParams = array('calendar' => $id, 'year' => lavnn('year'));
     $events = $objCal->list_events(%sqlParams);
     $runtime->saveMoment('  fetched list of calendar events from db');
-    $eventsByMonth = Arrays::slice_array($events, 'MM');
+    $eventsByMonth = slice_array($events, 'MM');
     $pageParams['htmlevents'] = hloopt("year.listitem.$access", 'year.listitem.group', 'asc', $eventsByMonth);
     $runtime->saveMoment('  list of calendar events sliced by month and processed with hloopt');
     # lookup even more information for custom object types 

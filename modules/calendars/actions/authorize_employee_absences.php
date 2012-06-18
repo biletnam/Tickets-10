@@ -32,11 +32,11 @@ if ($calendar_id > 0) {
           if ($answer == 'approve') {
             $objCal->approve_event(('id' => $id, 'editor' => $r['userID']));
             $tickets{$ticket_id}['approved'] += 1;
-            $tickets{$ticket_id}['details'] .= $runtime->doTemplate($module, 'absencerequest.ticket.comment.approved', $eventInfo);
+            $tickets{$ticket_id}['details'] .= $runtime->txt->do_template($module, 'absencerequest.ticket.comment.approved', $eventInfo);
           } elseif ($answer == 'decline') {
             $objCal->decline_event(('id' => $id, 'editor' => $r['userID']));
             $tickets{$ticket_id}['declined'] += 1;
-            $tickets{$ticket_id}['details'] .= $runtime->doTemplate($module, 'absencerequest.ticket.comment.declined', $eventInfo);
+            $tickets{$ticket_id}['details'] .= $runtime->txt->do_template($module, 'absencerequest.ticket.comment.declined', $eventInfo);
           }
         }
       }
@@ -44,7 +44,7 @@ if ($calendar_id > 0) {
       foreach $ticket_id (keys %tickets) {
         if ($ticket_id > 0) {
           $standingEvents = $objCal->check_ticket_events(('id' => $ticket_id));
-          $authResults = %{$tickets{$ticket_id}};
+          $authResults = $tickets{$ticket_id];
           $authResults['comment'] = $comment;
           $objT->add_comment($ticket_id, array('comment' => dot('absencerequest.ticket.comment', $authResults)));
           if (count($standingEvents) == 0) { # no more events

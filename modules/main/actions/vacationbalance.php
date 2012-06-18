@@ -1,8 +1,8 @@
 <?php
 %pageParams = array();
 
-$pageParams['pagetitle'] = $page->add('title',  $runtime->doTemplate($module, 'title.vacationbalance');
-$page->add('main', $runtime->doTemplate('main', 'vacationbalance', $pageParams);
+$pageParams['pagetitle'] = $page->add('title',  $runtime->txt->do_template($module, 'title.vacationbalance');
+$page->add('main', $runtime->txt->do_template('main', 'vacationbalance', $pageParams);
 $runtime->saveMoment(' rendered main part of the page');
 
 

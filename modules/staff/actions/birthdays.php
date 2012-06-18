@@ -4,7 +4,7 @@ use Calendar;
 
 $pageParams = array();
 
-$page->add('title',  $pageParams['pagetitle'] = $runtime->doTemplate($module, 'title.birthdays');
+$page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.birthdays');
 
 $parsedToday = Calendar::parseDate(Calendar::getToday()); 
 $day = $_REQUEST['day'] || $parsedToday['day'];
@@ -17,7 +17,7 @@ $oldoffice = ''; $rows = array();
 $rowtemplate = $runtime->gettmod($module, 'birthdays.rowtemplate');
 $sectiontemplate = $runtime->gettmod($module, 'birthdays.sectiontemplate');
 foreach $_row (@birthdays) {
-  $bd = %{$_row};
+  $bd = $_row};
   $newoffice = $bd['OfficeName'];
   if ($newoffice <> $oldoffice) {
     push @rows, $r['txt']doText($sectiontemplate, $bd);  
@@ -27,7 +27,7 @@ foreach $_row (@birthdays) {
 }
 $pageParams['birthdays'] = join('', @rows);
 
-$page->add('main',  $runtime->doTemplate($module, 'birthdays', $pageParams);
+$page->add('main',  $runtime->txt->do_template($module, 'birthdays', $pageParams);
 
 
 
