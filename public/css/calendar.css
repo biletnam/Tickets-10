@@ -1,0 +1,119 @@
+    .weekday {
+      border : 1px solid #999999; 
+      text-align: center;
+    }
+    .weekend, .specialday, .PH, .weekend .day {
+      color: red;
+    }    
+    .overwork {
+      color: black;
+    }
+    .nocalendar {
+      border : 1px solid #999999; 
+      font-size: 8pt;
+      color: lightgrey;
+    }
+    .emptyday {
+      border : 1px solid #999999; 
+      font-size: 8pt;
+    }
+    .selectableday {
+      text-align: center; 
+      border : 1px solid #999999; 
+      font-family: Tahoma, Arial, Helvetica; 
+      font-size: 8pt;
+      vertical-align: top;
+    }
+    .preselectedday {
+      text-align: center; 
+      border : 1px solid #999999; 
+      font-family: Tahoma, Arial, Helvetica; 
+      font-size: 8pt;
+      vertical-align: top;
+      background-color: #fbfbfb;
+    }
+    .weekgrid {
+      border-collapse: collapse;    
+      width: 100%;
+    }
+    .weekgrid tr td, .weekgrid tr th {
+      padding: 3px;    
+    }
+
+/*
+Week calendar classes
+*/
+
+.weekcalendar-wrap {
+  width: 600px;
+}
+
+.weekcalendar-row {
+  width: 600px; 
+}
+
+.weekcalendar-wrap .mod2_0 {
+  background-color: #F3F3F3;
+}
+
+.weekcalendar-wrap .mod2_1 {
+  background-color: #FFFFFF;
+}
+
+.weekcalendar-date {
+  float: left;
+  width: 100px;
+  height: 80px;
+  border: solid 1px #5C82AF;
+  text-align: center;
+  font-weight: bold;
+}
+
+.weekcalendar-dow {
+  font-size: 16px;
+  color: #FFFFFF;
+  background-color: #5C82AF;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.weekcalendar-day {
+  font-size: 32px;
+  color: #5C82AF;
+  padding-top: 18px;
+}
+
+.weekcalendar-month {
+  font-size: 14px;
+  color: #5C82AF;
+}
+
+.weekcalendar-data {
+  float: left;
+  width: 488px;
+  height: 80px;
+  margin-left: 5px;
+  border: solid 1px #5C82AF;
+}
+
+.weekcalendar-data-anyday {
+  height: 78px;
+}
+
+.weekcalendar-data-preselected {
+  height: 78px;
+  border: solid 1px red;
+}
+
+.specialday-comment {
+  color: red;
+}
+
+.absence-comment {
+  color: green;
+}
+
+.overwork-comment {
+  color: blue;
+}
+

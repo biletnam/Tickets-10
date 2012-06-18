@@ -1,0 +1,43 @@
+
+table.datagrid {
+  border: solid 1px black;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+table.datagrid tr.datagrid-row-headers th {
+  background-color: #e2e2e2;
+}
+
+table.datagrid tr.datagrid-row-data {
+  
+}
+
+table.datagrid tr.mod2_0 td {
+  background-color: #efefef;
+}
+
+table.datagrid tr.mod2_1 td {
+  background-color: #ffffff;
+}
+
+.align-int {
+  text-align: right;
+}
+
+.align-varchar {
+  text-align: left;
+}
+
+.align-date {
+  text-align: center;
+}
+
+.align-dict {
+  text-align: center;
+}
+
+.datagrid_pager {
+  margin-top: 5px;
+  margin-bottom: 25px;
+}
