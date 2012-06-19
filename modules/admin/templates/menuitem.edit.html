@@ -1,0 +1,28 @@
+<form method="POST" action="">
+<input type="hidden" name="f" value="<:v:_module_>/savemenuitem" />
+<input type="hidden" name="id" value="<:v:id>" />
+<table class="form">
+  <tr>
+    <th>Seq. no</th>
+    <td><input type="text" name="seq_no" value="<:v:seq_no>" /></td>
+  </tr>
+  <tr>
+    <th>Code</th>
+    <td><input type="text" name="code" value="<:v:code>" /></td>
+  </tr>
+  <tr>
+    <th>Caption</th>
+    <td><input type="text" name="caption" value="<:v:caption>" /></td>
+  </tr>
+  <tr>
+    <th>Link</th>
+    <td><input type="text" name="link" value="<:v:link>" /></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Save" /></td>
+  </tr>
+</table>
+</form>
+
+<p><a href="javascript:gc('Are you sure to delete this menu item?', '?f=<:v:_module_>/deletemenuitem&id=<:v:id>');">Delete</a></p>

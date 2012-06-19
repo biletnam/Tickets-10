@@ -1,0 +1,13 @@
+<table class="list" width="100%">
+  <tr>
+    <th>Date</th>
+    <th>Employee</th>
+    <th>Reminder text</th>
+    <th>&nbsp;</th>
+  </tr>
+<:a:allreminders|looptemplate?name=viewticket.reminders.listitem>
+</table>
+
+<script>
+  $('#cnt_allreminders').html('<:a:allreminders|length>');
+</script>

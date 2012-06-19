@@ -9,9 +9,9 @@ if ($id > 0) {
     $_REQUEST['email'] = $_REQUEST['emails[]'];
   }
   # Save data in client table
-  srun($module, 'UpdateGenerator', $_REQUEST);
+  $runtime->db->sqlrun($module, 'UpdateGenerator', $_REQUEST);
   # Go back to editing page
-  set_cookie('flash', 'Generator data changed');
+  $_SESSION['flash'] = 'Generator data changed');
   go("?p=$module/view&id=$id&tab=details");
 } else {
   set_cookie('error', 'Failed to change generator data.');

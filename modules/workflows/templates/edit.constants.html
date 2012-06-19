@@ -1,0 +1,39 @@
+<table class="list" width="100%">
+  <tr>
+    <th>Parameter name</th>
+    <th>Parameter type</th>
+    <th>Parameter value</th>
+    <th>&nbsp;</th>
+  </tr>
+<:a:constants|looptemplate?name=edit.constants.listitem>
+</table>
+
+<h2>Add new constant</h2>
+
+<table class="form">
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/saveconstant" />
+<input type="hidden" name="id" value="<:v:id>" />
+  <tr>
+    <th>Name</th>
+    <td><input type="text" name="const_name" size="20" /></td>
+  </tr>
+  <tr>
+    <th>Type</th>
+    <td>
+      <select name="const_type" onchange="$('#const_value_container').load('?i=<:v:_module_>/browseconstantvalues&type=' + this.value)">
+        <option value="" />
+        <:v:param_type|dictselectoptions:module=&name=consttypes>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th>Value</th>
+    <td>
+      <input type="hidden" name="const_value" id="const_value" value="" />
+      <div id="const_value_container"></div>
+    </td>
+  </tr>
+</table>
+<input type="button" value="Save Input Parameters" onclick="if (this.form.const_value.value == '') alert('Please set constant value'); else this.form.submit();" />
+</form>

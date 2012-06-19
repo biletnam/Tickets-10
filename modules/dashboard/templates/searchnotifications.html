@@ -1,0 +1,28 @@
+<h1><:v:pagetitle></h1>
+
+<form action="" method="get">
+<input type="hidden" name="p" value="<:v:_module_>/searchnotifications" />
+<table class="form">
+  <tr>
+    <th>Date from</th>
+    <td><input type="text" id="date_from" name="date_from" value="<:v:date_from>" size="10" maxlength="10" class="calendardate" /></td>
+  </tr>
+  <tr>
+    <th>Date to</th>
+    <td><input type="text" id="date_to" name="date_to" value="<:v:date_to>" size="10" maxlength="10" class="calendardate" /></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Search" /></td>
+  </tr>
+</table>
+</form>
+
+<script>
+  $('#date_from').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+  $('#date_to').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+</script>
+
+<div id="notifications_container">
+<:v:notifications>
+</div>

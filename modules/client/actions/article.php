@@ -14,13 +14,13 @@ if ($id > 0) {
     $page->add('main', $runtime->txt->do_template($module, 'article', $articleData);
 
     # register pageview
-    srun('main', 'RegisterPageview', array('entity_type' => 'viewarticle', 'entity_id' => $id, 'viewer_type' => 'C', 'viewer_id' => $client_id));
+    $runtime->db->sqlrun('main', 'RegisterPageview', array('entity_type' => 'viewarticle', 'entity_id' => $id, 'viewer_type' => 'C', 'viewer_id' => $client_id));
   }
 }
 
 $page['baseurl'] = $pageParams['baseurl'];
 $page['menu'] = '';
-print dotmod($module, 'index', $page);
+print $runtime->txt->do_template($module, 'index', $page);
 
 
 ?>

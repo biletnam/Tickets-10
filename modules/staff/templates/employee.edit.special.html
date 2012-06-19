@@ -1,0 +1,127 @@
+<form method="post" method="post" action="">
+<input type="hidden" name="f" value="<:v:_module_>/saveemployeespecial" />
+<input type="hidden" name="id" value="<:v:lngId>" />
+<table class="form"> 
+  <tr>
+    <th>Current Calendar</th>
+    <td><:v:CalendarTypeName></td>
+    <td> 
+      <a href="?p=calendars/view&id=<:v:absencecalendar>">View user absence calendar</a>
+    </td>
+  </tr>
+  <tr>
+    <th>Office</th>
+    <td>
+      <select name="lngWorkPlace">
+        <option value=""></option>
+        <:a:offices|looptemplate?module=main&name=option>
+      </select>
+    </td>
+    <td><a href="?p=<:v:_module_>/office&office=<:v:lngWorkPlace>">Go to office details</a></td>
+  </tr>
+  <tr>
+    <th>Department</th>
+    <td>
+      <select name="team_id">
+        <option value=""></option>
+        <:a:departments|looptemplate?module=main&name=option>
+      </select>
+    </td>
+    <td><a href="?p=<:v:_module_>/department&id=<:v:team_id>">Go to department details</a></td>
+  </tr>
+  <tr>
+    <th>Line Manager</th>
+    <td>
+      <:_:linemanager|stopifempty:varname=LineManagerName|forwardtemplate?module=&name=employee.edit.linemanager>
+      <input type="text" class="peoplesearch" title="Start typing to get suggestions" id="lm">
+    </td>
+    <td></td>
+  </tr>  
+  <tr>
+    <th>Deputy Staff</th>
+    <td>
+      <:_:deputy|stopifempty:varname=DeputyStaffName|forwardtemplate?module=&name=employee.edit.deputystaff>
+      <input type="text" class="peoplesearch" title="Start typing to get suggestions" id="ds">
+    </td>
+    <td></td>
+  </tr>    
+  <tr>
+    <th>Works since</th>
+    <td><:v:dateStartWork|dateformat?format=fulldate></td>
+    <td></td>
+  </tr>
+  <tr>
+    <th>Position</th>
+    <td><input type="text" size="50" maxlength="128" name="position" value="<:v:position>" /></td>
+    <td></td>
+  </tr>
+  <tr>
+    <th>Tags</th>
+    <td>
+      <textarea name="tags" rows="2", cols="50"><:v:tags></textarea>
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<input type="submit" value="Save Special Information">
+</form>
+
+<h2>Employees for whom <:v:strFirstName> <:v:strLastName> is a line manager</h2>
+
+<table>
+<:a:line_manager_for|looptemplate?name=employee.edit.related.listitem&empty=employee.edit.related.nolinemanager>
+</table>
+
+<h2>Employees for whom <:v:strFirstName> <:v:strLastName> is a deputy staff</h2>
+
+<table>
+<:a:deputy_staff_for|looptemplate?name=employee.edit.related.listitem&empty=employee.edit.related.nodeputystaff>
+</table>
+
+<:_:movetickets|stopifempty:varname=outstanding_tickets|forwardtemplate?module=&name=employee.edit.movetickets>
+
+<:v:fireform>
+<p>&nbsp;</p>
+
+<h2>Permissions</h2>
+<form method="post" method="post" action="">
+<input type="hidden" name="f" value="<:v:_module_>/saveemployeepermissions" />
+<input type="hidden" name="id" value="<:v:lngId>" />
+<table class="form"> 
+  <tr>
+    <th>Create projects</th>
+    <td><:v:can_create_projects|dictselect:module=main&name=yesno&selectname=can_create_projects></td>
+  </tr>
+  <tr>
+    <th>Manage clients</th>
+    <td><:v:can_manage_clients|dictselect:module=main&name=yesno&selectname=can_manage_clients></td>
+  </tr>
+  <tr>
+    <th>Manage generators</th>
+    <td><:v:can_manage_generators|dictselect:module=main&name=yesno&selectname=can_manage_generators></td>
+  </tr>
+  <tr>
+    <th>Manage campaigns</th>
+    <td><:v:can_manage_campaigns|dictselect:module=main&name=yesno&selectname=can_manage_campaigns></td>
+  </tr>
+  <tr>
+    <th>Manage bookings</th>
+    <td><:v:can_manage_bookings|dictselect:module=main&name=yesno&selectname=can_manage_bookings></td>
+  </tr>
+  <tr>
+    <th>Manage trade-in weeks</th>
+    <td><:v:can_manage_tradeins|dictselect:module=main&name=yesno&selectname=can_manage_tradeins></td>
+  </tr>
+  <tr>
+    <th>Manage one-time vouchers</th>
+    <td><:v:can_manage_vouchers|dictselect:module=main&name=yesno&selectname=can_manage_vouchers></td>
+  </tr>
+</table>
+<input type="submit" value="Save Special Information">
+</form>
+
+
+<script>
+  suggestPerson('U', 'lm', 'lm_staff_id');
+  suggestPerson('U', 'ds', 'ds_staff_id');
+</script>

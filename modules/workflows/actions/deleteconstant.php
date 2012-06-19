@@ -4,8 +4,8 @@ if ($id > 0) {
   $constantDetails = $runtime->s2r($module, 'GetConstantInfo', $_REQUEST);
   if (count($constantDetails) > 0) {
     $workflow = $constantDetails['workflow'];
-    if (srun($module, 'DeleteConstant', $_REQUEST) > 0) {
-      set_cookie('flash', 'Constant deleted');    
+    if ($runtime->db->sqlrun($module, 'DeleteConstant', $_REQUEST) > 0) {
+      $_SESSION['flash'] = 'Constant deleted');    
     } else {
       set_cookie('error', 'Could not delete constant');    
     }

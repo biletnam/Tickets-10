@@ -1,0 +1,57 @@
+
+function read_notification(id) {
+  show_notification_details(id);
+  $('#ns_' + id + ' div').css('font-weight', 'normal');
+  //$('#ns_summary_' + id).css('font-weight', 'normal');
+  $.ajax({ url: "?i=main/readnotification&id=" + id });
+}
+
+function unread_notification(id) {
+  hide_notification_details(id);
+  //$('#ns_summary_' + id).css('font-weight', 'bold');
+  $('#ns_' + id + ' div').css('font-weight', 'bold');  
+  $.ajax({ url: "?i=main/unreadnotification&id=" + id });
+}
+
+function forget_notification(id) {
+  $('#n_' + id).remove();
+  $.ajax({ url: "?i=main/forgetnotification&id=" + id });
+  var cnt = $('#notification_cnt').html();
+  if (cnt == 1) {
+    $('#notification_cnt').html('0');
+    $('#notifications_container').html('');
+  } else {
+    $('#notification_cnt').html(cnt - 1);
+  }
+}
+
+function forget_related_notifications(id, sourcetype, sourceid) {
+  var source = $('#source_' + id);
+  $("input:hidden").each( function() {
+    if (this.id.indexOf('source_') === 0) {
+      var id = this.id.substr(7);
+      if (source.val() == this.value) {
+        forget_notification(id);
+      }
+    }
+  });
+}
+
+function show_notification_details(id) {
+  $('#nd_' + id).show();
+  $('#ns_show_' + id).after('<div id="ns_hide_' + id + '" class="notification_hidedetails"></div>');
+  var html = '<img src="../images/icons/button.up.png" width="16" height="16" valign="top" /> ';
+  html += '<a href="javascript:hide_notification_details(' + id + ', ' + id + ');">Hide Details</a>';
+  $('#ns_hide_' + id).html(html);
+  $('#ns_show_' + id).remove();
+}
+
+function hide_notification_details(id) {
+  $('#nd_' + id).hide();
+  $('#ns_hide_' + id).after('<div id="ns_show_' + id + '" class="notification_showdetails"></div>');
+  var html = '<img src="../images/icons/button.down.png" width="16" height="16" valign="top" /> ';
+  html += '<a href="javascript:read_notification(' + id + ');">Show Details</a>';
+  $('#ns_show_' + id).html(html);
+
+  $('#ns_hide_' + id).remove();
+}

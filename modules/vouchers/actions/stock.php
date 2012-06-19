@@ -41,10 +41,10 @@ if ($stock > 0) {
       $tabVoucherStock->addTab('editaccess', dot('stock.tab.editors', $articleInfo), dot('stock.editors', $stockInfo)) if ($access == 'edit');
       $tabVoucherStock->setDefaultTab(lavnn('tab') || 'vouchers');
       $stockInfo['tabcontrol'] = $tabVoucherStock->getHTML();
-      $page['js'] = dotmod('main', 'tabcontrol.js');
-      $page['js'] .= dotmod('main', 'linkpeople.js');
-      $page->add('css',  dotmod('main', 'tabcontrol.css');
-      $page->add('css',  dotmod('main', 'linkpeople.css');
+      $page['js'] = $runtime->txt->do_template('main', 'tabcontrol.js');
+      $page['js'] .= $runtime->txt->do_template('main', 'linkpeople.js');
+      $page->add('css',  $runtime->txt->do_template('main', 'tabcontrol.css');
+      $page->add('css',  $runtime->txt->do_template('main', 'linkpeople.css');
       $page->add('title',  $stockInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.stock', $stockInfo);
       $page->add('main', $runtime->txt->do_template($module, 'stock', $stockInfo);
     }

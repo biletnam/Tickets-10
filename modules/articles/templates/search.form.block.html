@@ -1,0 +1,21 @@
+<img src="../images/<:h:blockinfo|field:name=image>" align="left" hspace="10" vspace="10" />
+
+<h2><:h:blockinfo|field:name=name></h2>
+
+<p>
+Optionally, you can define search criteria for articles to limit the length of the list:
+</p>
+
+<form name="frmSearch" action="" method="get">
+<input type="hidden" name="p" value="<:v:_module_>/search" />
+<input type="hidden" name="tag" value="<:v:tag>" />
+<table class="form">
+<tr>
+  <th>Keyword:</th>
+  <td>
+    <input type="text" name="search" size="10" value="<:v:search>" />
+    <input type="submit" value="Search" />
+  </td>
+</tr>
+</table>
+</form>

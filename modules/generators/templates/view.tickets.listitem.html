@@ -1,0 +1,16 @@
+  <tr class="mod2_<:v:_mod2_>">
+    <td>
+      <a 
+        id="viewgenerator_ticketlink_<:v:id>" 
+        href="javascript: showAjaxPopup({url: '?i=tickets/tooltip&id=<:v:id>', width:800, id:'viewgenerator_ticketlink_<:v:id>']);" 
+        title="Click to preview"
+      ><img src="../images/icons/preview.png" border="0" height="16" width="16" /></a> #<:v:id>
+    </td>
+    <td><:v:title></td>
+    <td><:v:status|lookupdict?module=tickets&name=status></td>
+    <td><:v:HandlerName></td>
+    <td><:v:DateUpdated></td>
+  </tr>
+
+
+

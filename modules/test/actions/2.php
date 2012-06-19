@@ -1,4 +1,4 @@
 <?php
 
-print dotmod('test', '2');
+print $runtime->txt->do_template('test', '2');
 ?>

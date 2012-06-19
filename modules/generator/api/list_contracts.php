@@ -92,7 +92,7 @@ if ($gen_user_id > 0) {
     $generators = $runtime->s2a($controller, 'ListGenerators', $sqlParams);
     $genUserInfo['generators'] = $generators;   
     
-    $output = $runtime->dotmod($controller, 'API.ListContracts', $genUserInfo);    
+    $output = $runtime->$runtime->txt->do_template($controller, 'API.ListContracts', $genUserInfo);    
   } else {
     $result = 'ERR'; 
     push @errors, $runtime->hash2ref( ('code' => 'ListContracts.NotFound', 'text' => 'Member data was not found') );
@@ -104,7 +104,7 @@ if ($gen_user_id > 0) {
 
 # Return resulting XML API output - quite similar to all APIs
 print "content-type: $contenttype; charset=$charset;\n\n";
-print $runtime->dotmod($controller, 'API.Envelope', array(
+print $runtime->$runtime->txt->do_template($controller, 'API.Envelope', array(
   'result' => $result,
   'output' => $output,
   'warnings' => Arrays::a2xml($warnings, 'Warnings', 'Warning'),

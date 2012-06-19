@@ -1,0 +1,101 @@
+<form method="post" method="post" action="">
+<input type="hidden" name="f" value="<:v:_module_>/saveemployeecontact" />
+<input type="hidden" name="id" value="<:v:lngId>" />
+<table class="form">
+
+  <tr valign="top">
+    <th>First Name</th>
+    <td><input type="textbox" name="strFirstName" value="<:v:strFirstName>" size="16" maxlength="50"></td>
+    <th>Middle Name</th>
+    <td><input type="textbox" name="strMiddleName" value="<:v:strMiddleName>" size="16" maxlength="50"></td>
+    <th>Last Name</th>
+    <td><input type="textbox" name="strLastName" value="<:v:strLastName>" size="16" maxlength="50"></td>
+    <th>Nick</th>
+    <td><input type="textbox" name="strNick" value="<:v:strNick>" size="16" maxlength="50"></td>
+  </tr>
+  
+  <tr valign="top">
+    <th>Birthday</th>
+    <td><input type="textbox" class="calendardate" title="Click to select date" id="dteBirth" name="dteBirth" value="<:v:dateBirth|dateformat?format=fulldate>" size="10"></td>
+    <th>Gender</th>
+    <td>
+      <select name="lngSex">
+        <option value="">-- Choose --</option>
+        <:a:sexoptions|looptemplate?module=main&name=option>
+      </select>
+    </td>
+    <th>Nationality</th>
+    <td colspan="2"">
+      <select name="lngNationality">
+        <option value="">-- Choose from the list --</option>
+        <:a:nationalities|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>
+  
+  <tr valign="top">
+    <th>Local Home Phone</th>
+    <td><input type="textbox" name="strLocalHomePhone" value="<:v:strLocalHomePhone>" size="16" maxlength="50"></td>
+    <th>Local Work Phone</th>
+    <td><input type="textbox" name="strLocalWorkPhone" value="<:v:strLocalWorkPhone>" size="16" maxlength="50"></td>
+    <th>Local Mobile Phone</th>
+    <td><input type="textbox" name="strLocalMobilePhone" value="<:v:strLocalMobilePhone>" size="16" maxlength="50"></td>
+    <th>Yahoo ID</th>
+    <td>
+      <input type="textbox" name="yahoo_id" value="<:v:yahoo_id>" size="16" maxlength="50"><br />
+      <:_:sendyahooimlink|stopifempty:varname=yahoo_id|forwardtemplate?module=&name=sendyahooim>
+    </td>
+  </tr>
+  
+  <tr valign="top">
+    <th>Local Address</th>
+    <td colspan="3"><input type="textbox" name="strLocalAddress" value="<:v:strLocalAddress>" size="50" maxlength="255"></td>
+    <th>Home Address</th>
+    <td colspan="3"><input type="textbox" name="strHomeAddress" value="<:v:strHomeAddress>" size="50" maxlength="255"></td>
+  </tr>
+  
+  <tr valign="top">
+    <th>Local Home E-mail</th>
+    <td colspan="3"><input type="textbox" name="strLocalHomeEmail" value="<:v:strLocalHomeEmail>" size="50" maxlength="50"></td>
+    <th>Local Office E-mail</th>
+    <td colspan="3"><input type="textbox" name="strLocalOfficeEmail" value="<:v:strLocalOfficeEmail>" size="50" maxlength="50"></td>
+  </tr>
+
+  <tr valign="top">
+    <th>Emergency person</th>
+    <td><input type="textbox" name="strEmgPerson" value="<:v:strEmgPerson>" size="16" maxlength="50"></td>
+    <th>Emergency home phone</th>
+    <td><input type="textbox" name="strEmgHomePhone" value="<:v:strEmgHomePhone>" size="16" maxlength="50"></td>
+    <th>Emergency work phone</th>
+    <td><input type="textbox" name="strEmgWorkPhone" value="<:v:strEmgWorkPhone>" size="16" maxlength="50"></td>
+    <th>Emergency mobile phone</th>
+    <td><input type="textbox" name="strEmgMobilePhone" value="<:v:strEmgMobilePhone>" size="16" maxlength="50"></td>
+  </tr>
+</table>
+<input type="submit" value="Save Personal Information">
+</form>
+
+
+<script>
+$('#dteBirth').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+</script>
+
+
+<h2>Avatar picture</h2>
+
+<table>
+  <tr valign="top">
+    <td><:v:avatarpicture> &nbsp; </td>
+    <td>
+      <p>* Please upload square images. Ideal resolution is 50 x 50 pixels.</p>
+      <form method="post" method="post" action="" enctype="multipart/form-data">
+      <input type="hidden" name="f" value="<:v:_module_>/saveemployeeavatar" />
+      <input type="hidden" name="id" value="<:v:lngId>" />
+      <input type="file" name="avatar" />
+      <input type="submit" value="Upload" />
+      </form>
+    </td>
+  </tr>
+</table>
+
+<:v:show_password>

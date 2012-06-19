@@ -1,0 +1,21 @@
+  <tr class="mod2_<:v:_mod2_>">
+    <td><:v:_i_></td>
+    <td>
+      <input type="checkbox" name="id_<:v:id>" />
+      <a href="javascript: var answer = prompt('Voucher reference:', '<:v:reference>'); if (!(answer == null || answer == '')) { $('#ref_<:v:id>').load('?i=<:v:_module_>/setreference&id=<:v:id>&reference=' + escape(answer)); }" title="Click to quick edit the reference"><span id="ref_<:v:id>"><:v:reference></span</a>
+    </td>
+    <td><:v:DateCreated|dateformat?format=fulldate></td>
+    <td><:v:owner_type></td>
+    <td><:v:owner_name></td>
+    <td><:v:doc_location_type></td>
+    <td>
+      <:v:doc_location_name>
+      <:_:delivery|stopifempty:varname=delivery_ongoing|forwardtemplate?module=&name=vouchers.listitem.delivery>
+  </td>
+    <td>
+      <a class="dochistorytooltip" href="#" title="History of physical document location"
+          rel="?i=<:v:_module_>/ajaxdochistory&id=<:v:ph_doc_id>&view=serie"><img src="../images/icons/preview.png" border="0" height="16" width="16" /></a>
+      &nbsp;
+    </td>
+    <td><:v:DateUsed|dateformat?format=fulldate></td>
+  </tr>

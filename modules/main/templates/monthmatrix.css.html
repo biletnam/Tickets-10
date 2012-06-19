@@ -1,0 +1,56 @@
+/* month matrix */
+
+table.monthmatrix {
+  border-collapse: collapse;
+  border-spacing: 2px 2px;
+  border-color: grey;
+}
+
+table.monthmatrix tr th, table.monthmatrix tr td {
+  border: solid 1px #999;
+}
+
+table.monthmatrix tr td.monthmatrixday_birthday {
+  width: 20px;
+  text-align: center;
+  background-color: white;
+}
+
+table.monthmatrix tr td.monthmatrixday_empty {
+  width: 20px;
+  text-align: center;
+  background-color: white;
+}
+
+.monthmatrixday_PH {
+  width: 20px;
+  background-color: yellow;
+}
+
+.monthmatrixday_WE {
+  width: 20px;
+  background-color: pink;
+}
+
+.event_authorized_no {
+  background-repeat:no-repeat; 
+  background-image: url(../images/icons/question.png); 
+  background-position: center;
+}
+
+.event_authorized_yes {
+  background-repeat:no-repeat; 
+  background-image: url(../images/icons/lock.png); 
+  background-position: center;
+}
+
+.DoW_6, .DoW_7 {
+  background-color: pink; 
+}
+
+table.monthmatrix tr td.fullday {
+}
+
+table.monthmatrix tr td.halfday {
+  border: dotted 2px black;
+}

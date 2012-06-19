@@ -1,0 +1,38 @@
+  <tr class="datagrid-row-data mod2_<:v:_mod2_>">
+    <td class="align-varchar">
+      <:v:username>
+      <span id="delete_<:v:id>">
+        <:_:deleteemail|stopifnotempty:varname=forward_to|stopifnotempty:varname=employee|forwardtemplate?module=&name=search.listitem.actions.delete>
+      </span>
+    </td>
+    <td class="align-varchar">
+      <span id="forwarder_<:v:id>">      
+        <:v:forward_to>
+      </span>
+      <span id="setforwarder_<:v:id>">
+        <:_:setforwarder|stopifnotempty:varname=employee|stopifnotempty:varname=forward_to|forwardtemplate?module=&name=search.listitem.actions.forward>
+      </span>
+      <span id="resetforwarder_<:v:id>">
+        <:_:resetforwarder|stopifnotempty:varname=employee|stopifempty:varname=forward_to|forwardtemplate?module=&name=search.listitem.actions.resetforward>
+      </span>
+    </td>
+    <td class="align-varchar">
+      <span id="employee_<:v:id>">      
+        <:_:viewemployee|stopifnotempty:varname=forward_to|stopifempty:varname=employee|forwardtemplate?module=&name=search.listitem.actions.view>
+      </span>
+      <span id="linkemployee_<:v:id>">
+        <:_:linkemployee|stopifnotempty:varname=forward_to|stopifnotempty:varname=employee|forwardtemplate?module=&name=search.listitem.actions.link>
+      </span>
+      <span id="unlinkemployee_<:v:id>">
+        <:_:unlinkemployee|stopifnotempty:varname=forward_to|stopifempty:varname=employee|forwardtemplate?module=&name=search.listitem.actions.unlink>
+      </span>
+    </td>
+    <td class="align-date">
+      <span id="fired_<:v:id>" class="red">
+        <:v:dateFired|dateformat?format=fulldate>
+      </span>
+    </td>
+    <td>
+      <:v:reason>
+    </td>
+  </tr>

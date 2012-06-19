@@ -10,17 +10,17 @@ while (($request_key, $request_value) = each %_REQUEST) {
 }
 if (count($ids) > 0 && $op <> '') {
   if ($op == 'markdeleted') {
-    srun($module, 'MarkArticlesAsDeleted', array('ids' => join(',', @ids)));
-    set_cookie('flash', count($ids)." articles marked as Deleted");
+    $runtime->db->sqlrun($module, 'MarkArticlesAsDeleted', array('ids' => join(',', @ids)));
+    $_SESSION['flash'] = count($ids)." articles marked as Deleted");
   } elseif ($op == 'marknotdeleted') {
-    srun($module, 'MarkArticlesAsNotDeleted', array('ids' => join(',', @ids)));
-    set_cookie('flash', count($ids)." articles marked as Not Deleted");
+    $runtime->db->sqlrun($module, 'MarkArticlesAsNotDeleted', array('ids' => join(',', @ids)));
+    $_SESSION['flash'] = count($ids)." articles marked as Not Deleted");
   } elseif ($op == 'markdraft') {
-    srun($module, 'MarkArticlesAsDraft', array('ids' => join(',', @ids)));
-    set_cookie('flash', count($ids)." articles marked as Draft");
+    $runtime->db->sqlrun($module, 'MarkArticlesAsDraft', array('ids' => join(',', @ids)));
+    $_SESSION['flash'] = count($ids)." articles marked as Draft");
   } elseif ($op == 'marknotdraft') {
-    srun($module, 'MarkArticlesAsNotDraft', array('ids' => join(',', @ids)));
-    set_cookie('flash', count($ids)." articles marked as Not Draft");
+    $runtime->db->sqlrun($module, 'MarkArticlesAsNotDraft', array('ids' => join(',', @ids)));
+    $_SESSION['flash'] = count($ids)." articles marked as Not Draft");
   }
 } else {
     set_cookie('error', "Select some items in order to run multiple operation");

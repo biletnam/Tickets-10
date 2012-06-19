@@ -13,7 +13,7 @@ if (lavnn('name') == '' ) {
     # INSERT
     $id = $objVouchers->create_provider(%_REQUEST);
     if ($id > 0) {
-      set_cookie('flash', 'New voucher provider is registered');
+      $_SESSION['flash'] = 'New voucher provider is registered');
     } else {
       set_cookie('error', 'Voucher provider could not be added');
     }

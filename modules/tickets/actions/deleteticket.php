@@ -8,7 +8,7 @@ if ($id <> '') {
   if (count($ticketInfo) > 0) {
     if ($ticketInfo['creator'] == $r['userID']) {
       $objT->delete_ticket($id);
-      set_cookie('flash', "Ticket '".$ticketInfo['title']."' deleted");
+      $_SESSION['flash'] = "Ticket '".$ticketInfo['title']."' deleted");
       if ($returnto == 'project') {
         $pid = $ticketInfo['project'];
         $url = "?p=$module/project&id=$pid";

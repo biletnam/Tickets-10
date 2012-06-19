@@ -1,0 +1,49 @@
+<h1><:v:pagetitle></h1>
+
+<form action="" method="POST">
+<input type="hidden" name="f" value="<:v:_module_>/savelocaltype" />
+<input type="hidden" name="id" value="<:v:id>" />
+<input type="hidden" name="hotel_id" value="<:v:hotel_id>" />
+<table class="form">
+  <tr>
+    <th>Hotel</th>
+    <td>
+      <a href="?p=<:v:_module_>/edithotel&id=<:h:hotelinfo|field:name=hotel_id>&tab=hb"><:h:hotelinfo|field:name=hotel_name></a>
+    </td>
+  </tr>
+  <tr>
+    <th>In use?</th>
+    <td>
+      <select name="in_use"><option /><:a:yesno|looptemplate?module=main&name=option></select>
+    </td>
+  </tr>
+  <tr>
+    <th>Type</th>
+    <td>
+      <select name="apt_type_id"><option /><:a:apttypes|looptemplate?module=main&name=option></select>
+    </td>
+  </tr>
+  <tr>
+    <th>Local Type</th>
+    <td>
+      <input type="text" name="local_apt_name" value="<:v:local_apt_name>" />
+    </td>
+  </tr>
+  <tr>
+    <th>Max Children</th>
+    <td>
+      <input type="text" name="max_children" value="<:v:max_children>" size="2" maxlength="2" />
+    </td>
+  </tr>
+  <tr>
+    <th>Max Adults</th>
+    <td>
+      <input type="text" name="max_adults" value="<:v:max_adults>" size="2" maxlength="2" />
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" name="Save" /></td>
+  </tr>
+</table>
+</form>

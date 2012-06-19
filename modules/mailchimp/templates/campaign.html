@@ -1,0 +1,36 @@
+<h1><:v:pagetitle></h1>
+
+<table class="form">
+  <tr>
+    <th>Title</th>
+    <td><:v:title></td>
+  </tr>
+  <tr>
+    <th>Status</th>
+    <td><:v:status></td>
+  </tr>
+  <tr>
+    <th>Sent time</th>
+    <td><:v:send_time|dateformat?format=minutes></td>
+  </tr>
+  <tr>
+    <th>Sent from</th>
+    <td><:v:from_name> (<:v:from_email>)</td>
+  </tr>
+  <tr>
+    <th>Recipients</th>
+    <td><:v:emails_sent> [<a href="?p=<:v:_module_>/campaignmembers&id=<:v:id>">Members report</a>]</td>
+  </tr>
+  <tr>
+    <th>Text</th>
+    <td>
+      <textarea rows="10" cols="100"><:v:textcontent></textarea>
+    </td>
+  </tr>
+  <tr>
+    <th>HTML</th>
+    <td>
+      <textarea rows="30" cols="100"><:v:htmlcontent></textarea>
+    </td>
+  </tr>
+</table>

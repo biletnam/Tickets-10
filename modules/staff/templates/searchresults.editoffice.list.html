@@ -1,0 +1,65 @@
+<h2>Search results (<:a:staff|length>)</h2>
+
+<div style="display:none;" id="<:v:fired>oldsort"><:v:oldsort></div>
+
+<form name="frmStaffMultiple" method="post" action="">
+<input type="hidden" name="f" value="<:v:_module_>/multi" />
+<input type="hidden" name="op" value="" />
+<input type="hidden" name="office" value="<:v:office>" />
+<input type="hidden" name="url" value="<:v:url>" />
+
+<table class="list" width="100%">
+  <tr>
+    <th><input type="checkbox" onclick="checkAllBoxes(this.form, 'id_', this.checked);"></th>
+    <th>&nbsp;</th>
+    <th><a href="javascript:sortStaffSearchResults('<:env:QUERY_STRING|urlencode>', '#<:v:fired>oldsort', 'nick', '#<:v:fired>employees');">Nick</a></th>
+    <th>&nbsp;</th>
+    <th>
+      <a href="javascript:sortStaffSearchResults('<:env:QUERY_STRING|urlencode>', '#<:v:fired>oldsort', 'firstname', '#<:v:fired>employees');">First Name</a>
+      <a href="javascript:sortStaffSearchResults('<:env:QUERY_STRING|urlencode>', '#<:v:fired>oldsort', 'lastname', '#<:v:fired>employees');">Last Name</a>
+    </th>
+    <th><img src="../images/icons/attachment.png" width="16" height="16" border="0" /></th>
+    <th><span title="Line Manager">LM</span></th>
+    <th><span title="Deputy Staff">DS</span></th>
+    <th>Mobile Phone</th>
+    <th>Contacts</th>
+    <th colspan="5">More</th>
+  </tr>
+  <:a:staff|looptemplate?name=searchresults.editoffice.listitem>
+</table>
+
+<p>
+With selected:
+</p>
+
+<table class="form">
+<tr><td>
+Assign calendar: 
+<select name="officecalendar" onchange="this.form.op.value='assigncalendar';">
+  <option>Choose calendar</option>
+  <:a:officecalendaroptions|looptemplate?module=main&name=option>
+</select>
+Since (optional): <input type="text" class="calendardate" title="Click to select date" id="datesince" name="datesince" size="10" maxlength="10" />
+Until (optional): <input type="text" class="calendardate" title="Click to select date" id="dateuntil" name="dateuntil" size="10" maxlength="10" />
+<input type="submit" value="Assign calendar" />
+</td></tr>
+</table>
+
+<script>
+$('#datesince').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+$('#dateuntil').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+</script>
+
+<table>
+<tr><td>
+Move to another office
+<select name="newoffice" onchange="this.form.op.value='move2office';">
+  <option>Choose Office</option>
+  <:a:offices|looptemplate?module=main&name=option>
+</select>
+<input type="submit" value="Move" />
+</td></tr>
+</table>
+</form>
+
+<:v:newemployeeform>

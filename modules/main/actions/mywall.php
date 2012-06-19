@@ -12,6 +12,6 @@ $runtime->saveMoment(' rendered main part of the page');
 
 
 # register pageview
-srun('main', 'RegisterPageview', array('entity_type' => 'wall.employee', 'entity_id' => $r['userID'], 'viewer_type' => 'U', 'viewer_id' => $r['userID']));
+$runtime->db->sqlrun('main', 'RegisterPageview', array('entity_type' => 'wall.employee', 'entity_id' => $r['userID'], 'viewer_type' => 'U', 'viewer_id' => $r['userID']));
 
 ?>

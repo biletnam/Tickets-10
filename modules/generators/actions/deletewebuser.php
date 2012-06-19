@@ -4,7 +4,7 @@ $gen_id = 0;
 if ($id > 0) {
   $userInfo = $runtime->s2r($module, 'GetGenUserData', array('id' => $id));
   if (count($userInfo) > 0) {
-    srun($module, 'DeleteGeneratorUser', $_REQUEST);
+    $runtime->db->sqlrun($module, 'DeleteGeneratorUser', $_REQUEST);
   }
   $gen_id = $userInfo['generator_id'];
 }

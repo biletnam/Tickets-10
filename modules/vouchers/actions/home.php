@@ -24,8 +24,8 @@ $tabVouchers->addTab('newserie', dot('home.tab.newserie'), dot('home.newserie', 
 $tabVouchers->setDefaultTab(lavnn('tab') || 'series');
 $pageParams['tabcontrol'] = $tabVouchers->getHTML();
 
-$page['js'] = dotmod('main', 'tabcontrol.js');
-$page['css'] = dotmod('main', 'tabcontrol.css');    
+$page['js'] = $runtime->txt->do_template('main', 'tabcontrol.js');
+$page['css'] = $runtime->txt->do_template('main', 'tabcontrol.css');    
 
 $page->add('main', $runtime->txt->do_template($module, 'home', $pageParams);
 

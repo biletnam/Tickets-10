@@ -7,7 +7,7 @@ if ($id != 0) {
     $poll = $questionData['poll'];
     $deleted = $objP->delete_question(%_REQUEST);
     if ($deleted > 0) {
-      set_cookie('flash', 'question data deleted');
+      $_SESSION['flash'] = 'question data deleted');
       # do additional database deletions depending on question type
     }
     go("?p=$module/edit&id=$poll&tab=questions");

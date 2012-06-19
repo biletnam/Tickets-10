@@ -15,7 +15,7 @@ if ($id > 0) {
       #  We cannot add identity while royalemarketing.com is working
       $id = sid($module, 'InsertGeneratorUser', $_REQUEST); 
       if ($id > 0) {
-        set_cookie('flash', 'Web access for new user is defined');
+        $_SESSION['flash'] = 'Web access for new user is defined');
       } else {
         set_cookie('error', 'Failed to add another web user for generator');
       }

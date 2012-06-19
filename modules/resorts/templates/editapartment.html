@@ -1,0 +1,30 @@
+<h1><:v:pagetitle></h1>
+
+<p>Here you can edit data for just one apartment</p>
+
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/saveapartment" />
+<input type="hidden" name="id" value="<:v:id>" />
+<table class="form">
+  <tr>
+    <th>Block</th>
+    <td><:v:block|lookupdict?module=main&name=aptblocktype></td>
+  </tr>
+  <tr>
+    <th>Apartment type</th>
+    <td>
+      <select name="apartment_type">
+        <:a:apttypeoptions|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th>Apartment name</th>
+    <td><input type="text" name="name" value="<:v:name>" size="30" maxlength="80" /></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Save" /></td>
+  </tr>
+</table>
+</form>

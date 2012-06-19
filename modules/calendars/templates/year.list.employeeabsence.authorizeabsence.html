@@ -1,0 +1,39 @@
+<div class="working" id="working_yearview" style="display:none;">Please wait...</div>
+
+<form name="frmEditMonth" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/authorize_employee_absences" />
+<input type="hidden" name="yearview_collected_days" id="yearview_collected_days" value="" />
+<input type="hidden" name="yearview_calendar_id" id="yearview_calendar_id" value="<:v:id>" />
+<input type="hidden" name="yearview_year" id="yearview_year" value="<:v:year>" />
+<input type="hidden" name="yearview_month" id="yearview_month" value="<:v:month>" />
+<div class="clearfix" style="width: 970px;">
+  <div style="float:left;">
+    Year:
+    <select id="yearcalendar_year" name="year" onchange="changeYear(<:v:id>, <:v:year>, <:v:month>, this.value);">
+      <:a:years|looptemplate?module=main&name=option>
+    </select>
+  </div>
+</div>
+
+<:v:htmlevents>
+
+<h2>Authorization of absences</h2>
+
+<p>Please respond to requested absences above and leave your comment below</p>
+
+<p>
+  Please also note the balances (in days) of employee for <:v:year>: 
+  <strong>Vacation: <:v:vacationbalance>; <:v:absences></strong>.
+</p>
+
+<p>
+  Make sure that limits are not exceeded. If they are, please contact employee and proceed with their agreement. 
+  Exceeding days will be automatically marked as Unpaid Leave.
+</p>
+
+<p>
+<textarea name="authorizeabsence_comment" rows="3" cols="60"></textarea>
+</p>
+
+<input type="submit" value="Respond to request" />
+</form>

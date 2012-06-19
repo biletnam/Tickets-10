@@ -1,0 +1,12 @@
+<p>
+Keep items in list unchecked if you would like to select all of them
+</p>
+
+<table class="list">
+<tr>
+  <th>&nbsp;</th>
+  <th>Hotel name</th>
+</tr>
+<:a:hotels|looptemplate?name=linkhotels.hotels.listitem>
+</table>
+<input type="button" id="linkhotels_<:v:controlname>_addhotels" value="Add" onclick="addLocation('<:v:controlname>');"/>

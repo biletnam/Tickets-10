@@ -1,0 +1,74 @@
+<h1><:v:pagetitle></h1>
+
+<p>
+To begin, please provide title and contents for the article.
+After this, you will be forwarded to a more detailed edit page.
+</p>
+
+<script>
+  var dirty = 0;
+</script>
+
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/create">
+<input type="hidden" name="tags" value="<:v:tags>">
+<table class="form">
+  <tr>
+    <th>Title</th>
+    <td><input type="text" size="30" maxlength="255" name="title" id="new_article_title" value="<:v:Title>" onkeypress="dirty = 1;" /></td>
+  </tr>
+  <tr>
+    <th>Teaser</th>
+    <td><textarea name="teaser" id="new_article_teaser" rows="5" cols="80" onkeypress="dirty = 1;"><:v:Teaser></textarea></td>
+  </tr>
+  <tr>
+    <th>Contents</th>
+    <td><textarea name="contents" id="new_article_contents" rows="25" cols="80" onkeypress="dirty = 1;"><:v:Contents></textarea></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Create Article and Continue" /></td>
+  </tr>
+</table>
+</form>
+
+<:v:draft>
+
+<div id="new_article_autosave">
+</div>
+
+<script>
+window.setInterval(function() {
+  if (dirty == 1) {
+  
+    //start the ajax  
+    var data = 'i=<:v:_module_>/autosave&user_id=<:v:user_id>';
+    var newtitle = $('#new_article_title').val();
+    data = data + '&title=' + urlencode(newtitle);
+    var newteaser = $('#new_article_teaser').val();
+    data = data + '&teaser=' + urlencode(newteaser);
+    var newcontents = $('#new_article_contents').val();
+    data = data + '&contents=' + urlencode(newcontents);
+    $.ajax({  
+        //this is the php file that processes the data and send mail  
+        url: "index.pl",   
+          
+        //GET method is used  
+        type: "GET",  
+
+        //pass the data           
+        data: data,       
+          
+        //Do not cache the page  
+        cache: false,  
+        
+        success: function (html) {
+          $('#new_article_autosave').html(html);
+        }
+          
+    });  
+    dirty = 0;
+  
+  }
+}, 10000);
+</script>

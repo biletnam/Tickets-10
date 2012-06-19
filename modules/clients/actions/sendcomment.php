@@ -55,7 +55,7 @@ if ($client_id > 0) {
     # update follow up tables
     $id = sid($module, 'AddClientComment', $_REQUEST);
     if ($id > 0) {
-      set_cookie('flash', 'Comment added');
+      $_SESSION['flash'] = 'Comment added');
       $_REQUEST['id'] = $id;
     } else {
       set_cookie('error', 'Could not add comment');

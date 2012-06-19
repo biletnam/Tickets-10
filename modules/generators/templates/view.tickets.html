@@ -1,0 +1,19 @@
+<table class="list" width="100%">
+  <tr>
+    <th>ID</th>
+    <th>Title</th>
+    <th>Status</th>
+    <th>Handler</th>
+    <th>Updated</th>
+  </tr>
+  <:a:tickets|looptemplate?name=view.tickets.listitem>
+</table>
+
+<script>
+$('a.tickettooltip').cluetip({
+  width: 720,
+  sticky: true,
+  closePosition: 'title',
+  mouseOutClose: true
+});
+</script>

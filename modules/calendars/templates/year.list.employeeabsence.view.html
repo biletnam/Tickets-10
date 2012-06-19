@@ -1,0 +1,17 @@
+<div class="working" id="working_yearview" style="display:none;">Please wait...</div>
+
+<form name="frmEditMonth">
+<input type="hidden" name="yearview_collected_days" id="yearview_collected_days" value="" />
+<input type="hidden" name="yearview_calendar_id" id="yearview_calendar_id" value="<:v:id>" />
+<input type="hidden" name="yearview_year" id="yearview_year" value="<:v:year>" />
+<input type="hidden" name="yearview_month" id="yearview_month" value="<:v:month>" />
+<div class="clearfix" style="width: 970px;">
+  <div style="float:left;">
+    Year:
+    <select id="yearcalendar_year" name="year" onchange="changeYear(<:v:id>, <:v:year>, <:v:month>, this.value);">
+      <:a:years|looptemplate?module=main&name=option>
+    </select>
+  </div>
+</div>
+
+<:v:htmlevents>

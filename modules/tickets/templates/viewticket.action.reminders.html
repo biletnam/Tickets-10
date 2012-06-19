@@ -1,0 +1,17 @@
+<p>&nbsp;</p>
+<b>Add reminder date (and text)</b><br />
+<table>
+  <tr>
+    <td><input type="text" class="calendardate" size="10" maxlength="10" id="actiondate" name="actiondate" value="" title="Click to select date" /></td>
+    <td><input type="text" size="40" maxlength="255" name="reminder" title="Type your own text for reminder to substitute the default" /></td>
+  </tr>
+  <:a:remindershistory|looptemplate?name=viewticket.action.reminders.listitem>
+</table>
+
+<script>
+  $('#actiondate').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+</script>
+<script>
+  $('#ticket_reminders').load('?i=<:v:_module_>/ticketreminders&id=<:v:id>');
+</script>
+      

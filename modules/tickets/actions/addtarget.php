@@ -12,7 +12,7 @@ if ($ticket > 0) {
     }
     $result = $objT->register_target($ticket, "$target_type:$target_id") if $target_type <> '' && $target_id <> '';
     if ($result > 0) {
-      set_cookie('flash', 'New target linked to the ticket');
+      $_SESSION['flash'] = 'New target linked to the ticket');
     } else {
       set_cookie('error', 'Could not link a new target');
     }

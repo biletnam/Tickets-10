@@ -5,7 +5,7 @@ $objCal = new objCalendar($r);
 
 $result = $objCal->move_office_calendar(%_REQUEST);
 if ($result > 0) {
-  set_cookie('flash', 'Calendar moved to another office');
+  $_SESSION['flash'] = 'Calendar moved to another office');
 } else {
   set_cookie('error', 'Could not move the calendar');
 }

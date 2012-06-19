@@ -50,10 +50,10 @@ if ($id <> '') {
   
   $page->add('title',  $meetingInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.viewmeeting', $meetingInfo);
   $page->add('main', $runtime->txt->do_template($module, 'viewmeeting', $meetingInfo);
-  $page['js'] .= dotmod('main', 'tabcontrol.js');
-  $page->add('css',  dotmod('main', 'tabcontrol.css');
-  $page['js'] .= dotmod('main', 'linkpeople.js');
-  $page->add('css',  dotmod('main', 'linkpeople.css');
+  $page['js'] .= $runtime->txt->do_template('main', 'tabcontrol.js');
+  $page->add('css',  $runtime->txt->do_template('main', 'tabcontrol.css');
+  $page['js'] .= $runtime->txt->do_template('main', 'linkpeople.js');
+  $page->add('css',  $runtime->txt->do_template('main', 'linkpeople.css');
 } else {
   $page->add('title',  $meetingInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.viewmeeting.notfound');
 }

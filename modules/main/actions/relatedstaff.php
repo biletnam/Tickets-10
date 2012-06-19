@@ -31,7 +31,7 @@ if (count($line_manager_for) > 0 || count($deputy_staff_for) > 0) {
     if ($employee['AbsenceCalendarID'] <> '') { # Do not show employees that do not have absence calendar
       $employee_id = $employee['ID'] = $employee['lngId'];
       $dateFired = $employee['dateFired'] || '';
-      if ($dateFired == '' || ($dateFired gt $firstDay)) { 
+      if ($dateFired == '' || ($dateFired > $firstDay)) { 
         $cnt++; $blockcnt++;
         $aa = $empabsences{$employee_id]; 
         if (count($aa) > 0) {
@@ -39,7 +39,7 @@ if (count($line_manager_for) > 0 || count($deputy_staff_for) > 0) {
         } else {
           $employee['absences'] = $emptyrow; 
         }
-        push @rows, dotmod('staff', 'officeabsences.employee.edit', $employee);   
+        push @rows, $runtime->txt->do_template('staff', 'officeabsences.employee.edit', $employee);   
         # Also, check if employee has birthday this month
         if ($employee['MonthBirth'] == $M) {
           $D = $employee['DayBirth'];
@@ -52,13 +52,13 @@ if (count($line_manager_for) > 0 || count($deputy_staff_for) > 0) {
   }
 
   if (count($birthdays) > 0) {
-    push @rows, dotmod('staff', 'officeabsences.birthdays', array('birthdays' => $objSM->render_employee_birthdays($days, $birthdays)));
+    push @rows, $runtime->txt->do_template('staff', 'officeabsences.birthdays', array('birthdays' => $objSM->render_employee_birthdays($days, $birthdays)));
   }
   $pageParams['employees'] = join('', @rows);
   $pageParams['daytypes'] = arr2ref(s2a('staff', 'ListCalendarDayTypes', array('office' => $r['userInfo']['lngWorkPlace'])));
 
-  $page->add('css',  dotmod('main', 'monthmatrix.css');
-  $page->add('css',  dotmod('main', 'monthmatrix.legend.css', $pageParams);
+  $page->add('css',  $runtime->txt->do_template('main', 'monthmatrix.css');
+  $page->add('css',  $runtime->txt->do_template('main', 'monthmatrix.legend.css', $pageParams);
   $page->add('main', $runtime->txt->do_template('main', 'relatedstaff', $pageParams);
 } else {  
   $page->add('main', $runtime->txt->do_template('main', 'relatedstaff.none', $pageParams);
@@ -68,7 +68,7 @@ $runtime->saveMoment(' rendered main part of the page');
 
 
 # register pageview
-srun('main', 'RegisterPageview', array('entity_type' => 'relatedstaff', 'entity_id' => '', 'viewer_type' => 'U', 'viewer_id' => $r['userID']));
+$runtime->db->sqlrun('main', 'RegisterPageview', array('entity_type' => 'relatedstaff', 'entity_id' => '', 'viewer_type' => 'U', 'viewer_id' => $r['userID']));
 
 
 

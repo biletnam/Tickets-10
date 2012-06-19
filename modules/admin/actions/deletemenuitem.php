@@ -3,8 +3,8 @@
 $id = lavnn('id', $_REQUEST, 0);
 
 if ($id > 0) { 
-  srun($module, 'DeleteMenuItem', $_REQUEST);
-  srun($module, 'DeleteMenuItemAccess', $_REQUEST);  
+  $runtime->db->sqlrun($module, 'DeleteMenuItem', $_REQUEST);
+  $runtime->db->sqlrun($module, 'DeleteMenuItemAccess', $_REQUEST);  
 }
 
 go("?p=$module/menu");

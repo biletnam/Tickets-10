@@ -26,9 +26,9 @@ if ($id <> '') {
   $_REQUEST['departments'] = $_departments;
 
   $_REQUEST['editor'] = $r['userInfo']['staff_id'];
-  srun($module, 'UpdateArticleAccess', $_REQUEST);  
+  $runtime->db->sqlrun($module, 'UpdateArticleAccess', $_REQUEST);  
 
-  set_cookie('flash', 'Article access saved');
+  $_SESSION['flash'] = 'Article access saved');
   go("?p=$module/edit&id=$id");
 } else {
   go("?p=$module/myarticles");

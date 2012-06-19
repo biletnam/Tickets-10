@@ -1,0 +1,21 @@
+<p>&nbsp;</p>
+<h2>Firing</h2>
+
+<form method="post" method="post" action="">
+<input type="hidden" name="f" value="<:v:_module_>/fireemployee" />
+<input type="hidden" name="id" value="<:v:lngId>" />
+<table class="form"> 
+  <tr>
+    <th>Fired since:</th>
+    <td><input type="text" class="calendardate" title="Click to select date" id="fired_since" name="fired_since" size="10" maxlength="10" /></td>
+    <th>Firing type and reason:</th>
+    <td><select name="fired_type"><:a:firetypes|looptemplate?module=main&name=option></select></td>
+    <td><input type="text" name="fired_reason" size="40" maxlength="250" /></td>
+  </tr>
+</table>
+<input type="submit" value="Mark Employee as Fired">
+</form>
+  
+<script>
+$('#fired_since').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+</script>

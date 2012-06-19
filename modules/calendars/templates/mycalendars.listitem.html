@@ -1,0 +1,10 @@
+  <tr class="mod2_<:v:_mod2_>">
+    <td><a href="?p=staff/employee&id=<:v:creator>"><:v:CreatorName></a></td>
+    <td><:v:object_type|lookupdict?module=&name=calendar.objecttype></td>
+    <td><:v:title></td>
+    <td><:v:DateCreated|dateformat?format=minutes></td>
+    <td>
+      [<a href="?p=<:v:_module_>/view&id=<:v:id>">View</a>]
+      <:_:editlinks|stopifempty:varname=can_edit|forwardtemplate?module=&name=mycalendars.listitem.editlinks>    
+    </td>
+  </tr>

@@ -34,6 +34,6 @@ $pageParams['pagetitle'] = $page->add('title',  $runtime->txt->do_template($modu
 $page->add('main', $runtime->txt->do_template($module, 'planner', $pageParams);
 
 
-srun('main', 'RegisterPageview', array('entity_type' => 'dashboard.planner', 'entity_id' => '', 'viewer_type' => 'U', 'viewer_id' => $r['userID']));
+$runtime->db->sqlrun('main', 'RegisterPageview', array('entity_type' => 'dashboard.planner', 'entity_id' => '', 'viewer_type' => 'U', 'viewer_id' => $r['userID']));
 
 ?>

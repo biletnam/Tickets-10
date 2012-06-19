@@ -1,0 +1,11 @@
+<div class="wallpost clearfix" id="wallpost_<:v:id>">
+  <div class="wallpost_editor_avatar"><img alt="avatar" src="?f=main/avatar&employee=<:v:editor>" width="50" height="50" /></div>
+  <div class="wallpost_content">
+    <div class="wallpost_editor clearfix">
+      <:_:deletelink|stopifempty:varname=can_edit|forwardtemplate?module=&name=wallpost.deletelink>
+      <span><a href="?p=profiles/employee&id=<:v:editor>"><:v:EditorName></a></span>
+    </div>
+    <div class="wallpost_comment"><:v:comment|process></div>
+    <div class="wallpost_timestamp"><:v:DateUpdated|dateformat?format=minutes></div>
+  </div>
+</div>

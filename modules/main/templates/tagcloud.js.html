@@ -1,0 +1,5 @@
+
+function delete_cloud_tag(tag) {
+  $('#tag_' + tag).hide();
+  $('#tag_' + tag).load('?i=main/deletetag&id=' + tag);
+}

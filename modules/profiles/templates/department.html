@@ -1,0 +1,43 @@
+<h1><:v:pagetitle></h1>
+
+<table class="departmentprofile">
+  <tr>
+    <td class="avatar">
+      <img alt="avatar" src="../images/department.jpg" width="50" height="50" />
+    </td>
+    <td class="basicinfo">
+      <div class="oneline">
+        <strong><:v:team_name></strong> &nbsp;
+        <br />
+  
+      </div>
+    </td>
+  </tr>
+</table>
+
+<div class="departmentstats">
+  <table>
+    <tr>
+      <td>
+        <img src="../images/icons/users.png" width="16" height="16" border="0"> 
+        <a href="javascript: ajaxload('departmentstaff', '?i=<:v:_module_>/departmentcontactsheet&id=<:v:team_id>');"><:v:cnt_employees> Employee(s)</a> &nbsp; 
+      </td>
+      <td><img src="../images/icons/attachment.png" width="16" height="16" border="0"> <:v:wall_documents> Public document(s) &nbsp; </td>
+    </tr>
+  </table>
+</div>
+
+<div id="departmentstaff">
+</div>
+
+<form action="">
+<input type="hidden" name="f" value="<:v:_module_>/sendwallpost" />
+<input type="hidden" name="entity_type" value="department" />
+<input type="hidden" name="entity_id" value="<:v:team_id>" />
+<textarea name="comment" rows="2" style="width:980px;">
+</textarea>
+<br />
+<input type="submit" value="Send to the wall" />
+</form>
+
+<:v:wall>

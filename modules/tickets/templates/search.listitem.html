@@ -1,0 +1,18 @@
+<tr class="datagrid-row-data mod2_<:v:_mod2_>">
+  <td class="align-int"><:v:id></td>
+  <td class="align-varchar">
+    <a 
+        id="search_ticketlink_<:v:id>" 
+        href="javascript: showAjaxPopup({url: '?i=<:v:_module_>/tooltip&id=<:v:id>', width:800, id:'search_ticketlink_<:v:id>']);" 
+        title="Click to preview"
+      ><img src="../images/icons/preview.png" border="0" height="16" width="16" /></a> 
+    <a href="?p=<:v:_module_>/viewticket&id=<:v:id>"><:v:title|untitled|shortener?words=5></a>
+  </td>
+  <td class="align-varchar"><:v:priority|lookupdict?module=&name=priority></td>
+  <td class="align-date"><:v:duedate|dateformat?format=fulldate></td>
+  <td class="align-varchar"><:v:status|lookupdict?module=&name=status></td>
+  <td class="align-varchar"><:v:ProjectTitle></td>
+  <td class="align-varchar"><nobr><a href="?p=profiles/employee&id=<:v:creator>" title="<:v:CreatorName>"><:v:CreatorNick></a></nobr></td>
+  <td class="align-varchar"><nobr><a href="?p=profiles/employee&id=<:v:reviewer>" title="<:v:ReviewerName>"><:v:ReviewerNick></a></td>
+  <td class="align-varchar"><nobr><a href="?p=profiles/employee&id=<:v:handler>" title="<:v:HandlerName>"><:v:HandlerNick></a></td>
+</tr>

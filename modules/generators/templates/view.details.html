@@ -1,0 +1,72 @@
+<p>
+[<a href="?p=tickets/viewtarget&target=generator%3A<:v:generator_id>">View related tickets</a>]
+[<a href="?p=tickets/new&target=generator%3A<:v:generator_id>">Create new ticket</a>]
+</p>
+
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/save" />
+<input type="hidden" name="generator_id" value="<:v:generator_id>" />
+<table class="form">
+  <tr>
+    <th>Generator Name</th>
+    <td><input type="text" name="generator_name" value="<:v:generator_name>"  size="50"/></td>
+  </tr>
+  <tr>
+    <th>Contact Person</th>
+    <td><input type="text" name="contact_person" value="<:v:contact_person>"  size="60"/></td>
+  </tr>
+  <tr>
+    <th>Phone</th>
+    <td><input type="text" name="phone" value="<:v:phone>"  size="30"/></td>
+  </tr>
+  <tr>
+    <th>Address</th>
+    <td><input type="text" name="address" value="<:v:address>" size="60" /></td>
+  </tr>
+  <tr>
+    <th>E-mail *</th>
+    <td>
+      <:v:emails>
+    </td>
+  </tr>
+  <tr>
+    <th>Owner e-mail</th>
+    <td><input type="text" name="email_owner" value="<:v:email_owner>" size="60" /></td>
+  </tr>
+  <tr>
+    <th>Follow-up e-mail</th>
+    <td><input type="text" name="email_followup" value="<:v:email_followup>" size="60" /></td>
+  </tr>
+  <tr>
+    <th>Director</th>
+    <td><input type="text" name="director" value="<:v:director>" size="60" /></td>
+  </tr>
+  <tr>
+    <th>Director e-mail</th>
+    <td><input type="text" name="email_director" value="<:v:email_director>" size="60" /></td>
+  </tr>
+  <tr>
+    <th>Booking contact</th>
+    <td><input type="text" name="booking_contact" value="<:v:booking_contact>" size="60" /></td>
+  </tr>
+  <tr>
+    <th>Comment **</th>
+    <td><textarea name="comment" cols="60" rows="3"><:v:comment></textarea></td>
+  </tr>
+  <tr>
+    <th>Reservation remarks **</th>
+    <td><textarea name="reservation_remarks" cols="60" rows="3"><:v:reservation_remarks></textarea></td>
+  </tr>
+  <tr>
+    <th>Special comments **</th>
+    <td><textarea name="special_comments" cols="60" rows="3"><:v:special_comments></textarea></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Save changes" /></td>
+  </tr>
+</table>
+</form>
+
+<p>* - to delete an e-mail, just clear the appropriate text box; to add another e-mail, just add it to any of existing addresses after semicolon (;)</p>
+<p>** - There might be more comments on Comments tab</p>

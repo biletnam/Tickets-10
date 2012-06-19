@@ -1,0 +1,151 @@
+<h1><:v:pagetitle></h1>
+
+<p>Edit properties of the series.</p>
+
+<form method="post" action="">
+<input type="hidden" name="f" value="<:v:_module_>/editserie" />
+<table class="form">
+  <tr>
+    <th>Name</th>
+    <td><input type="text" name="name" value="<:v:name>" /></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Save" /></td>
+  </tr>
+</table>
+</form>
+
+<p>Issue more vouchers.</p>
+
+<form method="post" action="">
+<input type="hidden" name="f" value="<:v:_module_>/addvouchers" />
+<input type="hidden" name="serie" value="<:v:id>" />
+<table class="form">
+  <tr>
+    <th>Qty</th>
+    <td><input type="text" name="qty" size="2" maxlength="3" /></td>
+  </tr>
+  <tr>
+    <td>Set location:</td>
+    <td>
+      <select name="doc_location_type" onchange="$('#morevouchers_location_chooser').load('?i=<:v:_module_>/ajaxlocation&type=' + this.value);">
+        <option value="">Choose location type</option>
+        <option value="hotel">Hotel</option>
+        <option value="provider">Provider</option>
+        <option value="stock">Stock</option>
+        <option value="office">Office</option>
+        <option value="employee">Employee</option>
+      </select>
+      <span id="morevouchers_location_chooser">
+        ...
+      </span>
+  </tr>
+  <tr>
+    <td>Set ownership:</td>
+    <td>
+      <select name="owner_type" onchange="$('#morevouchers_owner_chooser').load('?i=<:v:_module_>/ajaxowner&type=' + this.value);">
+        <option value="">Choose owner type</option>
+        <option value="owner">Owner</option>
+        <option value="client">Client</option>
+      </select>
+      <span id="morevouchers_owner_chooser">
+        ...
+      </span>
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Save" /></td>
+  </tr>
+</table>
+</form>
+
+
+
+<p>Use the list below to bulk change of locations and owners.</p>
+
+<form method="post" action="">
+<input type="hidden" name="f" value="<:v:_module_>/multi" />
+<input type="hidden" name="op" value="" />
+<input type="hidden" name="serie" value="<:v:id>" />
+<table class="list" width="100%">
+  <tr>
+    <th>&nbsp;</th>
+    <th>
+      <input type="checkbox" onclick="checkAllBoxes(this.form, 'id_', this.checked);"  /> 
+      Reference
+    </th>
+    <th>Created</th>
+    <th colspan="2">Owner</th>
+    <th colspan="2">Doc. location</th>
+    <th>History</th>
+  </tr>
+  <:a:vouchers|looptemplate?name=vouchers.listitem>
+</table>
+
+
+<script>
+$('a.dochistorytooltip').cluetip({
+  width: 720,
+  sticky: true,
+  closePosition: 'title',
+  mouseOutClose: true
+});
+</script>
+
+<p>
+With selected vouchers:
+<select name="op2" onchange="this.form.op.value = this.value; if (this.value != 'delete' || confirm('Really deleted selected items?')) { this.form.submit(); }">
+  <option value=""></option>
+  <option value="delete">Delete</option>
+</select>
+or:
+</p>
+
+<table class="form">
+  <tr>
+    <td>Set location:</td>
+    <td>
+      <select name="doc_location_type" onchange="$('#location_chooser').load('?i=<:v:_module_>/ajaxlocation&type=' + this.value);">
+        <option value="">Choose location type</option>
+        <option value="hotel">Hotel</option>
+        <option value="provider">Provider</option>
+        <option value="stock">Stock</option>
+        <option value="office">Office</option>
+        <option value="employee">Employee</option>
+      </select>
+    </td>
+    <td>
+      <div id="location_chooser">
+        ...
+      </div>
+    </td>
+    <td>
+      Delivering by <input type="text" name="delivery_method" title="Type in the delivery method" />
+    </td>
+    <td><input type="button" value="Set" onclick="this.form.op.value='setlocation'; this.form.submit();" /></td>
+  </tr>
+</table>
+
+<table class="form">
+  <tr>
+    <td>Set ownership:</td>
+    <td>
+      <select name="owner_type" onchange="$('#owner_chooser').load('?i=<:v:_module_>/ajaxowner&type=' + this.value);">
+        <option value="">Choose owner type</option>
+        <option value="owner">Owner</option>
+        <option value="client">Client</option>
+      </select>
+    </td>
+    <td>
+      <div id="owner_chooser">
+        ...
+      </div>
+    </td>
+    <td><input type="button" value="Set" onclick="this.form.op.value='setowner'; this.form.submit();" /></td>
+  </tr>
+</table>
+
+</form>
+

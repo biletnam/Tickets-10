@@ -1,0 +1,9 @@
+  <tr>
+    <th>Payer</th>
+    <td>
+      <select name="payer" onchange="if (this.value == '') $('#div_invoices2issue').empty(); else $('#div_invoices2issue').load('?i=<:v:_module_>/nonissuedinvoices&book_id=<:v:book_id>&payer_id=' + this.value);">
+        <option value=""></option>
+        <:a:payeroptions|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>

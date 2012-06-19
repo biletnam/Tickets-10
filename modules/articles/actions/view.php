@@ -58,7 +58,7 @@ if ($id <> '') {
     $page->add('main', $runtime->txt->do_template($module, 'view', $articleInfo);
 
     # register pageview
-    srun('main', 'RegisterPageview', array('entity_type' => 'viewarticle', 'entity_id' => $id, 'viewer_type' => 'U', 'viewer_id' => $r['userID']));
+    $runtime->db->sqlrun('main', 'RegisterPageview', array('entity_type' => 'viewarticle', 'entity_id' => $id, 'viewer_type' => 'U', 'viewer_id' => $r['userID']));
   } else {
     $page->add('title',  $articleInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.notfound');
     $page->add('main', $runtime->txt->do_template($module, 'notfound', $articleInfo);

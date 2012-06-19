@@ -1,0 +1,234 @@
+
+<h2>... - v1.15</h2>
+
+<ul>
+<li>Better handling of login procedure for fired staff</li>
+<li>Tickets: improved search by some text - now searches also in comments</li>
+<li>Tickets: improved search by ID of related object (target)</li>
+<li>Editing of entity attachments unified throughout the site (except tickets and articles)</li>
+<li>Generators receive their own profile pages with contact detail/stats/wall</li>
+<li>Showing attachments number while listing generators, clients, contracts, projects</li>
+<li>Resource-access procedures converted into single query SQLs</li> 
+<li>Contents of Related staff tab on Edit Employee page is moved to Special tab</li>
+<li>When firing employee, automatically reset LineManager and DeputyStaff fields for related staff</li>
+<!--<li>Access checker can now check multiple source links at the same time</li>-->
+</ul>
+
+<h2>26 Apr 2012 - v1.14</h2>
+
+<ul>
+<li>Staff: major rewrite of employee absence handling</li>
+<li>Generators: more fields</li>
+<li>Contracts: search by follow-up date contract</li>
+<li>Articles: images can be hidden (all at once or or individual basis)</li>
+</ul>
+
+<h2>11 Apr 2012 - v1.13</h2>
+
+<ul>
+<li>Staff: basic API for showing employee contacts, adding new ones and delete contacts by id</li>
+<li>FIX: logging failed login attempts when they have db-unsafe characters</li>
+<li>Staff: edit history for contacts</li>
+<li>Hotels: admins have more options to get to hotel profile page and wall</li>
+<li>Reports: Pageview statistics enabled, viewable by admin through Pageviews report</li>
+<li>Articles: better access control</li>
+<li>Pageviews: first draft for selecting entity_id when entity_type is selected</li>
+<li>Pageviews: list is sorted by default (last view date, descending)</li>
+<li>Reports: better direct access security</li>
+<li>Notifications: checking email addresses of notification recepients before sending</li>
+</ul>
+
+<h2>04 Apr 2012 - v1.12.1</h2>
+
+<ul>
+<li>This document is redesigned to show latest changes on the top</li>
+<li>Preview of last created ticket on activity report</li>
+<li>Related staff page now shows absence caledars of listed personnel</li>
+<li>User contacts table prepared to store contact info for clients and generators</li>
+<li>Reports: mandatory parameters are visually marked</li>
+<li>More config settings for profiler to log only long database operations</li>
+<li>Booking API: hardcoded values for letting generators in with fake customer credentials</li>
+<li>First version of Generator Marketing Campaign registry</li>
+<li>Reports: experimental support for export query results to Excel</li>
+<li>Staff: adding more records to email registry synced with employee contacts</li>
+<li>Staff: adding more email:office contacts synced with email registry </li>
+</ul>
+
+<h2>26 Mar 2012 - v1.12</h2>
+
+<ul>
+<li>Reports: new parameter type supported: yes/no dropdown box</li>
+<li>Reports: parameters can be non-obligatory</li>
+<li>Fix of access of DS and LM to user's absence calendar</li>
+<li>Staff: more info in Office list</li>
+<li>Dashboard: absence calendar shown for related staff</li>
+<li>Staff: employee contact details now allows more than one contact of any type</li>
+<li>Booking API: member_login returns flags of member having Destinations or Vacation membership</li>
+<li>First version of UI to manage marketing campaings</li>
+<li>Universal hotel selection control in style of employee selector</li>
+<li>Contracts can also be found by FU comment</li>
+<li>Contract view received a new tab that lists FU comments</li>
+</ul>
+
+<h2>16 Mar 2012 - v1.11.1</h2>
+
+<ul>
+<li>Tickets: fixes in list of tickets to handle/react</li>
+<li>Bookings: search looks for generator also in sender field, Q field added.</li>
+<li>Fixes of 'object Object' error in Firefox</li>
+<li>Merlin API: receiving info about generators</li>
+</ul>
+
+<h2>13 Mar 2012 - v1.11</h2>
+
+<ul>
+<li>Internal: Improved profiler</li>
+<li>Internal: Improved SQL Error reporting</li>
+<li>Internal: Caching of loaded dictionaries</li>
+<li>Internal: script for comparing files at different environments</li>
+<li>Internal: script for showing recently changed files inside given folder</li>
+<li>Reports: improved paronnage report</li>
+<li>Reports: every report can be set up to allow automatic sorting on all columns</li>
+<li>Reports: predefined report parameters can now be of date type</li>
+</ul>
+
+<h2>1 Mar 2012 - v1.10</h2>
+
+<ul>
+<li>Report for Gift descriptions for Russian offices</li>
+<li>Fix sending/printing meeting minutes</li>
+<li>Page viewers for article is now a sortable grid</li>
+<li>Default sorting possible for data grid control</li>
+<li>
+  <strong>Totally redesigned lists of tickets</strong>
+  <ul>
+    <li>MyTickets view replaced with stats page</li>
+    <li>User tickets are shown only to users, their LM/DS and superadmins</li>
+    <li>Separate pages for different lists - to be loaded faster on slow connections</li>
+    <li>Better search query when clicked through links on stats page</li>
+    <li>Handle, Review, Follow lists are sortable and have paging control</li>
+    <li>"Notified" renamed to "To be informed" and got its own page</li>
+    <li>All lists are accessible through new menu items under Tickets</li>
+    <li>In all lists, users are shown as Nicks (full name is shown on mouse over)</li>
+  </ul>
+</li>
+<li>
+  <strong>Totally redesigned dashboard</strong>
+  <ul>
+    <li>Tabbed version of dashboard not shown as default, lost some tabs</li>
+    <li>List of notifications is now default page shown separately for speed</li>
+    <li>It is now possible to search old notifications by dates, list also shows year of notification</li>
+    <li>Dashboard settings are moved to separate page</li>
+  </ul>
+</ul> 
+
+<h2>17 Feb 2012 - v1.9.4</h2>
+
+<ul>
+<li>Fixed pageviews statistics for articles</li>
+<li>Cyrillic letters in ticket history and dashboard notifications finally fixed</li>
+<li>Report that lists Manager Locations</li>
+<li>Report that lists Salary Locations</li>
+<li>Anytable got special handling for NVARCHAR fields - shown as TEXTAREA in the grid</li>
+<li>New functionality for managing list of employees</li>
+<li>API for getting names of all employees from any EmployeeList</li>
+</ul>
+
+<h2>10 Feb 2012 - v1.9.3</h2>
+
+<ul>
+<li>Report that lists Merlin API errors, vieweable by handpicked staff</li>
+<li>Fix for links to attachments from notifications sent by mail</li>
+<li>Fix for confusing calendar names when editing days for office calendars</li>
+<li>Fix for Booking API crashes when invalid characters appear in gift commentaries</li>
+<li>Filter for searching contracts that only have specific gift</li>
+<li>Fix for showing gifts in Booking API (those without gift types are also included)</li>
+<li>Review and documentation for Tickets API </li>
+<li>In contact list for office, employees are grouped by subteams inside departments</li>
+<li>Summary of pages accessible by user is available from image top menu</li>
+<li>Print version for viewing folders (modelled after print version for meetings)</li>
+</ul> 
+
+<h2>07 Feb 2012 - v1.9.2</h2>
+
+<ul>
+<li>New Ticket popup can now detect targets from page context</li>
+<li>Contracts: fix in search function and a new filter (for contract source)</li>
+</ul>
+
+<h2>31 Jan 2012 - v1.9.1</h2>
+
+<ul>
+<li>Merlin IDs into Booking API and View Contract page</li>
+<li>New report in the gallery for matching TO/Man/Rep in Contracts vs Bookings</li>
+<li>View Ticket: AJAX solution for adding more targets without leaving the page.</li>
+</ul>
+
+<h2>30 Jan 2012 - v1.9</h2>
+
+<ul>
+<li>Booking API: new call for reseting client login</li>
+<li>Replacing 3d party tooltip plugin for jQuery with our own code (icon menu, tickets)</li>
+<li>Contracts: more filters and search result columns</li>
+<li>Contracts: enabled manual change of FYO and FYB</li>
+<li>Merlin API: fixing cost items (that are later translated into gifts</li>
+<li>Editing any table: registry of allowed tables (with dates/numbers includes, and permissions control)</li>
+</ul>
+
+<h2>25 Jan 2012 - v1.8.2</h2>
+
+<ul>
+<li>Fixes in ClubAbsolute API</li>
+<li>Fixes in Merlin API</li>
+<li>New wide layout for master page that should contain wide tables</li>
+<li>Email registry: new fields in table for domain names, to be edited in wide layout.</li>
+<li>Email registry: more filters for searching emails</li>
+<li>Email registry: records can only be deleted if niether employee linked nor forwarder defined</li>
+<li>Email registry: when employee with existing email address is linked, new email is created as forwarded instead (with a warning)</li>
+</ul>
+
+<h2>18 Jan 2012 - v1.8.1</h2>
+
+<ul>
+<li>Workflow for requesting commission query</li>
+<li>Draft of email registry: registration of forwarders</li>
+</ul>
+
+<h2>17 Jan 2012 - v1.8</h2>
+
+<ul>
+<li>Staff search fixes</li>
+<li>Full rework of employee suggestion</li>
+<li>Clone calendar fix</li>
+<li>ClubAbsolute.ru rework and API</li>
+<li>Parametrized reports: support for employee-type parameter</li>
+<li>Staff subteam fixes</li>
+<li>Decline absence fix</li>
+<li>Draft of email registry</li>
+</ul>
+
+<h2>6 Jan 2012 - v1.7.3</h2>
+
+<ul>
+<li>New filters and fields in contract search</li>
+<li>Predefined reports: defining parameters, and running parametrized reports</li>
+</ul>
+
+<h2>4 Jan 2012 - v1.7.2</h2>
+
+<ul>
+<li>Predefined reports: creating, granting permissions, running</li>
+<li>Advanced contract search</li>
+<li>Advanced booking search</li>
+<li>Linking contracts to bookings</li>
+</ul>
+
+<h2>28 Dec 2011 - v1.7.1</h2>
+
+<ul>
+<li>Password reminder - you can request your password using the link from login screen</li>
+<li>Shortcut for user profile - new icon in top right corner of any screen</li>
+<li>Showing this very document</li>
+<li>Free form reports based on any query</li>
+</ul>
+

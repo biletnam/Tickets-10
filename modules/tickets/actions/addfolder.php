@@ -8,12 +8,12 @@ if ($id > 0) {
     $_REQUEST['folder_id'] = $id;
     $id = sid($module, 'InsertTicketFolderMapping', $_REQUEST);
     if ($id > 0) {
-      set_cookie('flash', 'Folder added, and ticket is automatically added to it');
+      $_SESSION['flash'] = 'Folder added, and ticket is automatically added to it');
     } else {
-      set_cookie('flash', 'Folder added, but ticket is not automatically added to it');
+      $_SESSION['flash'] = 'Folder added, but ticket is not automatically added to it');
     }
   } else {
-    set_cookie('flash', 'Folder added');
+    $_SESSION['flash'] = 'Folder added');
   }
 } else {
   set_cookie('error', 'Could not add folder');

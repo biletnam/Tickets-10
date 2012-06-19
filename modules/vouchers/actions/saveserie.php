@@ -18,7 +18,7 @@ if ($id <> '') {
         $objVouchers->add_serie_tag(('serie' => $id, 'fulltag' => trim($t)));
       }
     }
-    set_cookie('flash', 'Voucher serie date is updated');
+    $_SESSION['flash'] = 'Voucher serie date is updated');
     go("?p=$module/serie&tab=vouchers&id=$id");
   }
 }

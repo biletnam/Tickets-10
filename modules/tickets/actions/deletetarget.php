@@ -7,7 +7,7 @@ if ($id > 0) {
     $ticket = $targetInfo['ticket'] || 0; 
     $result = $objT->delete_target($id);
     if ($result > 0) {
-      set_cookie('flash', 'Target deleted');
+      $_SESSION['flash'] = 'Target deleted');
     } else {
       set_cookie('error', 'Could not delete target');
     }

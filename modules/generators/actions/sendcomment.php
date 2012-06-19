@@ -39,7 +39,7 @@ if ($gen_id > 0) {
     $sqlParams = array('id' => $gen_id, 'editor' => $r['userID'], 'comment' => $commentary);
     $id = sid($module, 'AddGeneratorComment', $sqlParams);
     if ($id > 0) {
-      set_cookie('flash', 'Comment added');
+      $_SESSION['flash'] = 'Comment added');
       $_REQUEST['id'] = $id;
     } else {
       set_cookie('error', 'Could not add comment');

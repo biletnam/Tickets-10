@@ -17,7 +17,7 @@ if ($id > 0) {
       $objSM->set_employee_avatar(('employee' => $employee));
     }
     $fu->delete_attachment($id);
-    set_cookie('flash', 'Attachment deleted');
+    $_SESSION['flash'] = 'Attachment deleted');
   } else {
     set_cookie('error', 'Could not delete attachment');
   }

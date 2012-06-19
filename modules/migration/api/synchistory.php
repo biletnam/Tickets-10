@@ -26,12 +26,12 @@ if ($table_name == '') {
   push @errors, $runtime->hash2ref( ('code' => 'a2m.InvalidInputParams', 'text' => 'Absolute ID not provided') );
 } else {
   $historyitems = $apiparams['historyitems'] = $runtime->s2a($controller, 'ListSyncHistory', $apiparams);
-  $output = $runtime->dotmod($controller, 'API.synchistory', $apiparams);
+  $output = $runtime->$runtime->txt->do_template($controller, 'API.synchistory', $apiparams);
 }
 
 # Return resulting XML API output - quite similar to all APIs
 print "content-type: $contenttype; charset=$charset;\n\n";
-print $runtime->dotmod($controller, 'Envelope', array(
+print $runtime->$runtime->txt->do_template($controller, 'Envelope', array(
   'result' => $result,
   'output' => $output,
   'warnings' => Arrays::a2xml($warnings, 'Warnings', 'Warning'),

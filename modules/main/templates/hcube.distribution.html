@@ -1,0 +1,17 @@
+<:v:totals>
+
+<form action="" method="get">
+<input type="hidden" name="p" value="<:v:p>" />
+<table class="list">
+  <tr>
+    <th>Dimension</th>
+    <th>&nbsp;</th>
+    <th>Value</th>
+    <th>Items</th>
+  </tr>
+  <:v:dimensions>
+</table>
+<input type="checkbox" name="showlist" <:v:showlistchecked> id="showlist" /><label for="showlist">Show list</label>
+&nbsp;&nbsp;
+<input type="submit" value="Recalculate" />
+</form>

@@ -10,8 +10,8 @@ if ($id <> '') {
   $pageParams['locations'] = arr2ref(genOptions(arr2ref(s2a($module, 'ListLocations')), 'id', 'location_name', $pageParams['location_id']));
 }
 
-$page['js'] .= dotmod('main', 'tabcontrol.js');
-$page->add('css',  dotmod('main', 'tabcontrol.css');
+$page['js'] .= $runtime->txt->do_template('main', 'tabcontrol.js');
+$page->add('css',  $runtime->txt->do_template('main', 'tabcontrol.css');
 $tabHotelBookings = new ctlTab($r, "tcHotelBookings");
 if ($id <> '') {
   $languages = $runtime->s2a($module, 'ListBookingRequestLanguages');

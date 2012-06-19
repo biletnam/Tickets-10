@@ -1,7 +1,7 @@
 <?php
 $id = lavnn('id');
 if ($id > 0) {
-  srun($module, 'UpdateEmpList', $_REQUEST);
+  $runtime->db->sqlrun($module, 'UpdateEmpList', $_REQUEST);
 } else {  
   $id = sid($module, 'InsertEmpList', $_REQUEST);
 }

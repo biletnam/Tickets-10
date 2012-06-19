@@ -18,7 +18,7 @@ if ($id <> '') {
 }
 
 $page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'edithotelprices.title', $pageParams);
-$page->add('css',  dotmod($module, 'hotels.css');
+$page->add('css',  $runtime->txt->do_template($module, 'hotels.css');
 $page->add('main', $runtime->txt->do_template($module, 'edithotelprices', $pageParams);
 
 

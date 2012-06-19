@@ -52,7 +52,7 @@ if ($used_id > 0) {
     $newid = $objT->create_project(%apiparams);
     if ($newid > 0) {
       $projectInfo = $runtime->s2r($controller, 'GetProjectInfo', array('id' => $newid));
-      $output = $runtime->dotmod($controller, 'API.CreateProject', $projectInfo);
+      $output = $runtime->$runtime->txt->do_template($controller, 'API.CreateProject', $projectInfo);
     } else {
       $result = 'ERR'; 
       push @errors, $runtime->hash2ref( ('code' => 'CreateProject.Failure', 'text' => 'Could not create a project with given parameters') );
@@ -68,7 +68,7 @@ if ($used_id > 0) {
 
 # Return resulting XML API output - quite similar to all APIs
 print "content-type: $contenttype; charset=$charset;\n\n";
-print $runtime->dotmod($controller, 'API.Envelope', array(
+print $runtime->$runtime->txt->do_template($controller, 'API.Envelope', array(
   'result' => $result,
   'output' => $output,
   'warnings' => Arrays::a2xml($warnings, 'Warnings', 'Warning'),

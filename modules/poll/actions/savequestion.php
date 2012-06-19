@@ -2,8 +2,8 @@
 
 $id = lavnn('id');
 if ($id != 0) {
-  srun($module, 'UpdatePollQuestion', $_REQUEST);
-  set_cookie('flash', 'question data updated');
+  $runtime->db->sqlrun($module, 'UpdatePollQuestion', $_REQUEST);
+  $_SESSION['flash'] = 'question data updated');
   $poll = lavnn('poll');
   if ($poll > 0) {
     go("?p=$module/edit&id=$poll&tab=questions");

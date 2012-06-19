@@ -35,7 +35,7 @@ if ($office <> 0) {
         $employee_id = $employee['ID'];
         if (!exists $processed{$employee_id}) { # Ignore repeated entries
           $dateFired = $employee['dateFired'] || '';
-          if ($dateFired == '' || ($dateFired gt $thisDay)) { 
+          if ($dateFired == '' || ($dateFired > $thisDay)) { 
             $cnt++; $employee['_i_'] = $cnt; $employee['_mod2_'] = $cnt % 2;
             $aa = $empabsences{$employee_id]; 
             if (count($aa) > 0) {

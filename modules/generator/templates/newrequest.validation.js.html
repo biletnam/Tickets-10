@@ -1,0 +1,46 @@
+function validateNewRequestForm(f) {
+  if (f.sender_name.value == '') {
+    alert('<:l:sender_name>');
+    f.sender_name.focus();
+  } else if (f.sender_email.value == '') {
+    alert('<:l:sender_email>');
+    f.sender_email.focus();
+  } else if(f.location_id.value == '') {
+    alert('<:l:location>');
+  } else if(f.hotel.value == '') {
+    alert('<:l:hotel>');
+  } else if(f.arrdate.value == '') {
+    alert('<:l:arrdate>');
+    f.arrdate.focus();
+  } else if(f.depdate.value == '') {
+    alert('<:l:depdate>');
+    f.depdate.focus();
+  } else if (f.fname1.value == '') {
+    alert('<:l:fname1>');
+    f.fname1.focus();
+  } else if(f.lname1.value == '') {
+    alert('<:l:lname1>');
+    f.lname1.focus();
+  } else if(f.nationality.value == '') {
+    alert('<:l:nationality>');
+    f.nationality.focus();
+  } else if(f.dob1.value == '') {
+    alert('<:l:dob1>');
+    f.dob1.focus();
+  } else if(f.rel1.value == '') {
+    alert('<:l:rel1>');
+    f.rel1.focus();
+  } else if(f.job1.value == '') {
+    alert('<:l:occup1>');
+    f.occup1.focus();
+  } else if(f.homephone.value + f.workphone.value + f.mobilephone.value == '') {
+    alert('<:l:phone1>');
+    if (f.homephone.value == '') {
+      f.homephone.focus();
+    } else if (f.workphone.value == '') {
+      f.workphone.focus();
+    }
+  } else {
+    f.submit();
+  }
+}

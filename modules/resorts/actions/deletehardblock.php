@@ -6,7 +6,7 @@ if ($id > 0) {
   $hardblockInfo = $runtime->s2r($module, 'GetHardBlockInfo', $_REQUEST);
   if (count($hardblockInfo) > 0) {
     $hotel = $hardblockInfo['hotel_id'];
-    srun($module, 'DeleteHardBlock', $_REQUEST);
+    $runtime->db->sqlrun($module, 'DeleteHardBlock', $_REQUEST);
   }
 }
 if ($hotel > 0) {

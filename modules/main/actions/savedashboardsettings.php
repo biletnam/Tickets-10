@@ -4,11 +4,11 @@ $_REQUEST['dashboard_notificationage'] ||= $_CONFIG['DEFAULT_DASHBOARD_NOTIFICAT
 $_REQUEST['user_id'] = $r['userInfo']['staff_id'];
 $existingData = $runtime->s2r('main', 'GetUserData', array('id' => $r['userInfo']['staff_id']));
 if (count($existingData) > 0) {
-  srun('main', 'UpdateDashboardSettings', $_REQUEST);
+  $runtime->db->sqlrun('main', 'UpdateDashboardSettings', $_REQUEST);
 } else {
-  srun('main', 'InsertDashboardSettings', $_REQUEST);
+  $runtime->db->sqlrun('main', 'InsertDashboardSettings', $_REQUEST);
 }
-set_cookie('flash', 'Dashboard settings saved');
+$_SESSION['flash'] = 'Dashboard settings saved');
 
 go('?p=main/dashboard&tab=settings');
 

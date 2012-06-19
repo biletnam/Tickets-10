@@ -1,0 +1,20 @@
+<h1>Add more selectors</h1>
+
+<p>Below, you can select hotels.</p>
+
+<table width="100%">
+  <tr valign="top">
+    <td>
+      <h2>Start from location</h2>
+      <form id="frm_linkhotels_<:v:controlname>_location">
+        <input type="hidden" name="source_link" id="linkhotels_<:v:controlname>_location_sourcelink" value="<:v:src>">
+        <select name="location" id="linkhotels_<:v:controlname>_location_location" onchange="loadHotels('<:v:controlname>', this.value);">
+          <option value="">Choose location</option>
+          <:a:locationoptions|looptemplate?module=main&name=option>
+        </select>
+        <div id="linkhotels_<:v:controlname>_listhotels">
+        </div>
+      </form>
+    </td>
+  </tr>  
+</table>

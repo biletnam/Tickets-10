@@ -1,0 +1,50 @@
+<p>&nbsp;</p>
+
+<form action="" method="get">
+<input type="hidden" name="p" value="<:v:_module_>/contracts" />
+<table class="form">
+  <:v:generatorselection>
+  <tr>
+    <th><:l:resort></th>
+    <td>
+      <select name="office_id">
+        <option value=""><:l:allresorts></option>
+        <:a:officeoptions|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th><:l:date></th>
+    <td>
+      <:l:from> <input name="date_from" class="calendardate" title="Click to select date" id="date_from" value="<:v:date_from>" size="10" maxlength="10" />
+      <:l:till> <input name="date_to" class="calendardate" title="Click to select date" id="date_to" value="<:v:date_to>" size="10" maxlength="10" />
+    </td>
+  </tr>
+  <tr>
+    <th><:l:status></th>
+    <td>
+      <select name="status" id="status">
+        <option value=""><:l:all></option>
+        <option value="0,1,4,5,6,7,8,12,13,2,11,14,15"><:l:active></option>
+        <option value="3,9,16,17"><:l:cancel></option>
+        <option value="10"><:l:complete></option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>
+      <input type="submit" style="background-color: #dddddd" name="show" value="<:l:show>">
+    </td>
+  </tr>
+</table>
+</form>
+
+<script>
+$('#first_gen_id').val('<:v:first_gen_id>');
+$('#status').val('<:v:status>');
+$('#date_from').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1, yearRange: 'c-20:c+0']);
+$('#date_to').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1, yearRange: 'c-20:c+1']);
+</script>
+
+<:v:contractlist>

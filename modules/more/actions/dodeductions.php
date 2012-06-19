@@ -10,7 +10,7 @@ foreach $ref (@refs) {
     'amount' => $amount,
     'comment' => $comment,
   );
-  srun($module, 'InsertMobileBillDeduction', $sqlParams);
+  $runtime->db->sqlrun($module, 'InsertMobileBillDeduction', $sqlParams);
 }
 go("?p=$module/lastdeductions");
 ?>

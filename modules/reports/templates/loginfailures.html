@@ -1,0 +1,30 @@
+<h1><:v:pagetitle></h1>
+
+<p>You can filter user types to see registered login failures:</p>
+
+<form action="" id="frmFilterLoginFailures">
+<input type="hidden" name="p" value="<:v:_module_>/loginfailures">
+<table class="form" width="100%">
+  <tr>
+    <th>User types:</th>
+    <td><:a:typecheckboxes|looptemplate?module=main&name=checkbox.nonewline></td>
+  </tr>
+
+  <tr>
+    <td>&nbsp;</td>
+    <td>
+      <input type="submit" name="btnFilterLoginFailures" id="btnFilterLoginFailures" value="Reload" />
+    </td>
+  </tr>
+</table>
+</form>
+
+<:v:results>
+
+<p>Also, here are shortcuts to pageview statistics for successful logins:</p>
+<ul>
+  <li><a href="?p=reports/pageviews&viewer_type=U&entity_type=employee_login&pageviews_sort=-5">Employees</a></li>
+  <li><a href="?p=reports/pageviews&viewer_type=G&entity_type=gen_user_login&pageviews_sort=-5">Generators</a></li>
+  <li><a href="?p=reports/pageviews&viewer_type=C&entity_type=client_login&pageviews_sort=-5">Clients</a></li>
+</ul>
+

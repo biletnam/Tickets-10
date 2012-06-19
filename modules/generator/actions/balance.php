@@ -90,16 +90,16 @@ if ($gen_user_id > 0) {
     }
 
   } else {
-    $page['flash'] .= dotmod('main', 'error', array('error' => dot('error.balance.datemissing')));
+    $page['flash'] .= $runtime->txt->do_template('main', 'error', array('error' => dot('error.balance.datemissing')));
   }
 
   # register pageview
-  srun('main', 'RegisterPageview', array('entity_type' => 'balance', 'entity_id' => 0, 'viewer_type' => 'G', 'viewer_id' => $gen_user_id));
+  $runtime->db->sqlrun('main', 'RegisterPageview', array('entity_type' => 'balance', 'entity_id' => 0, 'viewer_type' => 'G', 'viewer_id' => $gen_user_id));
 
 }
 
 $page->add('main', $runtime->txt->do_template($module, 'balance', $pageParams);
 $page['baseurl'] = $pageParams['baseurl'];
-print dotmod($module, 'index', $page);
+print $runtime->txt->do_template($module, 'index', $page);
 
 ?>

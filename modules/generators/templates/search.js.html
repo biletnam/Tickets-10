@@ -1,0 +1,48 @@
+// Common handler for submitting forms
+$(function() {
+  //ondomload
+  $("#btnSearchGenerators").click(function() {
+    //Get the data from all the fields  
+    var data = 'i=<:v:_module_>/searchresults';
+    var name = $('input[name=name]');  
+    if (name.val() != undefined) {
+      data = data + '&name=' + name.val();
+    }
+    if (data == 'i=<:v:_module_>/searchresults') {
+      alert('Please specify some search parameter(s)');
+      return false;
+    }
+
+    var t = $(this);
+    t.find("input[type=button]")
+      .after('<div id="working">working...</div>')
+      .hide();
+
+    $('#pleasewait').show();
+    //start the ajax  
+    $.ajax({  
+        //this is the php file that processes the data and send mail  
+        url: "index.pl",   
+          
+        //GET method is used  
+        type: "GET",  
+
+        //pass the data           
+        data: data,       
+          
+        //Do not cache the page  
+        cache: false,  
+        
+        success: function (html) {
+          $('#searchresults').html(html);
+          $('#pleasewait').hide();
+          $('#working').hide();
+          $("#btnSearchGenerators").show();
+        }
+          
+    });
+    
+    return false;
+    
+  });
+});

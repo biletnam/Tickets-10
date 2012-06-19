@@ -1,0 +1,100 @@
+<table class="list" width="100%">
+  <tr>
+    <th>Created</th>
+    <th>Status</th>
+    <th>Issue</th>
+    <th>Actors</th>
+    <th>&nbsp;</th>
+  </tr>
+<:a:issues|looptemplate?name=viewmeeting.issues.listitem>
+</table>
+
+<h2>Import issues</h2>
+
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/importmeetingissues" />
+<input type="hidden" name="meeting" value="<:v:id>" />
+<table class="form">
+  <tr>
+    <th>From another meeting:</th>
+    <td>
+      <select name="copyfrom">
+        <option value=""></option>
+<:a:copyfromoptions|looptemplate?module=main&name=option>        
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th>By IDs (comma-separated):</th>
+    <td><input type="text" name="tickets" size="50" maxlength="250" /></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Save" /></td>
+  </tr>
+</table>
+</form>
+
+<h2>New issue</h2>
+
+<p>You might want to refresh this page to see correct list of participants!</p>
+
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/createmeetingissue" />
+<input type="hidden" name="meeting" value="<:v:id>" />
+<table class="form">
+  <tr>
+    <th>Title</th>
+    <td><input type="text" name="title"></td>
+  </tr>
+  <tr>
+    <th>Details</th>
+    <td><textarea name="contents" rows="3" cols="80"></textarea></td>
+  </tr>
+  <tr>
+    <th>Due date</th>
+    <td><input type="text" class="calendardate" title="Click to select date" id="duedate" name="duedate" size="10" maxlength="10" /></td>
+  </tr>
+  <tr>
+    <th>Priority</th>
+    <td>
+      <select name="priority">
+        <option value=""></option>
+        <:a:priorityoptions|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th>Responsible person</th>
+    <td>
+      <select name="creator">
+        <option value="">none (no action needed)</option>
+        <:a:participantoptions|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th>Notification list</th>
+    <td><:a:participants|looptemplate?module=main&name=checkbox.nonewline></td>
+  </tr>
+  <tr>
+    <th>Revision date</th>
+    <td><input type="text" class="calendardate" title="Click to select date" id="revision" name="revision" size="10" maxlength="10" /></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Save" /></td>
+  </tr>
+</table>
+</form>
+
+<script>
+$('a.tickettooltip').cluetip({
+  width: 720,
+  sticky: true,
+  closePosition: 'title',
+  mouseOutClose: true
+});
+$('#duedate').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+$('#revision').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+</script>

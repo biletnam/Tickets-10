@@ -1,0 +1,5 @@
+<p>This person is fired since <:v:dateFired|dateformat?format=shortdate>.</p>
+<p>Type: <:v:lngFireType|lookupdict?module=&name=firetype>; reason: "<:v:strFiredReason>".</p>
+
+<:_:movetickets|stopifempty:varname=outstanding_tickets|forwardtemplate?module=&name=employee.edit.movetickets>
+<:_:movestaff|stopifempty:varname=related_staff|forwardtemplate?module=&name=employee.edit.movestaff>

@@ -1,0 +1,23 @@
+
+<form action="" method="index.pl">
+<input type="hidden" name="f" value="<:v:_module_>/savereminder" />
+<input type="hidden" name="id" value="<:v:id>">
+<table class="form">
+  <tr>
+    <th>Date</th>
+    <td><input type="text" size="10" maxlength="10" class="calendardate" id="event_date_<:v:id>" name="event_date" value="<:v:event_date|dateformat?format=fulldate>" /></td>
+  </tr>
+  <tr>
+    <th>Text</th>
+    <td><input type="text" size="60" maxlength="250" name="event_text"></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Save" /></td>
+  </tr>
+</table>
+</form>
+
+<script>
+$('#event_date_<:v:id>').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+</script>

@@ -9,9 +9,9 @@ if ($hotelid > 0) {
     go("?p=$module/edithotel&id=$hotelid&tab=prices");
   } else {
     if ($op == 'delete') { 
-      srun($module, 'DeletePricesHistory', array('ids' => $priceids, 'editor' => $r['userInfo']['staff_id']));    
-      srun($module, 'DeletePrices', array('ids' => $priceids));
-      set_cookie('flash', dot('flash.price.deleted'));
+      $runtime->db->sqlrun($module, 'DeletePricesHistory', array('ids' => $priceids, 'editor' => $r['userInfo']['staff_id']));    
+      $runtime->db->sqlrun($module, 'DeletePrices', array('ids' => $priceids));
+      $_SESSION['flash'] = dot('flash.price.deleted'));
     }
   }
   go("?p=$module/edithotel&id=$hotelid&tab=prices");

@@ -49,21 +49,21 @@ if ($password == $newpassword) {
     $result = 'ERR'; 
     push @errors, $runtime->hash2ref( ('code' => 'ChangePassword.InvalidOldPassword', 'text' => 'Wrong old password was provided') );
   } else {
-    $runtime->srun($controller, 'ChangeMemberPassword', array('client_id' => $memberData['client_id'], 'newpassword' => $newpassword));
+    $runtime->($controller, 'ChangeMemberPassword', array('client_id' => $memberData['client_id'], 'newpassword' => $newpassword));
     # try the new password to confirm the successful change
     $memberData = $runtime->s2r($controller, 'CheckMemberLogin', array('username' => $username, 'password' => $newpassword));
     if (count($memberData) == 0) {
       $result = 'ERR'; 
       push @errors, $runtime->hash2ref( ('code' => 'ChangePassword.UpdateFailure', 'text' => 'Could not update the database') );
     } else {
-      $output = $runtime->dotmod($controller, 'API.ChangePassword', $apiparams);
+      $output = $runtime->$runtime->txt->do_template($controller, 'API.ChangePassword', $apiparams);
     }  
   }
 }
 
 # Return resulting XML API output - quite similar to all APIs
 print "content-type: $contenttype; charset=$charset;\n\n";
-print $runtime->dotmod($controller, 'API.Envelope', array(
+print $runtime->$runtime->txt->do_template($controller, 'API.Envelope', array(
   'result' => $result,
   'output' => $output,
   'warnings' => Arrays::a2xml($warnings, 'Warnings', 'Warning'),

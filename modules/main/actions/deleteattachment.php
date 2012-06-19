@@ -14,7 +14,7 @@ if ($id > 0) {
     $entity_type = $attachmentInfo['entity_type'];
     $entity_id = $attachmentInfo['entity_id'];
     $fu->delete_attachment($id);
-    $runtime->set_cookie('flash', 'Attachment deleted');
+    $runtime->$_SESSION['flash'] = 'Attachment deleted');
     if ($entity_type <> '' && $entity_id > 0) {
       $url = $objE->getUrl((
         'entity_type' => $entity_type,

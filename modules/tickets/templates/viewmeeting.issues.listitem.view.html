@@ -1,0 +1,13 @@
+  <tr class="mod2_<:v:_mod2_>" valign="top">
+    <td style="border-top: dotted 1px black;"><:v:DateCreated|dateformat?format=fulldate></td>
+    <td style="border-top: dotted 1px black;">
+      <a 
+        id="issues_ticketlink_<:v:id>" 
+        href="javascript: showAjaxPopup({url: '?i=<:v:_module_>/tooltip&id=<:v:id>', width:800, id:'issues_ticketlink_<:v:id>']);" 
+        title="Click to preview"
+      ><img src="../images/icons/preview.png" border="0" height="16" width="16" /></a> 
+      <a href="?p=<:v:_module_>/viewticket&id=<:v:id>"><strong><:v:title|untitled></strong></a><br />
+      <:v:contents|paragraphs>
+    </td>
+    <td style="border-top: dotted 1px black;" colspan="2"><:v:Participants></td>
+  </tr>

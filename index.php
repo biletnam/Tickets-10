@@ -182,13 +182,13 @@ if ($fwd <> '') {
       $flashmessage = get_cookie("flash", $_REQUEST, '');
       $page['easteregg'] = get_cookie("easteregg", $_REQUEST, '');
       if ($errormessage <> '') {
-        $page['flash'] .= dotmod('main', 'error', array('error' => $errormessage));
+        $page['flash'] .= $runtime->txt->do_template('main', 'error', array('error' => $errormessage));
       } 
       if ($flashmessage <> '') {
-        $page['flash'] .= dotmod('main', 'flash', array('flash' => $flashmessage));
+        $page['flash'] .= $runtime->txt->do_template('main', 'flash', array('flash' => $flashmessage));
       }
       set_cookie('error', '');
-      set_cookie('flash', '');
+      $_SESSION['flash'] = '');
       set_cookie('easteregg', '');
       set_cookie('sessionID', $sessionID);
       $runtime->set_this_page($thispage);

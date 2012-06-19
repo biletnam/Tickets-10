@@ -1,0 +1,20 @@
+  <tr class="mod2_<:v:_mod2_>">
+    <td><a title="Click to list staff in the office" href="?p=profiles/office&office=<:v:OfficeID>"><:v:OfficeName></a></td>
+    <td><img src="../images/icons/sex.<:v:lngSex|lookupdict?module=main&name=gender>.png" title="<:v:lngSex|lookupdict?module=main&name=gender>" /></td>
+    <td><span onclick="g('?p=profiles/employee&id=<:v:ID>');" title="Click to view employee profile" style="cursor: pointer;"><:v:strNick></span></td>
+    <td><a href="?p=profiles/employee&id=<:v:ID>" title="Click to view employee profile"><img src="../images/icons/zoom.png" border="0" /></a></td>
+    <td><span onclick="g('?p=profiles/employee&id=<:v:ID>');" title="Click to view employee profile" style="cursor: pointer;"><:v:strFirstName> <b><:v:strLastName></b></span></td>
+    <td>
+      <:_:linemanager|stopifempty:varname=line_manager|forwardtemplate?module=&name=searchresults.listitem.linemanager>
+    </td>
+    <td>
+      <:_:deputystaff|stopifempty:varname=deputy_staff|forwardtemplate?module=&name=searchresults.listitem.deputystaff>
+    </td>
+    <td><:v:strLocalMobilePhone></td>
+    <td>
+      <:_:email|stopifempty:varname=strLocalOfficeEmail|forwardtemplate?module=&name=searchresults.listitem.email>
+      <:_:yahoo|stopifempty:varname=yahoo_id|forwardtemplate?module=&name=searchresults.listitem.yahoo>
+    </td>
+
+    <td><:_:AbsenceCalendarID|stopifempty:varname=AbsenceCalendarID|forwardtemplate?module=&name=searchresults.listitem.absences></td>
+  </tr>

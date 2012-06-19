@@ -6,7 +6,7 @@ if ($id > 0) {
   $obligationInfo = $runtime->s2r($module, 'GetObligationData', $_REQUEST);
   if (count($obligationInfo) > 0) {
     $product_id = $obligationInfo['product_id'] || 0;
-    srun($module, 'DeleteProductObligation', $_REQUEST);
+    $runtime->db->sqlrun($module, 'DeleteProductObligation', $_REQUEST);
     if ($product_id > 0) {
       go("?p=$module/view&id=$product_id&tab=obligations");
     } else {

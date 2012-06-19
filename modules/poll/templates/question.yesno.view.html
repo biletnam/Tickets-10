@@ -1,0 +1,13 @@
+<table class="pollquestion" width="100%">
+  <tr>
+    <th width="30%"><:v:question></th>
+    <td width="70%">
+      <input type="hidden" name="questions" value="<:v:id>">
+      <input type="hidden" name="type_<:v:id>" value="yesno">
+      <input type="hidden" name="answer_id_<:v:id>" value="<:v:answer_id>" />
+      <select name="answer_<:v:id>">
+        <:a:yesnooptions|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>
+</table>

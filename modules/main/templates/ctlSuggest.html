@@ -1,0 +1,28 @@
+<input type="text" class="peoplesearch" title="<:v:control_tooltip>" id="<:v:control_id>" />
+
+<script>
+$('#<:v:control_id>').jsonSuggest(
+  function(text, wildCard, caseSensitive, notCharacter) { 
+    rez = $.ajax({ 
+      type: 'GET', 
+      url: 'index.pl', 
+      data: 'json=main/suggest&type=<:v:suggest_type>&q=' + text, 
+      dataType: 'json', 
+      async: false 
+    }); 
+    return eval(rez.responseText); 
+  }, 
+  { 
+    ajaxResults: true,
+    minCharacters: 2,
+    onSelect: callback_<:v:control_name>
+  }
+);
+
+function callback_<:v:control_name>(item) {
+	var a = '<a onclick="' + "$('#<:v:control_id>_container').remove(); $('#<:v:control_id>').val('').show();" + '" style="text-decoration: none;" title="click to remove"> X </a>';
+	$('#<:v:control_id>')
+    .after('<div id="<:v:control_id>_container" class="suggesteditem clearfix"><div class="suggestedname"><input type="hidden" name="<:v:control_name>" value="' + item.id + '">' + item.text + ' &nbsp; </div><div class="suggestedclose">' + a + '</div></div>')
+    .hide();
+}
+</script>

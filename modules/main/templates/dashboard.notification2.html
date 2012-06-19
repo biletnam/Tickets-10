@@ -1,0 +1,29 @@
+<div class="notification mod2_<:v:_mod2_>" id="n_<:v:id>">
+  <div class="notification_subject clearfix" id="ns_<:v:id>">
+    <div class="notification_showdetails" id="ns_show_<:v:id>">
+      <img src="../images/icons/button.down.png" width="16" height="16" valign="top" />
+      <a href="javascript:read_notification(<:v:id>, <:v:mail_recipient_id>);">Show Details</a>
+    </div>
+    <div class="notification_date">
+      <:v:DateCreated|dateformat?format=minutes>
+    </div>
+    <div class="notification_summary" id="ns_summary_<:v:id>">
+      <:v:subjhtml>
+    </div>
+  </div>
+  <div class="notification_details clearfix" id="nd_<:v:id>">
+    <div class="notification_details_keep_unread">
+      <img src="../images/icons/delete.png" width="16" height="16" valign="top" />
+      <a href="javascript:forget_notification(<:v:id>, <:v:mail_recipient_id>);">Forget</a> &nbsp;
+      <img src="../images/icons/reload.png" width="16" height="16" valign="top" />
+      <a href="javascript:unread_notification(<:v:id>, <:v:mail_recipient_id>);">Keep unread</a>
+    </div>
+    <div class="notification_details_text"><:v:digest></div>
+  </div>
+</div>
+<script>
+  $('#nd_<:v:id>').hide();
+  if ('<:v:is_unread>' == '1') {
+    $('#ns_summary_<:v:id>').css('font-weight', 'bold');
+  }
+</script>

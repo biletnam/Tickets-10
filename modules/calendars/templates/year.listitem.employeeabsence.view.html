@@ -1,0 +1,13 @@
+  <div class="yearview_event mod2_<:v:_mod2_> clearfix" id="event_<:v:id>">
+    <div class="yearview_event_weekday">
+      <:v:DoW|lookupdict?module=main&name=weekday>
+    </div>
+    <div class="yearview_event_date">
+      <:v:D|padnumber:length=2>.<:v:M|padnumber:length=2>.<:v:Y>
+    </div>
+    <div class="yearview_event_description" id="event_description_<:v:id>">
+      <span class="yearview_event_employeeabsence_qty"><strong><:v:qty></strong> day(s) of </span>
+      <span class="yearview_event_employeeabsence_day_type" id="daytype_<:v:id>"><strong><:v:day_type_name></strong></span>
+      (<:v:description>)
+    </div>
+  </div>

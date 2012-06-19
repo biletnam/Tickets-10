@@ -1,0 +1,16 @@
+<Product>
+  <ContractNumber><:v:contract_no></ContractNumber>
+  <ContractStatus><:v:status_name></ContractStatus>
+  <ProvisionalObligations>
+    <:a:provisionalobligations|looptemplate?name=API.ProductProvisionalObligation>
+  </ProvisionalObligations>
+  <Obligations>
+    <:a:obligations|looptemplate?name=API.ProductObligation>
+  </Obligations>
+  <UsedHistory>
+    <:a:usages|looptemplate?name=API.ProductUsage>
+  </UsedHistory>
+  <Gifts>
+    <:a:gifts|looptemplate?name=API.ContractGift>
+  </Gifts>
+</Product>

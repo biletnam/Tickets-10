@@ -1,0 +1,101 @@
+<form method="post" action="">
+<input type="hidden" name="f" value="<:v:_module_>/multi" />
+<input type="hidden" name="op" value="" />
+<input type="hidden" name="serie" value="<:v:id>" />
+<table class="list" width="100%">
+  <tr>
+    <th>&nbsp;</th>
+    <th>
+      <input type="checkbox" onclick="checkAllBoxes(this.form, 'id_', this.checked);"  /> 
+      Reference
+    </th>
+    <th>Created</th>
+    <th colspan="2">Owner</th>
+    <th colspan="2">Doc. location</th>
+    <th>History</th>
+    <th>Written off</th>
+  </tr>
+  <:a:vouchers|looptemplate?name=serie.vouchers.listitem>
+</table>
+
+
+<script>
+$('a.dochistorytooltip').cluetip({
+  width: 720,
+  sticky: true,
+  closePosition: 'title',
+  mouseOutClose: true
+});
+</script>
+
+<p>
+With selected vouchers:
+<select name="op2" onchange="this.form.op.value = this.value; if (this.value != 'delete' || confirm('Really deleted selected items?')) { this.form.submit(); }">
+  <option value=""></option>
+  <option value="delete">Delete</option>
+</select>
+or:
+</p>
+
+<table class="form">
+  <tr>
+    <td><img src="../images/VoucherSetLocation.png" /></td>
+    <td>Set location:</td>
+    <td>
+      <select name="doc_location_type" onchange="$('#location_chooser').load('?i=<:v:_module_>/ajaxlocation&type=' + this.value);">
+        <option value="">Choose location type</option>
+        <option value="hotel">Hotel</option>
+        <option value="provider">Provider</option>
+        <option value="stock">Stock</option>
+        <option value="employee">Employee</option>
+      </select>
+    </td>
+    <td>
+      <div id="location_chooser">
+        ...
+      </div>
+    </td>
+    <td>
+      Delivering by <input type="text" name="delivery_method" title="Type in the delivery method" />
+    </td>
+    <td><input type="button" value="Set" onclick="this.form.op.value='setlocation'; this.form.submit();" /></td>
+  </tr>
+</table>
+
+<p>or</p>
+
+<table class="form">
+  <tr>
+    <td><img src="../images/VoucherSetOwner.png" /></td>
+    <td>Set ownership:</td>
+    <td>
+      <select name="owner_type" onchange="$('#owner_chooser').load('?i=<:v:_module_>/ajaxowner&type=' + this.value);">
+        <option value="">Choose owner type</option>
+        <option value="owner">Internal Company</option>
+        <option value="client">Client</option>
+        <option value="employee">Employee</option>
+      </select>
+      &nbsp;
+      <span id="owner_chooser">
+        ...
+      </span>
+      <p>
+      Date * <input type="text" id="owner_change_date" name="owner_change_date" title="Click to select date (keep blank to use current date)" size="10" maxlength="10" class="calendardate" />
+      </p>
+      <p>
+      Delivering by <input type="text" name="owner_delivery_method" title="Type in the delivery method" />
+      </p>
+    </td>
+    <td>
+      <input type="button" value="Set" onclick="this.form.op.value='setowner'; this.form.submit();" />
+    </td>
+  </tr>
+  <tr>
+    <td colspan="4"><p>* Keeping date field blank will automatically put current date. Change date if ownership changes on the other date</p></td>
+  </tr>
+</table>
+</form>
+
+<script>
+$('#owner_change_date').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+</script>

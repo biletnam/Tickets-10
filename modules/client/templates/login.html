@@ -1,0 +1,22 @@
+<h1><:v:pagetitle></h1>
+
+<p>Welcome to Absolute client pages! You need to authorize yourself:<p>
+
+<form action="client.pl" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/checklogin" />
+<input type="hidden" name="nextUrl" value="<:v:url>" />
+<table class="form">
+  <tr>
+    <th>Client ID</th>
+    <td><input type="text" name="client_id" /></td>
+  </tr>
+  <tr>
+    <th>Password</th>
+    <td><input type="password" name="password" /></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><input type="submit" value="Login" /></td>
+  </tr>
+</table>
+</form>

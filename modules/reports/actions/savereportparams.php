@@ -5,7 +5,7 @@ if ($report > 0) {
   # TODO update existing (and updated via drity flag) descriptions
   $ids = lavnn('dirty');
   foreach $id (@ids) { 
-    srun($module, 'UpdateParameter', array(
+    $runtime->db->sqlrun($module, 'UpdateParameter', array(
       'id' => $id,
       'name' => lavnn("name_$id"), 
       'prompt' => lavnn("prompt_$id"),
@@ -29,7 +29,7 @@ if ($report > 0) {
       'description' => $newdescription,
       'mandatory' => $newmandatory
     ));
-    set_cookie('flash', 'New parameter added!') if ($newid > 0);
+    $_SESSION['flash'] = 'New parameter added!') if ($newid > 0);
   }
 
   go("?p=reports/editreport&id=$report&tab=params");

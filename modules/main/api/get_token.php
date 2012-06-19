@@ -73,8 +73,8 @@ if ($usertype == '' || $userid == '') {
       $scrambled = $userid + 123456; # Additional funny obstacle
       $md5hash = md5_hex($usertype.$scrambled.rand(100));
       $token = $apiparams['access_token'] = "$usertype:$scrambled:$md5hash";
-      $runtime->srun($controller, 'IssueAccessToken', $apiparams);
-      $runtime->srun($controller, 'RenewAccessToken', $apiparams);
+      $runtime->($controller, 'IssueAccessToken', $apiparams);
+      $runtime->($controller, 'RenewAccessToken', $apiparams);
     }
     $output = "<GetToken><Token>$token</Token></GetToken>";
   } else {
@@ -85,7 +85,7 @@ if ($usertype == '' || $userid == '') {
 
 # Return resulting XML API output - quite similar to all APIs
 print "content-type: $contenttype; charset=$charset;\n\n";
-print $runtime->dotmod($controller, 'API.Envelope', array(
+print $runtime->$runtime->txt->do_template($controller, 'API.Envelope', array(
   'result' => $result,
   'output' => $output,
   'warnings' => Arrays::a2xml($warnings, 'Warnings', 'Warning'),

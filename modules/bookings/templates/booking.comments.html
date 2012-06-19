@@ -1,0 +1,26 @@
+<table class="list" width="100%">
+  <tr>
+    <th>Entered by</th>
+    <th>Date</th>
+    <th>Comment</th>
+    <th>&nbsp;</th>
+  </tr>
+  <:a:comments|looptemplate?name=booking.comments.listitem>
+</table>
+
+<h2>Add comment</h2>
+
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/savebookingcomment" />
+<input type="hidden" name="book_id" value="<:v:book_id>" />
+<table class="form">
+  <tr>
+    <th>Comment:</th>
+    <td><textarea name="comment" rows="3" cols="60"></textarea></td>
+  <tr>
+  </tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Save" /></td>
+  </tr>
+</table>
+</form>

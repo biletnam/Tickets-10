@@ -1,0 +1,30 @@
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/savetable" />
+<input type="hidden" name="id" value="<:v:id>" />
+<table class="form">
+  <tr>
+    <th>Table name</th>
+    <td><input type="text" name="table_name" value="<:v:table_name>"></td>
+  </tr>
+  <tr>
+    <th>Include dates?</th>
+    <td>
+      <select name="include_dates">
+        <:a:datesoptions|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th>Include numbers?</th>
+    <td>
+      <select name="include_numbers">
+        <:a:numbersoptions|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Save" /></td>
+  </tr>
+</table>
+</form>

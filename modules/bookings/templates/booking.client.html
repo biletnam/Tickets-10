@@ -1,0 +1,31 @@
+<table class="form">
+  <tr>
+    <th>Reference</th>
+    <td><:v:ref_no></td>
+  </tr>
+  <tr>
+    <th>Status and comment</th>
+    <td>
+      <form action="">
+        <select name="status"><:v:statusoptions|looptemplate?module=main&name=option></select>
+        <input type="text" name="status_comment" />
+      </form>
+    </td>
+  </tr>
+  <tr>
+    <th>Hotel</th>
+    <td><:v:hotel_name></td>
+  </tr>
+  <tr>
+    <th>Apartment</th>
+    <td><:v:type_name></td>
+  </tr>
+  <tr>
+    <th>Arrival</th>
+    <td><:v:date_from|dateformat?format=fulldate></td>
+  </tr>
+  <tr>
+    <th>Departure</th>
+    <td><:v:date_to|dateformat?format=fulldate></td>
+  </tr>
+</table>

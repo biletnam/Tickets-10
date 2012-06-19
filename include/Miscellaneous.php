@@ -131,7 +131,7 @@ function genMenu {
       $key = $lineparts[0]; $title = $lineparts[1]; $url = $lineparts[2];
       $hash = array('url' => $url, 'selected' => ($key == $level2selector ? 'selected' : ''), 'title' => $title);
       if ($url <> '' || $title <> '') {
-        push @level1items, dotmod('main', 'navigation.level1.item', $hash);
+        push @level1items, $runtime->txt->do_template('main', 'navigation.level1.item', $hash);
       }    
     }
   }
@@ -152,20 +152,20 @@ function genMenu {
         $filename = "modules/$module/templates/$template.html";
         if (-e $filename) {
           $hash = array('text' => $txt->doText($fs->getFileContents($filename), $_REQUEST), 'align' => $align);
-          push @level2items, dotmod('main', 'navigation.level2.text', $hash);
+          push @level2items, $runtime->txt->do_template('main', 'navigation.level2.text', $hash);
         }
       } else {
         $url = $lineparts[2]; 
         $hash = array('url' => $url, 'align' => $align, 'title' => $title);
         if ($url <> '' || $title <> '') {
-          push @level2items, dotmod('main', 'navigation.level2.link', $hash);
+          push @level2items, $runtime->txt->do_template('main', 'navigation.level2.link', $hash);
         }    
       }
     }
   }
   $level2 = array('menuitems' => join('', @level2items));
   
-  return dotmod('main', 'navigation.level1', $level1).dotmod('main', 'navigation.level2', $level2);
+  return $runtime->txt->do_template('main', 'navigation.level1', $level1).$runtime->txt->do_template('main', 'navigation.level2', $level2);
 }
 
 function join_request_array {

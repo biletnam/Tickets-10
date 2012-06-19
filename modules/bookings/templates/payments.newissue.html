@@ -1,0 +1,52 @@
+<p style="color: red;">
+Not all invoices are issued.
+</p>
+
+<div id="a2"><p><a href="javascript:$('#a2').hide(); $('#b2').show();">Make new issue</a></p></div>
+<div id="b2">
+<h2>New issue</h2>
+
+<form action="">
+<input type="hidden" name="f" value="<:v:_module_>/newissue" />
+<input type="hidden" name="book_id" value="<:v:book_id>" />
+<table class="form">
+<:v:payer>  
+  <tr>
+    <th>Place</th>
+    <td>
+      <select name="payment_place">
+        <option value=""></option>
+        <:a:paymentplaceoptions|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>
+<:v:currency>  
+  <tr>
+    <th>Comment</th>
+    <td>
+      <textarea name="comment" cols="50" rows="2"></textarea>
+    </td>
+  </tr>
+  <tr>
+    <th>Choose invoice</th>
+    <td>
+      <div id="div_invoices2issue">
+        <:a:invoices2issue|looptemplate?module=main&name=checkbox>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>
+      <input type="submit" value="Save" />
+      <input type="button" value="Cancel" onclick="$('#a2').show(); $('#b2').hide();" />
+    </td>
+  </tr>
+</table>
+</form>
+</div>  
+
+<script>
+$('#b2').hide();
+$('#date_invoice').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+</script>

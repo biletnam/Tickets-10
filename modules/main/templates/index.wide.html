@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+  <!-- meta http-equiv="X-UA-Compatible" content="chrome=1" -->
+  <title><:v:titlebase> :: <:v:title></title>
+
+  <script type="text/javascript" language="JavaScript" src="../js/jquery-1.4.2.min.js"></script>
+  <script type="text/javascript" language="JavaScript" src="../js/scripts.js"></script>
+  <script type="text/javascript" language="JavaScript" src="../js/json2.js"></script>
+  <script type="text/javascript" language="JavaScript" src="../js/jquery.jsonSuggest.js"></script>
+  <script type="text/javascript" language="JavaScript" src="../js/jquery.datepick.js"></script>
+  <script type="text/javascript" language="JavaScript" src="../js/jquery.cluetip.js"></script>
+  <script type="text/javascript" language="JavaScript" src="../js/jquery.form.js"></script>
+  <script type="text/javascript" language="JavaScript" src="../js/jquery.dropmenu.js"></script>
+<:v:jsfiles>
+  <script type="text/javascript" language="JavaScript"> 
+    <:v:js>
+  </script> 
+
+  <link rel="stylesheet" href="?css=main.wide" type="text/css" media="screen" /> 
+  <link rel="stylesheet" href="?css=main.print" type="text/css" media="print" /> 
+  <link rel="stylesheet" href="?css=datagrid" type="text/css" /> 
+  <link rel="stylesheet" href="?css=jsonSuggest" type="text/css" /> 
+  <link rel="stylesheet" href="?css=jquery.datepick" type="text/css" />
+  <link rel="stylesheet" href="?css=jquery.cluetip" type="text/css" /> 
+  <link rel="stylesheet" href="?css=jquery.dropmenu" type="text/css" /> 
+  <!--[if IE]>
+    <link rel="stylesheet" href="?css=main.ie" type="text/css" /> 
+    <link rel="stylesheet" href="?css=jquery.dropmenu.ie" type="text/css" /> 
+  <![endif]-->
+<:v:cssfiles>
+  <style type="text/css">
+    <:v:css>
+  </style>
+  <style type="text/css">
+    .clearfix:after {
+      content: ".";
+      display: block;
+      height: 0;
+      clear: both;
+      visibility: hidden;
+      }
+    .clearfix {display: inline-block;}  /* for IE/Mac */
+  </style>
+  <!--[if IE]>
+  <style type="text/css">
+    .clearfix {
+      zoom: 1;     /* triggers hasLayout */
+      display: block;     /* resets display for IE/Win */
+      }  /* Only IE can see inside the conditional comment
+      and read this CSS rule. Don't ever use a normal HTML
+      comment inside the CC or it will close prematurely. */
+  </style>
+  <![endif]-->
+
+</head>
+
+<body>
+  
+  <div id="wrap">
+  
+    <div id="header" class="clearfix">
+      <div id="logo">
+        <a href="index.pl"><img src="../images/LogoShareTheDream.png" width="205" height="60" border="0" /></a>
+      </div>
+      <div id="name">
+        <div id="slogan">Ticketing system</div>
+        <div id="version">
+          version <a href="?p=main/versions" target="_blank" class="red"><:conf:VERSION></a>
+          [Wide Layout, no panic!]
+        </div>
+      </div>
+      <div id="logininfo"></div>
+    </div>
+    
+    <!--
+    <div id="navigation">
+      <:v:navigation>
+    </div>
+    -->
+    <:v:topmenu>
+
+    <div id="flash">
+      <:v:flash>
+    </div>
+
+    <div id="main">
+      <a name="main"></a> 
+      <:v:main>
+    </div>
+    
+    <div id="footer">
+      <a name="footer"></a>
+      <div id="footerlinks" class="clearfix" width="100%">
+        <div id="home" style="float:left;"><a href="index.pl">Home</a></div>
+        <div id="showtimegauge" style="float:right;"><a href="#footer" onclick="javascript:{$('#showtimegauge').hide();$('#hidetimegauge').show();$('#timegauge').show();}">Show Timegauge</a></div>
+        <div id="hidetimegauge" style="float:right;"><a href="#footer" onclick="javascript:{$('#showtimegauge').show();$('#hidetimegauge').hide();$('#timegauge').hide();}">Hide Timegauge</a></div>
+      </div>
+      <div id="timegaugecontainer">
+      </div>
+    </div>
+
+  </div>
+
+  <div id="popup"></div>
+
+  <script>
+    $('#showtimegauge').hide();
+    $('#hidetimegauge').hide();
+    $('#logininfo').load('?i=users/logininfo&<:_:nocache|nocachetoken>&url=<:env:QUERY_STRING|urlencode>');
+  </script>
+    
+</body>
+
+</html>

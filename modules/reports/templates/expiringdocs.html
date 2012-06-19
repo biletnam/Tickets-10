@@ -1,0 +1,45 @@
+<h1><:v:pagetitle></h1>
+
+<p>Use the filter form to narrow down the results</p>
+
+<form action="" method="get">
+<input type="hidden" name="p" value="<:v:_module_>/expiringdocs" />
+<table class="form">
+  <tr>
+    <th>Document type</th>
+    <td>
+      <select name="document_type">
+        <option value=""></option>
+        <:a:doctypes|looptemplate?module=main&name=option>
+      </select>
+    </td>
+    <!--
+    <th>Expired between</th>
+    <td>
+      <input type="text" name="datefrom" id="datefrom" value="<:v:datefrom>" size="10" maxlength="10" />
+      and
+      <input type="text" name="dateto" id="dateto" value="<:v:dateto>" size="10" maxlength="10" />
+    </td>
+    -->
+    <th>Expiration</th>
+    <td>
+      <input type="text" name="daysbefore" id="daysbefore" value="<:v:daysbefore>" size="2" maxlength="2" /> days before today
+      and 
+      <input type="text" name="daysafter" id="daysafter" value="<:v:daysafter>" size="2" maxlength="2" /> days after today
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Filter" /></td>
+  </tr>
+</table>
+</form>
+
+<script>
+/*
+$('#datefrom').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1, yearRange: 'c-0:c+1']);
+$('#dateto').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1, yearRange: 'c-0:c+1']);
+*/
+</script>
+
+<:v:results>

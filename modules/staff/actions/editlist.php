@@ -11,10 +11,10 @@ if ($id > 0) {
     $tabEmpList->addTab('members', dot('editlist.tab.members'), dot('editlist.wait.members', $listInfo));
     $tabEmpList->setDefaultTab(lavnn('tab') || 'members');
     $pageParams['tabcontrol'] = $tabEmpList->getHTML();
-    $page['js'] .= dotmod('main', 'tabcontrol.js');
-    $page->add('css',  dotmod('main', 'tabcontrol.css');
-    $page['js'] .= dotmod('main', 'linkpeople.js');
-    $page->add('css',  dotmod('main', 'linkpeople.css');
+    $page['js'] .= $runtime->txt->do_template('main', 'tabcontrol.js');
+    $page->add('css',  $runtime->txt->do_template('main', 'tabcontrol.css');
+    $page['js'] .= $runtime->txt->do_template('main', 'linkpeople.js');
+    $page->add('css',  $runtime->txt->do_template('main', 'linkpeople.css');
   } else {
     $pageParams['tabcontrol'] = $runtime->txt->do_template($module, 'editlist.notfound');
   }

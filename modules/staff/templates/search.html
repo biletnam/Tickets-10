@@ -1,0 +1,35 @@
+<h1><:v:pagetitle></h1>
+
+<form action="" id="frmStaffSearch">
+<input type="hidden" name="p" value="<:v:_module_>/search">
+<table class="form">
+  <tr>
+    <th>First name</th>
+    <td><input type="text" name="firstname" size="10" value="<:v:firstname>" /></td>
+    <th>Last name</th>
+    <td><input type="text" name="lastname" size="10" value="<:v:lastname>" /></td>
+    <th>Nickname</th>
+    <td><input type="text" name="nickname" size="10" value="<:v:nickname>" /></td>
+  </tr>
+  <tr>
+    <th>E-mail</th>
+    <td><input type="text" name="email" size="10" value="<:v:email>" /></td>
+    <th>Mobile phone</th>
+    <td><input type="text" name="mobilephone" size="10" value="<:v:mobilephone>" /></td>
+    <th>Yahoo ID</th>
+    <td><input type="text" name="yahoo" size="10" value="<:v:yahoo>" /></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="button" id="btnSearch" value="Search!" /></td>
+    <td colspan="4">&nbsp;</td>
+  </tr>
+</table>
+</form>
+
+<div id="pleasewait" style="visibility: hidden;">
+  waiting...
+</div>
+
+<div id="employees">
+</div>

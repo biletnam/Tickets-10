@@ -1,0 +1,7 @@
+<div class="clearfix" id="contact_<:v:id>">
+  <div style="float:left; width:250px; margin-right: 10px;"><strong><:v:contact_name></strong></div>
+  <div style="float:left; width:400px;">
+    <:v:contact_value>
+    <a href="javascript: if (confirm('Really delete <:v:contact_value|jssafe>?')) { var o = $('#contact_<:v:id>').load('?i=<:v:_module_>/deletecontact&id=<:v:id>'); }" title="Click to delete"><img src="../images/icons/delete.png" width="16" height="16" border="0" alt="Delete" /></a>
+  </div>
+</div>

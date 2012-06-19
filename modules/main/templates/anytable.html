@@ -1,0 +1,21 @@
+<h1><:v:pagetitle></h1>
+
+<p><a href="?p=<:v:_module_>/anytable">Return</a> to table selection.</p>
+
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/savetabledata" />
+<input type="hidden" name="tablename" value="<:v:name>" />
+<input type="hidden" name="id" value="<:v:id>" />
+<input type="hidden" name="<:v:name>_id_field" value="<:v:id_field>" id="idfield" />
+<table class="list">
+  <:v:header>
+  <:v:data>
+</table>
+<p><input type="submit" value="Save" /></p>
+</form>
+
+<:v:newrowform>
+
+<script>
+$('.calendardate').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+</script>

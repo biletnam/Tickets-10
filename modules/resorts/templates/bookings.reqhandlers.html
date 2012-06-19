@@ -1,0 +1,41 @@
+<p>
+On this page, you can edit the list of handlers for booking requests that come for this hotel.
+</p>
+
+<table class="list">
+  <tr>
+    <th>Language</th>
+    <th>Handler</th>
+    <th>&nbsp;</th>
+  </tr>
+<:a:handlers|looptemplate?name=bookings.reqhandlers.listitem>
+</table>
+
+<h2>Add another hander</h2>
+
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/savehotelreqhandler" />
+<input type="hidden" name="hotel" value="<:v:hotel_id>" />
+<table class="form">
+  <tr>
+    <th>Language</th>
+    <td>
+      <select name="lang">
+        <:a:languages|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th>Handler</th>
+    <td><input type="text" class="peoplesearch" title="Start typing to get suggestions" id="h" /></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Add Request Handler" /></td>
+  </tr>
+</table>
+</form>
+
+<script>
+  suggestPerson('U', 'h', 'handler');
+</script>

@@ -15,7 +15,7 @@ if (lavnn('name') == '' || lavnn('code') == '' ) {
         $objVouchers->add_serie_tag(('serie' => $id, 'fulltag' => trim($t)));
       }
     }
-    set_cookie('flash', 'New voucher serie is registered, please proceed with adding vouchers');
+    $_SESSION['flash'] = 'New voucher serie is registered, please proceed with adding vouchers');
     go("?p=$module/serie&tab=addvouchers&id=$id");
   } else {
     set_cookie('error', 'Voucher serie could not be added');

@@ -11,7 +11,7 @@ if ($article > 0) {
   if ($fileid > 0) {
     $id = sid($module, 'AddAttachment', array('article' => $article, 'fileid' => $fileid, 'editor' => $editor)); 
     if ($id > 0) {
-      set_cookie('flash', 'Attachment added');
+      $_SESSION['flash'] = 'Attachment added');
       # Also, set metada if provided
       if (dot('addattachment.conditions', $_REQUEST) <> '') {
         $_REQUEST['id'] = $id;

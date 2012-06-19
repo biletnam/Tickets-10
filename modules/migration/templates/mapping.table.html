@@ -1,0 +1,16 @@
+<h2>Values for <:v:table_name></h2>
+<form method="post" action="" id="frmEditMappings">
+<input type="hidden" name="f" value="<:v:_module_>/savemapping">
+<input type="hidden" name="table_name" value="<:v:table_name>">
+<input type="hidden" name="id_field_name" value="<:v:id_field_name>">
+<input type="hidden" name="value_field_name" value="<:v:value_field_name>">
+<table class="list">
+  <tr>
+    <th>Value</th>
+    <th>Absolute ID</th>
+    <th>Merlin ID</th>
+  </tr>
+<:a:mappings|looptemplate?name=mapping.table.listitem>
+</table>
+<input type="submit" value="Save" />
+</form>

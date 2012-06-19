@@ -1,0 +1,22 @@
+  <tr>
+    <th>Creator</th>
+    <td>
+      <:v:CreatorName>
+    </td>
+  </tr>
+  <tr>
+    <th>Current moderator</th>
+    <td>
+      <:v:ModeratorName>
+    </td>
+  </tr>
+  <tr>
+    <th>Change moderator</th>
+    <td>
+      <input type="text" class="peoplesearch" title="Start typing to get suggestions" id="newmod" />
+      <script>
+        suggestPerson('U', 'newmod', 'new_moderator');
+      </script>
+      <input type="checkbox" name="bReassign" id="bReassign" /><label fro="bReassign">Re-assign existing tickets</label>
+    </td>
+  </tr>

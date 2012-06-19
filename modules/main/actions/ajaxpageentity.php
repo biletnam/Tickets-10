@@ -5,11 +5,11 @@ $type = lavnn('type');
 if ($type == 'runreport') {
   $reports = $runtime->s2a('reports', 'ListPredefinedReports');
   $params = array('reports' => $reports);
-  print dotmod('reports', 'ajaxpageentity', $params);
+  print $runtime->txt->do_template('reports', 'ajaxpageentity', $params);
 } elseif ($type == 'viewarticle') {
-  print dotmod('articles', 'ajaxpageentity', $params);
+  print $runtime->txt->do_template('articles', 'ajaxpageentity', $params);
 } elseif ($type == 'ticket') {
-  print dotmod('tickets', 'ajaxpageentity', $params);
+  print $runtime->txt->do_template('tickets', 'ajaxpageentity', $params);
 } else {
   print 'not supported yet';
 }

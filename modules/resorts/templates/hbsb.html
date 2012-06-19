@@ -1,0 +1,97 @@
+<h1><:v:pagetitle></h1>
+
+
+
+<table>
+  <tr valign="top">
+    <td width="50%">
+
+      <h2>Hard block apartment types</h2>
+      <table class="list">
+        <tr>
+          <th rowspan="2">Name</th>
+          <th colspan="2">Max sleeping</th>          
+          <th rowspan="2">Absolute category</th>
+          <th rowspan="2">Extra Beds</th>
+          <th rowspan="2">&nbsp;</th>
+        </tr>
+        <tr>
+          <th>Adult</th>
+          <th>Child</th>
+        </tr>
+        <:a:hbtypes|looptemplate?name=hbsbtype.listitem>
+      </table>
+      <p>
+      <a href="?p=<:v:_module_>/editapartmenttype&hotel=<:v:id>&block=HB">Add hard block apartment type</a>
+      </p>
+
+    </td>
+    <td width="50%">
+
+      <h2>Soft block apartment types</h2>
+      <table class="list">
+        <tr>
+          <th rowspan="2">Name</th>
+          <th colspan="2">Max sleeping</th>          
+          <th rowspan="2">Absolute category</th>
+          <th rowspan="2">Extra Beds</th>
+          <th rowspan="2">&nbsp;</th>
+        </tr>
+        <tr>
+          <th>Adult</th>
+          <th>Child</th>
+        </tr>
+        <:a:sbtypes|looptemplate?name=hbsbtype.listitem>
+      </table>
+      <p>
+      <a href="?p=<:v:_module_>/editapartmenttype&hotel=<:v:id>&block=SB">Add soft block apartment type</a>
+      </p>
+
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr valign="top">
+    <td width="50%">
+
+      <h2>Hard block apartments</h2>
+      <table class="list">
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Own category</th>
+          <th>Absolute category</th>
+          <th>&nbsp;</th>
+        </tr>
+        <:a:hb|looptemplate?name=hbsb.listitem>
+      </table>
+      <p>
+      <a href="?p=<:v:_module_>/editapartment&hotel=<:v:id>&block=HB">Add hard block apartment</a>
+      </p>
+
+    </td>
+    <td width="50%">
+
+      <h2>Soft block apartments</h2>
+      <table class="list">
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Own category</th>
+          <th>Absolute category</th>
+          <th>&nbsp;</th>
+        </tr>
+        <:a:sb|looptemplate?name=hbsb.listitem>
+      </table>
+      <p>
+      <a href="?p=<:v:_module_>/editapartment&hotel=<:v:id>&block=SB">Add soft block apartment</a>
+      </p>
+
+    </td>
+  </tr>
+</table>
+
+
+
+

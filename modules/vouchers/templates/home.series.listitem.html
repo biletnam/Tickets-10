@@ -1,0 +1,15 @@
+  <tr class="mod2_<:v:_mod2_>">
+    <td>
+      <a href="#" class="serietooltip" rel="?i=<:v:_module_>/ajaxserie&id=<:v:id>" title="Voucher Serie <:v:name>"><img src="../images/icons/preview.png" border="0" height="16" width="16" /></a> 
+      <a href="?p=<:v:_module_>/serie&tab=vouchers&id=<:v:id>" title="View voucher serie"><:v:name></a>
+    </td>
+    <td><:v:provider_name></td>
+    <td><:v:qty></td>
+    <td><:v:in_delivery></td>
+    <td><:v:used|numberformat> (<:v:usage_ratio|numberformat>%)</td>
+    <td><:v:currency> <:v:amount|numberformat:round=2></td>
+    <td><:v:currency> <:v:realprice|numberformat:round=2></td>
+    <td>
+      <:_:deletelink|stopifnotempty:varname=qty|forwardtemplate?module=&name=home.series.listitem.delete>
+    </td>
+  </tr>

@@ -1,0 +1,14 @@
+  <tr class="mod2_<:v:_mod2_>">
+    <td><:v:id></td>
+    <td>
+      <a 
+        id="usertime_report_ticketlink_<:v:id>" 
+        href="javascript: showAjaxPopup({url: '?i=<:v:_module_>/tooltip&id=<:v:id>', width:800, id:'usertime_report_ticketlink_<:v:id>']);" 
+        title="Click to preview"
+      ><img src="../images/icons/preview.png" border="0" height="16" width="16" /></a> 
+      <a href="?p=<:v:_module_>/viewticket&id=<:v:id>"><:v:title|untitled|shortener?words=5></a>
+    </td>
+    <td><a href="?p=<:v:_module_>/project&id=<:v:project>"><:v:ProjectTitle></a></td>
+    <td><:v:DateFrom|dateformat?format=fulldate> - <:v:DateTo|dateformat?format=fulldate></td>
+    <td><:v:minutes|explaintime></td>
+  </tr>

@@ -62,11 +62,11 @@ if (count($projectInfo) > 0) {
 }
 
 
-$page['js'] .= dotmod('main', 'tabcontrol.js');
-$page['js'] .= dotmod('main', 'linkpeople.js');
-$page['js'] .= dotmod('main', 'tagcloud.js');
-$page->add('css',  dotmod('main', 'tabcontrol.css');
-$page->add('css',  dotmod('main', 'linkpeople.css');
+$page['js'] .= $runtime->txt->do_template('main', 'tabcontrol.js');
+$page['js'] .= $runtime->txt->do_template('main', 'linkpeople.js');
+$page['js'] .= $runtime->txt->do_template('main', 'tagcloud.js');
+$page->add('css',  $runtime->txt->do_template('main', 'tabcontrol.css');
+$page->add('css',  $runtime->txt->do_template('main', 'linkpeople.css');
 
 
 

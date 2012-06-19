@@ -1,0 +1,23 @@
+<h2>Search results (<:a:staff|length>)</h2>
+
+<div style="display:none;" id="oldsort"><:v:oldsort></div>
+
+<table class="list" width="100%">
+  <tr>
+    <th><a href="javascript:sortStaffSearchResults('<:env:QUERY_STRING|urlencode>', '#<:v:fired>oldsort', 'office', '#<:v:fired>employees');">Office</a></th>
+    <th>&nbsp;</th>
+    <th><a href="javascript:sortStaffSearchResults('<:env:QUERY_STRING|urlencode>', '#<:v:fired>oldsort', 'nick', '#<:v:fired>employees');">Nick</a></th>
+    <th>&nbsp;</th>
+    <th>
+      <a href="javascript:sortStaffSearchResults('<:env:QUERY_STRING|urlencode>', '#<:v:fired>oldsort', 'firstname', '#<:v:fired>employees');">First Name</a>
+      <a href="javascript:sortStaffSearchResults('<:env:QUERY_STRING|urlencode>', '#<:v:fired>oldsort', 'lastname', '#<:v:fired>employees');">Last Name</a>
+    </th>
+    <th><span title="Line Manager">LM</span></th>
+    <th><span title="Deputy Staff">DS</span></th>
+    <th>Mobile Phone</th>
+    <th>Contacts</th>
+    <th>More</th>
+  </tr>
+  <:a:staff|looptemplate?name=searchresults.edit.listitem>
+</table>
+

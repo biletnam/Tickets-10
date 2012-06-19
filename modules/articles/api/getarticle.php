@@ -15,7 +15,7 @@ $id = $apiparams['id'] || 0;
 if ($id > 0) {
   $articleInfo = $objA->get_article(%apiparams); 
   if (count($articleInfo) > 0) {
-    $output = $runtime->dotmod($controller, 'api.GetArticle', $articleInfo);  
+    $output = $runtime->$runtime->txt->do_template($controller, 'api.GetArticle', $articleInfo);  
   } else {
     $result = 'ERR';
     push @errors, $runtime->hash2ref( ('code' => 'GetArticle.Failed', 'text' => 'Could not find article by this id.') );
@@ -27,7 +27,7 @@ if ($id > 0) {
 
 # Return resulting XML API output - quite similar to all APIs
 print "content-type: $contenttype; charset=$charset;\n\n";
-print $runtime->dotmod($controller, 'Envelope', array(
+print $runtime->$runtime->txt->do_template($controller, 'Envelope', array(
   'result' => $result,
   'output' => $output,
   'warnings' => Arrays::a2xml($warnings, 'Warnings', 'Warning'),

@@ -1,0 +1,70 @@
+// Common handler for submitting forms
+$(function() {
+  //ondomload
+  $("#btnSearch").click(function() {
+    //Get the data from all the fields  
+    var data = 'i=<:v:_module_>/searchresults';
+    
+    var firstname = $('input[name=firstname]');  
+    if (firstname.val() != undefined) {
+      data = data + '&firstname=' + escape(firstname.val());
+    }
+    var lastname = $('input[name=lastname]');  
+    if (lastname.val() != undefined) {
+      data = data + '&lastname=' + escape(lastname.val());
+    }
+    var nickname = $('input[name=nickname]');  
+    if (nickname.val() != undefined) {
+      data = data + '&nickname=' + escape(nickname.val());
+    }
+    var email = $('input[name=email]');  
+    if (email.val() != undefined) {
+      data = data + '&email=' + escape(email.val());
+    }
+    var mobilephone = $('input[name=mobilephone]');  
+    if (mobilephone.val() != undefined) {
+      data = data + '&mobilephone=' + escape(mobilephone.val());
+    }
+    var yahoo = $('input[name=yahoo]');  
+    if (yahoo.val() != undefined) {
+      data = data + '&yahoo=' + escape(yahoo.val());
+    }
+
+    if (data == 'i=<:v:_module_>/searchresults') {
+      alert('Please fill in at least one search field!');
+      return false;
+    }
+
+    var t = $(this);
+    t.find("input[type=button]")
+      .after('<div id="working">working...</div>')
+      .hide();
+
+    //start the ajax  
+    $.ajax({  
+        //this is the php file that processes the data and send mail  
+        url: "index.pl",   
+          
+        //GET method is used  
+        type: "GET",  
+
+        //pass the data           
+        data: data,       
+          
+        //Do not cache the page  
+        cache: false,  
+        
+        success: function (html) {
+          $('#pleasewait').show();
+          $('#employees').html(html);
+          $('#pleasewait').hide();
+          $('#working').hide();
+          $("#btnSearch").show();
+        }
+          
+    });
+    
+    return false;
+    
+  });
+});

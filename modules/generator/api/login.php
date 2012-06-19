@@ -17,26 +17,26 @@ $password = $apiparams['password'] || '';
 if ($username <> '' && $password <> '') {
   $loginInfo = $runtime->s2r($controller, 'CheckGeneratorLogin', $apiparams);
   if (count($loginInfo) > 0) {
-    $output = $runtime->dotmod($controller, 'API.Login', $loginInfo);
+    $output = $runtime->$runtime->txt->do_template($controller, 'API.Login', $loginInfo);
     # register pageview
-    $runtime->srun('main', 'RegisterPageview', array('entity_type' => 'gen_user_login', 'entity_id' => $loginInfo['user_id'], 'viewer_type' => 'G', 'viewer_id' => 0));    
+    $runtime->('main', 'RegisterPageview', array('entity_type' => 'gen_user_login', 'entity_id' => $loginInfo['user_id'], 'viewer_type' => 'G', 'viewer_id' => 0));    
   } else {
     # Register login failure
-    $runtime->srun('main', 'RegisterPageview', array('entity_type' => 'gen_user_login_failed', 'entity_id' => $loginInfo['user_id'], 'viewer_type' => 'G', 'viewer_id' => 0));    
-    $runtime->srun('main', 'RegisterLoginFailure', array('user_type' => 'G', 'username' => $username, 'password' => $password));
+    $runtime->('main', 'RegisterPageview', array('entity_type' => 'gen_user_login_failed', 'entity_id' => $loginInfo['user_id'], 'viewer_type' => 'G', 'viewer_id' => 0));    
+    $runtime->('main', 'RegisterLoginFailure', array('user_type' => 'G', 'username' => $username, 'password' => $password));
     $result = 'ERR'; 
     push @errors, $runtime->hash2ref( ('code' => 'Login.InvalidPassword', 'text' => 'Combination of username and password does not match to any generator') );
   }
 } else {
   # Register login failure
-  $runtime->srun('main', 'RegisterLoginFailure', array('user_type' => 'G', 'username' => $username, 'password' => $password));
+  $runtime->('main', 'RegisterLoginFailure', array('user_type' => 'G', 'username' => $username, 'password' => $password));
   $result = 'ERR'; 
   push @errors, $runtime->hash2ref( ('code' => 'Login.InvalidInputParams', 'text' => 'Either username or password or both are not provided') );
 }
 
 # Return resulting XML API output - quite similar to all APIs
 print "content-type: $contenttype; charset=$charset;\n\n";
-print $runtime->dotmod($controller, 'API.Envelope', array(
+print $runtime->$runtime->txt->do_template($controller, 'API.Envelope', array(
   'result' => $result,
   'output' => $output,
   'warnings' => Arrays::a2xml($warnings, 'Warnings', 'Warning'),

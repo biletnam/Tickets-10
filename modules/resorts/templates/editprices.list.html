@@ -1,0 +1,46 @@
+<p>List of prices is ordered by Office, then by DateStart</p>
+
+<form method="post" action="">
+<input type="hidden" name="f" value="<:v:_module_>/multiprice" />
+<input type="hidden" name="op" value="" />
+<input type="hidden" name="hotel_id" value="<:v:id>" />
+<table class="list" width="100%">
+  <tr>
+    <th rowspan="2">&nbsp;</th>
+    <th rowspan="2">H/S</th>
+    <th rowspan="2">Apt</th>
+    <th rowspan="2">Date Start</th>
+    <th rowspan="2">Date End</th>
+    <th colspan="2">Price</th>
+    <th colspan="2">Owner Price</th>
+    <th colspan="2">Real Price</th>
+    <th rowspan="2">Office</th>
+    <th colspan="2">Extra Prices</th>
+  </tr>
+  <tr>
+    <th class="a-r">Amount</th>
+    <th>ccy</th>
+    <th class="a-r">Amount</th>
+    <th>ccy</th>
+    <th class="a-r">Amount</th>
+    <th>ccy</th>
+    <th>Adult</th>
+    <th>Child</th>
+  </tr>
+  <:a:prices|looptemplate?name=editprices.listitem>
+</table>
+<p>
+  With selected prices:
+  <input type="button" onclick="this.form.op.value = 'delete'; this.form.submit();" value="Delete" /></a>
+</p>
+</form>
+
+<div id="editprice">
+</div>
+
+<div id="newprice">
+</div>
+
+<script>
+  $('#newprice').load('?i=<:v:_module_>/editprice&hotel_id=<:v:id>');
+</script>

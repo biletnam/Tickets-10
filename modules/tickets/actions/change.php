@@ -36,7 +36,7 @@ if (count($ticketInfo) > 0) {
   $new_creator = '';
   if ($op == 'takeover') {
     $new_creator = $r['userInfo']['staff_id'];
-    srun($module, 'SetTicketCreator', array('id' => $ticket_id, 'creator' => $new_creator));
+    $runtime->db->sqlrun($module, 'SetTicketCreator', array('id' => $ticket_id, 'creator' => $new_creator));
     push @flash, 'Ticket taken over by superadmin';    
   }
   
@@ -105,7 +105,7 @@ if (count($ticketInfo) > 0) {
 
   # Check if new handler should be set
   if ($new_handler <> '' && $new_handler <> $old_handler && !$ignoreChanges) {
-    srun($module, 'SetTicketHandler', array('id' => $ticket_id, 'handler' => $new_handler));
+    $runtime->db->sqlrun($module, 'SetTicketHandler', array('id' => $ticket_id, 'handler' => $new_handler));
     push @flash, 'Ticket assigned to another person';
   } else {
     $new_handler = '';
@@ -114,7 +114,7 @@ if (count($ticketInfo) > 0) {
 
   # Check if new project should be set
   if ($new_project <> '' && $new_project <> $old_project && $new_reviewer <> '' && !$ignoreChanges) {
-    srun($module, 'SetTicketProject', array('id' => $ticket_id, 'project' => $new_project, 'reviewer' => $new_reviewer));
+    $runtime->db->sqlrun($module, 'SetTicketProject', array('id' => $ticket_id, 'project' => $new_project, 'reviewer' => $new_reviewer));
     push @flash, 'Ticket moved to another project';
   } else {
     $new_project = '';
@@ -123,7 +123,7 @@ if (count($ticketInfo) > 0) {
   
   # Set new status if required
   if ($new_status <> '' && $new_status <> $old_status && !$ignoreChanges) {
-    srun($module, 'SetTicketStatus', array('id' => $ticket_id, 'status' => $new_status));
+    $runtime->db->sqlrun($module, 'SetTicketStatus', array('id' => $ticket_id, 'status' => $new_status));
     push @flash, 'Status of ticket is changed';
   } else {
     $new_status = '';
@@ -136,7 +136,7 @@ if (count($ticketInfo) > 0) {
   $old_priority = $ticketInfo['priority'] || '';
   $new_priority = lavnn('priority', $_REQUEST, '');
   if ($new_priority <> '' && $new_priority <> $old_priority && !$ignoreChanges) {
-    srun($module, 'SetTicketPriority', array('id' => $ticket_id, 'priority' => $new_priority));
+    $runtime->db->sqlrun($module, 'SetTicketPriority', array('id' => $ticket_id, 'priority' => $new_priority));
     $recalculateWeight = 1;
     push @flash, 'Ticket priority is changed';
   } else {
@@ -151,7 +151,7 @@ if (count($ticketInfo) > 0) {
     $old_duedate = substr($old_duedate, 0, 19);
     $new_duedate = DateChemistry::fulldate2mysql($new_duedate);
     if ($old_duedate <> $new_duedate) {
-      srun($module, 'SetTicketDueDate', array('id' => $ticket_id, 'duedate' => $new_duedate));
+      $runtime->db->sqlrun($module, 'SetTicketDueDate', array('id' => $ticket_id, 'duedate' => $new_duedate));
       $recalculateWeight = 1;
       push @flash, "Ticket due date is changed";
     } else {
@@ -164,7 +164,7 @@ if (count($ticketInfo) > 0) {
   $old_title = $ticketInfo['title'] || '';
   $new_title = $_REQUEST['title'] || '';
   if ($new_title <> '' && $old_title <> $new_title && !$ignoreChanges && ($new_ticket_id == '' || $new_ticket_id <> '' && $new_title <> $oldTicketInfo['title'])) {
-    srun($module, 'SetTicketTitle', array('id' => $ticket_id, 'title' => $new_title));
+    $runtime->db->sqlrun($module, 'SetTicketTitle', array('id' => $ticket_id, 'title' => $new_title));
     push @flash, 'Ticket title is changed';
   } else {
     $new_title = '';
@@ -173,7 +173,7 @@ if (count($ticketInfo) > 0) {
   $old_contents = $ticketInfo['contents'] || '';
   $new_contents = $_REQUEST['contents'] || '';
   if ($new_contents <> '' && $old_contents <> $new_contents && !$ignoreChanges) {
-    srun($module, 'SetTicketContents', array('id' => $ticket_id, 'contents' => $new_contents));
+    $runtime->db->sqlrun($module, 'SetTicketContents', array('id' => $ticket_id, 'contents' => $new_contents));
     push @flash, 'Ticket summary is changed';
   } else {
     $new_contents = '';
@@ -215,7 +215,7 @@ if (count($ticketInfo) > 0) {
         # If there is another date specified for report, make change in the database
         $reporting_date = lavnn('reporting_date', $_REQUEST, '');
         if ($reporting_date <> '') {
-          srun($module, 'FixTimeReportDate', array('reporting_id' => $timereport_id, 'reporting_date' => $reporting_date));
+          $runtime->db->sqlrun($module, 'FixTimeReportDate', array('reporting_id' => $timereport_id, 'reporting_date' => $reporting_date));
         }
       }
     } else {
@@ -233,7 +233,7 @@ if (count($ticketInfo) > 0) {
     $new_minutesleft = $hours_left * 60 + $minutes_left;
     $old_minutesleft = $ticketInfo['minutesleft'] || 0;
     if ($new_timeleft_given && $old_minutesleft <> $new_minutesleft) {
-      srun($module, 'SetTicketTimeLeft', array('id' => $ticket_id, 'minutesleft' => $new_minutesleft));
+      $runtime->db->sqlrun($module, 'SetTicketTimeLeft', array('id' => $ticket_id, 'minutesleft' => $new_minutesleft));
       push @flash, 'Ticket completion time estimation is changed';
     }
   } else {
@@ -254,14 +254,14 @@ if (count($ticketInfo) > 0) {
 
   # Recalculate weight if needed - this does not affect manual weight adjustment and vice versa
   if ($recalculateWeight == 1) {
-    srun($module, 'RecalculateTicketWeight', array('id' => $ticket_id));
+    $runtime->db->sqlrun($module, 'RecalculateTicketWeight', array('id' => $ticket_id));
   }
   $runtime->saveMoment('  new weight is saved for the ticket'); #TODO calculate weight when creating a ticket
 
   # Refresh textual representation
   $ticketInfo = $runtime->s2r($module, 'GetTicketInfo', array('id' => $ticket_id));
-  $ticketInfo['explained'] = dotmod($module, 'ticket.explain', $ticketInfo);
-  srun($module, 'UpdateTicketExplanation', $ticketInfo);
+  $ticketInfo['explained'] = $runtime->txt->do_template($module, 'ticket.explain', $ticketInfo);
+  $runtime->db->sqlrun($module, 'UpdateTicketExplanation', $ticketInfo);
   $runtime->saveMoment('  ticket explanation updated');
 
   # if something changed, write to history
@@ -290,7 +290,7 @@ if (count($ticketInfo) > 0) {
   }
   
   if (count($flash) > 0 && !$ignoreChanges) {
-    set_cookie('flash', join(', ', @flash));
+    $_SESSION['flash'] = join(', ', @flash));
   }
 }
 

@@ -1,0 +1,70 @@
+<form action="">
+<input type="hidden" name="f" value="<:v:_module_>/createserie" />
+<table class="form">
+  <tr>
+    <th class="required">Name</th>
+    <td><input type="text" name="name" size="30" maxlength="50" /></td>
+  </tr>
+  <tr>
+    <th class="required">Code prefix</th>
+    <td><input type="text" name="code" size="10" maxlength="50" /></td>
+  </tr>
+  <tr>
+    <th>Validity start</th>
+    <td><input type="text" class="calendardate" title="Click to select date" name="validity_start"  id="validity_start" size="10" maxlength="10" /></td>
+  </tr>
+  <tr>
+    <th>Validity end</th>
+    <td><input type="text" class="calendardate" title="Click to select date" name="validity_end" id="validity_end" size="10" maxlength="10" /></td>
+  </tr>
+  <tr>
+    <th class="required">Provider</th>
+    <td>
+      <select name="provider_type" onchange="if (this.value == '') $('#provider').empty(); else $('#provider').load('?i=<:v:_module_>/ajaxprovider&type=' + this.value);">
+        <option value="">Choose provider type</option>
+        <option value="hotel">Hotel</option>
+        <option value="other">Other</option>
+      </select>
+      <div id="provider"></div>
+    </td>
+  </tr>
+  <tr>
+    <th class="required">Amount</th>
+    <td><input type="text" name="amount" size="6" maxlength="10" /></td>
+  </tr>
+  <tr>
+    <th class="required">Real price</th>
+    <td><input type="text" name="realprice" size="6" maxlength="10" /></td>
+  </tr>
+  <tr>
+    <th class="required">Currency</th>
+    <td>
+      <select name="currency" class="required">
+        <option value=""></option>
+        <:a:currencyoptions|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th>Description</th>
+    <td>
+      <textarea name="description" cols="60" rows="4"></textarea>
+    </td>
+  </tr>
+  <tr>
+    <th>Tags</th>
+    <td>
+      <textarea name="tags" cols="60" rows="4"></textarea>
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td colspan="2"><input type="submit" value="Save voucher serie" /></td>
+  </tr>
+</table>
+</form>
+
+<script>
+$('#validity_start').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+$('#validity_end').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+</script>

@@ -1,0 +1,98 @@
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/savebookingdetails" />
+<input type="hidden" name="book_id" value="<:v:book_id>" />
+<table class="form">
+  <tr>
+    <th>Request</th>
+    <td><a href="?p=bookreq/view&id=<:v:bookreq_id>"><:v:bookreq_id></a></td>
+  </tr>
+  <tr>
+    <th>Reference</th>
+    <td><:v:ref_no></td>
+  </tr>
+  <tr>
+    <th>Generator</th>
+    <td>
+      <select name="generator_id">
+        <:a:generators|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th>Sender</th>
+    <td>
+      <select name="sender_id">
+        <option value=""></option>
+        <:a:senders|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th>Client</th>
+    <td>#<:v:client_id>, <a href="?p=clients/viewclient&id=<:v:client_id>"><:v:first_name> <:v:last_name></a></td>
+  </tr>
+  <tr>
+    <th>Status</th>
+    <td>
+        <select name="status_id" id="status_id" onchange="if (this.value == 1 || this.value == 3) $('#booking_nq_reason').show(); else $('#booking_nq_reason').hide();">
+          <option value=""></option>
+          <:a:statusoptions|looptemplate?module=main&name=option>
+        </select>
+        <span id="booking_nq_reason">
+          <select name="nq_reason_id">
+            <:a:nqreasonoptions|looptemplate?module=main&name=option>
+          </select>
+        </span>
+        and comment 
+        <input type="text" name="status_comment" value="<:v:utf8_status_comment>" size="40" maxlength="255" />
+    </td>
+  </tr>
+  <tr>
+    <th>Hotel</th>
+    <td>
+      <select name="hotel_id">
+        <option value=""></option>
+        <:a:hotels|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th>Apartment</th>
+    <td><:v:type_name></td>
+  </tr>
+  <tr>
+    <th>Arrival</th>
+    <td>
+      <input type="text" class="calendardate" title="Click to select date" id="date_from" name="date_from" size="10" maxlength="10" value="<:v:date_from|dateformat?format=fulldate>" />
+      Flight: <input type="text" name="arrival_flight" size="10" maxlength="10" value="<:v:arrival_flight>" />
+      Time: <input type="text" name="arrival_time" size="5" maxlength="5" value="<:v:arrival_time>" />
+      Transfer? <select name="arrival_transfer"><:a:arrtransferoptions|looptemplate?module=main&name=option></select>
+      Airport: <select name="arrival_airport_id"><option value=""></option><:a:airports|looptemplate?module=main&name=option></select>
+    </td>
+  </tr>
+  <tr>
+    <th>Departure</th>
+    <td>
+      <input type="text" class="calendardate" title="Click to select date" id="date_to" name="date_to" size="10" maxlength="10" value="<:v:date_to|dateformat?format=fulldate>" />
+      Flight: <input type="text" name="departure_flight" size="10" maxlength="10" value="<:v:departure_flight>" />
+      Time: <input type="text" name="departure_time" size="5" maxlength="5" value="<:v:departure_time>" />
+      Transfer? <select name="departure_transfer"><:a:deptransferoptions|looptemplate?module=main&name=option></select>
+    </td>
+  </tr>
+</table>
+<input type="submit" value="Save">
+</form>
+
+<script>
+$('#date_from').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+$('#date_to').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+</script>
+
+<script>
+  var status = $('#status_id').val();
+  if (status == 1 || status == 3) {
+    $('#booking_nq_reason').show();
+  } else {
+    $('#booking_nq_reason').hide();
+  }
+</script>

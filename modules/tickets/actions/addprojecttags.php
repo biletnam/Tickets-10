@@ -10,7 +10,7 @@ if ($id > 0) {
       $newid = sid($module, 'AddProjectTag', array('project' => $id, 'fulltag' => $fulltag, 'prefix' => $prefix, 'tag' => $tag));
       $success += ($newid > 0);
     }
-    set_cookie('flash', "Added $success new tags to project") if $success > 0;
+    $_SESSION['flash'] = "Added $success new tags to project") if $success > 0;
   }
   go("?p=tickets/project&id=$id&tab=tags");
 } else {

@@ -1,0 +1,12 @@
+  <tr class="mod2_<:v:_mod2_>">
+    <td><:v:name></td>
+    <td><:v:Y></td>
+    <td><:v:paid_absence></td>
+    <td><:v:cnt_employees></td>
+    <td>
+      [<a href="?p=<:v:_module_>/officecalendar&id=<:v:id>">Edit</a>]
+      [<a href="?p=calendars/view&id=<:v:calendar_id>&tab=month">Edit Days</a>]
+      [<a href="?f=<:v:_module_>/cloneofficecalendar&id=<:v:id>">Clone</a>]
+      <:_:deletelink|stopifnotempty:varname=cnt_employees|forwardtemplate?module=&name=office.calendars.listitem.delete>
+    </td>
+  </tr>

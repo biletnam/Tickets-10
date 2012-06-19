@@ -24,11 +24,11 @@ foreach $p (keys %_REQUEST) {
   } elseif ($action == 'fwd') {
     $forward_to = $_REQUEST{$p};
     if ($forward_to <> '') {
-      srun($module, 'SetForwarder', array('id' => $id, 'forward_to' => $forward_to));
+      $runtime->db->sqlrun($module, 'SetForwarder', array('id' => $id, 'forward_to' => $forward_to));
     }
   } 
 }
-set_cookie('flash', join('', @warnings)) if count($warnings) > 0;
+$_SESSION['flash'] = join('', @warnings)) if count($warnings) > 0;
 if ($domain > 0) {
   $domainInfo = $runtime->s2r($module, 'GetDomainDetails', array('id' => $domain));
   if (count($domainInfo) == 0) {

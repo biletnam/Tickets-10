@@ -7,10 +7,10 @@ if ($hotel > 0) {
   if (join(',', @existing) <> $ids) {
     foreach $id (lavnn('office')) {
       if (!in_array($id, $existing)) {
-        srun($module, 'InsertHotelBookingOffice', array('office' => $id, 'hotel' => $hotel));
+        $runtime->db->sqlrun($module, 'InsertHotelBookingOffice', array('office' => $id, 'hotel' => $hotel));
       }
     }
-    srun($module, 'DeleteObsoleteHotelBookingOffices', array('offices' => $ids, 'hotel' => $hotel));
+    $runtime->db->sqlrun($module, 'DeleteObsoleteHotelBookingOffices', array('offices' => $ids, 'hotel' => $hotel));
   }
   go("?p=$module/edithotel&id=$hotel");
 } else {

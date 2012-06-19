@@ -15,12 +15,12 @@ if ($id > 0) {
   if ($notification_id > 0) {
     $receivers = array();
     $users = $runtime->s2a('main', 'ListUsersForResource', array('source_type' => 'articlereviewers', 'source_id' => $id));
-    foreach $userhash (@users) {
-      push @receivers, hash2ref(('user_id' => $userhash['lngId'])); #if $userhash['lngId'] <> $r['userID'];
+    foreach ($users as $userhash) {
+      $receivers[] = array('user_id' => $userhash['lngId']); 
     }
     if (count($receivers) > 0) {
-      $objN->distribute_notification($notification_id, @receivers);
-      set_cookie('flash', 'Buzz sent');
+      $objN->distribute_notification($notification_id, $receivers);
+      $_SESSION['flash'] = 'Buzz sent';
     }
   }
   go("?p=$module/review&id=$id");

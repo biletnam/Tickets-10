@@ -1,0 +1,7 @@
+<div id="firedemployees">
+<p>Please wait while we retrieving the list of employees...</p>
+</div>
+
+<script>
+  $('#firedemployees').load('?i=<:v:_module_>/searchresults&department=<:v:team_id>&fired=1&<:_:nocache|nocachetoken>&url=<:env:QUERY_STRING|urlencode>');
+</script>

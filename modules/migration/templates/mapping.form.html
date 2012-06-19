@@ -1,0 +1,24 @@
+<form name="index.pl" method="get" id="frmMapping">
+<input type="hidden" name="p" value="<:v:_module_>/mapping" />
+<table class="form">
+  <tr>
+    <th>Table name</th>
+    <td><input type="text" name="table_name" value="<:v:table_name>" /></td>
+  </tr>
+  <tr>
+    <th>ID field name</th>
+    <td><input type="text" name="id_field_name" value="<:v:id_field_name>" /></td>
+  </tr>
+  <tr>
+    <th>Value field name</th>
+    <td><input type="text" name="value_field_name" value="<:v:value_field_name>" /></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>
+      <input type="submit" value="Show mappings" />
+      <input type="button" value="Clear" onclick="this.form.table_name.value=''; this.form.id_field_name.value=''; this.form.value_field_name.value=''; $('#mapping_shortcuts').show();" />
+    </td>
+  </tr>
+</table>
+</form>

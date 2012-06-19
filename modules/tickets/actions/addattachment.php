@@ -11,7 +11,7 @@ if ($ticket <> '') {
     $_REQUEST['fileid'] = $fileid;
     $result = $objT->add_attachment($ticket, $_REQUEST); 
     if ($result['returncode'] == 0 && $result['ticket_history_id'] > 0) {
-      set_cookie('flash', 'Attachment added');
+      $_SESSION['flash'] = 'Attachment added');
     } else {
       set_cookie('error', 'Could not add attachment');
     }

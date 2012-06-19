@@ -1,0 +1,96 @@
+<h1><:v:pagetitle></h1>
+
+<p align="center" class="shiftcalendarheader">
+<a href="#previous">Previous week</a>
+&nbsp;&nbsp;
+<span class="currentweek">14.05.2012-20.05.2012</span>
+&nbsp;&nbsp;
+<a href="#previous">Next week</a>
+</p>
+
+<form action="saveemployeeshiftcalendar" method="post">
+<input type="hidden" name="employee" value="16" />
+<table class="form">
+  <tr>
+    <td id="definedstatus"><strong>Defined <span id="definedhours">0</span> of <span id="normhours">40</span> hours</strong></td>
+    <th>Planned hours</th>
+    <th>Real hours with comment</th>
+    <th>Paid date</th>
+  </tr>
+
+  <tr>
+    <th>Monday</th>
+    <td><input type="text" size="2" maxlength="2" id="planned_1" name="planned_1" value="0" onchange="recalculateDefinedHours();" /></td>
+    <td>
+      <input type="text" size="2" maxlength="2" id="real_1" name="real_1" value="0" />
+      <input type="text" size="20" maxlength="64" name="realcomment_1" />
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <th>Tuesday</th>
+    <td><input type="text" size="2" maxlength="2" id="planned_2" name="planned_2" value="0" onchange="recalculateDefinedHours();" /></td>
+    <td>
+      <input type="text" size="2" maxlength="2" id="real_2" name="real_2" value="0" />
+      <input type="text" size="20" maxlength="64" name="realcomment_2" />
+    </td>
+    <td></td>
+  <tr>
+    <th>Wednesday</th>
+    <td><input type="text" size="2" maxlength="2" id="planned_3" name="planned_3" value="0" onchange="recalculateDefinedHours();" /></td>
+    <td>
+      <input type="text" size="2" maxlength="2" id="real_3" name="real_3" value="0" />
+      <input type="text" size="20" maxlength="64" name="realcomment_3" />
+    </td>
+    <td></td>
+  <tr>
+    <th>Thursday</th>
+    <td><input type="text" size="2" maxlength="2" id="planned_4" name="planned_4" value="0" onchange="recalculateDefinedHours();" /></td>
+    <td>
+      <input type="text" size="2" maxlength="2" id="real_4" name="real_4" value="0" />
+      <input type="text" size="20" maxlength="64" name="realcomment_4" />
+    </td>
+    <td></td>
+  <tr>
+    <th>Friday</th>
+    <td><input type="text" size="2" maxlength="2" id="planned_5" name="planned_5" value="0" onchange="recalculateDefinedHours();" /></td>
+    <td>
+      <input type="text" size="2" maxlength="2" id="real_5" name="real_5" value="0" />
+      <input type="text" size="20" maxlength="64" name="realcomment_5" />
+    </td>
+    <td></td>
+  <tr>
+    <th>Saturday</th>
+    <td><input type="text" size="2" maxlength="2" id="planned_6" name="planned_6" value="0" onchange="recalculateDefinedHours();" /></td>
+    <td>
+      <input type="text" size="2" maxlength="2" id="real_6" name="real_6" value="0" />
+      <input type="text" size="20" maxlength="64" name="realcomment_6" />
+    </td>
+    <td></td>
+  <tr>
+    <th>Sunday</th>
+    <td><input type="text" size="2" maxlength="2" id="planned_7" name="planned_7" value="0" onchange="recalculateDefinedHours();" /></td>
+    <td>
+      <input type="text" size="2" maxlength="2" id="real_7" name="real_7" value="0"  />
+      <input type="text" size="20" maxlength="64" name="realcomment_7" />
+    </td>
+    <td></td>
+  </tr>
+  
+</table>
+<input type="submit" value="Save" />
+</form>
+
+<p align="center" class="shiftcalendarfooter">
+  Planned hours: <span id="plannedhours">40</span> 
+  &nbsp;&nbsp;
+  Real hours: <span id="realhours"></span>
+  &nbsp;&nbsp;
+  Overtime hours: <span id="overhours"></span>
+</p>
+
+<script language="JavaScript">
+  //alertUndefinedHours();
+  recalculateDefinedHours();
+  recalculateRealHours();
+</script>

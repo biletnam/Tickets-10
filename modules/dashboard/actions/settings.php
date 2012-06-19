@@ -19,5 +19,5 @@ $settingOptions['pagetitle'] = $page->add('title',  $runtime->txt->do_template($
 $page->add('main', $runtime->txt->do_template($module, 'settings', $settingOptions);
 
 
-srun('main', 'RegisterPageview', array('entity_type' => 'dashboard.settings', 'entity_id' => '', 'viewer_type' => 'U', 'viewer_id' => $r['userID']));
+$runtime->db->sqlrun('main', 'RegisterPageview', array('entity_type' => 'dashboard.settings', 'entity_id' => '', 'viewer_type' => 'U', 'viewer_id' => $r['userID']));
 ?>

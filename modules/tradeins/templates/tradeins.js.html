@@ -1,0 +1,7 @@
+function set_external_season(resort, season) {
+  if (season > 0) {
+    $('#extseason').load('?i=<:v:_module_>/ajaxextseason&resort=' + resort + '&season=');
+  } else {
+    $('#extseason').load('?i=<:v:_module_>/ajaxextseason&resort=' + resort);
+  }
+}

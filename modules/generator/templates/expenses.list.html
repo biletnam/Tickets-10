@@ -1,0 +1,14 @@
+<table class="list">
+  <tr>
+    <th rowspan="2"><:l:date></th>
+    <th rowspan="2"><:l:category></th>
+    <th rowspan="2"><:l:contract></th>
+    <th rowspan="2"><:l:client></th>
+    <th rowspan="2"><:l:comment></th>
+    <:a:currencies|looptemplate?name=expense.currency.header.row1>
+  </tr>
+  <tr>
+    <:a:currencies|looptemplate?name=expense.currency.header.row2>
+  </tr>
+  <:v:expenses>
+</table>

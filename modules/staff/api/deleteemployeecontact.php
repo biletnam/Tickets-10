@@ -54,7 +54,7 @@ if ($id == 0) {
     $opresult = $objEmployee->delete_contact(('id' => $id));
     if ($opresult > 0) {
       $employeeContacts = $objEmployee->get_employee_contacts(('id' => $employee));
-      $output = $runtime->dotmod($controller, 'API.EmployeeContacts', array('contacts' => $employeeContacts));
+      $output = $runtime->$runtime->txt->do_template($controller, 'API.EmployeeContacts', array('contacts' => $employeeContacts));
     }
   } else {
     $result = 'ERR'; 
@@ -64,7 +64,7 @@ if ($id == 0) {
 
 # Return resulting XML API output - quite similar to all APIs
 print "content-type: $contenttype; charset=$charset;\n\n";
-print $runtime->dotmod($controller, 'API.Envelope', array(
+print $runtime->$runtime->txt->do_template($controller, 'API.Envelope', array(
   'result' => $result,
   'output' => $output,
   'warnings' => Arrays::a2xml($warnings, 'Warnings', 'Warning'),

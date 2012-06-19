@@ -1,0 +1,82 @@
+<:v:easteregg>
+
+<h1><:v:pagetitle></h1>
+
+<table cellpadding="10" width="100%">
+  <tr valign="top">
+    <td width="50%">
+    
+      <table class="details" width="100%">
+        <tr>
+          <th>Creator</th>
+          <td><a href="?p=profiles/employee&id=<:v:creator>" title="Click to view all tickets related to the user"><:v:CreatorName></a></td>
+        </tr>
+        <tr>
+          <th>Reviewer</th>
+          <td><a href="?p=profiles/employee&id=<:v:reviewer>" title="Click to view all tickets related to the user"><:v:ReviewerName></a></td>
+        </tr>
+        <tr>
+          <th>Handler</th>
+          <td><a href="?p=profiles/employee&id=<:v:handler>" title="Click to view all tickets related to the user"><:v:HandlerName></a></td>
+        </tr>
+        <tr>
+          <th>Status</th>
+          <td><:v:status|lookupdict?module=tickets&name=status></td>
+        </tr>
+        <tr>
+          <th>Priority</th>
+          <td><:v:priority|lookupdict?module=tickets&name=priority></td>
+        </tr>
+        <tr>
+          <th>DueDate</th>
+          <td><:v:duedate|dateformat?format=shortdate></td>
+        </tr>
+        <tr>
+          <th>Date created</th>
+          <td><:v:DateCreated|dateformat?format=shortdate></td>
+        </tr>
+        <tr>
+          <th>Last updated</th>
+          <td><:v:LastUpdated|dateformat?format=shortdate></td>
+        </tr>
+      </table>
+
+    </td>
+    <td>
+
+      <table class="details" width="100%">
+        <tr>
+          <th>Title</th>
+          <td><:v:title|untitled|trim></td>
+        </tr>
+        <tr>
+          <th>Project</th>
+          <td><a href="?p=<:v:_module_>/project&id=<:v:project>" title="Click to view all tickets related to the project"><:v:ProjectTitle></a></td>
+        </tr>
+        <:v:targets>
+      </table>
+
+      <p>&nbsp;</p>
+      
+      <table class="singledetail" width="100%">
+        <tr>
+          <th>Summary</th>
+        </tr>
+        <tr>
+          <td><:v:contents|paragraphs2|process></td>
+        </tr>
+        <!--
+        <tr>
+          <td><:v:contents|paragraphs|entities></td>
+        </tr>
+        <tr>
+          <td><:v:ncontents|paragraphs|process></td>
+        </tr>
+        -->
+      </table>
+
+    </td>
+  </tr>
+</table>
+  
+<:v:tabcontrol>

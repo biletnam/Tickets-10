@@ -7,7 +7,7 @@ $id = lavnn('id', $_REQUEST, 0);
 $office_id = lavnn('office_id', $_REQUEST, 0);
 if ($id > 0) {
   $objCal->update_office_calendar(%_REQUEST);
-  set_cookie('flash', 'Office calendar updated');
+  $_SESSION['flash'] = 'Office calendar updated');
 } elseif ($office_id <> 0) {
   $officeInfo = $runtime->s2r($module, 'GetOfficeDetails', array('office' => $office_id));
   $calendarParams = array(
@@ -21,7 +21,7 @@ if ($id > 0) {
   if ($calendar_id > 0) {
     $id = $objCal->create_office_calendar(%_REQUEST);
     if ($id > 0) {
-      set_cookie('flash', 'Office calendar created');
+      $_SESSION['flash'] = 'Office calendar created');
     } else {
       set_cookie('error', 'Office calendar could not be created');
     }
@@ -38,12 +38,12 @@ while (($request_key, $request_value) = each %_REQUEST) {
     $existing = $runtime->s2r($module, 'GetCalendarTypeDays', $sqlParams);
     if (count($existing) > 0) {
       if ($request_value == '' || $request_value == '0') {
-        srun($module, 'DeleteCalendarTypeDays', $sqlParams);
+        $runtime->db->sqlrun($module, 'DeleteCalendarTypeDays', $sqlParams);
       } elseif (is_numeric($request_value)) {
-        srun($module, 'UpdateCalendarTypeDays', $sqlParams) if ($existing['days_cnt'] <> $request_value);
+        $runtime->db->sqlrun($module, 'UpdateCalendarTypeDays', $sqlParams) if ($existing['days_cnt'] <> $request_value);
       }
     } elseif($request_value <> '' && $request_value > 0)  {
-      srun($module, 'InsertCalendarTypeDays', $sqlParams);
+      $runtime->db->sqlrun($module, 'InsertCalendarTypeDays', $sqlParams);
     }
     push @ids, $suffix;
   }

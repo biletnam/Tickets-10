@@ -8,10 +8,10 @@ if ($id > 0) {
   $tabCampaign = new ctlTab($r, 'ctCampaign');
   $tabCampaign->addTab('details', dot('editcampaign.tab.details'), dot('editcampaign.details', $campaignInfo));
   $tabCampaign->addTab('hotels', dot('editcampaign.tab.hotels'), dot('editcampaign.wait.hotels', $campaignInfo));
-  $page['js'] .= dotmod('main', 'linkhotels.js');
-  $page->add('css',  dotmod('main', 'linkhotels.css');
-  $page['js'] .= dotmod('main', 'tabcontrol.js');
-  $page->add('css',  dotmod('main', 'tabcontrol.css');
+  $page['js'] .= $runtime->txt->do_template('main', 'linkhotels.js');
+  $page->add('css',  $runtime->txt->do_template('main', 'linkhotels.css');
+  $page['js'] .= $runtime->txt->do_template('main', 'tabcontrol.js');
+  $page->add('css',  $runtime->txt->do_template('main', 'tabcontrol.css');
   $tabCampaign->setDefaultTab(lavnn('tab') || 'details');
   $campaignInfo['tabcontrol'] = $tabCampaign->getHTML();
 } else {

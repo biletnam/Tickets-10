@@ -1,0 +1,6 @@
+function addPerson() {
+  var n = $(".morepeople_fnamerow").length + 1;
+  $.get('<:v:baseurl>/index.pl?i=<:v:_module_>/addperson&gen_user_id=<:req:gen_user_id>&<:_:nocachetoken|nocachetoken>&n=' + n, function(data) {
+    $('#morepeople').before(data);
+  });
+}

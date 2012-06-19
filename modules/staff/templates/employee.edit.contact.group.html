@@ -1,0 +1,15 @@
+<div style="margin-top:10px;">
+  <h2><:v:key></h2>
+<div>
+
+<div>
+  <div id="contacts_for_<:v:key>">
+    <:a:defined|looptemplate?name=employee.edit.contact.listitem>
+  </div>
+  <div id="newcontact_for_<:v:key>">
+  </div>  
+</div>
+
+<script>
+  $('#newcontact_for_<:v:key>').load('?i=<:v:_module_>/newcontact&key=<:v:key>&user_id=<:v:user_id>');
+</script>

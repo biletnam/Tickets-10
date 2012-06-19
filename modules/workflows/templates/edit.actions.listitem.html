@@ -1,0 +1,14 @@
+  <tr class="mod2_<:v:_mod2_>">
+    <td>
+      <input type="hidden" name="actions" value="<:v:id>" />
+      <input type="text" name="seqno_<:v:id>" value="<:v:action_seqno>" size="2" maxlength="2" />
+    </td>
+    <td><input type="text" name="name_<:v:id>" value="<:v:action_name>" size="40" /></td>
+    <td>
+      <:v:action_type|lookupdict?module=&name=actiontypes>
+    </td>
+    <td>
+      <a href="?p=<:v:_module_>/editaction&id=<:v:id>">Edit</a>
+      <a href="javascript:gc('are you sure to delete action?', '?f=<:v:_module_>/deleteaction&id=<:v:id>');">Delete</a>
+    </td>
+  </tr>

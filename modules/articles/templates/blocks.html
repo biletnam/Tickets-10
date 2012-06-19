@@ -1,0 +1,46 @@
+<h1><:v:pagetitle></h1>
+
+<form name="frmEditArticleBlocks" action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/saveblocks" />
+<input type="hidden" name="ids" value="<:v:ids>" />
+<table class="list">
+  <tr>
+    <th>Seq. no</th>
+    <th>Code</th>
+    <th>Name</th>
+    <th>Image</th>
+    <th>&nbsp;</th>
+  </tr>
+<:a:blocks|looptemplate?name=blocks.listitem>
+</table>
+<input type="submit" value="Save Changes" />
+<input type="reset" value="Reset Changes" onclick="resetFields(this.form, '_dirty_');" />
+</form>
+
+<h2>Add new block</h2>
+
+<form name="frmAddArticleBlock" action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/addblock">
+<table class="form">
+  <tr>
+    <th>Seq.no</th>
+    <td><input name="seqno" type="text" size="2" maxlength="3" /></td>
+  </tr>
+  <tr>
+    <th>Code</th>
+    <td><input name="code" type="text" size="10" maxlength="50" /></td>
+  </tr>
+  <tr>
+    <th>Name</th>
+    <td><input name="name" type="text" size="30" maxlength="50" /></td>
+  </tr>
+  <tr>
+    <th>Image</th>
+    <td><input name="image" type="text" size="30" maxlength="50" /></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Add block" /></td>
+  </tr>
+</table>
+</form>

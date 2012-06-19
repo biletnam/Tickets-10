@@ -9,7 +9,7 @@ if ($from > 0) {
     $objEmp = new objEmployee($r);
     if ($from <> '' && $to <> '') {
       $objEmp->change_line_manager($from, $to);
-      set_cookie('flash', 'Line manager changed');
+      $_SESSION['flash'] = 'Line manager changed');
     }
   }
   go("?p=$module/employee&id=$from");

@@ -1,0 +1,39 @@
+<h1><:v:pagetitle></h1>
+
+<p>Here is the list of already existing groups, sorted by group type</p>
+
+<table class="list">
+  <tr>
+    <th>Group type</th>
+    <th>Group</th>
+    <th>&nbsp;</th>
+  </tr>
+<:a:entitygroups|looptemplate?name=list.group>
+</table>
+
+<h2>Add new entity group</h2>
+
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/addgroup" />
+<table>
+  <tr>
+    <th>Entity Type</th>
+    <td>
+      <select name="group_type_dropdown">
+        <option value="" selected>* introduce new one</option>
+        <:a:existingtypes|looptemplate?module=main&name=option>
+      </select>
+      or 
+      <input type="text" name="group_type_freeform" size="15" maxlength="50" />
+    </td>
+  </tr>
+  <tr>
+    <th>Name</th>
+    <td><input type="text" name="name" size="30" maxlength="50" />
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Save" /></td>
+  </tr>
+</table>
+</form>

@@ -1,0 +1,19 @@
+<form action="" method="post">
+<div id="newtickettarget">
+  <table class="form">
+    <tr>
+      <th>Target type</th>
+      <td>
+        <select name="type" onchange="$('#newtickettarget').load('?i=<:v:_module_>/ajaxtarget&type=' + this.value + '&ticket=<:v:id>');">
+          <option value="" ></option>
+          <option value="meeting">Meeting</option>
+          <option value="employee">Employee</option>
+          <option value="client">Client</option>
+          <option value="contract">Contract</option>
+          <option value="generator">Generator</option>
+        </select>
+      </td>
+    </tr>
+  </table>
+</div>
+</form>

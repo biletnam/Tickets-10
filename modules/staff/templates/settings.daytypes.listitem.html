@@ -1,0 +1,12 @@
+  <tr class="mod2_<:v:_mod2_>">
+    <td><:v:name></td>
+    <td><:v:code></td>
+    <td><span style="width:20px; height: 20px; background-color: <:v:color>; border: solid 1px silver;">&nbsp; &nbsp;</span>&nbsp;<:v:color></td>
+    <td><:v:is_absence|lookupdict?module=main&name=yesno></td>
+    <td><:v:is_paid|lookupdict?module=main&name=yesno></td>
+    <td><:v:cnt></td>
+    <td>
+      [<a href="?p=<:v:_module_>/editdaytype&id=<:v:id>">Edit</a>]
+      [<a href="javascript:gc('Really delete day type?', '?f=<:v:_module_>/deletedaytype&id=<:v:id>');">Delete</a>]
+    </td>
+  </tr>

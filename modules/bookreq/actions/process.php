@@ -58,7 +58,7 @@ if ($id <> 0) {
         }
       }
       # Change status of request and link it to new booking
-      srun($module, 'PromoteBookreq', array('id' => $_REQUEST['id'], 'book_id' => $bookid));
+      $runtime->db->sqlrun($module, 'PromoteBookreq', array('id' => $_REQUEST['id'], 'book_id' => $bookid));
       # Send a notification to generator about request converted to booking
       use objNotification;
       $objN = new objNotification($r);

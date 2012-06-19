@@ -1,0 +1,49 @@
+<h1><:v:pagetitle></h1>
+
+<form action="" id="frmSearchBookReqs" method="get">
+<input type="hidden" name="p" value="<:v:_module_>/search">
+<table class="form">
+  <tr>
+    <th>Status</th>
+    <td>
+      <select name="status">
+        <option value="" />
+        <:a:statuses|looptemplate?module=main&name=option>
+      </select>
+    </td>
+    <th>Language</th>
+    <td>
+      <select name="language">
+        <option value="" />
+        <:a:languages|looptemplate?module=main&name=option>
+      </select>
+    </td>
+    <th>Hotel</th>
+    <td>
+      <select name="hotel_id">
+        <option value="" />
+        <:a:hotels|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th>Generator</th>
+    <td colspan="5">
+      <select name="generator_id">
+        <option value="" />
+        <:a:generators|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>
+      <input type="submit" id="btnSearchBookReqs" name="btnSearchBookReqs" value="Search!" />
+    </td>
+  </tr>
+</table>
+</form>
+
+<div id="searchresults">
+<:v:results>
+</div>

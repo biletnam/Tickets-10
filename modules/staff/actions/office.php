@@ -20,16 +20,16 @@ if ($office <> 0) {
     $tabOffice->addTab('viewers', dot('office.tab.viewers'), dot('office.wait.viewers', $officeInfo));
     $tabOffice->addTab('editors', dot('office.tab.editors'), dot('office.wait.editors', $officeInfo));
     $tabOffice->setDefaultTab(lavnn('tab') || 'staff');
-    $page['js'] .= dotmod('main', 'linkpeople.js');
-    $page->add('css',  dotmod('main', 'linkpeople.css');
+    $page['js'] .= $runtime->txt->do_template('main', 'linkpeople.js');
+    $page->add('css',  $runtime->txt->do_template('main', 'linkpeople.css');
     $page->add('css',  $runtime->txt->do_template($module, 'calendar.css');
   } else {
     $tabOffice->addTab('details', dot('office.tab.details'), dot('office.details', $officeInfo));
     $tabOffice->addTab('contacts', dot('office.tab.contacts'), dot('office.wait.contacts', $officeInfo));
     $tabOffice->setDefaultTab(lavnn('tab') || 'contacts');
   }
-  $page['js'] .= dotmod('main', 'tabcontrol.js');
-  $page->add('css',  dotmod('main', 'tabcontrol.css');
+  $page['js'] .= $runtime->txt->do_template('main', 'tabcontrol.js');
+  $page->add('css',  $runtime->txt->do_template('main', 'tabcontrol.css');
   $page['js'] .= $runtime->txt->do_template($module, 'search.sort.js');
   $officeInfo['tabcontrol'] = $tabOffice->getHTML();
   $officeInfo['hrlinks'] = $runtime->txt->do_template($module, 'office.hrlinks', $officeInfo) if $acc->can_edit_staff($office);

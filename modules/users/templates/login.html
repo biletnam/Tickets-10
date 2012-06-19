@@ -1,0 +1,27 @@
+<h1><:v:pagetitle></h1>
+
+<p>
+You are about to log in to <b><:conf:ENV></b> environment.
+</p>
+
+<form action="" method="post" name="frmLogin">
+<input type="hidden" name="f" value="<:v:_module_>/checklogin">
+<input type="hidden" name="nextURL" value="<:v:nextURL>">
+<table class="form">
+  <tr>
+    <th>Login</th>
+    <td><input type="text" name="username" value="" /></td>
+  </tr>
+  <tr>
+    <th>Password</th>
+    <td><input type="password" name="password" value="" /></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" name="" value="Login" /></td>
+  </tr>
+</table>
+
+<p>
+<a href="?p=<:v:_module_>/iforgot&url=<:v:nextUrl|urlencode>">Forgot password?</a>
+</p>

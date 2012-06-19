@@ -1,0 +1,26 @@
+<h1><:v:pagetitle></h1>
+
+<p>
+Optionally, you can define search criteria for articles to limit the length of the list
+</p>
+
+<form name="frmSearch" action="" method="get">
+<input type="hidden" name="p" value="<:v:_module_>/home" />
+<table class="form">
+<tr>
+  <th>Keyword:</th>
+  <td>
+    <input type="text" name="search" size="10" value="<:v:search>" />
+    <input type="submit" value="Search" />
+  </td>
+</tr>
+</table>
+</form>
+
+<p>
+Articles that match search criteria:
+</p>
+
+<div class="IntranetArticlesHome">
+  <:v:blocks>
+</div>

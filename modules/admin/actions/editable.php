@@ -18,10 +18,10 @@ if ($acc->can_access_menu('admin-setup-tables')) {
     $tabEditable->addTab('access', dot('editable.tab.access'), dot('editable.access', $tableInfo));  
     $tabEditable->setDefaultTab(lavnn('tab') || 'edit');
     
-    $page['js'] .= dotmod('main', 'tabcontrol.js');
-    $page['js'] .= dotmod('main', 'linkpeople.js');
-    $page->add('css',  dotmod('main', 'tabcontrol.css');
-    $page->add('css',  dotmod('main', 'linkpeople.css');
+    $page['js'] .= $runtime->txt->do_template('main', 'tabcontrol.js');
+    $page['js'] .= $runtime->txt->do_template('main', 'linkpeople.js');
+    $page->add('css',  $runtime->txt->do_template('main', 'tabcontrol.css');
+    $page->add('css',  $runtime->txt->do_template('main', 'linkpeople.css');
   
     $page->add('title',  $tableInfo['pagetitle'] = $runtime->txt->do_template($module, 'editable.title', $tableInfo);
     $tableInfo['tabcontrol'] = $tabEditable->getHTML();

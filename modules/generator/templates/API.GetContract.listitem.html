@@ -1,0 +1,30 @@
+    <Contract>
+      <address><:v:address|xmlsafe></address>
+      <admin_fees><:v:admin_fees|numberformat></admin_fees>
+      <comment><:v:comment|xmlsafe></comment>
+      <conditions><:v:conditions></conditions>
+      <contract_number><:v:contract_number></contract_number>
+      <currency_code><:v:currency_code></currency_code>
+      <date_contract><:v:date_contract|dateformat?format=fulldate></date_contract>
+      <deposit_not_paid><:v:deposit_not_paid|numberformat></deposit_not_paid>
+      <discount><:v:discount|numberformat></discount>
+      <exch_fees><:v:exch_fees|numberformat></exch_fees>
+      <first_name><:v:first_name|xmlsafe></first_name>
+      <first_name2><:v:first_name2|xmlsafe></first_name2>
+      <generator_name><:v:generator_name|xmlsafe></generator_name>
+      <gifts><:v:gifts|numberformat></gifts>
+      <last_name><:v:last_name|xmlsafe></last_name>
+      <last_name2><:v:last_name2|xmlsafe></last_name2>
+      <man_fees><:v:man_fees|numberformat></man_fees>
+      <net_price><:v:net_price|numberformat></net_price>
+      <office_name><:v:last_name|xmlsafe></office_name>
+      <other_fees><:v:other_fees|numberformat></other_fees>
+      <price><:v:price|numberformat></price>
+      <sender><:v:sender></sender>
+      <Payments>
+<:a:payments|looptemplate?name=API.GetContract.listitem.payment>
+      </Payments>
+      <GiftRows>
+<:a:giftrows|looptemplate?name=API.GetContract.listitem.giftrow>
+      </GiftRows>
+    </Contract>

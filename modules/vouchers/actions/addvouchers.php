@@ -10,7 +10,7 @@ if(lavnn('serie') == '' ) {
 } else {
   $result = $objVouchers->add_serie_vouchers(%_REQUEST); 
   if ($result['cnt_success'] > 0) {
-    set_cookie('flash', $result['cnt_success'].' vouchers are added to the serie');
+    $_SESSION['flash'] = $result['cnt_success'].' vouchers are added to the serie');
   } 
   if ($result['cnt_failure'] > 0) {
     set_cookie('error', $result['cnt_failure'].' vouchers are not added');

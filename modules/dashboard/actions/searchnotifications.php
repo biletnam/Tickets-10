@@ -24,14 +24,14 @@ $pageParams['notifications'] = join('', @notifications) || dot('searchnotificati
 $pageParams['notifications_cnt'] = $notification_cnt;
 $runtime->saveMoment(' processed retrieved list of notifications');
 
-$page['js'] .= dotmod('main', 'notifications.js');
-$page->add('css',  dotmod('main', 'notifications.css');
+$page['js'] .= $runtime->txt->do_template('main', 'notifications.js');
+$page->add('css',  $runtime->txt->do_template('main', 'notifications.css');
 $runtime->saveMoment(' included custom JavaScript and CSS');
 
 $pageParams['pagetitle'] = $page->add('title',  $runtime->txt->do_template($module, 'title.searchnotifications');
 $page->add('main', $runtime->txt->do_template($module, 'searchnotifications', $pageParams);
 
 
-srun('main', 'RegisterPageview', array('entity_type' => 'dashboard.searchnotifications', 'entity_id' => '', 'viewer_type' => 'U', 'viewer_id' => $r['userID']));
+$runtime->db->sqlrun('main', 'RegisterPageview', array('entity_type' => 'dashboard.searchnotifications', 'entity_id' => '', 'viewer_type' => 'U', 'viewer_id' => $r['userID']));
 
 ?>

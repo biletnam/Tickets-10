@@ -6,10 +6,10 @@ if ($generator > 0) {
   if (join(',', @existing) <> $ids) {
     foreach $id (lavnn('office')) {
       if (!in_array($id, $existing)) {
-        srun($module, 'InsertGeneratorBookingOffice', array('office' => $id, 'generator' => $generator));
+        $runtime->db->sqlrun($module, 'InsertGeneratorBookingOffice', array('office' => $id, 'generator' => $generator));
       }
     }
-    srun($module, 'DeleteObsoleteGeneratorBookingOffices', array('offices' => $ids, 'generator' => $generator));
+    $runtime->db->sqlrun($module, 'DeleteObsoleteGeneratorBookingOffices', array('offices' => $ids, 'generator' => $generator));
   }
   go("?p=$module/view&id=$generator&tab=offices");
 } else {

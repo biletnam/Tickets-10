@@ -1,0 +1,52 @@
+<h2>Incoming queue</h2>
+
+<p>
+Here is the list of documents sent to you. 
+Please mark them as delivered when they arrive to you.
+</p>
+
+<table class="list" width="100%">
+  <tr>
+    <th>Registered</th>
+    <th>Document type</th>
+    <th>Document name</th>
+    <th colspan="2">Sent to</th>
+    <th>Delivery method</th>
+    <th>
+      &nbsp;
+    </th>
+  </tr>
+<:a:phdocs|looptemplate?name=dashboard.phdocs.listitem>
+</table>
+
+<script>
+  $('#cnt_incoming_docs').html('<:a:phdocs|length>');
+</script>
+
+<:v:stock>
+
+<h2>All personal documents</h2>
+
+<table class="list" width="100%">
+  <tr>
+    <th>Registered</th>
+    <th>Document type</th>
+    <th>Document name</th>
+    <th>Delivery</th>
+    <th>
+      &nbsp;
+    </th>
+  </tr>
+<:a:personaldocs|looptemplate?name=dashboard.personaldocs.listitem>
+</table>
+
+<script>
+
+$('a.dochistorytooltip').cluetip({
+  width: 720,
+  sticky: true,
+  closePosition: 'title',
+  mouseOutClose: true
+});
+
+</script>

@@ -1,0 +1,19 @@
+  <tr class="mod2_<:v:_mod2_>">
+    <td><:v:office_name></td>
+    <td><:v:first_name> <:v:last_name></td>
+    <td>
+      <:v:date_from|dateformat?format=fulldate>
+      <br>
+      <:v:date_to|dateformat?format=fulldate>
+    </td>
+    <td>
+      <a <:v:contracttarget> href="<:v:contracturl>&id=<:v:contract_number>" target="_blank"><:v:contract_number></a><br />
+      <:v:type_of_contract><br />
+      <:v:date_contract|dateformat?format=fulldate>
+    </td>
+    <td class="a-r"><:v:price_total|numberformat></td>
+    <td class="a-r"><:v:deposit|numberformat></td>
+    <td class="a-r"><:v:fu_money|numberformat></td>
+    <td><:v:status_name|lc></td>
+    <td class="a-r"><a <:v:balancetarget> href="<:v:balanceurl>&contract_number=<:v:contract_number>&date_from=01.01.2000"><:v:paid|numberformat></a></td>
+  </tr>

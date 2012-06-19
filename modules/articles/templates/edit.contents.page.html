@@ -1,0 +1,21 @@
+<div id="page_<:v:id>">
+  <table class="form">
+    <tr>
+      <th>Page seq. no</th>
+      <td><input type="text" id="seq_no_<:v:id>" name="seq_no_<:v:id>" size="2" maxlength="2" value="<:v:seq_no>" /></td>
+    </tr>
+    <tr>
+      <th>Page content</th>
+      <td>
+        <textarea id="content_<:v:id>" rows="10" cols="80"><:v:content></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td>&nbsp;<input type="hidden" name="page_ids" value="<:v:id>" /></td>
+      <td>
+        <input type="button" value="Save changes" onclick="savePage(<:v:id>, <:v:article>);" />
+        <input type="button" value="Delete" onclick="deletePage(<:v:id>);" />
+      </td>
+    </tr>
+  </table>
+</div>

@@ -1,0 +1,39 @@
+<h1><:v:pagetitle></h1>
+
+<table class="hotelprofile">
+  <tr>
+    <td class="avatar">
+      <img alt="hotel" src="../images/hotel.jpg" width="50" height="50" />
+    </td>
+    <td class="basicinfo">
+      <div class="oneline">
+        <strong><:v:hotel_name></strong>
+        <br />
+        <img src="../images/icons/globe.gif" border="0" width="16" height="16">
+        <:v:location_name> &nbsp;
+        <:_:address|stopifempty:varname=address|forwardtemplate?module=&name=hotel.address> &nbsp;
+      </div>
+    </td>
+  </tr>
+</table>
+
+<div class="hotelstats">
+  <table>
+    <tr>
+      <td><img src="../images/icons/attachment.png" width="16" height="16" border="0"> <:v:wall_documents> Public document(s) &nbsp; </td>
+    </tr>
+  </table>
+  <:_:docs|stopifempty:varname=wall_documents|forwardtemplate?module=&name=attachments.list>
+</div>
+
+<form action="">
+<input type="hidden" name="f" value="<:v:_module_>/sendwallpost" />
+<input type="hidden" name="entity_type" value="hotel" />
+<input type="hidden" name="entity_id" value="<:v:hotel_id>" />
+<textarea name="comment" rows="2" style="width:980px;">
+</textarea>
+<br />
+<input type="submit" value="Send to the wall" />
+</form>
+
+<:v:wall>

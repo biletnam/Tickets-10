@@ -1,0 +1,27 @@
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/saveinputs" />
+<input type="hidden" name="id" value="<:v:id>" />
+<table class="list" width="100%">
+  <tr>
+    <th>#</th>
+    <th>Parameter name</th>
+    <th>Parameter caption</th>
+    <th>Parameter type</th>
+    <th>&nbsp;</th>
+  </tr>
+<:a:parameters|looptemplate?name=edit.inputs.listitem>
+  <tr>
+    <td>[NEW]</td>
+    <td><input type="text" name="new_name" size="20" /></td>
+    <td><input type="text" name="new_caption" size="20" /></td>
+    <td>
+      <select name="new_type">
+        <option value="" />
+        <:v:param_type|dictselectoptions:module=&name=paramtypes>
+      </select>
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<input type="submit" value="Save Input Parameters" />
+</form>

@@ -17,10 +17,10 @@ if ($id <> 0) {
     $tabDepartment->addTab('editors', dot('department.tab.editors'), dot('department.editors', $departmentInfo));
     $tabDepartment->setDefaultTab(lavnn('tab') || 'staff');
     $departmentInfo['tabcontrol'] = $tabDepartment->getHTML();
-    $page['js'] .= dotmod('main', 'tabcontrol.js');
-    $page['js'] .= dotmod('main', 'linkpeople.js');
-    $page->add('css',  dotmod('main', 'tabcontrol.css');
-    $page->add('css',  dotmod('main', 'linkpeople.css');
+    $page['js'] .= $runtime->txt->do_template('main', 'tabcontrol.js');
+    $page['js'] .= $runtime->txt->do_template('main', 'linkpeople.js');
+    $page->add('css',  $runtime->txt->do_template('main', 'tabcontrol.css');
+    $page->add('css',  $runtime->txt->do_template('main', 'linkpeople.css');
   } else {
     $departmentInfo['tabcontrol'] = $runtime->txt->do_template($module, 'department.details', $departmentInfo) . dot('department.staff', $departmentInfo);
   }

@@ -1,0 +1,33 @@
+<h1><:v:pagetitle></h1>
+
+<p>
+Specify month for which deductions are to be stored, and provide amounts as the list.
+In the list, one each row please provide phone number, employee reference number and corresponding amount 
+(copy-paste of three columns from Excel is just fine)
+</p>
+
+<form action="" method="get">
+<input type="hidden" name="p" value="<:v:_module_>/previewdeductions" />
+<table class="form">
+  <tr>
+    <th>Month</th>
+    <td>
+      <select name="month">
+        <:a:monthoptions|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th>Year</th>
+    <td><input type="text" name="year" value="<:v:year>" size="4" maxlength="4" /></td>
+  </tr>
+  <tr>
+    <th>Employees and Amounts</th>
+    <td><textarea name="amounts" rows="30" cols="30"></textarea></td>
+  </tr>
+  <tr>
+    <th>&nbsp;</th>
+    <td><input type="submit" value="Preview" /></td>
+  </tr>
+</table>
+</form>

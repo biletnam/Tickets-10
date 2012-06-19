@@ -1,0 +1,45 @@
+<h2>Report builder</h2>
+
+<p>You can also set search parameters to limit time reporting and aggregate reported time:</p>
+
+<form id="frmTimeReportingReport" action="" method="post">
+<input type="hidden" name="i" value="<:v:_module_>/timereport" />
+<input type="hidden" name="user_id" value="<:v:user_id>" />
+<table class="form">
+  <tr>
+    <th>Date from:</th>
+    <td><input type="text" class="calendardate" title="Click to select date" size="10" maxlength="10" name="date_from" id="date_from" value="<:v:date_from>" /></td>
+    <th>Date to:</th>
+    <td><input type="text" class="calendardate" title="Click to select date" size="10" maxlength="10" name="date_to" id="date_to" value="<:v:date_to>" /></td>
+  </tr>
+</table>
+
+<div id="timereporting_tab_report">
+<p><input type="submit" value="Get Report" /></p>
+<:v:reportresults>
+</div>
+</form>
+
+<script>
+$('#date_from').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+$('#date_to').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+</script>
+
+
+
+<script>
+
+// prepare the form when the DOM is ready 
+$(document).ready(function() { 
+    $('#frmTimeReportingReport').ajaxForm({ 
+        target:        '#timereporting_tab_report',
+        success:       showResponse 
+    }); 
+});
+
+function showResponse(responseText, statusText, xhr, $form)  { 
+  return;
+}
+
+</script>
+

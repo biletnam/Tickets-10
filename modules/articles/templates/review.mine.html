@@ -1,0 +1,33 @@
+<h2>My status</h2>
+
+<p>
+It seems that you had not yet provided your own opinion about the article, though it is expected from the author.
+</p>
+<p>
+Please choose either Approve or Decline the article. Also, add your comment - especially when declining!
+</p>
+
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/reviewarticle" />
+<input type="hidden" name="article" value="<:v:id>" />
+<table class="form">
+  <tr>
+    <th>Your opinion:</th>
+    <td>
+      <input type="radio" name="status" value="1" id="status1" checked />
+      <label for="status1">Approve<label>
+      &nbsp;
+      <input type="radio" name="status" value="0" />
+      <label for="status0">Decline<label>
+    </td>
+  </tr>
+  <tr>
+    <th>Your comment:</th>
+    <td><textarea name="comment" rows="4" cols="60"></textarea></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Save" /></td>
+  </tr>
+</table>
+</form>

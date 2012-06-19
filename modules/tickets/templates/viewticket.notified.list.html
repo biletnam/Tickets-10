@@ -1,0 +1,51 @@
+<h2>Notification List</h2>
+
+<table width="100%" class="list">
+  <tr>
+    <th>&nbsp;</th>
+    <th>Role</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Email</th>
+    <th>&nbsp;</th>
+  </tr>
+<:a:notified|looptemplate?name=viewticket.notified.listitem>
+</table>
+
+<h2>Add a person to notification list</h2>
+
+<p>
+Please add either staff member of external person, not both at the same time.
+</p>
+
+<form name="frmAddNotification" method="post" action="">
+<input type="hidden" name="f" value="<:v:_module_>/addnotification">
+<input type="hidden" name="ticket" value="<:v:id>">
+<table class="form">
+  <tr>
+    <th>Staff Member</th>
+    <td>
+      <select name="staff_id">
+        <option value="">-- choose one --</option>
+<:a:employees|looptemplate?module=main&name=option>        
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th>External: First Name</th>
+    <td><input type="text" name="external_first_name"></td>
+  </tr>
+  <tr>
+    <th>External: Last Name</th>
+    <td><input type="text" name="external_last_name"></td>
+  </tr>
+  <tr>
+    <th>External: E-mail</th>
+    <td><input type="text" name="external_email" size="50" maxlength="255"></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Add Notification"></td>
+  </tr>
+</table>
+</form>

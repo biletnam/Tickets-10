@@ -1,0 +1,39 @@
+<h2>New employee</h2>
+
+<p>
+Use the form below to add new employee in this office.
+After this form is submitted, you will be forwarded to employee page for adding more details.
+</p>
+
+<form name="frmEmployee" method="POST" action="">
+<input type="hidden" name="f" value="<:v:_module_>/addemployee">
+<input type="hidden" name="office" value="<:v:office>">
+<table class="form">
+  <tr>
+    <th>First Name</th>
+    <td><input type="text" size="20" maxlength="50" name="strFirstName" /></td>
+  </tr>
+  <tr>
+    <th>Last Name</th>
+    <td><input type="text" size="20" maxlength="50" name="strLastName" /></td>
+  </tr>
+  <tr>
+    <th>Nick</th>
+    <td><input type="text" size="20" maxlength="50" name="strNick" /></td>
+  </tr>
+  <tr>
+    <th>Working since</th>
+    <td><input type="text" class="calendardate" title="Click to select date" size="10" maxlength="10" name="dateStartWork" id="working_since" /></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Save" /></td>
+  </tr>
+</table>
+</form>
+
+  
+<script>
+$('#working_since').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+</script>
+

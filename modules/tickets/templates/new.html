@@ -1,0 +1,71 @@
+<h1>Creating new ticket</h1>
+
+<form id="frmCreateTicket" name="frmCreateTicket" method="post" action="" onSubmit="return false">
+<input type="hidden" name="f" value="<:v:_module_>/create" />
+<input type="hidden" name="creator" value="<:v:creator>" />
+<table class="form">
+<:v:targets>
+  <tr>
+    <th>Title</th>
+    <td><input type="text" name="title" size="60" maxlength="255" value="<:v:title>" /></td>
+  </tr>
+  <tr>
+    <th>Contents</th>
+    <td><textarea name="contents" rows="10" cols="60"></textarea></td>
+  </tr>
+  <tr>
+    <th>DueDate</th>
+    <td>
+      <input type="text" class="calendardate" title="Click to select date" id="newticket_duedate" name="duedate" size="10" maxlength="10" />
+      * optional
+    </td>
+  </tr>
+  <tr>
+    <th>Priority</th>
+    <td>
+      <select name="priority">
+        <:a:priorities|looptemplate?module=main&name=option>
+      </select>
+      * optional
+    </td>
+  </tr>
+  <tr>
+    <th>Assignment</th>
+    <td>
+      <table>
+
+        <tr>
+          <td><input type="radio" name="destination" value="self" checked> Keep personal</td>
+          <td>&nbsp;</td>
+        </tr>
+        <:v:projectselect>
+        <tr>
+          <td><input type="radio" name="destination" value="employee"> Directly to handler:</td>
+          <td>
+            <input type="text" class="peoplesearch" title="Start typing to get suggestions" id="q" onclick="setCheckedValue(document.frmCreateTicket.destination, 'employee');" />
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="button" value="Create ticket" onclick="this.form.submit();"></td>
+  </tr>
+</table>
+</form>
+
+
+<script>
+  suggestPerson('U', 'q', 'employee');
+  /*
+    TODO
+    New solution does not include this code in callback: 
+      setCheckedValue(document.frmCreateTicket.destination, 'employee');
+    We need to find a way to do this without sacrifizing universal suggestPerson function
+  */
+</script>
+
+<script>
+$('#newticket_duedate').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+</script>

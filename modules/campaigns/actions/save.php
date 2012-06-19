@@ -71,7 +71,7 @@ if ($clients.$contracts == '' ) {
       }
     }
 
-    #set_cookie('flash', dot('flash.save.success', array('title' => $title, 'success' => $success, 'failure' => $failure) ));
+    #$_SESSION['flash'] = dot('flash.save.success', array('title' => $title, 'success' => $success, 'failure' => $failure) ));
     go("?p=tickets/project&id=$project_id");
   } else {
     set_cookie('error', 'Could not create a project!');

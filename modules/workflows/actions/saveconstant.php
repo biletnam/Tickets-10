@@ -10,7 +10,7 @@ if ($id > 0) {
   } else {
     $newid = sid($module, 'InsertConstant', array('workflow' => $id, 'ctype' => $ctype, 'cname' => $cname, 'cvalue' => $cvalue));
     if ($newid > 0) {
-      set_cookie('flash', 'Constant added');
+      $_SESSION['flash'] = 'Constant added');
     } else {
       set_cookie('error', 'Could not add constant');
     }

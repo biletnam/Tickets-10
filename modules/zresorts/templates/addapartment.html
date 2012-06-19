@@ -1,0 +1,33 @@
+<h1><:v:pagetitle></h1>
+
+<p>
+You can add several apartments of any type. 
+Just enter the names of apartments line by line.
+</p>
+
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/saveapartment" />
+<input type="hidden" name="hotel" value="<:v:hotel>" />
+<table class="form">
+  <tr>
+    <th>Block</th>
+    <td><:v:block|lookupdict?module=main&name=aptblocktype></td>
+  </tr>
+  <tr>
+    <th>Apartment type</th>
+    <td>
+      <select name="apartment_type">
+        <:a:apttypeoptions|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th>Apartment names</th>
+    <td><textarea name="names" rows="10" cols="50"></textarea></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Save" /></td>
+  </tr>
+</table>
+</form>

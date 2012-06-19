@@ -1,0 +1,16 @@
+  <tr class="mod2_<:v:_mod2_>">
+    <td width="11%"><:v:entity_type></td>
+    <td width="7%">
+      <a 
+        id="planner_today_ticketlink_<:v:entity_id>" 
+        href="javascript: showAjaxPopup({url: '?fwd=<:v:entity_type>tooltip&id=<:v:entity_id>', width:800, id:'planner_today_ticketlink_<:v:entity_id>']);" 
+        title="Click to preview"
+      ><img src="../images/icons/preview.png" border="0" height="16" width="16" /></a> 
+      <a href="?fwd=<:v:entity_type>&id=<:v:entity_id>"><:v:entity_id></a>
+    </td>
+    <td width="75%"><a href="?fwd=<:v:entity_type>&id=<:v:entity_id>"><:v:event_text></a></td>
+    <td width="7%">
+      <:_:forget|forwardtemplate?module=&name=planner.forget>
+      <:_:postpone|forwardtemplate?module=&name=planner.postpone>
+    </td>
+  </tr>

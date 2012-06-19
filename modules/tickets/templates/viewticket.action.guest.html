@@ -1,0 +1,49 @@
+<p>
+NB! Since this ticket is neither issued by you nor currently assigned to you, 
+number of activities you can do with this ticket is rather limited.
+</p>
+
+<form action="" method="post" enctype="multipart/form-data">
+<input type="hidden" name="f" value="<:v:_module_>/change">
+<input type="hidden" name="ticket" value="<:v:id>">
+
+<table width="100%">
+  <tr valign="top">
+    <td width="50%">
+      <p>
+        <:v:takeover>
+        <:v:sethandler>
+      </p>
+    </td>
+    <td width="50%">
+      <p>&nbsp;</p>
+      <div id="action-reminders"><:v:reminders></div>
+    </td>
+  </tr>
+  <tr valign="top">
+    <td width="50%">
+      <p>
+        <b>Report working time (optional)</b><br />
+        <input type="text" size="2" maxlength="2" name="reported_hours" />hours, 
+        <input type="text" size="2" maxlength="2" name="reported_minutes" /> minutes
+      </p>
+    </td>
+    <td width="50%">
+      <p>
+        <b>Upload file (optional)</b><br />    
+        <input type="file" name="attachment">
+      </p>
+    </td>
+  </tr>
+</table>    
+
+<br />
+<b>Leave a comment (optional)</b>
+
+<br />
+<textarea name="comment" rows="3" cols="100"></textarea>
+
+<br />
+<input type="submit" value="Submit changes" />
+
+</form>

@@ -163,13 +163,13 @@ if ($apiparams['obligation_id'] == '') {
     }
     # Return the request in the same form as it was written to DB
     $bookingRequest = $objB->get_booking_request(('id' => $id));
-    $output = $runtime->dotmod($controller, 'API.RequestBooking', $bookingRequest);
+    $output = $runtime->$runtime->txt->do_template($controller, 'API.RequestBooking', $bookingRequest);
   }
 }
 
 # Return resulting XML API output - quite similar to all APIs
 print "content-type: $contenttype; charset=$charset;\n\n";
-print $runtime->dotmod($controller, 'API.Envelope', array(
+print $runtime->$runtime->txt->do_template($controller, 'API.Envelope', array(
   'result' => $result,
   'output' => $output,
   'warnings' => Arrays::a2xml($warnings, 'Warnings', 'Warning'),

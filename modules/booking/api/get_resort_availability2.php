@@ -69,13 +69,13 @@ if ($resort_id <> '' && $travel_date <> '') {
     if (count($slots) > 0) {
       $availabilityInfo = $slots[0]; 
       $availabilityInfo['slots'] = $slots;
-      push @slotgroups, $runtime->dotmod($controller, 'API.AvailabilityInfo2.SlotGroup', $availabilityInfo);
+      push @slotgroups, $runtime->$runtime->txt->do_template($controller, 'API.AvailabilityInfo2.SlotGroup', $availabilityInfo);
     } 
   }
   if (count($slotgroups) > 0) {
     $availabilityInfo['slotgroups'] = join('', @slotgroups);
   }
-  $output = $runtime->dotmod($controller, 'API.AvailabilityInfo2', $availabilityInfo);
+  $output = $runtime->$runtime->txt->do_template($controller, 'API.AvailabilityInfo2', $availabilityInfo);
   
 } else {
   $result = 'ERR'; 
@@ -84,7 +84,7 @@ if ($resort_id <> '' && $travel_date <> '') {
 
 # Return resulting XML API output - quite similar to all APIs
 print "content-type: $contenttype; charset=$charset;\n\n";
-print $runtime->dotmod($controller, 'API.Envelope', array(
+print $runtime->$runtime->txt->do_template($controller, 'API.Envelope', array(
   'result' => $result,
   'output' => $output,
   'warnings' => Arrays::a2xml($warnings, 'Warnings', 'Warning'),

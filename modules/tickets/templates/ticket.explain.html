@@ -1,0 +1,46 @@
+<table width="100%" class="form">
+  <tr>
+    <th>Title</th>
+    <td><a href="?p=<:v:_module_>/viewticket&id=<:v:id>"><:v:title|untitled></a></td>
+    <th>Status</th>
+    <td><:v:status|lookupdict?module=tickets&name=status></td>
+    <th>Comments</th>
+    <td><:v:cnt_comments|printzero></td>
+  </tr>
+  <tr>
+    <th>Creator</th>
+    <td><a href="?p=profiles/employee&id=<:v:creator>"><:v:CreatorName></a></td>
+    <th>Priority</th>
+    <td><:v:priority|lookupdict?module=tickets&name=priority></td>
+    <th>Attachments</th>
+    <td><:v:cnt_attachments|printzero></td>
+  </tr>
+  <tr>
+    <th>Reviewer</th>
+    <td><a href="?p=profiles/employee&id=<:v:reviewer>"><:v:ReviewerName></a></td>
+    <th>Date created</th>
+    <td><:v:DateCreated|dateformat?format=shortdate></td>
+    <th>Reported</th>
+    <td><:v:minutes|explaintime:format=short></td>
+  </tr>
+  <tr>
+    <th>Handler</th>
+    <td><a href="?p=profiles/employee&id=<:v:handler>"><:v:HandlerName></a></td>
+    <th>DueDate</th>
+    <td><:v:duedate|dateformat?format=shortdate></td>
+    <th>&nbsp;</th>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <th>Project</th>
+    <td><a href="?p=<:v:_module_>/project&id=<:v:project>"><:v:ProjectTitle></a></td>
+    <th>Last updated</th>
+    <td><:v:LastUpdated|dateformat?format=shortdate></td>
+    <th>&nbsp;</th>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <th>Summary</th>
+    <td colspan="5"><:v:contents></td>
+  </tr>
+</table>

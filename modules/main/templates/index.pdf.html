@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+    <title><:v:title></title>
+    <script type="text/javascript" language="JavaScript" src="../js/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" language="JavaScript" src="../js/scripts.js"></script>
+    <style>
+      body, p, div, td {
+        font-size: 12px;
+      }
+      
+      #title p {
+        font-size: 18px;
+        font-family: Verdana, Tahoma, Arial;
+      }
+    </style>
+    <:v:cssfiles>
+    <style type="text/css">
+      <:v:css>
+    </style>
+    <style type="text/css">
+      .clearfix:after {
+        content: ".";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+        }
+      .clearfix {display: inline-block;}  /* for IE/Mac */
+    </style>
+    <!--[if IE]>
+    <style type="text/css">
+      .clearfix {
+        zoom: 1;     /* triggers hasLayout */
+        display: block;     /* resets display for IE/Win */
+        }  /* Only IE can see inside the conditional comment
+        and read this CSS rule. Don't ever use a normal HTML
+        comment inside the CC or it will close prematurely. */
+    </style>
+    <![endif]-->
+  </head>
+  <body>
+
+    <table width="100%">
+      <tr>
+        <td align="left"><img src="<:conf:ROOT_PATH_IMAGES>/absolute80.jpg" width="458" height="80" /></td>
+        <td align="right" id="title">
+          <p>Ticketing system v.<:conf:VERSION></p>
+          <p><:v:title></p>
+        </td>
+      </tr>
+    <table>
+    
+    <table width="100%">
+      <tr>
+        <td colspan="2"><:v:main></td>
+      </tr>
+    <table>
+
+  </body>
+</html>

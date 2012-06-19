@@ -1,0 +1,17 @@
+<div id="topmenu_container">
+  <ul id="topmenu" class="dropmenu clearfix">
+    <:a:firstlevelitems|looptemplate?name=topmenu.main.firstlevel> 
+  </ul>
+</div>
+
+<script>
+  $(document).ready(function() {
+    $('#topmenu').dropmenu({
+      effect  : "none",
+      speed   : "fast",
+      nbsp    : true
+    });
+  });
+  
+  $('#topmenu-<:v:toplevelselection>').addClass('selected');
+</script>

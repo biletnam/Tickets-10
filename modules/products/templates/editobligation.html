@@ -1,0 +1,91 @@
+<h1><:v:pagetitle></h1>
+
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/saveobligation" />
+<input type="hidden" name="id" value="<:v:id>" />
+<input type="hidden" name="product_id" value="<:v:product_id>" />
+<table class="form">
+  <tr>
+    <th>Product</th>
+    <td><a href="?p=<:v:_module_>/view&id=<:v:product_id>&tab=obligations"><:v:product_name></a> (type of contract <:v:type_of_contract>, resort code: <:v:resort_code>)</td>
+  </tr>
+  <tr>
+    <th>Date From</th>
+    <td><input type="text" name="date_from" id="date_from" value="<:v:date_from>" size="10" maxlength="10" ></td>
+  </tr>
+  <tr>
+    <th>Date To</th>
+    <td><input type="text" name="date_to" id="date_to" value="<:v:date_to>" size="10" maxlength="10" ></td>
+  </tr>
+  <tr>
+    <th>Code</th>
+    <td><input type="text" name="code" value="<:v:code>" size="3" maxlength="3" ></td>
+  </tr>
+  <tr>
+    <th>Quantity</th>
+    <td><input type="text" name="qty" value="<:v:qty>" size="2" maxlength="3" ></td>
+  </tr>
+  <tr>
+    <th>Is breakable?</th>
+    <td>
+      <select name="is_breakable">
+        <:a:isbreakableoptions|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th>Is periodical?</th>
+    <td>
+      <select name="is_periodical">
+        <:a:periodicoptions|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th>Priority usage?</th>
+    <td>
+      <select name="is_prioritized">
+        <:a:priorityusageoptions|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th>Requires maintenance fees?</th>
+    <td>
+      <select name="requires_maintfees">
+        <:a:requiresmaintfeesoptions|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th>High Season?</th>
+    <td>
+      <select name="season">
+        <option value=""></option>
+        <:a:highseasonoptions|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th>Periods</th>
+    <td><input type="text" name="periods" value="<:v:periods>" size="2" maxlength="3" ></td>
+  </tr>
+  <tr>
+    <th>Apartment Type</th>
+    <td>
+      <select name="apt_type_id">
+        <option value=""></option>
+        <:a:apttypeoptions|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Save" /></td>
+  </tr>
+</table>
+
+<script>
+$('#date_from').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+$('#date_to').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+</script>

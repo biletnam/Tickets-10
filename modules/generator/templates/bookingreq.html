@@ -1,0 +1,179 @@
+<h1><:l:pagetitle></h1>
+
+<table class="form">
+  <tr>
+    <th><:l:status></th>
+    <td><:v:status|lookupdict?module=&name=bookreq.status></td>
+  </tr>
+  <tr>
+    <th><:l:sender_name></th>
+    <td><:v:sender_name></td>
+  </tr>
+  <tr>
+    <th><:l:sender_email></th>
+    <td><:v:sender_email></td>
+  </tr>
+  
+  <:v:bookingsection>
+  
+  <tr class="section">
+    <td colspan="2"><:l:stay></td>
+  </tr>
+  <tr>
+    <th><:l:hotel_location></th>
+    <td><:v:location_name></td>
+  </tr>
+  <tr>
+    <th><:l:hotel></th>
+    <td><:v:hotel_name></td>
+  </tr>
+  <tr>
+    <th><:l:arrdate></th>
+    <td>
+      <:v:arrdate|dateformat?format=fulldate>; &nbsp; &nbsp;
+      <:l:transfer>:
+      <:v:arrtransfer|lookupdict?module=main&name=yesno>
+    </td>
+  </tr>  
+  <tr>
+    <th><:l:depdate></th>
+    <td>
+      <:v:depdate|dateformat?format=fulldate>; &nbsp; &nbsp;
+      <:l:transfer>:
+      <:v:deptransfer|lookupdict?module=main&name=yesno>
+    </td>
+  </tr>  
+  <tr>
+    <th><:l:apttype></th>
+    <td><:v:type_name></td>
+  </tr>
+  <tr>
+    <th><:l:hotel_alternative></th>
+    <td><:v:hotel_alternative></td>
+  </tr>
+
+
+  <tr class="section">
+    <td colspan="2"><:l:guest1></td>
+  </tr>
+  <tr>
+    <th><:l:firstname></th>
+    <td><:v:fname1></td>
+  </tr>
+  <tr>
+    <th><:l:lastname></th>
+    <td><:v:lname1></td>
+  </tr>
+  <tr>
+    <th><:l:nationality></th>
+    <td><:v:nationality_name></td>
+  </tr>
+  <tr>
+    <th><:l:passport></th>
+    <td><:v:passport1></td>
+  </tr>
+  <tr>
+    <th><:l:dob></th>
+    <td><:v:dob1|dateformat?format=fulldate></td>
+  </tr>
+  <tr>
+    <th><:l:maritalstatus></th>
+    <td><:v:ms1|lookupdict?module=&name=relationship></td>
+  </tr>
+  <tr>
+    <th><:l:occupation></th>
+    <td><:v:occupation1></td>
+  </tr>
+  <tr>
+    <th><:l:homephone></th>
+    <td><:v:homephone></td>
+  </tr>
+  <tr>
+    <th><:l:workphone></th>
+    <td><:v:workphone></td>
+  </tr>
+  <tr>
+    <th><:l:mobilephone></th>
+    <td><:v:mobilephone></td>
+  </tr>
+  <tr>
+    <th><:l:city></th>
+    <td><:v:city></td>
+  </tr>
+  <tr>
+    <th><:l:country></th>
+    <td><:v:country_name> / <:v:russian_name></td>
+  </tr>
+  
+
+
+  <tr class="section">
+    <td colspan="2"><:l:guest2></td>
+  </tr>
+  <tr>
+    <th><:l:firstname></th>
+    <td><:v:fname2></td>
+  </tr>
+  <tr>
+    <th><:l:lastname></th>
+    <td><:v:lname2></td>
+  </tr>
+  <tr>
+    <th><:l:passport></th>
+    <td><:v:passport2></td>
+  </tr>
+  <tr>
+    <th><:l:dob></th>
+    <td><:v:dob2|dateformat?format=fulldate></td>
+  </tr>
+  <tr>
+    <th><:l:maritalstatus></th>
+    <td><:v:ms2|lookupdict?module=&name=relationship></td>
+  </tr>
+  <tr>
+    <th><:l:occupation></th>
+    <td><:v:occupation2></td>
+  </tr>
+  <tr>
+    <th><:l:contactphone></th>
+    <td><:v:contactphone></td>
+  </tr>
+
+  <:v:morepeoplehtml>
+  
+
+  <tr class="section">
+    <td colspan="2"><:l:ownership></td>
+  </tr>
+  <tr>
+    <th><:l:contract></th>
+    <td><:v:contract_id></td>
+  </tr>  
+  <tr>
+    <th><:l:property></th>
+    <td><:v:property></td>
+  </tr>  
+
+
+  <tr class="section">
+    <td colspan="2"><:l:more></td>
+  </tr>
+  <tr>
+    <th><:l:clubcountryvisits> &nbsp; &nbsp;</th>
+    <td><:v:clubcountryvisits></td>
+  </tr>  
+  <tr>
+    <th><:l:clubvacations> &nbsp; &nbsp;</th>
+    <td><:v:clubvacations></td>
+  </tr>  
+  <tr>
+    <th><:l:CC> &nbsp; &nbsp;</th>
+    <td><:v:hasCC|lookupdict?module=main&name=yesno></td>
+  </tr>  
+  <tr>
+    <th><:l:comment> &nbsp; &nbsp;</th>
+    <td><:v:comment></td>
+  </tr>    
+
+
+</table>

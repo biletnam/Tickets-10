@@ -1,0 +1,71 @@
+<div id="notification_list">
+
+<h2>Notification List</h2>
+
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/setreminder" />
+<input type="hidden" name="ticket" value="<:v:id>" />
+<table width="100%" class="list">
+  <tr>
+    <th>&nbsp;</th>
+    <th>Role</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Email</th>
+    <th>&nbsp;</th>
+  </tr>
+<:a:notified|looptemplate?name=viewticket.notified.listitem>
+</table>
+
+<p>Remind selected people:</p>
+<table class="form">
+  <tr><th>Reminder date *:</th><td><input type="text" name="event_date" size="10" maxlength="10" class="calendardate" id="event_date" title="Select date for reminder about this ticket" /></td></tr>
+  <tr><th>Reminder subject:</th><td><input type="text" name="event_text" size="40" maxlength="255" title="Provide your custom reminder text instead of a standard one" /></td></tr>
+  <tr><th><input type="submit" value="Create reminder" /></td></tr>
+</table>
+</form>
+
+<h2>Add a person to notification list</h2>
+
+<p>
+Please add either staff member of external person, not both at the same time.
+</p>
+
+<form name="frmAddNotification" id="frmAddNotification" method="post" action="" onSubmit="return false;">
+<input type="hidden" name="f" value="<:v:_module_>/addnotification" />
+<input type="hidden" name="ticket" value="<:v:id>" />
+<table class="form">
+  <tr>
+    <th>Staff Member</th>
+    <td>
+      <input type="text" class="peoplesearch" title="Start typing to get suggestions" id="ntf">
+    </td>
+  </tr>
+  <tr>
+    <th>External: First Name</th>
+    <td><input type="text" name="external_first_name"></td>
+  </tr>
+  <tr>
+    <th>External: Last Name</th>
+    <td><input type="text" name="external_last_name"></td>
+  </tr>
+  <tr>
+    <th>External: E-mail</th>
+    <td><input type="text" name="external_email" size="50" maxlength="255"></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="button" value="Add person" onclick="this.form.submit();"></td>
+  </tr>
+</table>
+</form>
+
+</div>
+
+<script>
+  suggestPerson('U', 'ntf', 'staff_id');
+</script>
+
+<script>
+  $('#event_date').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+</script>

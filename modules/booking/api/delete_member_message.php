@@ -47,7 +47,7 @@ if ($client_id == 0) {
 } else {
   $messages = $runtime->s2a($controller, 'ListMemberMessages', $apiparams);
   if (count($messages) == 1) {
-    $runtime->srun($controller, 'DeleteMemberMessage', $apiparams);
+    $runtime->($controller, 'DeleteMemberMessage', $apiparams);
     # Fetch this message anew to see if it was deleted
     @messages = $runtime->s2a($controller, 'ListMemberMessages', $apiparams);
     if (count($messages) == 1) {
@@ -56,7 +56,7 @@ if ($client_id == 0) {
         $result = 'ERR'; 
         push @errors, $runtime->hash2ref( ('code' => 'DeleteMemberMessage.Failure', 'text' => 'Could not complete DELETE operation:' . $runtime->spreview($controller, 'DeleteMemberMessage', $apiparams)) );
       } else {
-        $output = $runtime->dotmod($controller, 'API.DeleteMemberMessage', $message);
+        $output = $runtime->$runtime->txt->do_template($controller, 'API.DeleteMemberMessage', $message);
       }
     }
   } else {
@@ -67,7 +67,7 @@ if ($client_id == 0) {
 
 # Return resulting XML API output - quite similar to all APIs
 print "content-type: $contenttype; charset=$charset;\n\n";
-print $runtime->dotmod($controller, 'API.Envelope', array(
+print $runtime->$runtime->txt->do_template($controller, 'API.Envelope', array(
   'result' => $result,
   'output' => $output,
   'warnings' => Arrays::a2xml($warnings, 'Warnings', 'Warning'),

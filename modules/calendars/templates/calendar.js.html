@@ -1,0 +1,165 @@
+
+function changeYear(id, oldyear, oldmonth, newyear) {
+  $('#monthview').load('?i=<:v:_module_>/viewmonth&nocache=<:_:nocache|nocachetoken>&id=' + id + '&year=' + newyear + '&month=' + oldmonth); 
+  $('#yearview').load('?i=<:v:_module_>/viewyear&nocache=<:_:nocache|nocachetoken>&id=' + id + '&year=' + newyear + '&month=' + oldmonth);
+}
+
+function changeMonth(id, oldyear, oldmonth, newmonth) {
+  $('#monthview').load('?i=<:v:_module_>/viewmonth&nocache=<:_:nocache|nocachetoken>&id=' + id + '&year=' + oldyear + '&month=' + newmonth); 
+}
+
+function setMonth(year, month) {
+  var oldyear = $("#yearcalendar_year").val();
+  if (oldyear != year) {
+    $('#yearview').load('?i=<:v:_module_>/viewyear&nocache=<:_:nocache|nocachetoken>&id=<:v:id>&year=' + year + '&month=' + month);
+  }
+  $('#monthview').load('?i=<:v:_module_>/viewmonth&nocache=<:_:nocache|nocachetoken>&id=<:v:id>&year=' + year + '&month=' + month); 
+}
+
+function getSpecificParameters() {
+  var object_type = $('#monthview_object_type').val();
+  var object_id = $('#monthview_object_id').val();
+  
+  var output = '&object_type=' + urlencode(object_type) + '&object_id=' + object_id;
+  if (object_type == 'employeeabsence') {
+    var day_type = $('#monthview_moredata_day_type').val();
+    output = output + '&day_type=' + day_type;
+    var qty = $('#monthview_moredata_qty').val();
+    output = output + '&qty=' + qty;
+  } else if (object_type == 'office') {
+    var day_type = $('#monthview_moredata_day_type').val();
+    output = output + '&day_type=' + day_type;
+    var mandatory_vacation = $('#monthview_moredata_mandatory_vacation').val();
+    output = output + '&mandatory_vacation=' + mandatory_vacation;
+    var transferable = $('#monthview_moredata_transferable').val();
+    output = output + '&transferable=' + transferable;
+  }
+  return output;
+}
+
+function addMonthViewComment() {
+  hideMonthViewEditingControls();
+  $('#working_monthview').show();
+  var days = $('#monthview_collected_days').val(); 
+  var id = $("#monthview_calendar_id").val(); 
+  var comment = $('#monthview_comment').val();
+  var year = $('#monthview_year').val();
+  var month = $('#monthview_month').val();
+  if (days != '' && id != '' && comment != undefined && comment != '') {
+    var data = 'f=<:v:_module_>/monthview_addevent&<:_:nocache|nocachetoken>&year=' + year + '&month=' + month + '&id=' + id + '&days=' + urlencode(days) + '&comment=' + urlencode(comment);
+    var data = data + getSpecificParameters();
+    $.ajax({  
+        url: "index.pl",   
+        type: "GET",  
+        data: data,       
+        cache: false,  
+        success: function (html) {
+          if (html != '') {
+            $('#monthview').html(html);
+            $('#working_yearview').hide();
+            $('#yearview').load('?i=<:v:_module_>/viewyear&id=' + id + '&year=' + year);
+          } 
+        }, 
+        error: function () {
+          $('#working_monthview').hide();
+          showMonthViewEditingControls();
+        }       
+    });    
+  } else {
+    $('#working_monthview').hide();
+    showMonthViewEditingControls();
+    alert('Check some days and add comment!');
+  }
+}
+
+function showMonthViewEditingControls() {
+  $('#monthview_savebutton_container').show();
+  $('.monthview_checkbox_container').show();
+  $('#monthview_editbutton_container').hide();
+  $('#monthview_editform').show();
+}
+
+function hideMonthViewEditingControls() {
+  $('#monthview_editbutton_container').show();
+  $('.monthview_checkbox_container').hide();
+  $('#monthview_savebutton_container').hide();
+  $('#monthview_editform').hide();
+}
+
+function collectCheckedDays(day, ischecked) {
+  var collected = $('#monthview_collected_days').val();
+  var collectedbase = ',' + collected + ',';
+  if (ischecked) { // add day to the list
+    if (collectedbase.indexOf(',' + day + ',') == -1) {
+      collected = collected + (collected != '' ? ',' : '') + day;
+    }
+  } else { // remove from the list
+    if (collectedbase.indexOf(',' + day + ',') != -1) {
+      collected = collectedbase.replace(',' + day + ',', ',');
+      startfix = (collected.charAt(0) == ',' ? 1 : 0);
+      endfix = (collected.charAt(collected.length - 1) == ',' ? 1 : 0);
+      collected = collected.substr(startfix, collected.length - startfix - endfix);
+    }
+  }
+  $('#monthview_collected_days').val(collected);
+} 
+
+function renameEventOnYearView(id, oldname, calendar, year, month) {
+  var newname = prompt('Give a new name for event: ', oldname);
+  if (newname != undefined && newname != '') { 
+    $('#working_monthview').show();
+    var data = 'f=<:v:_module_>/rename_event&nocache=<:_:nocache|nocachetoken>&year=' + year + '&month=' + month + '&id=' + id + '&comment=' + urlencode(newname);
+    $.ajax({  
+        url: "index.pl",   
+        type: "GET",  
+        data: data,       
+        cache: false,  
+        success: function (html) {
+          if (html != '') {
+            $('#monthview').html(html);
+            $('#working_yearview').hide();
+            $('#yearview').load('?i=<:v:_module_>/viewyear&id=' + calendar + '&year=' + year);
+          } 
+        }, 
+        error: function () {
+          alert('Failed to rename!');
+          $('#working_yearview').hide();
+          $('#working_monthview').hide();
+        }       
+    });    
+  }
+}
+
+function deleteEventOnYearView(id, confirmtext, calendar, year, month) {
+  if (confirm(confirmtext)) {
+    $('#working_monthview').show();
+    var data = 'f=<:v:_module_>/delete_event&nocache=<:_:nocache|nocachetoken>&year=' + year + '&month=' + month + '&id=' + id;
+    $.ajax({  
+        url: "index.pl",   
+        type: "GET",  
+        data: data,       
+        cache: false,  
+        success: function (html) {
+          if (html != '') {
+            $('#monthview').html(html);
+            $('#working_yearview').hide();
+            $('#event_' + id).remove();
+          } 
+        }, 
+        error: function () {
+          alert('Failed to delete!');
+          $('#working_yearview').hide();
+          $('#working_monthview').hide();
+        }       
+    });    
+  }
+}
+
+/*
+function checkRequestedDaysCount() {
+  var boxes = $('#yearview').find("input[type=checkbox]");
+  alert(boxes.length);
+  alert('checkRequestedDaysCount::false');
+  return false;
+}
+*/

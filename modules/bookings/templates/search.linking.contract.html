@@ -1,0 +1,18 @@
+<div id="linking">
+  <p class="red">
+    Results of this booking search can be linked to contract 
+    #<a class="contracttooltip" href="#" rel="?i=contracts/contracttooltip&contract_no=<:v:source_id>" title="Contract information"><:v:source_id></a>.
+    <br />
+    This message will be displayed until you make a successfull linking or 
+    <a href="javascript: $('#linking').load('?f=<:v:_module_>/stoplinking');">Switch off</a> linking mode.
+  </p>
+</div>
+
+<script>
+$('a.contracttooltip').cluetip({
+  width: 500,
+  sticky: true,
+  closePosition: 'title',
+  mouseOutClose: false
+});
+</script>

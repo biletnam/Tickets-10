@@ -1,0 +1,27 @@
+  <tr class="mod2_<:v:_mod2_>">
+    <td><input type="checkbox" name="id_<:v:ID>" /></td>
+    <td><img src="../images/icons/sex.<:v:lngSex|lookupdict?module=main&name=gender>.png" title="<:v:lngSex|lookupdict?module=main&name=gender>" /></td>
+    <td><span onclick="g('?p=<:v:_module_>/employee&id=<:v:ID>');" title="Click to view employee profile" style="cursor: pointer;"><:v:strNick></span></td>
+    <td><a href="?p=<:v:_module_>/employee&id=<:v:ID>" title="Click to view employee profile"><img src="../images/icons/zoom.png" border="0" /></a></td>
+    <td><span onclick="g('?p=<:v:_module_>/employee&id=<:v:ID>');" title="Click to view employee profile" style="cursor: pointer;"><:v:strFirstName> <b><:v:strLastName></b></span></td>
+    <td>
+      <:_:attachments_count|stopifempty:varname=attachments_count|forwardtemplate?module=&name=searchresults.listitem.attachments>
+    </td>
+    <td>
+      <:_:linemanager|stopifempty:varname=line_manager|forwardtemplate?module=&name=searchresults.listitem.linemanager>
+    </td>
+    <td>
+      <:_:deputystaff|stopifempty:varname=deputy_staff|forwardtemplate?module=&name=searchresults.listitem.deputystaff>
+    </td>
+    <td><:v:strLocalMobilePhone></td>
+    <td>
+      <:_:email|stopifempty:varname=strLocalOfficeEmail|forwardtemplate?module=&name=searchresults.listitem.email>
+      <:_:yahoo|stopifempty:varname=yahoo_id|forwardtemplate?module=&name=searchresults.listitem.yahoo>
+    </td>
+
+    <td><a href="?p=tickets/usertime&user=<:v:ID>"><img src="../images/icons/clock.png" width="16" height="16" border="0"></a></td>
+    <td><a href="?p=tickets/usertickets2react&user_id=<:v:ID>"><img src="../images/icons/ticket.png" width="16" height="16" border="0"></a></td>
+    <td><a href="?p=articles/userarticles&id=<:v:ID>" title="Click to view articles edited by user"><img src="../images/icons/editarticle.png" width="16" height="16" border="0"></a></td>
+    <td><:_:calendar|stopifempty:varname=strCalendarTypeName|forwardtemplate?module=&name=searchresults.listitem.calendar></td>
+    <td><:_:AbsenceCalendarID|stopifempty:varname=AbsenceCalendarID|forwardtemplate?module=&name=searchresults.listitem.absences></td>
+  </tr>

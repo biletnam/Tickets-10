@@ -1,0 +1,48 @@
+<h1><:v:pagetitle></h1>
+
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/savecontacttype" />
+<input type="hidden" name="id" value="<:v:id>" />
+<table class="form">
+  <tr>
+    <th>Name</th>
+    <td><input type="text" name="name" value="<:v:name>" size="30" /></td>
+  </tr>
+  <tr>
+    <th>Code</th>
+    <td><input type="text" name="code" value="<:v:code>" size="10" /></td>
+  </tr>
+  <tr>
+    <th>Group</th>
+    <td><input type="text" name="type" value="<:v:type>" size="10" /></td>
+  </tr>
+  <tr>
+    <th>Sequence number</th>
+    <td><input type="text" name="seq_no" value="<:v:seq_no>" size="5" /></td>
+  </tr>
+  <tr>
+    <th>Public?</th>
+    <td>
+      <select name="is_public">
+        <:a:ispublicoptions|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th>Multiple?</th>
+    <td>
+      <select name="is_multiple">
+        <:a:ismultipleoptions|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th>Mapped column</th>
+    <td><input type="text" name="mapped_column" value="<:v:mapped_column>" size="30" /></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Save" /></td>
+  </tr>
+</table>
+</form>

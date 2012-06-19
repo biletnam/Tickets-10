@@ -1,0 +1,70 @@
+<h1><:v:pagetitle></h1>
+
+<p>
+In this view, we show you all non-closed tickets created by you.
+</p>
+
+<p>
+You can limit the number of data by defining a filter below:
+</p>
+
+<form action="" id="frmTickets2Follow" method="get">
+<input type="hidden" name="p" value="<:v:_module_>/usertickets2follow" />
+<input type="hidden" name="user_id" value="<:v:user_id>" />
+<table width="100%" class="form">
+  <tr>
+    <td>
+      Handler:<br />
+      <select name="handler">
+        <option value=""></option>
+<:a:tickethandlers|looptemplate?module=main&name=option>
+      </select>
+    </td>
+    <td>
+      Project:<br />
+      <select name="project">
+        <option value=""></option>
+<:a:ticketprojects|looptemplate?module=main&name=option>
+      </select>
+    </td>
+    <td>
+      Department:<br />
+      <select name="department">
+        <option value=""></option>
+<:a:ticketdepartments|looptemplate?module=main&name=option>
+      </select>
+    </td>
+    <td>
+      Status:<br />
+      <select name="status">
+        <option value=""></option>
+<:a:ticketstatuses|looptemplate?module=main&name=option>
+      </select>
+    </td>
+    <td>
+      Min. priority:<br />
+      <select name="priority">
+        <option value=""></option>
+<:a:ticketpriorities|looptemplate?module=main&name=option>
+      </select>
+    </td>
+    <td>
+      &nbsp;<br />
+      <input type="submit" value="Search" />
+      <input type="reset" value="Clear" />
+    </td>
+  </tr>
+</table>
+</form>
+</p>
+
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/multi" />
+<input type="hidden" name="op" value="" />
+<input type="hidden" name="nextUrl" value="?<:env:QUERY_STRING>" />
+
+<:v:datagrid>
+
+<:v:multi>
+
+</form>

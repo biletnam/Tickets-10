@@ -1,0 +1,16 @@
+
+function showViewerOptions(viewertype) {
+  if (viewertype == '') {
+    $('#viewer').html('&lt;- choose viewer type');
+  } else if (viewertype == 'C') {
+    $('#viewer').load('?i=main/ajaxpageviewer&type=C&name=viewer_id&chars=3');
+  } else if (viewertype == 'G') {
+    $('#viewer').load('?i=main/ajaxpageviewer&type=G&name=viewer_id&chars=2');
+  } else if (viewertype == 'U') {
+    $('#viewer').load('?i=main/ajaxpageviewer&type=U&name=viewer_id&chars=2');
+  }
+}
+
+function showEntityOptions(entitytype) {
+  $('#entity').load('?i=main/ajaxpageentity&type=' + entitytype + '&name=entity_type&chars=2');
+}

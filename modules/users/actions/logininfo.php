@@ -4,9 +4,9 @@ $uinfo = $r['userInfo'];
 
 if (count($uinfo) > 0 && $r['userID'] <> '') {
   $uinfo['url'] = lavnn('url'); 
-  print dotmod('users', 'logininfo', $uinfo);
+  print $runtime->txt->do_template('users', 'logininfo', $uinfo);
 } else {
-  print dotmod('users', 'pleaselogin');
+  print $runtime->txt->do_template('users', 'pleaselogin');
 }
 
 1;

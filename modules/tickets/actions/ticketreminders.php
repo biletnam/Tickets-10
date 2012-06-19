@@ -1,7 +1,7 @@
 <?php
 $delete = lavnn('delete', $_REQUEST, 0);
 if ($delete > 0) {
-  srun($module, 'DeleteTicketReminder', array('id' => $delete));
+  $runtime->db->sqlrun($module, 'DeleteTicketReminder', array('id' => $delete));
 }
 
 $_REQUEST['user_id'] = $r['userID'];

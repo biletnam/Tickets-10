@@ -1,0 +1,10 @@
+  <tr class="mod2_<:v:_mod2_>">
+    <td><:v:id></td>
+    <td><:v:status|lookupdict?module=bookreq&name=bookreq.status></td>
+    <td><a href="?p=bookings/view&id=<:v:book_id>"><:v:ref_no></a> <:_:cancelled|stopifempty:varname=cancel|forwardtemplate?module=&name=view.requests.listitem.cancelled></td>
+    <td><:v:hotel_name></td>
+    <td><:v:arrdate|dateformat?format=fulldate> - <:v:depdate|dateformat?format=fulldate></td>
+    <td><:v:fname1> <:v:lname1></td>
+    <td><:v:DateCreated|dateformat?format=fulldate></td>
+    <td><a href="?p=bookreq/view&id=<:v:id>">View</a></td>
+  </tr>

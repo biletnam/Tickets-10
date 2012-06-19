@@ -1,0 +1,31 @@
+<tr id="row_<:v:n>_fname" class="morepeople_fnamerow">
+  <th><:l:fname> <:v:n></th>
+  <td>
+    <input type="text" class="style4" size="20" maxlength="50" name="fname_<:v:n>" />
+    <input type="hidden" name="morepeople" value="<:v:n>" />
+  </td>
+</tr>
+<tr id="row_<:v:n>_lname">
+  <th><:l:lname> <:v:n></th>
+  <td><input type="text" class="style4" size="20" maxlength="20" name="lname_<:v:n>" /></td>
+</tr>
+<tr id="row_<:v:n>_relationship">
+  <th><:l:marritalstatus> <:v:n></th>
+  <td><select class="style4" name="rel_<:v:n>"><option value="" /><:a:relationships|looptemplate?module=main&name=option></select></td>
+</tr>
+<tr id="row_<:v:n>_passport">
+  <th><:l:passport> <:v:n></th>
+  <td><input type="text" class="style4" size="10" maxlength="20" name="passport_<:v:n>" /></td>
+</tr>
+<tr id="row_<:v:n>_dob">
+  <th><:l:dob> <:v:n></th>
+  <td>
+    <input type="text" class="calendardate" title="Click to select date" class="style4" size="10" maxlength="10" name="dob_<:v:n>" id="dob_<:v:n>" />
+    <script>
+      $('#dob_<:v:n>').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1, yearRange: 'c-100:c+0']);
+    </script>
+  </td>
+</tr>
+<tr>
+  <td colspan="2">&nbsp;</td>
+</tr>

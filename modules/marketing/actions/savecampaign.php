@@ -3,13 +3,13 @@
 $id = lavnn('id', $_REQUEST, 0);
 
 if ($id > 0) {
-  $result = srun($module, 'UpdateCampaign', $_REQUEST);
+  $result = $runtime->db->sqlrun($module, 'UpdateCampaign', $_REQUEST);
 } else {
   $id = sid($module, 'InsertCampaign', $_REQUEST);
   if ($id == 0) {
     set_cookie('error', 'Could not insert campaign');  
   } else {
-    set_cookie('flash', 'Campaign saved');  
+    $_SESSION['flash'] = 'Campaign saved');  
   }
 }
 

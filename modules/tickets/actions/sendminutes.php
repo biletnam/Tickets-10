@@ -17,7 +17,7 @@ if ($id > 0) {
 
     $result = 0;
     if (lavnn('withpdf') > 0) {
-      $html = dotmod('main', 'index.pdf', array('main' => $meetingHtml));
+      $html = $runtime->txt->do_template('main', 'index.pdf', array('main' => $meetingHtml));
       $pdfname = $r['fs']pdf($html, "Meeting.$id.pdf", 1);
       $f = array('filename' => 'Test.pdf', 'type' => 'application/pdf', 'path' => $pdfname);
       $files = array($f);
@@ -27,7 +27,7 @@ if ($id > 0) {
     }
 
     if ($result > 0) {
-      set_cookie('flash', "Minutes sent to $to");
+      $_SESSION['flash'] = "Minutes sent to $to");
     } else {
       set_cookie('error', 'Meeting minutes not sent.');
     }

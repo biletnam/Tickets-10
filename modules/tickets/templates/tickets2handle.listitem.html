@@ -1,0 +1,27 @@
+  <tr class="mod2_<:v:_mod2_>">
+    <td><:v:id></td>
+    <td>
+      <a 
+        id="myhandle_ticketlink_<:v:id>" 
+        href="javascript: showAjaxPopup({url: '?i=<:v:_module_>/tooltip&id=<:v:id>', width:800, id:'myhandle_ticketlink_<:v:id>']);" 
+        title="Click to preview"
+      ><img src="../images/icons/preview.png" border="0" height="16" width="16" /></a> 
+      <a href="?p=<:v:_module_>/viewticket&id=<:v:id>"><:v:title|untitled|shortener?words=5></a>
+    </td>
+    <td class="spanselector">
+      <span class="span_<:v:isPersonal>">
+        personal TODO
+      </span>
+      <span class="span_<:v:isDirect>">
+        from <a href="?p=profiles/employee&id=<:v:creator>" title="<:v:CreatorName>"><:v:CreatorNick></a>
+      </span>
+      <span class="span_<:v:isProject>">
+        via <a href="?p=<:v:_module_>/project&id=<:v:project>"><:v:ProjectTitle></a> 
+      </span>
+    </td>
+    <td><:v:priority|lookupdict?module=tickets&name=priority></td>
+    <td class="duedate_<:v:duedate_class>"><:v:duedate|dateformat?format=fulldate></td>
+    <td><:v:minutes_reported|explaintime:format=short></td>
+    <td><span id="ticketweight_<:v:id>"><:_:weight|forwardtemplate?module=&name=ticketweight></span></td>
+    <td><:v:estimated|dateformat?format=fulldate></td>
+  </tr>

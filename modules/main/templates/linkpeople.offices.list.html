@@ -1,0 +1,12 @@
+<p>
+Keep items in list unchecked if you would like to select all of them
+</p>
+
+<table class="list">
+<tr>
+  <th>&nbsp;</th>
+  <th>Office name (empl. count)</th>
+</tr>
+<:a:offices|looptemplate?name=linkpeople.offices.listitem>
+</table>
+<input type="button" id="linkpeople_<:v:controlname>_addoffices" value="Add" onclick="addDepartment('<:v:controlname>');" />

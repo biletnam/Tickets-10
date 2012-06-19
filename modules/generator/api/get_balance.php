@@ -59,7 +59,7 @@ if ($gen_user_id == 0) {
     );
   
     $generatorInfo = $runtime->s2r($controller, 'GetGeneratorInfo', $sqlParams);
-    $genUserInfo['generatorinfo'] = $runtime->dotmod($controller, 'API.GetBalance.GeneratorInfo', $generatorInfo); 
+    $genUserInfo['generatorinfo'] = $runtime->$runtime->txt->do_template($controller, 'API.GetBalance.GeneratorInfo', $generatorInfo); 
     
     Arrays::r2xml($generatorInfo, 'GeneratorInfo');
     $categories = $runtime->s2a($controller, 'ListCategories', $sqlParams);
@@ -73,12 +73,12 @@ if ($gen_user_id == 0) {
       $expenses = $runtime->s2a($controller, 'ListExpenses', $sqlParams);
       $genUserInfo['expenses'] = $expenses;
       $otherexpenses = $runtime->s2r($controller, 'CountOtherExpenses', $sqlParams);
-      $genUserInfo['otherexpenses'] = $runtime->dotmod($controller, 'API.GetBalance.OtherExpenses', $otherexpenses); 
+      $genUserInfo['otherexpenses'] = $runtime->$runtime->txt->do_template($controller, 'API.GetBalance.OtherExpenses', $otherexpenses); 
       $interc = $runtime->s2a($controller, 'Intercompany', $sqlParams);
       $genUserInfo['interc'] = $interc;
     }
 
-    $output = $runtime->dotmod($controller, 'API.GetBalance', $genUserInfo);    
+    $output = $runtime->$runtime->txt->do_template($controller, 'API.GetBalance', $genUserInfo);    
   } else {
     $result = 'ERR'; 
     push @errors, $runtime->hash2ref( ('code' => 'GetBalance.NotFound', 'text' => 'Generator data not found') );
@@ -87,7 +87,7 @@ if ($gen_user_id == 0) {
 
 # Return resulting XML API output - quite similar to all APIs
 print "content-type: $contenttype; charset=$charset;\n\n";
-print $runtime->dotmod($controller, 'API.Envelope', array(
+print $runtime->$runtime->txt->do_template($controller, 'API.Envelope', array(
   'result' => $result,
   'output' => $output,
   'warnings' => Arrays::a2xml($warnings, 'Warnings', 'Warning'),

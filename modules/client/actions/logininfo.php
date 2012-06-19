@@ -3,9 +3,9 @@
 $cinfo = $r['clientInfo'];
 
 if (count($cinfo) > 0 && $r['clientID'] <> '') {
-  print dotmod('clients', 'logininfo', $cinfo);
+  print $runtime->txt->do_template('clients', 'logininfo', $cinfo);
 } else {
-  print dotmod('clients', 'pleaselogin');
+  print $runtime->txt->do_template('clients', 'pleaselogin');
 }
 
 1;

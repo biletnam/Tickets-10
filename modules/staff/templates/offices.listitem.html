@@ -1,0 +1,20 @@
+  <tr class="mod2_<:v:_mod2_>">
+    <td><:v:lngId></td>
+    <td><:v:country_name></td>
+    <td><:v:location_name></td>
+    <td><a href="?p=<:v:_module_>/office&office=<:v:lngId>"><:v:strName></a></td>
+    <td>
+      <:v:cnt_current>
+    </td>
+    <td>
+      <:v:cnt_total>
+    </td>
+    <td>
+      [<a title="Click to view absences of staff in the office" href="?p=<:v:_module_>/officeabsences&office=<:v:lngId>">View</a>]
+<:_:officeabsenceslink|stopifempty:varname=can_edit|forwardtemplate?module=&name=offices.listitem.officeabsences>
+    </td>
+    <td>
+      [<a href="?p=<:v:_module_>/office&office=<:v:lngId>&tab=contacts">Contacts</a>]
+<:_:editcalendarslink|stopifempty:varname=can_edit|forwardtemplate?module=&name=offices.listitem.editlinks>
+    </td>
+  </tr>

@@ -13,7 +13,7 @@ if (lavnn('name') == '' ) {
     # INSERT
     $id = $objVouchers->create_stock(%_REQUEST);
     if ($id > 0) {
-      set_cookie('flash', 'New voucher stock is registered');
+      $_SESSION['flash'] = 'New voucher stock is registered');
     } else {
       set_cookie('error', 'Voucher stock could not be added');
     }

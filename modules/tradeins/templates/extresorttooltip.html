@@ -1,0 +1,28 @@
+<form action="">
+<input type="hidden" name="f" value="<:v:_module_>/saveextresort" />
+<input type="hidden" name="id" value="<:v:id>" />
+<table class="form" width="100%">
+  <tr>
+    <th>Name</th>
+    <td>
+      <input type="text" name="name" size="50" maxlength="50" value="<:v:name>" />
+    </td>
+  </tr>
+  <tr>
+    <th>Club</th>
+    <td>
+      <input type="text" name="club" size="50" maxlength="50" value="<:v:club>" />
+    </td>
+  </tr>
+  <tr>
+    <th>Country</th>
+    <td>
+      <select name="country"><:a:countryoptions|looptemplate?module=main&name=option></select> 
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Save external resort information" /></td>
+  </tr>
+</table>
+</form>

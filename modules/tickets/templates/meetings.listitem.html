@@ -1,0 +1,11 @@
+  <tr class="mod2_<:v:_mod2_>">
+    <td><a href="?p=<:v:_module_>/viewmeeting&id=<:v:id>&tab=issues"><:v:name|untitled></a></td>
+    <td><:v:meetingdate|dateformat?format=fulldate></td>
+    <td><:v:location></td>
+    <td><:v:issues_cnt></td>
+    <td>
+      <a href="?p=<:v:_module_>/newmeeting&clone=<:v:id>" title="Click to clone a meeting">Clone</a>
+      <a href="?p=<:v:_module_>/printmeeting&id=<:v:id>" title="Click to get a version for printing">Print</a>
+      <:_:deletelink|stopifnotempty:varname=issues_cnt|forwardtemplate?module=&name=meetings.listitem.deletelink>
+    </td>
+  </tr>

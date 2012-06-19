@@ -1,0 +1,61 @@
+<h2><:v:formtitle></h2>
+
+<form method="post" action="">
+<input type="hidden" name="f" value="<:v:_module_>/saveprice" />
+<input type="hidden" name="id" value="<:v:id>" />
+<input type="hidden" name="hotel_id" value="<:v:hotel_id>" />
+<table class="form">
+  <tr>
+    <th>Block</th>
+    <td><select name="blockpricetype"><:a:blockpricetypes|looptemplate?module=main&name=option></select></td>
+  </tr>
+  <tr>
+    <th>Apartment Type</th>
+    <td><select name="localtype"><:a:localtypes|looptemplate?module=main&name=option></select></td>
+  </tr>
+  <tr>
+    <th>Date Start</th>
+    <td><input type="text" class="calendardate" title="Click to select date" id="datestart" name="datestart" size="10" maxlength="10" value="<:v:date_start|dateformat?format=fulldate>" /></td>
+  </tr>
+  <tr>
+    <th>Date End</th>
+    <td><input type="text" class="calendardate" title="Click to select date" id="dateend" name="dateend" size="10" maxlength="10" value="<:v:date_end|dateformat?format=fulldate>" /></td>
+  </tr>
+  <tr>
+    <th>Office</th>
+    <td><select name="office"><:v:alloffices><:a:offices|looptemplate?module=main&name=option></select></td>
+  </tr>
+  <tr>
+    <th>Price</th>
+    <td>
+      <input type="text" name="price_amount" size="6" maxlength="10" value="<:v:price>" />
+      <select id="price_currency" name="price_currency"><:a:currencies|looptemplate?module=main&name=option></select>
+      <:v:suggest_price_ccy>
+    </td>
+  </tr>
+  <tr>
+    <th>Owner Price</th>
+    <td>
+      <input type="text" name="owner_price_amount" size="6" maxlength="10" value="<:v:owner_price>" />
+    </td>
+  </tr>
+  <tr>
+    <th>Real Price</th>
+    <td>
+      <input type="text" name="real_price_amount" size="6" maxlength="10" value="<:v:real_price>" />
+      <select id="real_price_currency" name="real_price_currency"><:a:realcurrencies|looptemplate?module=main&name=option></select>
+      <:v:suggest_realprice_ccy>
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Save" /></td>
+  </tr>
+</table>
+</form>
+
+
+<script>
+$('#datestart').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+$('#dateend').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+</script>

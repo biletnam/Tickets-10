@@ -1,0 +1,17 @@
+  <tr class="mod2_<:v:_mod2_>">
+    <td>
+      <input type="checkbox" <:v:used|checked> name="folder" value="<:v:id>" id="folder_<:v:id>">
+    </td>
+    <td>
+      <label for="folder_<:v:id>"><span id="foldername_<:v:id>"><:v:name></span></label>
+    </td>
+    <td>
+      [<a href="javascript: var answer = prompt('Folder name:', '<:v:name|jssafe>'); if (!(answer == null || answer == '')) { $('#foldername_<:v:id>').load('?i=<:v:_module_>/setfoldername&id=<:v:id>&name=' + escape(answer)); }" title="Click to quick edit the folder name">Rename</a>]
+      [<a href="?p=<:v:_module_>/folder&id=<:v:id>" title="Click to quick view all tickets in this folder">View All <:v:cnt_tickets> Tickets</a>]
+      <:_:deletefolder|stopifnotempty:varname=cnt_tickets|forwardtemplate?module=&name=viewticket.folders.listitem.deletelink>
+    </td>
+    <td>
+      <:_:renamemapping|stopifempty:varname=map_id|forwardtemplate?module=&name=viewticket.folders.listitem.editcommentlink>
+      <span id="mapcomment_<:v:map_id>"><:v:comment></span>
+    </td>
+  </tr>

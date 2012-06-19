@@ -1,0 +1,61 @@
+<form action="" method="POST">
+<input type="hidden" name="f" value="<:v:_module_>/savehardblock" />
+<input type="hidden" name="id" value="<:v:id>" />
+<input type="hidden" name="hotel_id" value="<:v:hotel_id>" />
+<table class="form">
+  <tr>
+    <th>Hotel</th>
+    <td>
+      <a href="?p=<:v:_module_>/edithotel&id=<:h:hotelinfo|field:name=hotel_id>&tab=hb"><:h:hotelinfo|field:name=hotel_name></a>
+    </td>
+  </tr>
+  <!--
+  <tr>
+    <th>Type</th>
+    <td>
+      <select name="apt_type_id"><option /><:a:apttypes|looptemplate?module=main&name=option></select>
+    </td>
+  </tr>
+  -->
+  <tr>
+    <th>Local Type</th>
+    <td>
+      <select name="local_apt_id"><option /><:a:localtypes|looptemplate?module=main&name=option></select>
+    </td>
+  </tr>
+  <tr>
+    <th>Name</th>
+    <td><input type="text" name="apt_no" size="20" maxlength="255" value="<:v:apt_no>" /></td>
+  </tr>
+  <tr>
+    <th>Date From</th>
+    <td><input type="text" class="calendardate" title="Click to select date" name="date_start" id="date_start" size="10" maxlength="10" value="<:v:date_start|dateformat?format=fulldate>" /></td>
+  </tr>
+  <tr>
+    <th>Date To</th>
+    <td><input type="text" class="calendardate" title="Click to select date" name="date_end" id="date_end" size="10" maxlength="10" value="<:v:date_end|dateformat?format=fulldate>" /></td>
+  </tr>
+  <tr>
+    <th>Office</th>
+    <td>
+      <select name="office_id">
+        <option value=""></option>
+        <:a:offices|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th>Comment</th>
+    <td><textarea name="comment" rows="6" cols="80"><:v:comment></textarea></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" name="Save" /></td>
+  </tr>
+</table>
+</form>
+
+<script>
+$('#date_start').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+$('#date_end').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+</script>

@@ -1,0 +1,38 @@
+<form action="" method="post">
+<input type="hidden" name="id" value="<:v:id>" />
+<input type="hidden" name="f" value="<:v:_module_>/savecampaign" />
+<table class="form">
+  <tr>
+    <th>Name</th>
+    <td><input type="text" name="name" size="40" value="<:v:name>" /></td>
+  </tr>
+  <tr>
+    <th>Description</th>
+    <td><textarea name="description" rows="4" cols="40"><:v:description></textarea></td>
+  </tr>
+  <tr>
+    <th>Arrival from</th>
+    <td><input type="text" id="arrival_from" name="arrival_from" class="calendardate" size="10" maxlength="10" value="<:v:arrival_from|dateformat?format=fulldate>" /></td>
+  </tr>
+  <tr>
+    <th>Arrival to</th>
+    <td><input type="text" id="arrival_to" name="arrival_to" class="calendardate" size="10" maxlength="10" value="<:v:arrival_to|dateformat?format=fulldate>" /></td>
+  </tr>
+  <tr>
+    <th>Booking from</th>
+    <td><input type="text" id="booking_from" name="booking_from" class="calendardate" size="10" maxlength="10" value="<:v:booking_from|dateformat?format=fulldate>" /></td>
+  </tr>
+  <tr>
+    <th>Booking to</th>
+    <td><input type="text" id="booking_to" name="booking_to" class="calendardate" size="10" maxlength="10" value="<:v:booking_to|dateformat?format=fulldate>" /></td>
+  </tr>
+  <tr>
+    <th>Q bonus</th>
+    <td><input type="text" id="qbonus" name="qbonus" size="10" maxlength="10" value="<:v:qbonus>" /></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Save"></td>
+  </tr>
+</table>
+</form>

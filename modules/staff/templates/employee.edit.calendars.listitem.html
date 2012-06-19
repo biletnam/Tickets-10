@@ -1,0 +1,14 @@
+  <tr>
+    <td><:v:name></td>
+    <td><:v:Y></td>
+    <td><:v:date_from|dateformat?format=fulldate></td>
+    <td><:v:date_to|dateformat?format=fulldate></td>
+    <td><:v:absences></td>
+    <td><:v:businesstrip></td>
+    <td><:v:approved> / <:v:entitled> + <:v:overworked></td>
+    <td><strong><:v:vacationbalance></strong></td>
+    <td>
+      <a href="?p=<:v:_module_>/employeeofficecalendar&id=<:v:employeeofficecalendar>">Edit</a>
+      <a href="javascript:gc('Really remove office calendar from this employee?', '?f=<:v:_module_>/deleteemployeeofficecalendar&id=<:v:employeeofficecalendar>');">Remove</a>
+    </td>
+  </tr>

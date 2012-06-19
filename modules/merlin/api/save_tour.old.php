@@ -71,12 +71,12 @@ if ($id == 0) {
   $result = 'ERR'; 
   push @errors, $runtime->hash2ref( ('code' => 'SaveTour.Failed', 'text' => 'Could not add tour') );
 } else {
-  $output = $runtime->dotmod($controller, 'API.SaveTour', array('id' => $id));
+  $output = $runtime->$runtime->txt->do_template($controller, 'API.SaveTour', array('id' => $id));
 }
 
 # Return resulting XML API output - quite similar to all APIs
 print "content-type: $contenttype; charset=$charset;\n\n";
-print $runtime->dotmod($controller, 'API.Envelope', array(
+print $runtime->$runtime->txt->do_template($controller, 'API.Envelope', array(
   'result' => $result,
   'output' => $output,
   'warnings' => Arrays::a2xml($warnings, 'Warnings', 'Warning'),

@@ -10,9 +10,9 @@ if ($user_id > 0) {
     foreach $day (split(',', lavnn('collected_days'))) {
       $sqlParams['qty'] = array(lavnn('day_qty') == 'half' ? 0.5 : 1);
       $sqlParams['day'] = $day;
-      srun($module, 'AddUserAbsence', $sqlParams);
+      $runtime->db->sqlrun($module, 'AddUserAbsence', $sqlParams);
     }
-    set_cookie('flash', 'Employee calendar changed');
+    $_SESSION['flash'] = 'Employee calendar changed');
   }
   $year = lavnn('year');
   $month = lavnn('month');

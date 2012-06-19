@@ -1,0 +1,51 @@
+<h1><:v:pagetitle></h1>
+
+<table class="employeeprofile">
+  <tr>
+    <td class="avatar">
+      <img alt="avatar" src="?f=main/avatar&employee=<:v:lngId>" width="50" height="50" />
+    </td>
+    <td class="basicinfo">
+      <div class="oneline">
+        <img src="../images/icons/sex.<:v:lngSex|lookupdict?module=main&name=gender>.png" title="<:v:lngSex|lookupdict?module=main&name=gender>">
+        <strong><:v:strFullName></strong> &nbsp;
+        <img src="../images/icons/calendar-blue.png" border="0" width="16" height="16"> born on <:v:dateBirth|dateformat?format=fulldate> 
+        <br />
+  
+        Office: <a href="?p=profiles/office&id=<:v:lngWorkPlace>"><:v:OfficeName></a>, 
+        Department: <a href="?p=profiles/department&id=<:v:team_id>"><:v:DepartmentName></a> &nbsp;
+        <:_:phone|stopifempty:varname=strLocalWorkPhone|forwardtemplate?module=&name=employee.phone_link>
+        <:_:email|stopifempty:varname=strLocalOfficeEmail|forwardtemplate?module=&name=employee.email_link>
+        <:_:yahoo|stopifempty:varname=yahoo_id|forwardtemplate?module=&name=employee.yahoo_link>
+        <:_:skype|stopifempty:varname=skype|forwardtemplate?module=&name=employee.skype_link>
+        
+        <br />
+  
+        Works since <:v:dateStartWork|dateformat?format=fulldate> &nbsp;
+        <:_:lm|forwardtemplate?module=&name=employee.lm_link> 
+        <:_:ds|forwardtemplate?module=&name=employee.ds_link> 
+      </div>
+    </td>
+  </tr>
+</table>
+
+<div class="employeestats">
+  <table>
+    <tr>
+      <td><img src="../images/icons/ticket.png" width="16" height="16" border="0"> <:v:outstanding_tickets> Outstanding ticket(s) &nbsp; </td>
+      <td><img src="../images/icons/attachment.png" width="16" height="16" border="0"> <:v:wall_documents> Public document(s) &nbsp; </td>
+    </tr>
+  </table>
+</div>
+
+<form action="">
+<input type="hidden" name="f" value="<:v:_module_>/sendwallpost" />
+<input type="hidden" name="entity_type" value="employee" />
+<input type="hidden" name="entity_id" value="<:v:lngId>" />
+<textarea name="comment" rows="2" style="width:980px;">
+</textarea>
+<br />
+<input type="submit" value="Send to the wall" />
+</form>
+
+<:v:wall>

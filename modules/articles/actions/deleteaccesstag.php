@@ -1,6 +1,6 @@
 <?php
 
-srun($module, 'DeleteAccessTag', $_REQUEST);
+$runtime->db->sqlrun($module, 'DeleteAccessTag', $_REQUEST);
 go('?p='.$module.'/access');
 
 ?>

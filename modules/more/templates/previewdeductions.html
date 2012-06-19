@@ -1,0 +1,18 @@
+<h1><:v:pagetitle></h1>
+
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/dodeductions" />
+<input type="hidden" name="month" value="<:v:month>">
+<input type="hidden" name="year" value="<:v:year>">
+<input type="hidden" name="refs" value="<:v:refs>" />
+<table class="list">
+  <tr>
+    <th>Employee</th>
+    <th>Reference</th>
+    <th>Comment</th>
+    <th>Amount</th>
+  </tr>
+<:a:deductions|looptemplate?name=previewdeductions.listitem>
+</table>
+<p><input type="submit" value="Save" /></p>
+</form>

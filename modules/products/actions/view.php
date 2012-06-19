@@ -14,8 +14,8 @@ if ($id > 0) {
   $tabProduct->setDefaultTab(lavnn('tab') || 'edit');
   $productInfo['tabcontrol'] = $tabProduct->getHTML();
   
-  $page['js'] = dotmod('main', 'tabcontrol.js');
-  $page['css'] = dotmod('main', 'tabcontrol.css');    
+  $page['js'] = $runtime->txt->do_template('main', 'tabcontrol.js');
+  $page['css'] = $runtime->txt->do_template('main', 'tabcontrol.css');    
 
   $page->add('title',  $productInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.view', $productInfo);
   $page->add('main', $runtime->txt->do_template($module, 'view', $productInfo);

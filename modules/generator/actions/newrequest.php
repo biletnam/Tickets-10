@@ -33,6 +33,6 @@ $page['js'] .= $runtime->txt->do_template($module, 'newrequest.addperson.js', $p
 $page['js'] .= $runtime->txt->do_template($module, 'newrequest.validation.js');
 $page['baseurl'] = $pageParams['baseurl'];
 $page->add('main', $runtime->txt->do_template($module, 'newrequest', $pageParams);
-print dotmod($module, 'index', $page);
+print $runtime->txt->do_template($module, 'index', $page);
 
 ?>

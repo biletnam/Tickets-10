@@ -1,0 +1,36 @@
+<h1><:v:pagetitle></h1>
+
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/savesettings" />
+<table class="form">
+  <tr>
+    <th>Default view</th>
+    <td><select name="dashboard_defaultview"><:a:defaultviewoptions|looptemplate?module=main&name=option></select></td>
+    <td>* Default dashboard page</td>
+  </tr>
+  <tr>
+    <th>Maximum article age</th>
+    <td><input type="text" size="2" maxlength="2" name="dashboard_articleage" value="<:v:dashboard_articleage>" /></td>
+    <td>* Maximum number of days passed since last update of articles shown on 'New articles' page.</td>
+  </tr>
+  <tr>
+    <th>Maximum notification age</th>
+    <td><input type="text" size="2" maxlength="2" name="dashboard_notificationage" value="<:v:dashboard_notificationage>" /></td>
+    <td>* Maximum number of days passed since sending notification listed on 'Notification' page.</td>
+  </tr>
+  <tr>
+    <th>Office location</th>
+    <td>
+      <select name="dashboard_isexternal">
+        <:a:locationoptions|looptemplate?module=main&name=option> 
+      </select>
+    </td>
+    <td>* Server to be used in direct links to the system, included into notifications</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Save"></td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+</form>

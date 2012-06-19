@@ -1,0 +1,9 @@
+<p>
+<form action="" name="frmChooseOffice" method="get">
+<input type="hidden" name="p" value="<:v:_module_>/listemployees" />
+Choose office: 
+<select name="office" onchange="this.form.submit();">
+  <:a:offices|looptemplate?module=main&name=option>
+</select>
+</form>
+</p>

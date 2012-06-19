@@ -1,0 +1,13 @@
+  <tr class="mod2_<:v:_mod2_>">
+    <td>
+      <:v:value_field_value> 
+      <input type="hidden" name="id_<:v:id_field_value>" value="<:v:id>">
+      <input type="hidden" name="ids[]" value="<:v:id_field_value>">
+      <input type="hidden" name="dirty_<:v:id_field_value>">
+    </td>
+    <td><:v:id_field_value></td>
+    <td>
+      <input type="text" id="merlin_value_<:v:id_field_value>" name="merlin_value_<:v:id_field_value>" value="<:v:merlin_value>" size="8" maxlength="16" onchange="this.form.dirty_<:v:id_field_value>.value=1;">
+      <:_:deletelink|stopifempty:varname=merlin_value|forwardtemplate?module=&name=mapping.table.listitem.deletelink>
+    </td>
+  </tr>

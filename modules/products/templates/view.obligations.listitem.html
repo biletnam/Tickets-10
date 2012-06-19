@@ -1,0 +1,18 @@
+  <tr class="mod2_<:v:_mod2_>">
+    <td><:v:date_from|dateformat?format=fulldate></td>
+    <td><:v:date_to|dateformat?format=fulldate></td>
+    <td><:v:code></td>
+    <td><:v:qty></td>
+    <td><:v:is_breakable|lookupdict?module=main&name=yesno></td>
+    <td><:v:is_periodical|lookupdict?module=main&name=yesno></td>
+    <td><:v:is_prioritized|lookupdict?module=main&name=yesno></td>
+    <td><:v:requires_maintfees|lookupdict?module=main&name=yesno></td>
+    <td><:v:season|lookupdict?module=main&name=yesno></td>
+    <td><:v:apt_type_name></td>
+    <td><:v:periods></td>
+    <td>
+      [<a href="?p=<:v:_module_>/editobligation&id=<:v:id>">Edit</a>]
+      <:_:deletelink|stopifnotempty:varname=used_cnt|forwardtemplate?module=&name=view.obligations.listitem.deletelink>
+      <:_:usageslink|stopifempty:varname=used_cnt|forwardtemplate?module=&name=view.obligations.listitem.usageslink>
+    </td>
+  </tr>

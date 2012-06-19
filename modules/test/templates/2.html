@@ -1,0 +1,82 @@
+<html>
+<head>
+  <script type="text/javascript" language="JavaScript" src="../js/jquery-1.4.2.min.js"></script>
+  <script type="text/javascript" language="JavaScript" src="../js/jquery.datepick.js"></script>
+  <script>
+    function showAjaxPopup(url, width, id) {
+      var position = $('#' + id).offset(); 
+      var left = position.left; 
+      var top = position.top;
+      var wwidth = $(window).width();
+      if (wwidth < left + width) {
+        left = wwidth - width; 
+      }
+      $.get(url, function(data) {
+        $('#popup').width(width).css('left', left + 'px').css('top', top + 'px').html(data).slideDown();
+      });
+    }
+  </script>
+
+  <link rel="stylesheet" href="?css=jquery.datepick" type="text/css" />
+  <style>
+
+    body {
+    	margin: 0;
+    	padding: 0;
+    	font: 0.8em/1.2em  Verdana, Tahoma, Helvetica, sans-serif;
+    	color: black; 
+    	background: white;
+    	text-align: center;
+    }
+
+    #wrap {
+      width:1000px;
+      height: 500px;
+      border: solid 1px black;
+      position: absolute;
+      left: 120px;
+      top: 120px;
+    	background: wheat;
+    } 
+    
+    #popup {
+      width:500px;
+      position: absolute;
+      left: 20px;
+      top: 20px;
+    	background: lightgrey;
+    	display: none;
+    } 
+    
+    #popup_inner {
+      margin: 5px;
+    	background: white;
+    	border: solid 2px #5C82AF;
+    }
+
+    #popup_title {
+      padding: 5px;
+    	background: #5C82AF;
+    	color: white;
+    	font-weight: bold;
+    }
+    
+    #popup_title a, #popup_title a:hover, #popup_title a:visited {
+      color: #D9D9C2;
+    }
+
+  </style>
+
+</head>
+<body>
+  <div id="wrap">
+    Wrap
+    [<a href="javascript: window.setTimeout(showPopup, 200);">Popup with delay</a>]
+    [<a href="javascript: showNewPopup('Popup');">Popup</a>]
+    [<a href="javascript: showAjaxPopup('?i=test/popup');">Ajax Popup</a>]
+    [<a id="ticketlink" href="javascript: showAjaxPopup('?i=tickets/ajaxnew2', 720, 'ticketlink');">New ticket</a>]
+  </div>
+  
+  <div id="popup"></div>
+</body>
+</html>

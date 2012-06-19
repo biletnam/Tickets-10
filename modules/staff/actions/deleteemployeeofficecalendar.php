@@ -6,8 +6,8 @@ if ($id > 0) {
   $employeeOfficeCalendarInfo = $runtime->s2r($module, 'GetEmployeeOfficeCalendarInfo', $_REQUEST);
   $employee = $employeeOfficeCalendarInfo['employee'];
   if (count($employeeOfficeCalendarInfo) > 0) {
-    srun($module, 'DeleteEmployeeOfficeCalendar', $_REQUEST);
-    set_cookie('flash', 'Office Calendar removed from employee');
+    $runtime->db->sqlrun($module, 'DeleteEmployeeOfficeCalendar', $_REQUEST);
+    $_SESSION['flash'] = 'Office Calendar removed from employee');
   }
 }
 

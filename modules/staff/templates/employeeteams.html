@@ -1,0 +1,40 @@
+<h2>History of belonging to teams</h2>
+  
+<:v:problems>
+
+<:a:teams|looptemplate?name=employeeteams.listitem>
+
+<h2>Add new team record</h2>
+
+<form action="" method="post">
+<input type="hidden" name="f" value="staff/addemployeeteam" />
+<input type="hidden" name="employee" value="<:v:lngId>" />
+<table class="form">
+  <tr>
+    <th>Team and title:</th>
+    <td colspan="3">
+      <select name="team" onchange="loadTitles(this.value);">
+        <option value=""></option>
+        <:a:teamoptions|looptemplate?module=main&name=option>
+      </select>
+      <span id="titlespan">
+      </span>
+    </td>
+  </tr>
+  <tr>
+    <th>First day:</th>
+    <td><input type="text" size="10" maxlength="10" class="calendardate" name="dt_first" id="dt_first" /></td>
+    <th>Last day:</th>
+    <td><input type="text" size="10" maxlength="10" class="calendardate" name="dt_last" id="dt_last" /></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Add Team Record" /></td>
+  </tr>
+</table>
+</form>
+
+<script>
+  $('#dt_first').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+  $('#dt_last').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+</script>

@@ -81,8 +81,8 @@ $runtime->saveMoment('  fetched list of tickets from db');
   $page['js'] .= $runtime->txt->do_template($module, 'tickets2follow.js', array('user_id' => $user_id));
   $page['js'] .= $runtime->txt->do_template($module, 'tickets2review.js', array('user_id' => $user_id));
   $page->add('css',  $runtime->txt->do_template($module, 'tickets.css');
-  $page['js'] .= dotmod('main', 'tabcontrol.js');
-  $page->add('css',  dotmod('main', 'tabcontrol.css');
+  $page['js'] .= $runtime->txt->do_template('main', 'tabcontrol.js');
+  $page->add('css',  $runtime->txt->do_template('main', 'tabcontrol.css');
   $page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.mytickets', $pageParams);  
   $page->add('main', $runtime->txt->do_template($module, 'mytickets.list', $pageParams);  
 

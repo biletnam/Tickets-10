@@ -1,0 +1,25 @@
+<div class="notification mod2_<:v:_mod2_>">
+  <div class="notification_subject clearfix" id="ns_<:v:id>">
+    <div class="notification_showdetails" id="ns_show_<:v:id>">
+      <a href="#" onclick="read_notification(<:v:id>, <:v:mail_recipient_id>);">Show Details</a>
+    </div>
+    <div class="notification_date">
+      <:v:DateCreated|dateformat?format=minutes>
+    </div>
+    <div class="notification_summary" id="ns_summary_<:v:id>">
+      <a href="?p=profiles/employee&id=<:v:editor>"><:v:EditorName></a> changed
+      <a href="?p=<:v:_module_>/viewticket&id=<:v:ticket_id>">#<:v:ticket_id></a>,
+      '<:v:ticket_title>'
+    </div>
+  </div>
+  <div class="notification_details clearfix" id="nd_<:v:id>">
+    <div class="notification_details_text"><:v:explained></div>
+    <div class="notification_details_keep_unread"><a href="#" onclick="unread_notification(<:v:id>, <:v:mail_recipient_id>);">Keep unread</a></div>
+  </div>
+</div>
+<script>
+  $('#nd_<:v:id>').hide();
+  if ('<:v:is_unread>' == '1') {
+    $('#ns_summary_<:v:id>').css('font-weight', 'bold');
+  }
+</script>

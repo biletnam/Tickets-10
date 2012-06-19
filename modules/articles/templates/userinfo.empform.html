@@ -1,0 +1,30 @@
+<p style="color:red;">
+Viewing article in Employee Form mode.
+</p>
+
+<table class="form">
+  <tr>
+    <th>Name</th>
+    <td><:v:strFirstName> <:v:strLastName> (<:v:strNick>)</td>
+  </tr>
+  <tr>
+    <th>Line manager</th>
+    <td><:v:LineManagerName></td>
+  </tr>
+  <tr>
+    <th>Office</th>
+    <td><:v:OfficeName></td>
+  </tr>
+  <tr>
+    <th>Department</th>
+    <td><:v:DepartmentName></td>
+  </tr>
+  <tr>
+    <th>Date of Birth</th>
+    <td><:v:dateBirth|dateformat?format=fulldate></td>
+  </tr>
+  <tr>
+    <th>Employed Since</th>
+    <td><:v:dateStartWork|dateformat?format=fulldate></td>
+  </tr>
+</table>

@@ -1,0 +1,17 @@
+  <tr class="mod2_<:v:_mod2_>">
+    <td>
+      <input type="hidden" name="inputs" value="<:v:id>" />
+      <:v:_i_>
+    </td>
+    <td><input type="text" name="name_<:v:id>" value="<:v:param_name>" size="20" /></td>
+    <td><input type="text" name="caption_<:v:id>" value="<:v:param_caption>" size="20" /></td>
+    <td>
+      <select name="type_<:v:id>">
+        <option value="" />
+        <:v:param_type|dictselectoptions:module=&name=paramtypes>
+      </select>
+    </td>
+    <td>
+      <a href="javascript:gc('Are you sure to delete input parameters?', '?f=<:v:_module_>/deleteinput&id=<:v:id>');">Delete</a>
+    </td>
+  </tr>

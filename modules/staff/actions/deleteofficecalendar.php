@@ -8,7 +8,7 @@ $calendarInfo = $objCal->get_office_calendar(%_REQUEST);
 $office_id = $calendarInfo['office_id'] || 0;
 if ($office_id <> 0) {
   if (0 < $objCal->delete_office_calendar(('id' => $id))) {
-    set_cookie('flash', 'Office calendar deleted');
+    $_SESSION['flash'] = 'Office calendar deleted');
   } else {
     set_cookie('error', 'Could not delete office calendar');
   }

@@ -1,0 +1,39 @@
+<h1><:v:pagetitle></h1>
+
+<table class="generatorprofile">
+  <tr>
+    <td class="avatar">
+      <img alt="avatar" src="?f=main/avatar&generator=<:v:lngId>" width="50" height="50" />
+    </td>
+    <td class="basicinfo">
+      <div class="oneline">
+        <strong><:v:generator_name></strong> &nbsp;
+        <img src="../images/icons/line-manager.png" border="0" width="16" height="16"> <:v:dateBirth|dateformat?format=fulldate> Director: <:v:director> 
+        <br />
+        <:_:email|stopifempty:varname=email|forwardtemplate?module=&name=generator.email_link>
+        <:_:address|stopifempty:varname=address|forwardtemplate?module=&name=generator.address>
+        <br />
+      </div>
+    </td>
+  </tr>
+</table>
+
+<div class="employeestats">
+  <table>
+    <tr>
+      <td><img src="../images/icons/attachment.png" width="16" height="16" border="0"> <:v:wall_documents> Public document(s) &nbsp; </td>
+    </tr>
+  </table>
+</div>
+
+<form action="">
+<input type="hidden" name="f" value="<:v:_module_>/sendwallpost" />
+<input type="hidden" name="entity_type" value="generator" />
+<input type="hidden" name="entity_id" value="<:v:generator_id>" />
+<textarea name="comment" rows="2" style="width:980px;">
+</textarea>
+<br />
+<input type="submit" value="Send to the wall" />
+</form>
+
+<:v:wall>

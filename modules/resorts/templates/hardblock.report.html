@@ -1,0 +1,17 @@
+<p>Here you can see expense and earning report for this hard block.</p>
+
+<:v:stats>
+
+<p>List of bookings:</p>
+
+<table class="list" width="100%">
+  <tr>
+    <th>Booking</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+    <th colspan="4">Spent</th>
+    <th colspan="4">Earned</th>
+    <th colspan="2">Balance</th>
+  </tr>
+<:a:bookings|looptemplate?name=hardblock.report.booking>
+</table>

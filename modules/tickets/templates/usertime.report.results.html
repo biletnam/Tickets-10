@@ -1,0 +1,21 @@
+<p><input type="submit" value="Get Report" /></p>
+
+<table class="list" width="100%">
+  <tr>
+    <th>ID</th>
+    <th>Title</th>
+    <th>Project</th>
+    <th>Dates</th>
+    <th>Time reported</th>
+  </tr>
+<:a:results|looptemplate?name=usertime.report.results.listitem>
+</table>
+
+<script>
+$('a.tickettooltip_report').cluetip({
+  width: 720,
+  sticky: true,
+  closePosition: 'title',
+  mouseOutClose: true
+});
+</script>

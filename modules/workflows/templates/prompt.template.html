@@ -1,0 +1,9 @@
+<p>
+  <select onchange="$('#chosen_poll_template').load('?i=<:v:_module_>/polltemplate&name=<:pname>&id=<:v:pvalue>');">
+    <option value="" />
+    <:a:polltemplateoptions|looptemplate?module=main&name=option>
+  </select>
+</p>
+
+<div id="chosen_poll_template">
+</div>

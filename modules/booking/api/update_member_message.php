@@ -46,10 +46,10 @@ if ($client_id == 0) {
 } else {
   $messages = $runtime->s2a($controller, 'ListMemberMessages', $apiparams);
   if (count($messages) == 1) {
-    $runtime->srun($controller, 'UpdateMemberMessage', $apiparams);
+    $runtime->($controller, 'UpdateMemberMessage', $apiparams);
     # Fetch this message anew to return it
     @messages = $runtime->s2a($controller, 'ListMemberMessages', $apiparams);
-    $output = $runtime->dotmod($controller, 'API.UpdateMemberMessage', ${$messages[0]});
+    $output = $runtime->$runtime->txt->do_template($controller, 'API.UpdateMemberMessage', ${$messages[0]});
   } else {
     $result = 'ERR'; 
     push @errors, $runtime->hash2ref( ('code' => 'UpdateMemberMessage.InvalidInputParams', 'text' => 'Message with provided ID cannot be found') );
@@ -58,7 +58,7 @@ if ($client_id == 0) {
 
 # Return resulting XML API output - quite similar to all APIs
 print "content-type: $contenttype; charset=$charset;\n\n";
-print $runtime->dotmod($controller, 'API.Envelope', array(
+print $runtime->$runtime->txt->do_template($controller, 'API.Envelope', array(
   'result' => $result,
   'output' => $output,
   'warnings' => Arrays::a2xml($warnings, 'Warnings', 'Warning'),

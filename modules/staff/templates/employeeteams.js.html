@@ -1,0 +1,10 @@
+
+function loadTitles(team) {
+  $('#titlespan').load('?i=staff/ajax_employeetitle&team=' + team);
+}
+
+function deleteEmployeeTeam(id) {
+  if (confirm('Really delete?')) { 
+    var o = $('#employeeteam_' + id).load('?i=staff/deleteemployeeteam&id=' + id); 
+  }
+}

@@ -1,0 +1,44 @@
+<h1><:v:pagetitle></h1>
+
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/savedaytype" />
+<input type="hidden" name="id" value="<:v:id>" />
+<table class="form">
+  <tr>
+    <th>Name</th>
+    <td><input type="text" name="name" value="<:v:name>" size="30" /></td>
+  </tr>
+  <tr>
+    <th>Code</th>
+    <td><input type="text" name="code" value="<:v:code>" size="10" /></td>
+  </tr>
+  <tr>
+    <th>Color</th>
+    <td><input type="text" name="color" value="<:v:color>" size="10" /></td>
+  </tr>
+  <tr>
+    <th>Is absence?</th>
+    <td>
+      <select name="is_absence">
+        <:a:absenceoptions|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th>Is paid?</th>
+    <td>
+      <select name="is_paid">
+        <:a:paidoptions|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th>Offices</th>
+    <td><:a:offices|looptemplate?module=main&name=checkbox></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" name="Save" /></td>
+  </tr>
+</table>
+</form>

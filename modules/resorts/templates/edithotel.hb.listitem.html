@@ -1,0 +1,16 @@
+  <tr>
+    <td><:v:type_name></td>
+    <td><:v:local_apt_name></td>
+    <td><:v:apt_no></td>
+    <td><:v:date_start|dateformat?format=fulldate></td>
+    <td><:v:date_end|dateformat?format=fulldate></td>
+    <td><:v:OfficeName></td>
+    <td><:v:max_adults|printzero>/<:v:max_children|printzero></td>
+    <td><:v:comment|shortener?words=3></td>
+    <td>
+      <a href="?p=<:v:_module_>/edithardblock&id=<:v:id>" title="Edit"><img src="../images/icons/pen.png" /></a>
+      <a href="?p=<:v:_module_>/edithardblock&id=<:v:id>&tab=report" title="Profitability Report"><img src="../images/icons/coins.png" /></a>
+      &nbsp;
+      <a href="javascript:gc('Really delete hard block apartment <:v:apt_no|jssafe>?', '?f=<:v:_module_>/deletehardblock&id=<:v:id>');" title="Delete"><img src="../images/icons/delete.png" /></a>
+    </td>
+  </tr>

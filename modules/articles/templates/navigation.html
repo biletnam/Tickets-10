@@ -1,0 +1,27 @@
+<div style="width: 100%;" class="clearfix">
+
+  <div id="navigation-level1">
+    <a href="?p=main/dashboard">Dashboard</a> || 
+    <b>Articles</b> || 
+    <a href="?p=tickets/mytickets">Tickets</a>
+  </div>
+
+  <div id="navigation-level2">
+  
+    <div style="float:left;">
+      <a href="?p=<:v:_module_>/myarticles">My articles</a> ||
+      <select name="dep_navigation" onchange="g('?p=<:v:_module_>/home&tag=dep:' + urlencode(this.value));">
+        <option value="">-- Select department --</option>
+        <:a:departments|looptemplate?module=main&name=option>
+      </select> ||
+      <a href="?p=<:v:_module_>/listuploads">Uploads</a>
+    </div>
+
+    <div style="float:right;">
+      <form name="frmSearch" action="" method="get"><input type="hidden" name="p" value="<:v:_module_>/home" /><input type="text" name="search" size="10" value="<:v:search>" /><input type="submit" value="Search" /></form>
+    </div>
+
+  </div>
+  
+</div>
+

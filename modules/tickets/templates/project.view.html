@@ -1,0 +1,33 @@
+<h2>Project details</h2>
+
+<table class="form">
+  <tr>
+    <th>Creator</th>
+    <td>
+      <a href="?p=profiles/employee&id=<:v:creator>"><:v:CreatorName></a>
+    </td>
+  </tr>
+  <tr>
+    <th>Current moderator</th>
+    <td>
+      <a href="?p=profiles/employee&id=<:v:moderator>"><:v:ModeratorName></a>
+    </td>
+  </tr>
+</table>
+
+<h2>Project tickets</h2>
+
+<table class="list"  width="100%">
+  <tr>
+    <th>#</th>
+    <th>Creator</th>
+    <th>Handler</th>
+    <th>Status</th>
+    <th>Priority</th>
+    <th>Title</th>
+    <th>Reported time</th>
+    <th>Updated</th>
+    <th>&nbsp;</th>
+  </tr>
+<:a:tickets|looptemplate?name=project.view.listitem>
+</table>

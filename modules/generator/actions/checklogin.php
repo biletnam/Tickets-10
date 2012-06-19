@@ -11,11 +11,11 @@ if ($username <> '' && $password <> '') {
     $user_id = $loginInfo['user_id'];
     $runtime->set_cookie('gen_user_id', $user_id);
     # register pageview
-    srun('main', 'RegisterPageview', array('entity_type' => 'gen_user_login', 'entity_id' => $user_id, 'viewer_type' => 'G', 'viewer_id' => 0));    
+    $runtime->db->sqlrun('main', 'RegisterPageview', array('entity_type' => 'gen_user_login', 'entity_id' => $user_id, 'viewer_type' => 'G', 'viewer_id' => 0));    
   } else {
     # Register login failure
-    srun('main', 'RegisterPageview', array('entity_type' => 'gen_user_login_failed', 'entity_id' => $user_id, 'viewer_type' => 'G', 'viewer_id' => 0));    
-    srun('main', 'RegisterLoginFailure', array('user_type' => 'G', 'username' => $username, 'password' => $password));
+    $runtime->db->sqlrun('main', 'RegisterPageview', array('entity_type' => 'gen_user_login_failed', 'entity_id' => $user_id, 'viewer_type' => 'G', 'viewer_id' => 0));    
+    $runtime->db->sqlrun('main', 'RegisterLoginFailure', array('user_type' => 'G', 'username' => $username, 'password' => $password));
   }
 } 
 go($user_id > 0 ? $urlsuccess : $urlfailure);

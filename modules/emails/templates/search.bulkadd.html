@@ -1,0 +1,29 @@
+<h2>Add more emails to this domain</h2>
+
+<p>
+  You can enter as much usernames and/or emails as you like, one per line.
+  You will have to link them to employees/forwarders one by one, sorry.
+</p>
+
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/bulkadd" />
+<input type="hidden" name="domain" value="<:req:domain>" />
+<table class="form">
+  <tr>
+    <th>Usernames:</th>
+    <td><textarea name="usernames" rows="10" cols="60"></textarea></td>
+  </tr>
+  <tr>
+    <th>E-mails:</th>
+    <td><textarea name="emails" rows="10" cols="60"></textarea></td>
+  </tr>
+  <tr>
+    <th>Reason:</th>
+    <td><textarea name="reason" rows="2" cols="60"></textarea></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Add" /></td>
+  </tr>
+</table>
+</form>

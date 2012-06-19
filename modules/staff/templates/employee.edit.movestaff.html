@@ -1,0 +1,13 @@
+<p>
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/movestaff" />
+New person to be marked as Line Manager to <:v:related_staff|numberformat> related employees:
+<input type="hidden" name="from" value="<:v:lngId>" /> &nbsp;
+<input type="text" class="peoplesearch" title="Start typing to get suggestions" id="qto_lm" /> &nbsp;
+<input type="submit" value="Set new Line Manager" />
+</form>
+</p>
+
+<script>
+  suggestPerson('U', 'qto_lm', 'to');
+</script>

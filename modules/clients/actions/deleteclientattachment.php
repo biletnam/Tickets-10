@@ -11,7 +11,7 @@ if ($id > 0) {
   $client = $attachmentInfo['entity_id'];
   if ($client > 0 && $attachmentInfo['entity_type'] == 'client') {
     $fu->delete_attachment($id);
-    set_cookie('flash', 'Attachment deleted');
+    $_SESSION['flash'] = 'Attachment deleted');
   } else {
     set_cookie('error', 'Could not delete attachment');
   }

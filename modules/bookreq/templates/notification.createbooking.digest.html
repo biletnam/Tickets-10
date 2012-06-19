@@ -1,0 +1,27 @@
+<p>Booking with reference <:v:ref_no> generated for your request.</p>
+
+<p>Some info from the booking:</p>
+
+<table>
+  <tr>
+    <th>Hotel</th>
+    <td><:v:hotel_name|dateformat?format=fulldate></td>
+  </tr>
+  <tr>
+    <th>Arrival</th>
+    <td><:v:date_from|dateformat?format=fulldate></td>
+  </tr>
+  <tr>
+    <th>Departure</th>
+    <td><:v:date_to|dateformat?format=fulldate></td>
+  </tr>
+  <tr>
+    <th>Guest</th>
+    <td><:a:guests|looptemplate?name=notification.createbooking.digest.guest></td>
+  </tr>
+</table> 
+
+<p>
+Please note that this message onyl means that your request is taken into processing.
+You will be informed later whether this booking can be completed.
+</p>

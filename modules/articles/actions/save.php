@@ -26,8 +26,8 @@ if ($id <> '') {
 
   $_REQUEST['tags'] = join(', ', @newtags);  
   $_REQUEST['editor'] = $r['userInfo']['staff_id']; 
-  srun($module, 'UpdateArticle', $_REQUEST); 
-  srun($module, 'InsertArticleHistory', $_REQUEST);  
+  $runtime->db->sqlrun($module, 'UpdateArticle', $_REQUEST); 
+  $runtime->db->sqlrun($module, 'InsertArticleHistory', $_REQUEST);  
   # Get back full article info
   $articleInfo = $runtime->s2r($module, 'GetArticleData', $_REQUEST);
 
@@ -46,18 +46,18 @@ if ($id <> '') {
       }
       %taginfo = array('article' => $id, 'fulltag' => $newtag, 'prefix' => $prefix, 'tag' => $tag);
 #      formdebug($taginfo); print spreview($module, 'AddArticleTag', $taginfo); 
-      srun($module, 'AddArticleTag', $taginfo);
+      $runtime->db->sqlrun($module, 'AddArticleTag', $taginfo);
     }
   }
   # remove obsolete tags
   foreach $oldtag (keys %oldtags) {
     if (!in_array($oldtag, $newtags)) {
       %taginfo = array('article' => $id, 'fulltag' => $oldtag);
-      srun($module, 'RemoveArticleTag', $taginfo);
+      $runtime->db->sqlrun($module, 'RemoveArticleTag', $taginfo);
     }
   }
   
-  set_cookie('flash', 'Article saved');
+  $_SESSION['flash'] = 'Article saved');
   go("?p=$module/edit&id=$id");
 } else {
   go("?p=$module/myarticles");

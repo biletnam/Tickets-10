@@ -1,0 +1,116 @@
+<div id="topmenu_container" class="clearfix">
+  <ul id="topmenu" class="dropmenu clearfix">
+    <li>
+      <a id="topmenu-dashboard" href="?p=main/dashboard">Dashboard</a>
+      <ul>
+        <li>
+          <span id="topmenu-dashboard-new">New...</span>
+          <ul>
+            <li><a id="topmenu-dashboard-new-ticket" href="?p=tickets/new">Ticket</a></li>
+            <li><a id="topmenu-dashboard-new-article" href="?p=articles/new">Article</a></li>
+            <li><a id="topmenu-dashboard-new-calendar" href="?p=calendars/new">Calendar</a></li>
+          </ul>
+        </li>
+        <li>
+          <span id="topmenu-dashboard-search">Search...</span>
+          <ul>
+            <li><a id="topmenu-dashboard-search-tickets" href="?p=tickets/search">Tickets</a></li>
+            <li><a id="topmenu-dashboard-search-articles" href="?p=articles/search">Articles</a></li>
+            <li><a id="topmenu-dashboard-search-staff" href="?p=staff/search">Staff</a></li>
+            <li><a id="topmenu-dashboard-search-clients" href="?p=clients/search">Clients</a></li>
+            <li><a id="topmenu-dashboard-search-generators" href="?p=generators/search">Generators</a></li>
+            <li><a id="topmenu-dashboard-search-bookings" href="?p=bookings/search">Bookings</a></li>
+            <li><a id="topmenu-dashboard-search-bookreqs" href="?p=bookreqs/search">Booking Requests</a></li>
+          </ul>
+        </li>
+        <li>
+          <span id="topmenu-dashboard-absences">Absences...</span>
+          <ul>
+            <li><a id="topmenu-dashboard-absences-my" href="?p=calendars/view&special=employeeabsence&tab=year">My Absences</a></li>
+            <li><a id="topmenu-dashboard-absences-balance" href="?p=main/dashboard&tab=calendars">Vacation balance</a></li>
+            <li><a id="topmenu-dashboard-absences-office" href="?p=staff/officeabsences">Offices Absences</a></li>
+          </ul>
+        </li>
+        <li><a id="topmenu-dashboard-relatedstaff" href="?p=main/relatedstaff">Related staff</a></li>
+      </ul>
+    </li>
+    <li>
+      <a id="topmenu-tickets" href="?p=tickets/mytickets">Tickets</a>
+      <ul>
+        <li><a id="topmenu-tickets-my" href="?p=tickets/mytickets">All My Tickets</a></li>
+        <li><a id="topmenu-tickets-waiting" href="?p=main/dashboard&tab=tickets">My Waiting Tickets</a></li>
+        <li><a id="topmenu-tickets-projects" href="?p=tickets/myprojects">My Projects</a></li>
+        <li><a id="topmenu-tickets-usertime" href="?p=tickets/usertime">Time Reporting</a></li>
+        <li><a id="topmenu-tickets-stats" href="?p=tickets/stats">Statistics</a></li>
+        <li><a id="topmenu-tickets-reports" href="?p=tickets/reports">Reports</a></li>
+        <li><a id="topmenu-tickets-search" href="?p=tickets/search">Search</a></li>
+        <li><a id="topmenu-tickets-new" href="?p=tickets/new">Create New Ticket</a></li>
+      </ul>
+    </li>
+    <li>
+      <a id="topmenu-articles" href="?p=articles/home">Articles</a>
+      <ul>
+        <li><a href="?p=articles/home">Read</a></li>
+        <li><a href="?p=articles/myarticles">Edit</a></li>
+        <li><a href="?p=articles/blocks">Blocks</a></li>
+        <li><a href="?p=articles/listuploads">Uploaded Files</a></li>
+        <li><a href="?p=articles/search">Search</a></li>
+        <li><a href="?p=articles/new">Create New Article</a></li>
+      </ul>
+    </li>
+    <li>
+      <a id="topmenu-calendars" href="?p=calendars/mycalendars">Calendars</a>
+      <ul>
+        <li><a href="?p=calendars/mycalendars">My Calendars</a></li>
+        <li><a href="?p=calendars/new">Create New Calendar</a></li>
+      </ul>
+    </li>
+    <li>
+      <a id="topmenu-staff" href="?p=staff/offices">Staff</a>
+      <ul>
+        <li><a href="?p=staff/offices">Offices</a></li>
+        <li><a href="?p=staff/departments">Departments</a></li>
+        <li><a href="?p=staff/birthdays">Birthdays</a></li>
+        <li><a href="?p=staff/reports">Reports</a></li>
+        <li><a href="?p=staff/settings">Settings</a></li>
+      </ul>
+    </li>
+    <li>
+      <a id="topmenu-admin" href="?fwd=admin">Admin</a>
+      <ul>
+        <li><a href="?p=resorts/hotels">Hotels</a></li>
+        <li><a href="?p=admin/robots">Robots</a></li>
+        <li><a href="?p=admin/profiler">Profiler</a></li>
+        <li><a href="?p=reports/anyreport">Reports</a></li>
+        <li><a href="?p=reports/pageviews">Pageviews</a></li>
+        <li><a href="?p=reports/loginfailures">Login Failures</a></li>
+      </ul>
+    </li>
+    <li>
+      <span id="topmenu-more">More</span>
+      <ul>
+        <li><a href="?p=bookreq/search">Booking Requests</a></li>
+        <li><a href="?p=clients/search">Clients</a></li>
+        <li><a href="?p=generators/search">Generators</a></li>
+        <li><a href="?p=campaigns/new">Campaigns</a></li>
+        <li><a href="?p=bookings/search">Bookings</a></li>
+        <li><a href="?p=tradeins/tradeins">Trade-in weeks</a></li>
+        <li><a href="?p=vouchers/home">Vouchers</a></li>
+      </ul>
+    </li>
+  </ul>
+  <!--
+  -->
+</div>
+
+<script>
+  $(document).ready(function() {
+    $('#topmenu').dropmenu({
+      effect  : "none",
+      speed   : "fast",
+      nbsp    : true
+    });
+  });
+  
+  $('#topmenu-<:v:toplevelselection>').addClass('selected');
+</script>

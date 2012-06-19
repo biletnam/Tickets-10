@@ -1,0 +1,21 @@
+  <tr class="mod2_<:v:_mod2_>">
+    <td><:v:_i_></td>
+    <td><:v:serie_name></td>
+    <td>
+      <:v:reference>
+    </td>
+    <td><:v:DateCreated|dateformat?format=minutes></td>
+    <td><:v:owner_type></td>
+    <td>
+      <:v:owner_name>
+      <:_:delivery|stopifempty:varname=delivery_ongoing|forwardtemplate?module=&name=vouchers.listitem.delivery>
+    </td>
+    <td>
+      <:v:DateUsed|dateformat?format=fulldate>
+    </td>
+    <td>
+      <a class="dochistorytooltip" href="#" title="History of physical document location"
+          rel="?i=<:v:_module_>/ajaxdochistory&id=<:v:ph_doc_id>&view=writtenoff"><img src="../images/icons/preview.png" border="0" height="16" width="16" /></a>
+      &nbsp;
+    </td>
+  </tr>

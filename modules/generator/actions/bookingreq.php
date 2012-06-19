@@ -15,6 +15,6 @@ if ($xmlstr <> '') {
   }
 }
 $page->add('main', $runtime->txt->do_template($module, 'bookingreq', $pageParams);
-print dotmod($module, 'index', $page);
+print $runtime->txt->do_template($module, 'index', $page);
 
 ?>

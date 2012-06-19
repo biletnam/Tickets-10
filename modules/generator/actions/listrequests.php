@@ -16,6 +16,6 @@ if ($gen_user_id > 0) {
 $page['baseurl'] = $pageParams['baseurl'];
 $page->add('main', $runtime->txt->do_template($module, 'listrequests', $pageParams);
 $page['css'] = $runtime->txt->do_template($module, 'listrequests.css', $pageParams);
-print dotmod($module, 'index', $page);
+print $runtime->txt->do_template($module, 'index', $page);
 
 ?>

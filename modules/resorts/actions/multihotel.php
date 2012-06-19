@@ -17,11 +17,11 @@ if (count($ids) > 0 && $op <> '') {
       $count_success += $result; 
       $count_failure += (1 - $result);
     }
-    set_cookie('flash', "Booking requests handler assigned to ".$count_success." hotels") if $count_success > 0;
+    $_SESSION['flash'] = "Booking requests handler assigned to ".$count_success." hotels") if $count_success > 0;
     set_cookie('error', "Booking requests handler assigned to ".$count_failure." hotels") if $count_failure > 0;
   } elseif ($op == 'add_hotel_follower') {
     foreach $id (@ids) {
-      srun('main', 'AddPersonLink', array(
+      $runtime->db->sqlrun('main', 'AddPersonLink', array(
         'source_link' => "followhotel:$id", 
         'source_type' => 'followhotel', 'source_id' => $id,
         'link_type' => 3,

@@ -1,0 +1,151 @@
+<h1><:v:pagetitle></h1>
+
+<table class="form">
+  <tr>
+    <th>Status</th>
+    <td><:v:SafeStatus> (<:v:SafeStatus|lookupdict?module=&name=bookreq.status>)</td>
+  </tr>
+  <tr>
+    <th>Date Created</th>
+    <td><:v:DateCreated|dateformat?format=fulldate></td>
+  </tr>
+  <:_:generatorname|stopifempty:varname=generator_id|forwardtemplate?module=&name=view.generatorname>
+  <tr>
+    <th>Operator name</th>
+    <td><:v:sender_name></td>
+  </tr>
+  <tr>
+    <th>Operator e-mail</th>
+    <td><a href="mailto:<:v:sender_email>" title="Click to launch your mail program to send an e-mail to operator"><:v:sender_email></a></td>
+  </tr>
+  <tr>
+    <th>Booking Reference</th>
+    <td>
+      <a href="?p=bookings/view&id=<:v:book_id>" title="Click to see details of booking"><:v:ref_no></a>
+      &nbsp; [<img src="../images/icons/ie.png" border="0" width="16" height="16" title="This link can be viewed only in IE :(" /> <a href="<:conf:ROOT_PATHFIX><:conf:CENTRAL_SCRIPT_URL>?script=booking&show=client&book_id=<:v:book_id>&id=<:rt:sessionID>" title="Click to see booking in RM Central">RM Central</a>]
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="a-c b"><h2>First guest</h2></td>
+  </tr>
+  <tr>
+    <th>First name</th>
+    <td><:v:fname1></td>
+  </tr>
+  <tr>
+    <th>Last name</th>
+    <td><:v:lname1></td>
+  </tr>
+  <tr>
+    <th>Nationality</th>
+    <td><:v:nationality_name></td>
+  </tr>
+  <tr>
+    <th>Passport number</th>
+    <td><:v:passport1></td>
+  </tr>
+  <tr>
+    <th>Birthdate</th>
+    <td><:v:dob1|dateformat?format=fulldate></td>
+  </tr>
+  <tr>
+    <th>Occupation</th>
+    <td><:v:occupation1></td>
+  </tr>
+  <tr>
+    <th>Home phone</th>
+    <td><:v:homephone></td>
+  </tr>
+  <tr>
+    <th>Work phone</th>
+    <td><:v:workphone></td>
+  </tr>
+  <tr>
+    <th>Mobile phone</th>
+    <td><:v:mobilephone></td>
+  </tr>
+  <tr>
+    <th>Marital status</th>
+    <td><:v:ms1|lookupdict?module=&name=relationship></td>
+  </tr>
+  <tr>
+    <td colspan="2" class="a-c b"><h2>Second guest</h2></td>
+  </tr>
+  <tr>
+    <th>First name</th>
+    <td><:v:fname2></td>
+  </tr>
+  <tr>
+    <th>Last name</th>
+    <td><:v:lname2></td>
+  </tr>
+  <tr>
+    <th>Passport number</th>
+    <td><:v:passport2></td>
+  </tr>
+  <tr>
+    <th>Birthdate</th>
+    <td><:v:dob2|dateformat?format=fulldate></td>
+  </tr>
+  <tr>
+    <th>Occupation</th>
+    <td><:v:occupation2></td>
+  </tr>
+  <tr>
+    <th>Contact phone</th>
+    <td><:v:contactphone></td>
+  </tr>
+  <tr>
+    <th>Marital status</th>
+    <td><:v:ms2|lookupdict?module=&name=maritalstatus></td>
+  </tr>
+  <:v:otherpeople>
+  <tr>
+    <td colspan="2" class="a-c b"><h2>Hotel information</h2></td>
+  </tr>
+  <tr>
+    <th>Hotel name</th>
+    <td><input type="hidden" name="hotel_id" value="<:v:hotel>" /><:v:hotel_name></td>
+  </tr>
+  <tr>
+    <th>Office</th>
+    <td><:v:office_name></td>
+  </tr>
+  <tr>
+    <th>Apartment type</th>
+    <td><:v:type_name></td>
+  </tr>
+  <tr>
+    <th>Arrival, transfer</th>
+    <td>
+      <:v:arrdate|dateformat?format=fulldate>, 
+      <:v:arrtransfer|lookupdict?module=main&name=yesno>
+    </td>
+  </tr>
+  <tr>
+    <th>Departure, transfer</th>
+    <td>
+      <:v:depdate|dateformat?format=fulldate>, 
+      <:v:deptransfer|lookupdict?module=main&name=yesno>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="a-c b"><h2>Additional information</h2></td>
+  </tr>
+  <tr>
+    <th>Previous Club Country Visits</th>
+    <td><:v:clubcountryvisits></td>
+  </tr>
+  <tr>
+    <th>Previous Club Country Visits</th>
+    <td><:v:clubvacations></td>
+  </tr>
+  <tr>
+    <th>Family credit cards</th>
+    <td><:v:hasCC|lookupdict?module=main&name=yesno></td>
+  </tr>
+  <tr>
+    <th>Additional Comments</th>
+    <td><:v:comment></td>
+  </tr>
+</table>

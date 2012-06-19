@@ -1,0 +1,14 @@
+  <tr class="mod2_<:v:_mod2_>">
+    <td><:v:id></td>
+    <td><a target="_blank" title="Click to see image in a new window" href="<:conf:BASEURL_PICTURES>/<:v:fileid>.<:v:filename_safe>"><:v:filename_safe|shortener:length=80></a></td>
+    <td>
+      <a href="javascript:update_attachment_description('<:v:id>');" title="Click to edit attachment's description"><img src="../images/icons/pen.png" border="0" width="16" height="16" /></a> 
+      <span id="attachment_description_<:v:id>"><:v:description|shortener?words=4></span>
+    </td>
+    <td><:v:DateUpdated|dateformat?format=shortdate></td>
+    <td>
+      <:_:embedfilelink|forwardtemplate?module=&name=embed.filelink>
+      <:_:embedimage|filtervalue:varname=filetype&varvalue=image|forwardtemplate?module=&name=embed.image>
+    </td>
+    <td><a href="javascript:gc('Really delete attachment?', '?f=<:v:_module_>/unlinkattachment&article=<:v:entity_id>&fileid=<:v:fileid>');" title="Click to unlink attachment">Delete</td>
+  </tr>

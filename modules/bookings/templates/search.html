@@ -1,0 +1,85 @@
+<h1><:v:pagetitle></h1>
+
+<:v:linking>
+
+<form action="" id="frmSearchBookings" method="get">
+<input type="hidden" name="p" value="<:v:_module_>/search">
+<table class="form">
+  <tr>
+    <th>ID</th>
+    <td><input type="text" name="book_id" size="20" maxlength="20" value="<:v:book_id>" /></td>
+    <th>Ref #</th>
+    <td><input type="text" name="ref_no" size="20" maxlength="20" value="<:v:ref_no>" /></td>
+    <th>Merlin linked?</th>
+    <td>
+      <select name="has_merlin_id">
+        <option value=""></option>
+        <:a:hasmerlinoptions|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th>Date</th>
+    <td>
+      <select name="datetype">
+        <:a:datetypeoptions|looptemplate?module=main&name=option>
+      </select>
+    </td>
+    <th>Date From</th>
+    <td><input type="text" class="calendardate" title="Click to select date" name="datefrom" id="datefrom" size="10" maxlength="10" value="<:v:datefrom>" /></td>
+    <th>Date To</th>
+    <td><input type="text" class="calendardate" title="Click to select date" name="dateto" id="dateto" size="10" maxlength="10" value="<:v:dateto>" /></td>
+  </tr>
+  <tr>
+    <th>Hotel</th>
+    <td colspan="3">
+      <select name="hotel_id">
+        <option value="" />
+        <:a:hotels|looptemplate?module=main&name=option>
+      </select>
+    </td>
+    <th>Client Name</th>
+    <td><input type="text" name="client_name" size="20" maxlength="20" value="<:v:client_name>" /></td>
+  </tr>
+  <tr>
+    <th>Generator/Sender</th>
+    <td colspan="5">
+      <select name="generator_id">
+        <option value="" />
+        <:a:generators|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th>Office location</th>
+    <td colspan="3">
+      <select name="location_id">
+        <option value="" />
+        <:a:locationoptions|looptemplate?module=main&name=option>
+      </select>
+    </td>
+    <th>Qualification</th>
+    <td>
+      <select name="status_id">
+        <option value="" />
+        <:a:statusoptions|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td colspan="5">
+      <input type="submit" id="btnSearchBookings" name="btnSearchBookings" value="Search!" />
+    </td>
+  </tr>
+</table>
+</form>
+
+<script>
+$('#datefrom').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+$('#dateto').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+</script>
+
+<div id="searchresults">
+<:v:results>
+</div>

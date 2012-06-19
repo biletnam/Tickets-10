@@ -7,10 +7,10 @@ if ($ticket_id > 0) {
   if (join(',', @existing) <> $ids) {
     foreach $id (lavnn('folder')) {
       if (!in_array($id, $existing)) {
-        srun($module, 'InsertTicketFolderMapping', array('ticket_id' => $ticket_id, 'folder_id' => $id));
+        $runtime->db->sqlrun($module, 'InsertTicketFolderMapping', array('ticket_id' => $ticket_id, 'folder_id' => $id));
       }
     }
-    srun($module, 'DeleteObsoleteTicketFolderMapping', array('folders' => $ids, 'ticket_id' => $ticket_id));
+    $runtime->db->sqlrun($module, 'DeleteObsoleteTicketFolderMapping', array('folders' => $ids, 'ticket_id' => $ticket_id));
   }
 
   go("?p=$module/viewticket&id=$ticket_id&tab=folders");

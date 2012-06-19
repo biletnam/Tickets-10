@@ -1,0 +1,243 @@
+<h1><:l:pagetitle></h1>
+
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/saverequest" />
+<input type="hidden" name="lang" value="<:v:lang>" />
+<input type="hidden" name="gen_user_id" value="<:req:gen_user_id>" />
+<table class="form">
+  <tr class="section">
+    <td colspan="2"><:l:sender></td>
+  </tr>
+  <tr>
+    <th><:l:sender_name> *</th>
+    <td><input type="text" name="sender_name" class="style4" size="20" maxlength="50" /></td>
+  </tr>
+  <tr>
+    <th><:l:sender_email> *</th>
+    <td><input type="text" name="sender_email" class="style4" size="40" maxlength="250" /></td>
+  </tr>
+  <tr class="section">
+    <td colspan="2"><:l:stay></td>
+  </tr>
+  <tr>
+    <th><:l:hotellocation> *</th>
+    <td>
+      <select name="location_id" class="style4" onchange="$('#hotelselection').load('?i=<:v:_module_>/hotelselect&gen_user_id=<:req:gen_user_id>&location_id=' + this.value);">
+        <option value=""><:l:chooselocation></option>
+        <:a:locations|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th><:l:hotel> *</th>
+    <td>
+      <div id="hotelselection">
+        <select name="hotel" class="style4">
+          <option value=""><:l:hotelnotdefined></option>
+          <:a:hotels|looptemplate?module=main&name=option>
+        </select>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <th><:l:arrdate> *</th>
+    <td>
+      <input type="text" class="calendardate" title="Click to select date" class="style4" name="arrdate" id="arrdate" size="10" value="<:req:arrdate>" />
+      <input type="checkbox" name="arrtransfer" id="arrtransfer" /><label for="arrtransfer"><:l:transfer></label>
+    </td>
+  </tr>  
+  <tr>
+    <th><:l:depdate> *</th>
+    <td>
+      <input type="text" class="calendardate" title="Click to select date" class="style4" name="depdate" id="depdate" size="10" value="<:req:depdate>" />
+      <input type="checkbox" name="deptransfer" id="deptransfer" /><label for="deptransfer"><:l:transfer></label>
+    </td>
+  </tr>  
+  <tr>
+    <th><:l:apttype></th>
+    <td><select name="apttype" class="style4"><:a:apttypes|looptemplate?module=main&name=option></select></td>
+  </tr>
+  <tr>
+    <th><:l:alternative></th>
+    <td>
+      <textarea class="style4" name="hotel_alternative" rows="2" cols="60"><:req:clubvacations></textarea>
+    </td>
+  </tr>  
+
+
+  <tr class="section">
+    <td colspan="2"><:l:guest1></td>
+  </tr>
+  <tr>
+    <th><:l:firstname> *</th>
+    <td><input type="text" class="style4" size="20" maxlength="50" name="fname1" value="<:req:fname1>" /></td>
+  </tr>
+  <tr>
+    <th><:l:lastname> *</th>
+    <td><input type="text" class="style4" size="20" maxlength="50" name="lname1" value="<:req:lname1>" /></td>
+  </tr>
+  <tr>
+    <th><:l:nationality> *</th>
+    <td><select name="nationality" class="style4"><option value="" /><:a:nationalities1|looptemplate?module=main&name=option></select></td>
+  </tr>
+  <tr>
+    <th><:l:passport></th>
+    <td><input type="text" class="style4" size="20" maxlength="50" name="passport1" value="<:req:passport1>" /></td>
+  </tr>
+  <tr>
+    <th><:l:dob> *</th>
+    <td><input type="text" class="calendardate" title="Click to select date" class="style4" name="dob1" id="dob1" size="10" value="<:req:dob1>" /></td>
+  </tr>
+  <tr>
+    <th><:l:maritalstatus> *</th>
+    <td><select name="rel1" class="style4"><option value="" /><:a:relationships1|looptemplate?module=main&name=option></select></td>
+  </tr>
+  <tr>
+    <th><:l:occupation> *</th>
+    <td><input type="text" class="style4" size="40" maxlength="200" name="job1" value="<:req:job1>" /></td>
+  </tr>
+  <tr>
+    <th><:l:homephone></th>
+    <td><input type="text" class="style4" size="15" maxlength="50" name="homephone" value="<:req:homephone>" /></td>
+  </tr>
+  <tr>
+    <th><:l:workphone></th>
+    <td><input type="text" class="style4" size="15" maxlength="50" name="workphone" value="<:req:workphone>" /></td>
+  </tr>
+  <tr>
+    <th><:l:mobilephone></th>
+    <td><input type="text" class="style4" size="15" maxlength="50" name="mobilephone" value="<:req:mobilephone>" /></td>
+  </tr>
+  <tr>
+    <th><:l:city></th>
+    <td><input type="text" class="style4" size="15" maxlength="50" name="city" value="<:req:city>" /></td>
+  </tr>
+  <tr>
+    <th><:l:country></th>
+    <td>
+      <select class="style4" name="country_id">
+        <option value=""></option>
+        <:a:countries|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>
+
+
+  <tr class="section">
+    <td colspan="2"><:l:guest2></td>
+  </tr>
+  <tr>
+    <th><:l:firstname></th>
+    <td><input type="text" class="style4" size="20" maxlength="50" name="fname2" value="<:req:fname2>" /></td>
+  </tr>
+  <tr>
+    <th><:l:lastname></th>
+    <td><input type="text" class="style4" size="20" maxlength="50" name="lname2" value="<:req:lname2>" /></td>
+  </tr>
+  <tr>
+    <th><:l:passport></th>
+    <td><input type="text" class="style4" size="20" maxlength="50" name="passport2" value="<:req:passport2>" /></td>
+  </tr>
+  <tr>
+    <th><:l:dob></th>
+    <td><input type="text" class="calendardate" title="Click to select date" class="style4" name="dob2" id="dob2" size="10" value="<:req:dob2>" /></td>
+  </tr>
+  <tr>
+    <th><:l:maritalstatus></th>
+    <td><select name="rel2" class="style4"><option value="" /><:a:relationships2|looptemplate?module=main&name=option></select></td>
+  </tr>
+  <tr>
+    <th><:l:occupation></th>
+    <td><input type="text" class="style4" size="40" maxlength="200" name="job2" value="<:req:job2>" /></td>
+  </tr>
+  <tr>
+    <th><:l:contactphone></th>
+    <td><input type="text" class="style4" size="15" maxlength="50" name="contactphone" value="<:req:contactphone>" /></td>
+  </tr>
+
+
+
+  <tr class="section">
+    <td colspan="2"><:l:morepeople></td>
+  </tr>
+  <tr id="morepeople">
+    <td>&nbsp;</td>
+    <td><a href="javascript:addPerson();"><:l:addanotherperson></a></td>
+  </tr>
+  <tr>
+    <td colspan="2">&nbsp;</td>
+  </tr>
+  
+
+
+
+  <tr class="section">
+    <td colspan="2"><:l:ownership></td>
+  </tr>
+  <tr>
+    <th><:l:contract></th>
+    <td>
+      <input type="text" class="style4" name="contract_id" id="contract_id" size="10" value="<:req:contract_id>" />
+    </td>
+  </tr>  
+  <tr>
+    <th><:l:property></th>
+    <td>
+      <textarea class="style4" name="property" id="property" rows="4" cols="60"><:req:property></textarea>
+    </td>
+  </tr>  
+
+  <tr class="section">
+    <td colspan="2"><:l:more></td>
+  </tr>
+  <tr>
+    <th><:l:clubcountryvisits></th>
+    <td>
+      <textarea class="style4" name="clubcountryvisits" id="clubcountryvisits" rows="4" cols="60"><:req:clubcountryvisits></textarea>
+    </td>
+  </tr>  
+  <tr>
+    <th><:l:clubvacations></th>
+    <td>
+      <textarea class="style4" name="clubvacations" id="clubvacations" rows="4" cols="60"><:req:clubvacations></textarea>
+    </td>
+  </tr>  
+  <tr>
+    <th><:l:CC></th>
+    <td>
+      <input type="checkbox" class="style4" name="hasCC" id="hasCC" /><label for="hasCC"><:l:hasCC></label>
+    </td>
+  </tr>  
+  <tr>
+    <th><:l:comment></th>
+    <td>
+      <textarea class="style4" name="comment" id="comment" rows="4" cols="60"><:req:comment></textarea>
+    </td>
+  </tr>  
+
+
+  <tr class="submit">
+    <td colspan="2" align="center">
+      <input type="button" value="<:l:send>" onclick="validateNewRequestForm(this.form);" />
+      <input type="reset" value="<:l:clear>" />
+    </td>
+  </tr>
+
+
+</table>
+</form>
+
+
+<script>
+$('#dob1').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1, yearRange: 'c-100:c+0']);
+$('#dob2').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1, yearRange: 'c-100:c+0']);
+$('#arrdate').datepick({
+  dateFormat: 'dd.mm.yyyy', 
+  firstDay: 1, 
+  yearRange: 'c-0:c+1', 
+  onSelect: function () { 
+    $('#depdate').val($('#arrdate').val()); 
+  }  
+});
+$('#depdate').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1, yearRange: 'c-0:c+1']);
+</script>

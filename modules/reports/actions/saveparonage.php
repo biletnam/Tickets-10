@@ -1,7 +1,7 @@
 <?php
 
 if (lavnn('id') <> '') {
-  srun($module, 'UpdateParonnageDetails', $_REQUEST);
+  $runtime->db->sqlrun($module, 'UpdateParonnageDetails', $_REQUEST);
 } else {
   set_cookie('error', 'No record found to be updated');
 }

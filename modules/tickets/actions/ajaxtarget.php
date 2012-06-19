@@ -33,7 +33,7 @@ if ($inline <> '') {
     'content' => $html,
   );
   
-  print dotmod('main', 'popup', $popupParams);
+  print $runtime->txt->do_template('main', 'popup', $popupParams);
 }
 
 1;

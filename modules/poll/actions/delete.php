@@ -6,7 +6,7 @@ if ($id > 0) {
   $pollInfo = $objP->get_info(%_REQUEST);
   $id = $objP->delete(%_REQUEST);
   if ($id > 0) {
-    set_cookie('flash', "Poll '".$pollInfo['title']."' deleted");
+    $_SESSION['flash'] = "Poll '".$pollInfo['title']."' deleted");
   } else {
     set_cookie('error', "Poll '".$pollInfo['title']."' could not be deleted");
   }

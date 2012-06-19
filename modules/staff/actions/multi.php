@@ -23,7 +23,7 @@ if (count($ids) > 0 && $op <> '') {
         $count_success += $result; 
         $count_failure += (1 - $result);
       }
-      set_cookie('flash', "Calendar type assigned to ".$count_success." users") if $count_success > 0;
+      $_SESSION['flash'] = "Calendar type assigned to ".$count_success." users") if $count_success > 0;
       set_cookie('error', "Calendar type was not assigned to ".$count_failure." users") if $count_failure > 0;
     }
   } elseif ($op == 'move2office') {
@@ -32,7 +32,7 @@ if (count($ids) > 0 && $op <> '') {
       foreach $id (@ids) {
         $objSM->set_office(('id' => $id, 'office' => $office));
       }      
-      set_cookie('flash', count($ids)." users moved to another office");
+      $_SESSION['flash'] = count($ids)." users moved to another office");
     } else {
       set_cookie('error', "Could not move employees because current office information is lost");
     }
@@ -42,7 +42,7 @@ if (count($ids) > 0 && $op <> '') {
       foreach $id (@ids) {
         $objSM->set_department(('id' => $id, 'department' => $department));
       }      
-      set_cookie('flash', count($ids)." users moved to another department");
+      $_SESSION['flash'] = count($ids)." users moved to another department");
     } else {
       set_cookie('error', "Could not move employees because current department information is lost");
     }

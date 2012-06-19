@@ -1,0 +1,56 @@
+// Common handler for submitting forms
+$(function() {
+  //ondomload
+  $("#btnSearchTicketsReview").click(function() {
+    //Get the data from all the fields  
+    var data = 'i=<:v:_module_>/tickets2review&user_id=<:v:user_id>';
+    var emptydata = data;
+    var creator = $('select[name=reviewfiltercreator]');  
+    if (creator.val() != undefined && creator.val() != '') {
+      data = data + '&creator=' + creator.val();
+    }
+    var project = $('select[name=reviewfilterproject]');  
+    if (project.val() != undefined && project.val() != '') {
+      data = data + '&project=' + project.val();
+    }
+    var priority = $('select[name=reviewfilterpriority]');
+    if (priority.val() != undefined && priority.val() != '') {
+      data = data + '&priority=' + priority.val();
+    }
+    var status = $('select[name=reviewfilterstatus]');
+    if (status.val() != undefined && status.val() != '') {
+      data = data + '&status=' + status.val();
+    }
+    
+    var t = $(this);
+    t.find("input[type=button]")
+      .hide();
+
+    //start the ajax  
+    $.ajax({  
+        //this is the php file that processes the data and send mail  
+        url: "index.pl",   
+          
+        //GET method is used  
+        type: "GET",  
+
+        //pass the data           
+        data: data,       
+          
+        //Do not cache the page  
+        cache: false,  
+        
+        success: function (html) {
+          $('#pleasewaitReview').show();
+          $('#searchresultsReview').html(html);
+          $('#pleasewaitReview').hide();
+          $('#workingReview').hide();
+          $("#btnSearchTicketsReview").show();
+        }
+          
+    });
+    
+    return false;
+    
+  });
+});

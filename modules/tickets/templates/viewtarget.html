@@ -1,0 +1,33 @@
+<h1><:v:pagetitle></h1>
+
+<p>
+<:v:explanationtext>
+</p>
+
+<table width="100%" class="list">
+  <tr> 
+    <th>#</th>
+    <th>Handler</th>
+    <th>Project</th>
+    <th>Title</th>
+    <th>Status</th>
+    <th>Priority</th>
+    <th>Due date</th>
+    <th>&nbsp;</th>
+  </tr>
+<:a:tickets|looptemplate?name=viewtarget.listitem>  
+</table>
+
+<script>
+$('a.tickettooltip').cluetip({
+  width: 720,
+  sticky: true,
+  closePosition: 'title',
+  mouseOutClose: true
+});
+</script>
+
+<p>
+<a href="?p=<:v:_module_>/new&target=<:v:target|urlencode>">Create new ticket</a>
+</p>
+

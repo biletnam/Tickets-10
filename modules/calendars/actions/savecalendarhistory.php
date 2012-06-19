@@ -6,7 +6,7 @@ if ($id > 0) {
   $objSM = new objStaffManagement($r);
   $result = $objSM->save_user_specialdata(%_REQUEST);
   if ($result['returncode'] == 1) {
-    set_cookie('flash', 'Employee calendar history changed');
+    $_SESSION['flash'] = 'Employee calendar history changed');
   } else {
     set_cookie('error', 'Employee calendar history could not be changed');
   }

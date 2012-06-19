@@ -33,7 +33,7 @@ if ($id > 0) {
         } elseif ($type == 'employee') {
           if ($value <> '') {
             $employeeData = $runtime->s2r('staff', 'GetEmployeeDetails', array('id' => $value));
-            $p['employeeInfo'] = dotmod('staff', 'employee.name', $employeeData);
+            $p['employeeInfo'] = $runtime->txt->do_template('staff', 'employee.name', $employeeData);
           }
           $p['input'] = $runtime->txt->do_template($module, 'runreport.params.employee.' . ($value == '' ? 'input' : 'hidden'), $p);
         }
@@ -67,7 +67,7 @@ if ($id > 0) {
     $page->add('title',  $reportInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.runreport', $reportInfo);
   
     # register pageview
-    $opresult = srun('main', 'RegisterPageview', array('entity_type' => 'runreport', 'entity_id' => $id, 'viewer_type' => 'U', 'viewer_id' => $r['userID']));
+    $opresult = $runtime->db->sqlrun('main', 'RegisterPageview', array('entity_type' => 'runreport', 'entity_id' => $id, 'viewer_type' => 'U', 'viewer_id' => $r['userID']));
   } else {
     #$page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.runreport.notallowed', $pageParams);
   }
@@ -80,6 +80,6 @@ $page['js'] .= $runtime->txt->do_template($module, 'pageviews.js');
 $page->add('main', $runtime->txt->do_template($module, 'runreport', $reportInfo);
 
 
-print dotmod('main', 'index.wide', $page);
+print $runtime->txt->do_template('main', 'index.wide', $page);
 
 ?>

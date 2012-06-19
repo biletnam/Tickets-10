@@ -1,0 +1,15 @@
+  <tr class="mod2_<:v:_mod2_>">
+    <td><:v:name></td>
+    <td><:v:address|shortener?words=5></td>
+    <td><:v:phone></td>
+    <td><:v:fax></td>    
+    <td><:_:email|stopifempty:varname=email|forwardtemplate?module=&name=hotels.listitem.email></td>
+    <td><:_:website|stopifempty:varname=website|forwardtemplate?module=&name=hotels.listitem.website></td>
+    <td nowrap>
+      <a href="?p=<:v:_module_>/edithotel&id=<:v:id>">Edit</a>
+      <a href="?p=<:v:_module_>/hbsb&id=<:v:id>">Blocks</a>
+      <a href="?p=<:v:_module_>/hotelperiods&id=<:v:id>">Periods</a>
+      <a href="?p=<:v:_module_>/edithotelprices&id=<:v:id>">Prices</a>
+      <a href="javascript:gc('Really delete hotel?', '?f=<:v:_module_>/deletehotel&id=<:v:id>')">Delete</a>
+    </td>
+  </tr>

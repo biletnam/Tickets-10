@@ -1,0 +1,13 @@
+  <tr class="mod2_<:v:_mod2_>">
+    <td><:v:name></td>
+    <td><:v:code></td>
+    <td><:v:office_name></td>
+    <td><:v:qty></td>
+    <td><:v:currency> <:v:amount|numberformat:round=2></td>
+    <td><:v:used|numberformat> (<:v:usage_ratio|numberformat>%)</td>
+    <td>
+      <a href="?p=<:v:_module_>/serievouchers&id=<:v:id>" title="View vouchers in this serie"><img src="../images/icons/zoom.png" /></a> 
+      &nbsp;
+      <:_:deletelink|stopifnotempty:varname=used|forwardtemplate?module=&name=home.series.listitem.delete>
+    </td>
+  </tr>

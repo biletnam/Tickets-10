@@ -1,0 +1,10 @@
+<div class="clearfix" id="<:v:id>_<:v:key>">
+  <div style="float:left; width:250px;">
+    <img src="../images/icons/plus.png" width="16" height="16" border="0" alt="Add" />
+    <select id="newcontact_for_<:v:key>_name"><:a:all|looptemplate?module=main&name=option></select>
+  </div>
+  <div style="float:left; width:600px;">
+    <input type="text" id="newcontact_for_<:v:key>_value" size="30" maxlength="60" />
+    <input type="button" value="Add" onclick="$('#<:v:id>_<:v:key>').load('?i=<:v:_module_>/savecontact&user_id=<:v:user_id>&div=<:v:id>&type=<:v:key>&type_id=' + $('#newcontact_for_<:v:key>_name').val() + '&value=' + urlencode($('#newcontact_for_<:v:key>_value').val()));" />
+  </td>
+</div>

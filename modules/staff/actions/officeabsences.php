@@ -41,7 +41,7 @@ if ($office <> 0) {
         if ($employee['AbsenceCalendarID'] <> '') { # Do not show employees that do not have absence calendar
           $employee_id = $employee['ID'];
           $dateFired = $employee['dateFired'] || '';
-          if ($dateFired == '' || ($dateFired gt $firstDay)) { 
+          if ($dateFired == '' || ($dateFired > $firstDay)) { 
             $cnt++; $blockcnt++;
             $aa = $empabsences{$employee_id]; 
             if (count($aa) > 0) {
@@ -77,12 +77,12 @@ if ($office <> 0) {
 }
 
 # register pageview
-srun('main', 'RegisterPageview', array('entity_type' => 'officeabsebcecalendar', 'entity_id' => $office, 'viewer_type' => 'U', 'viewer_id' => $r['userID']));
+$runtime->db->sqlrun('main', 'RegisterPageview', array('entity_type' => 'officeabsebcecalendar', 'entity_id' => $office, 'viewer_type' => 'U', 'viewer_id' => $r['userID']));
 
 $pageParams['daytypes'] = arr2ref(s2a($module, 'ListCalendarDayTypes', array('office' => $office))); 
 
-$page->add('css',  dotmod('main', 'monthmatrix.css');
-$page->add('css',  dotmod('main', 'monthmatrix.legend.css', $pageParams);
+$page->add('css',  $runtime->txt->do_template('main', 'monthmatrix.css');
+$page->add('css',  $runtime->txt->do_template('main', 'monthmatrix.legend.css', $pageParams);
 $page->add('title',  $pageParams['pagetitle'];
 $page->add('main', $runtime->txt->do_template($module, 'officeabsences', $pageParams);
 

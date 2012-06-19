@@ -46,7 +46,7 @@ if ($client_id <> '') {
   $fees = $runtime->s2a($controller, 'ListMaintenanceFees', $apiparams);
   if (count($fees) > 0) {
     $memberPaymentInfo = array('fees' => $fees);
-    $output = $runtime->dotmod($controller, 'API.MemberPaymentInfo', $memberPaymentInfo);
+    $output = $runtime->$runtime->txt->do_template($controller, 'API.MemberPaymentInfo', $memberPaymentInfo);
   } else {
     $result = 'ERR'; 
     push @errors, $runtime->hash2ref( ('code' => 'GetMemberPaymentInfo.NotFound', 'text' => 'Member payment info was not found') );
@@ -58,7 +58,7 @@ if ($client_id <> '') {
 
 # Return resulting XML API output - quite similar to all APIs
 print "content-type: $contenttype; charset=$charset;\n\n";
-print $runtime->dotmod($controller, 'API.Envelope', array(
+print $runtime->$runtime->txt->do_template($controller, 'API.Envelope', array(
   'result' => $result,
   'output' => $output,
   'warnings' => Arrays::a2xml($warnings, 'Warnings', 'Warning'),

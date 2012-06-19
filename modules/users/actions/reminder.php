@@ -17,7 +17,7 @@ if (count($userData) == 0) {
   set_cookie('error', 'Your user does not have e-mail defined. Please contact your Line Manager.');
 } else {
   mail($userData['strLocalOfficeEmail'], '', 'Your Password', 'This is a reminder of your password: <b>'.$userData['psswrd'].'</b>');
-  set_cookie('flash', 'Password for '.$userData['username'].' has been sent to their e-mail address');
+  $_SESSION['flash'] = 'Password for '.$userData['username'].' has been sent to their e-mail address');
 }
 
 $nextUrl = lavnn('url') || '?p=main/dashboard';

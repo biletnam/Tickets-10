@@ -23,10 +23,10 @@ if ($id > 0) {
   $clientData['mfees'] = $mfees;
   $clientData['attachments'] = arr2ref(s2a($module, 'ListClientAttachments', array('id' => $id)));
   # Create a client view tab control
-  $page['js'] = dotmod('main', 'tabcontrol.js');
-  $page['js'] .= dotmod('main', 'linkpeople.js');
-  $page['css'] = dotmod('main', 'tabcontrol.css');
-  $page->add('css',  dotmod('main', 'linkpeople.css');
+  $page['js'] = $runtime->txt->do_template('main', 'tabcontrol.js');
+  $page['js'] .= $runtime->txt->do_template('main', 'linkpeople.js');
+  $page['css'] = $runtime->txt->do_template('main', 'tabcontrol.css');
+  $page->add('css',  $runtime->txt->do_template('main', 'linkpeople.css');
   $tabClientView = new ctlTab($r, "tcClientView");
   $tabClientView->addTab('details', dot('viewclient.details.tabheader'), dot('viewclient.details', $clientData)); 
   $tabClientView->addTab('webaccess', dot('viewclient.webaccess.tabheader'), dot('viewclient.webaccess', $clientData)); 

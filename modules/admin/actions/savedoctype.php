@@ -1,7 +1,7 @@
 <?php
 $id = lavnn('id', $_REQUEST, 0);
 if ($id > 0) {
-  srun($module, 'UpdateDocType', $_REQUEST);
+  $runtime->db->sqlrun($module, 'UpdateDocType', $_REQUEST);
 } else {
   $id = sid($module, 'InsertDocType', $_REQUEST);
 }

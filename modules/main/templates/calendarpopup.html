@@ -1,0 +1,61 @@
+
+<html>
+
+<head>
+  <title>Calendar</title>
+  <link rel="stylesheet" href="?css=calendar" type="text/css" /> 
+  <script>
+    function ReturnDate(day) { 
+      var ctrl, year, month;
+    
+      ctrl = document.getElementById("year");
+      year = ctrl.value;
+      ctrl = document.getElementById("month");
+      month = ctrl.value;
+      var requester = self.opener.document.getElementById(document.frmCalendar.date_control_id.value);
+      if (requester) {
+        ctrl.value = day + "." + month + "." + year;
+        ctrl.fireEvent("onchange");
+        self.close();
+      } else {
+        alert('nowhere to return');
+      }
+    } 
+  </script>
+</head>
+
+<body>
+
+<form name="frmCalendar" method="post">
+<input type=hidden name="p" value="main/calendarpopup" />
+<input type=hidden name="date_control_id" value="<:v:control_id>" />
+
+<div style="text-align: center;">
+  <select id="month" name="month" onchange="this.form.submit();">
+    <:a:months|looptemplate?module=main&name=option>
+  </select>
+  <select id="year" name="year" onchange="this.form.submit();">
+    <:a:years|looptemplate?module=main&name=option>
+  </select>
+</div>
+
+<div style="text-align: center;">
+  <table class="weekgrid">
+    <tr>
+      <th class="weekday">mon</th>
+      <th class="weekday">tue</th>
+      <th class="weekday">wed</th>
+      <th class="weekday">thu</th>
+      <th class="weekday">fri</th>
+      <th class="weekday weekend">sat</th>
+      <th class="weekday weekend">sun</th>
+    </tr>
+  <:v:weeks>
+  </table>
+</div>
+
+</form>
+
+</body>
+
+</html>

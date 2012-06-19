@@ -54,7 +54,7 @@ if ($domain > 0) {
       $msg .= ($success > 0) ? " (and $success usernames/emails were added successfully)" : '';
       set_cookie('error', $firstuser.$msg);
     } else {
-      set_cookie('flash', "All $success users are added successfully") if $success > 0;
+      $_SESSION['flash'] = "All $success users are added successfully") if $success > 0;
     }
     go("?p=$module/search&domain=$domain");
   }

@@ -28,6 +28,6 @@ $popupParams = array(
   'content' => dot('new', $ticketInfo),
 );
 
-print dotmod('main', 'popup', $popupParams);
+print $runtime->txt->do_template('main', 'popup', $popupParams);
 
 ?>

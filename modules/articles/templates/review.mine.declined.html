@@ -1,0 +1,28 @@
+<h2>My status</h2>
+
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/reviewarticle" />
+<input type="hidden" name="id" value="<:v:id>" />
+<input type="hidden" name="status" value="1" />
+<table class="form">
+  <tr>
+    <th>Your current status:</th>
+    <td><strong>Declined</strong></td>
+  </tr>
+  <tr>
+    <th>Your last comment:</th>
+    <td><:v:comment></td>
+  </tr>
+  <tr>
+    <th>Your comment for approval:</th>
+    <td><textarea name="comment" rows="4" cols="60"></textarea></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>
+      <input type="submit" value="Approve" />
+      <input type="button" value="Withdraw review" onclick="gc('Really withdraw your opinion about the article?', '?f=<:v:_module_>/deletearticlereview&id=<:v:id>');" />
+    </td>
+  </tr>
+</table>
+</form>

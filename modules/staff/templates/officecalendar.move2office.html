@@ -1,0 +1,21 @@
+<h2>Move this calendar to another office</h2>
+
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/moveofficecalendar" />
+<input type="hidden" name="id" value="<:v:id>" />
+<table class="form">
+  <tr>
+    <th>Office</th>
+    <td>
+      <select name="office">
+        <option value="" />
+        <:a:officeoptions|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Move" /></td>
+  </tr>
+</table>
+</form>

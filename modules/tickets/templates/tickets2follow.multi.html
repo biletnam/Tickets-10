@@ -1,0 +1,22 @@
+<table width="100%">
+  <tr>
+    <td align="right">
+      With selected: 
+    </td>
+    <td>
+      <select onchange="this.form.op.value = this.value; this.form.submit();">
+        <option value="">-- Choose an action --</option>
+        <option value="close">Close</option>
+      </select>
+    </td>
+    <td align="right">
+      or set priority to:
+    </td>
+    <td>
+      <select name="priority" onchange="this.form.op.value = 'setpriority'; this.form.submit();">
+        <option value="">-- Choose level --</option>
+      <:a:ticketpriorities|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>
+</table>

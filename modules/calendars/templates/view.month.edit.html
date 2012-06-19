@@ -1,0 +1,26 @@
+<div id="monthview_canvas" class="clearfix monthviewactions" style="width: 960px; margin-top: 20px;">
+
+  <div id="monthview_editbutton_container">
+    <input type="button" id="btnMonthCalendarEdit" value="Edit" onclick="showMonthViewEditingControls(); "/>
+  </div>
+
+  <div id="monthview_savebutton_container">
+    <input type="button" id="btnMonthCalendarSave" value="Save" onclick="addMonthViewComment();" />
+    <input type="button" id="btnMonthCalendarCancel" value="Cancel" onclick="hideMonthViewEditingControls();" />
+  </div>
+  
+  <div id="monthview_editform">
+    <table>
+      <tr>
+        <th>Comment:</th>
+        <td>
+          <div style="margin-left: 20px; margin-right: 20px;" id="monthview_addcomment">
+            <input type="text" name="monthview_comment" id="monthview_comment" size="40">
+          </div>
+        </td>
+      </tr>
+      <:v:morefields>
+    </table>
+  </div>
+
+</div>

@@ -1,0 +1,96 @@
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/saveclient" />
+<input type="hidden" name="id" value="<:v:client_id>" />
+<table class="form">
+  <tr>
+    <th>ID</th>
+    <td><:v:client_id></td>
+    <th>Merlin ID</th>
+    <td>
+      <:v:merlin_id>
+      <:_:merlinnamelink|stopifempty:varname=merlin_id|forwardtemplate?module=main&name=merlin.namepage>
+    </td>
+  </tr>
+  <tr>
+    <th>First name</th>
+    <td><input type="text" name="first_name" value="<:v:first_name>" /></td>
+    <th>Last name</th>
+    <td><input type="text" name="last_name" value="<:v:last_name>" /></td>
+  </tr>
+  <tr>
+    <th>Native First name</th>
+    <td><input type="text" name="native_first_name" value="<:v:native_first_name>" /></td>
+    <th>Native Last name</th>
+    <td><input type="text" name="native_last_name" value="<:v:native_last_name>" /></td>
+  </tr>
+  <tr>
+    <th>Passport Number</th>
+    <td><input type="text" name="passport1" value="<:v:passport1>" /></td>
+    <th>Date of Birth</th>
+    <td><input type="text" class="calendardate" title="Click to select date" name="date_birth" id="date_birth" value="<:v:date_birth|dateformat?format=fulldate>" size="10" maxlength="10" /></td>
+  </tr>
+  <tr>
+    <th>Home Phone</th>
+    <td><input type="text" name="phone_home" value="<:v:phone_home>" /></td>
+    <th>Work Phone</th>
+    <td><input type="text" name="phone_office" value="<:v:phone_office>" /></td>
+  </tr>
+  <tr>
+    <th>Mobile Phone</th>
+    <td><input type="text" name="phone_mobile" value="<:v:phone_mobile>" /></td>
+    <th>E-mail</th>
+    <td><input type="text" name="email" value="<:v:email>" /></td>
+  </tr>
+  <tr>
+    <th>Address 1</th>
+    <td><input type="text" name="address1" value="<:v:address1>" size="40" maxlength="250"  /></td>
+    <th>Address 2</th>
+    <td><input type="text" name="address2" value="<:v:address2>" size="40" maxlength="250"  /></td>
+  </tr>
+  <tr>
+    <th>Native Address 1</th>
+    <td><input type="text" name="native_address1" value="<:v:native_address1>" size="40" maxlength="250"  /></td>
+    <th>Native Address 2</th>
+    <td><input type="text" name="native_address2" value="<:v:native_address2>" size="40" maxlength="250"  /></td>
+  </tr>
+  <tr>
+    <th>City</th>
+    <td><input type="text" name="city" value="<:v:city>" /></td>
+    <th>Postcode</th>
+    <td><input type="text" name="postcode" value="<:v:postcode>" /></td>
+  </tr>
+  <tr>
+    <th>Country</th>
+    <td colspan="3">
+      <select name="country_id"><option value=""></option><:a:countries|looptemplate?module=main&name=option></select>
+    </td>
+  </tr>
+  <tr>
+    <th>Spouse First Name</th>
+    <td><input type="text" name="first_name2" value="<:v:first_name2>" /></td>
+    <th>Spouse Last Name</th>
+    <td><input type="text" name="last_name2" value="<:v:last_name2>" /></td>
+  </tr>
+  <tr>
+    <th>Native Spouse First Name</th>
+    <td><input type="text" name="native_first_name2" value="<:v:native_first_name2>" /></td>
+    <th>Native Spouse Last Name</th>
+    <td><input type="text" name="native_last_name2" value="<:v:native_last_name2>" /></td>
+  </tr>
+  <tr>
+    <th>Spouse Passport Number</th>
+    <td><input type="text" name="passport2" value="<:v:passport2>" /></td>
+    <th>Spouse Date of Birth</th>
+    <td><input type="text" class="calendardate" title="Click to select date" name="date_birth2" id="date_birth2" value="<:v:date_birth2|dateformat?format=fulldate>" size="10" maxlength="10" /></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td colspan="3"><input type="submit" value="Save changes" /></td>
+  </tr>
+</table>
+</form>
+
+<script>
+$('#date_birth').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+$('#date_birth2').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+</script>

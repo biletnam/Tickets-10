@@ -1,0 +1,24 @@
+<h1><:v:pagetitle></h1>
+
+<table class="list" width="100%">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Resort</th>
+    <th>&nbsp;</th>
+  </tr>
+  <:a:seasons|looptemplate?name=extseasons.listitem>
+</table>
+
+<p>
+<a class="extseasontooltip" href="#" rel="?i=<:v:_module_>/extseasontooltip" title="Adding another external resort season"><img src="../images/icons/preview.png" border="0" height="16" width="16" /> Add another external resort season</a>
+</p>
+
+<script>
+$('a.extseasontooltip').cluetip({
+  width: 720,
+  sticky: true,
+  closePosition: 'title',
+  mouseOutClose: false
+});
+</script>

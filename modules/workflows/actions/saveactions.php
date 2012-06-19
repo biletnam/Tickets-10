@@ -4,7 +4,7 @@ if ($id > 0) {
   # Save changes to existing inputs
   foreach $action (lavnn('actions')) {
     $params = array('id' => $action, 'action_seqno' => lavnn("seqno_$action"), 'action_name' => lavnn("name_$action"));
-    srun($module, 'UpdateAction', $params);
+    $runtime->db->sqlrun($module, 'UpdateAction', $params);
   }
   
   # Also add new inputs if both name and type are provided\

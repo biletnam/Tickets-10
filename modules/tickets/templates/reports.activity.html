@@ -1,0 +1,39 @@
+<h2>Tickets Activity Report</h2>
+
+<p>Currently active tickets: <:v:activetickets></p>
+
+<p>
+  Last allocated ticket ID: 
+  <a 
+        id="activityreport_ticketlink_<:v:latestticket>" 
+        href="javascript: showAjaxPopup({url: '?i=<:v:_module_>/tooltip&id=<:v:latestticket>', width:800, id:'activityreport_ticketlink_<:v:latestticket>']);" 
+        title="Click to preview"
+  ><img src="../images/icons/preview.png" border="0" height="16" width="16" /></a> 
+  <:v:latestticket>
+</p>
+
+<table class="list">
+  <tr>
+    <th>Time Period</th>
+    <th>Tickets created</th>  
+    <th>Tickets closed</th>  
+    <th>Status changes</th>
+    <th>Comments left</th>
+    <th>Time Reported</th>
+  </tr>
+<:a:reportdata|looptemplate?name=reports.activity.listitem>
+</table>
+
+<p>And here is the activity stats by month</p>
+
+<table class="list">
+  <tr>
+    <th>Month</th>
+    <th>Tickets created</th>  
+    <th>Tickets closed</th>  
+    <th>Tickets changed</th>
+    <th>Total activities</th>
+    <th>Time Reported</th>
+  </tr>
+<:a:bymonth|looptemplate?name=reports.activity.bymonth.listitem>
+</table>

@@ -12,10 +12,10 @@ if ($id > 0) {
   $tabMenuItem->setDefaultTab(lavnn('tab') || 'edit');
   $menuitemInfo['tabcontrol'] = $tabMenuItem->getHTML();
   
-  $page['js'] .= dotmod('main', 'tabcontrol.js');
-  $page['js'] .= dotmod('main', 'linkpeople.js');
-  $page->add('css',  dotmod('main', 'tabcontrol.css');
-  $page->add('css',  dotmod('main', 'linkpeople.css');
+  $page['js'] .= $runtime->txt->do_template('main', 'tabcontrol.js');
+  $page['js'] .= $runtime->txt->do_template('main', 'linkpeople.js');
+  $page->add('css',  $runtime->txt->do_template('main', 'tabcontrol.css');
+  $page->add('css',  $runtime->txt->do_template('main', 'linkpeople.css');
 
   $page->add('title',  $menuitemInfo['pagetitle'] = $runtime->txt->do_template($module, 'menuitem.title', $menuitemInfo);
   $page->add('main', $runtime->txt->do_template($module, 'menuitem', $menuitemInfo);

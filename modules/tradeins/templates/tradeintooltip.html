@@ -1,0 +1,70 @@
+<form action="">
+<input type="hidden" name="f" value="<:v:_module_>/savetradein" />
+<input type="hidden" name="id" value="<:v:id>" />
+<table class="form" width="100%">
+  <tr>
+    <th>Apartment type/name</th>
+    <td>
+      <select name="apt_type"><:a:apttypes|looptemplate?module=main&name=option></select> 
+      / 
+      <input type="text" name="apt_name" size="20" maxlength="50" value="<:v:apt_name>" />
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <th>Number of weeks/points</th>
+    <td>
+      <input type="text" name="weeks_no" size="1" maxlength="2" value="<:v:weeks_no>" /> 
+      / 
+      <input type="text" name="points_no" size="5" maxlength="10" value="<:v:points_no>" /></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <th>External resort/season</th>
+    <td>
+      <select name="external_resort" onchange="set_external_season(this.value, 0);">
+        <option value=""></option>
+        <:a:extresorts|looptemplate?module=main&name=option>
+      </select> 
+      / 
+      <span id="extseason"><:v:preselectseason></span>
+    </td>
+    <td>
+      <a href="?p=<:v:_module_>/extresorts">Manage resorts</a> <br />
+      <a href="?p=<:v:_module_>/extseasons">Manage seasons</a>
+    </td>
+  </tr>
+  <tr>
+    <th>First year/Last year/Membership </th>
+    <td>
+      <input type="text" name="first_year" size="4" maxlength="4" value="<:v:first_year>" />
+      /
+      <input type="text" name="last_year" size="4" maxlength="4" value="<:v:last_year>" />
+      /
+      <select name="membership_type">
+        <option value=""></option>
+        <:a:membershiptypes|looptemplate?module=main&name=option>
+      </select>
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <th>Fixed week</th>
+    <td><input type="text" name="fixed_week" size="2" maxlength="2" value="<:v:fixed_week>" /></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <th>Membership number</th>
+    <td><input type="text" name="membership_number" size="20" maxlength="50" value="<:v:membership_number>" /></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <th>Comments</th>
+    <td colspan="2"><textarea name="comments" rows="6" cols="50"><:v:comments></textarea></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td colspan="2"><input type="submit" value="Save trade-in week" /></td>
+  </tr>
+</table>
+</form>

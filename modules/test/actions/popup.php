@@ -2,9 +2,9 @@
 
 $popupParams = array(
   'title' => 'Lorem ipsum',
-  'content' => dotmod('test', 'lorem.ipsum'),
+  'content' => $runtime->txt->do_template('test', 'lorem.ipsum'),
 );
 
-print dotmod('test', 'popup', $popupParams);
+print $runtime->txt->do_template('test', 'popup', $popupParams);
 
 ?>

@@ -1,0 +1,9 @@
+<p>Please check those offices for which generator can do bookings</p>
+
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/savegeneratoroffices" />
+<input type="hidden" name="id" value="<:v:generator_id>" />
+<:a:offices|looptemplate?module=main&name=checkbox>
+<br>
+<input type="submit" value="Save changes" />
+</form>

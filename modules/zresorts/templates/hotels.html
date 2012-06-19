@@ -1,0 +1,20 @@
+<h1><:v:pagetitle></h1>
+
+<p>Here you can see the list of hotels</p>
+
+<table class="list">
+  <tr>
+    <th>Name</th>
+    <th>Address</th>
+    <th>Phone</th>
+    <th>Fax</th>
+    <th></th>
+    <th></th>
+    <th>&nbsp;</th>
+  </tr>
+<:a:hotels|looptemplate?name=hotels.listitem>
+</table>
+
+<p>
+<a href="?p=<:v:_module_>/edithotel">Add new hotel</a>
+</p>

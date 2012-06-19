@@ -1,0 +1,7 @@
+<tr class="datagrid-row-data mod2_<:v:_mod2_>">
+  <td class="align-int"><a href="?p=tickets/viewticket&id=<:v:id>"><:v:id></td>
+  <td class="align-varchar"><:v:title|shortener?words=7></td>
+  <td class="align-dict"><:v:priority|lookupdict?module=tickets&name=priority></td>
+  <td class="align-dict"><:v:status|lookupdict?module=tickets&name=status></td>
+  <td class="align-date"><:v:duedate|dateformat?format=fulldate></td>
+</tr>

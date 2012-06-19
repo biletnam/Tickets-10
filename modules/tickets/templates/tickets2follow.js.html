@@ -1,0 +1,60 @@
+// Common handler for submitting forms
+$(function() {
+  //ondomload
+  $("#btnSearchTickets").click(function() {
+    //Get the data from all the fields  
+    var data = 'i=<:v:_module_>/tickets2follow&user_id=<:v:user_id>';
+    var emptydata = data;
+    var handler = $('select[name=followfilterhandler]');  
+    if (handler.val() != undefined && handler.val() != '') {
+      data = data + '&handler=' + handler.val();
+    }
+    var project = $('select[name=followfilterproject]');  
+    if (project.val() != undefined && project.val() != '') {
+      data = data + '&project=' + project.val();
+    }
+    var department = $('select[name=followfilterdepartment]');  
+    if (department.val() != undefined && department.val() != '') {
+      data = data + '&department=' + department.val();
+    }
+    var priority = $('select[name=followfilterpriority]');
+    if (priority.val() != undefined && priority.val() != '') {
+      data = data + '&priority=' + priority.val();
+    }
+    var status = $('select[name=followfilterstatus]');
+    if (status.val() != undefined && status.val() != '') {
+      data = data + '&status=' + status.val();
+    }
+    
+    var t = $(this);
+    t.find("input[type=button]")
+      .hide();
+
+    //start the ajax  
+    $.ajax({  
+        //this is the php file that processes the data and send mail  
+        url: "index.pl",   
+          
+        //GET method is used  
+        type: "GET",  
+
+        //pass the data           
+        data: data,       
+          
+        //Do not cache the page  
+        cache: false,  
+        
+        success: function (html) {
+          $('#pleasewait').show();
+          $('#searchresults').html(html);
+          $('#pleasewait').hide();
+          $('#working').hide();
+          $("#btnSearchTickets").show();
+        }
+          
+    });
+    
+    return false;
+    
+  });
+});

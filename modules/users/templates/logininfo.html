@@ -1,0 +1,24 @@
+<div id="username"><:v:username> @<:conf:ENV></div>
+<div id="logininfolinks">
+  <a href="?p=users/passwd">Change Password</a>
+  &nbsp;
+  <a href="?f=users/logout">Log out</a>
+</div>
+<div id="logininfoimagemenu">
+  <span id="notifications"></span>
+  <a id="quicksearchlink" href="javascript: showAjaxPopup({url: '?i=main/quicksearch', width:500, id:'quicksearchlink']);" title="Quick search"><img src="../images/icons/zoom.png" width="16" height="16" border="0" /></a>
+  &nbsp;
+  <a id="newticketlink" href="javascript: showAjaxPopup({url: '?i=tickets/ajaxnew&url=<:req:url|urlencode|urlencode>', width:720, id:'newticketlink']);" title="New ticket"><img src="../images/icons/ticket.png" width="16" height="16" border="0" title="Create new ticket" /></a>
+  &nbsp;
+  <a href="?p=profiles/access"><img src="../images/icons/unlock.png" width="16" height="16" border="0" title="Get a summary of pages you can access" /></a>
+  &nbsp;
+  <a href="?p=calendars/view&special=employeeabsence&tab=year"><img src="../images/icons/calendar-red.png" width="16" height="16" border="0" title="Go to absence calendar" /></a>
+  &nbsp;
+  <a href="?p=tickets/usertime"><img src="../images/icons/clock.png" width="16" height="16" border="0" title="Go to time reporting" /></a>
+  &nbsp;
+  <a href="?f=profiles/me"><img src="../images/icons/2users.mf.png" width="16" height="16" border="0" title="My profile" /></a>
+</div>
+
+<script>
+  $('#notifications').load('?i=<:v:_module_>/notifications');
+</script>

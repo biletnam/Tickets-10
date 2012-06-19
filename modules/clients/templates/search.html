@@ -1,0 +1,86 @@
+<h1><:v:pagetitle></h1>
+
+<form action="" id="frmSearchClients" method="get">
+<input type="hidden" name="p" value="<:v:_module_>/search">
+<table class="form">
+  <tr>
+    <th>ID</th>
+    <td><input type="text" name="client_id" size="20" maxlength="20" value="<:v:client_id>" /></td>
+    <th>Ref #</th>
+    <td><input type="text" name="ref_no" size="20" maxlength="20" value="<:v:ref_no>" /></td>
+    <th>Web access</th>
+    <td><input type="text" name="WebLogin" size="20" maxlength="20" value="<:v:WebLogin>" /></td>
+  </tr>
+  <tr>
+    <th>First Name</th>
+    <td><input type="text" name="fname" size="20" maxlength="20" value="<:v:fname>" /></td>
+    <th>Last Name</th>
+    <td><input type="text" name="lname" size="20" maxlength="20" value="<:v:lname>" /></td>
+    <th>Date of birth</th>
+    <td><input type="text" class="calendardate" title="Click to select date" name="dob" id="dob" size="10" maxlength="10" value="<:v:dob|dateformat?format=fulldate>" /></td>
+  </tr>
+  <tr>
+    <th>Contract Number</th>
+    <td><input type="text" name="contract" size="10" maxlength="10" value="<:v:contract_number>" /></td>
+    <th>Email</th>
+    <td><input type="text" name="email" size="20" maxlength="255" value="<:v:email>" /></td>
+    <th>Nationality</th>
+    <td>
+      <select name="nationality">
+        <option name=""></option>
+        <:a:nationalityoptions|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th>Address</th>
+    <td><input type="text" name="address" size="20" maxlength="20" value="<:v:address>" /></td>
+    <th>City</th>
+    <td><input type="text" name="city" size="20" maxlength="20" value="<:v:city>" /></td>
+    <th>Country</th>
+    <td>
+      <select name="country">
+        <option name=""></option>
+        <:a:countryoptions|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th>Has contracts?</th>
+    <td>
+      <select name="has_contracts">
+        <option value="">not important</option>
+        <:a:contractoptions|looptemplate?module=main&name=option>
+      </select>
+    </td>
+    <th>Has comments?</th>
+    <td>
+      <select name="has_comments">
+        <option value="">not important</option>
+        <:a:commentoptions|looptemplate?module=main&name=option>
+      </select>
+    </td>
+    <th>Has attachments?</th>
+    <td>
+      <select name="has_attachments">
+        <option value="">not important</option>
+        <:a:attachmentoptions|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>
+      <input type="submit" id="btnSearchClients" name="btnSearchClients" value="Search!" />
+    </td>
+  </tr>
+</table>
+</form>
+
+<script>
+  $('#dob').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1, yearRange: 'c-100:c+0']);
+</script>
+
+<div id="searchresults">
+<:v:results>
+</div>

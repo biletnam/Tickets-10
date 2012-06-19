@@ -1,0 +1,28 @@
+<h1><:v:pagetitle></h1>
+
+<form action="" method="GET">
+<input type="hidden" name="p" value="<:v:_module_>/birthdays" />
+Date: 
+<input type="text" size="2" id="day" name="day" value="<:v:day>" />
+<select name="month">
+  <:a:months|looptemplate?module=main&name=option>
+</select>
+<input type="submit" value="Show" />
+</form>
+
+<p>&nbsp;</p>
+
+<table class="list">
+  <tr>
+    <td>&nbsp;</td>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Nick</th>
+    <th>E-mail</th>
+    <th>Phone</th>
+    <th>Yahoo!</th>
+    <th>&nbsp;</th>
+  </tr>
+<:v:birthdays>
+</table>
+

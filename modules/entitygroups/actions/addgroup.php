@@ -3,7 +3,7 @@ $_REQUEST['entity_type'] = $_REQUEST['group_type_dropdown'] || $_REQUEST['group_
 if ($_REQUEST['entity_type'] <> '' && $_REQUEST['name'] <> '') {
   $id = sid($module, 'InsertEntityGroup', $_REQUEST);
   if ($id > 0) {
-    set_cookie('flash', 'Entity Group was successfully added');
+    $_SESSION['flash'] = 'Entity Group was successfully added');
   } else {
     set_cookie('error', 'Entity Group was not added');
   }

@@ -1,0 +1,11 @@
+<tr class="datagrid-row-data mod2_<:v:_mod2_>">
+  <td class="align-varchar"><:v:entity_type></td>
+  <td class="align-varchar"><a href="?fwd=entity&type=<:v:entity_type>&id=<:v:entity_id>"><:v:EntityName></a></td>
+  <td class="align-varchar"><:v:DocTypeName></td>
+  <td class="align-varchar"><a target="_blank" href="<:conf:BASEURL_PICTURES>/<:v:fileid>.<:v:AttachmentFilename>"><:v:AttachmentFilename></a></td>
+  <td class="align-varchar"><:v:valid_to|dateformat?format=fulldate></td>
+  <td class="align-varchar">
+    <a href="?p=tickets/viewticket&id=<:v:ticket_id>"><:v:ticket_id></a>
+    <:_:createticket|stopifnotempty:varname=ticket_id|forwardtemplate?module=&name=expiringdocs.listitem.createticket>
+  </td>
+</tr>

@@ -1,0 +1,68 @@
+<h1><:v:pagetitle></h1>
+
+<p>
+This page is for marking multiple employee absences on the same day.
+This is handy for offices with large number of employees who might have short 
+(preferably one day) absences.
+</p>
+
+<p>
+For other cases, editing absence calendar for each employee might be much more effective.
+Choosing which form to use, please consider that submitting form on this page will create 
+separate ticket for each person-day combination, 
+and this will mean more work to line managers on accepting the requests.
+</p>
+
+<table width="100%">
+  <tr>
+    <td width="50%" align="center">
+      [<a href="?p=<:v:_module_>/editofficeabsences&office=<:v:office>&activedate=<:v:activedate|dateformat&format=fulldate>&special=previous">Previous</a>]
+      &nbsp;<strong><:v:activedate|dateformat&format=fulldate></strong>&nbsp;
+      [<a href="?p=<:v:_module_>/editofficeabsences&office=<:v:office>&activedate=<:v:activedate|dateformat&format=fulldate>&special=next">Next</a>]
+    </td>
+    <td width="50%" align="center">
+      <form action="" method="get">
+        <input type="hidden" name="p" value="<:v:_module_>/editofficeabsences" />
+        <input type="hidden" name="office" value="<:v:office>" />
+        Or Choose date: 
+        <input type="text" class="calendardate" title="Click to select date" id="activedate" name="activedate" size="10" maxlength="10" value="<:v:activedate|dateformat&format=fulldate>" /> 
+        <input type="submit" value="Set" />
+      </form>
+    </td>
+  </tr>
+</table>
+
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/saveofficeabsences" />
+<input type="hidden" name="office" value="<:v:office>" />
+<input type="hidden" name="activedate" value="<:v:activedate|dateformat&format=fulldate>" />
+<table width="100%">
+  <tr>
+    <td align="center">
+      <table class="list">
+      <:v:employees>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<p>For selected employees, request 
+<select name="qty">
+<:a:qty_options|looptemplate?module=main&name=option>
+</select>
+of 
+<select name="absence_type">
+<:a:day_type_options|looptemplate?module=main&name=option>
+  <option value="OW">Overwork</option>
+</select>
+with comment 
+<input type="text" name="comment" size="40" maxlength="250" />
+<input type="submit" value="Save" />
+</p>
+
+</form>
+
+
+<script>
+$('#activedate').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+</script>

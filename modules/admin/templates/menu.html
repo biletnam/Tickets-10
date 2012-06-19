@@ -1,0 +1,21 @@
+<h1><:v:pagetitle></h1>
+
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/savemenu" />
+<table class="list" width="100%">
+  <tr>
+    <th>Seq no</th>
+    <th>Code</th>
+    <th>Caption</th>
+    <th>Link</th>
+    <th>cnt</th>
+    <th>&nbsp;</th>
+  </tr>  
+<:a:menuitems|looptemplate?name=menu.listitem>
+</table>
+<p>
+  <input type="submit" value="Reorder" />
+</p>
+</form>
+
+<p><a href="?p=admin/menuitem">Add menu item</a></p>

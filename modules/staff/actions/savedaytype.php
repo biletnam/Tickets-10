@@ -8,22 +8,22 @@ if ($id > 0) {
   if (join(',', @existing) <> $ids) {
     foreach $off (lavnn('office')) {
       if (!in_array($id, $existing)) {
-        srun($module, 'InsertCalendarDayTypeOffice', array('office' => $off, 'daytype' => $id));
+        $runtime->db->sqlrun($module, 'InsertCalendarDayTypeOffice', array('office' => $off, 'daytype' => $id));
       }
     }
-    srun($module, 'DeleteObsoleteCalendarDayTypeOffices', array('offices' => $ids, 'daytype' => $id));
+    $runtime->db->sqlrun($module, 'DeleteObsoleteCalendarDayTypeOffices', array('offices' => $ids, 'daytype' => $id));
   }
   $_REQUEST['offices'] = $ids;
-  srun($module, 'UpdateCalendarDayType', $_REQUEST);
-  set_cookie('flash', 'Calendar day type updated');
+  $runtime->db->sqlrun($module, 'UpdateCalendarDayType', $_REQUEST);
+  $_SESSION['flash'] = 'Calendar day type updated');
 } else {
   $_REQUEST['offices'] = $ids;
   $newid = sid($module, 'AddCalendarDayType', $_REQUEST);
   if ($newid > 0) {
     foreach $off (lavnn('office')) {
-      srun($module, 'InsertCalendarDayTypeOffice', array('office' => $off, 'daytype' => $newid));
+      $runtime->db->sqlrun($module, 'InsertCalendarDayTypeOffice', array('office' => $off, 'daytype' => $newid));
     }
-    set_cookie('flash', 'Calendar day type added');
+    $_SESSION['flash'] = 'Calendar day type added');
   } else {
     set_cookie('error', 'Failed to add calendar day type');
   }

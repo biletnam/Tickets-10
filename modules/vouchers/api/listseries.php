@@ -15,11 +15,11 @@ $warnings = array();
 $errors = array();
 
 $series = $objVouchers->list_voucher_series();
-$output = $runtime->dotmod($controller, 'api.ListSeries', array('series' => $series));
+$output = $runtime->$runtime->txt->do_template($controller, 'api.ListSeries', array('series' => $series));
 
 # Return resulting XML API output - quite similar to all APIs
 print "content-type: $contenttype; charset=$charset;\n\n";
-print $runtime->dotmod($controller, 'Envelope', array(
+print $runtime->$runtime->txt->do_template($controller, 'Envelope', array(
   'result' => $result,
   'output' => $output,
   'warnings' => Arrays::a2xml($warnings, 'Warnings', 'Warning'),

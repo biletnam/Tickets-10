@@ -6,16 +6,16 @@ $_REQUEST['moderator'] = $_REQUEST['new_moderator'] if $_REQUEST['new_moderator'
 if ($id == '') {
   $id = sid($module, 'InsertProject', $_REQUEST);
   if ($id > 0) {
-    set_cookie('flash', 'Project added');
+    $_SESSION['flash'] = 'Project added');
     $_REQUEST['id'] = $id;
   } else {
     set_cookie('error', 'Could not add project');
   }
 } else {
-  srun($module, 'UpdateProject', $_REQUEST);
-  set_cookie('flash', 'Project updated');
+  $runtime->db->sqlrun($module, 'UpdateProject', $_REQUEST);
+  $_SESSION['flash'] = 'Project updated');
   if (lavnn('bReassign') <> '' && lavnn('moderator') <> '') {
-    srun($module, 'ReassignProjectTickets', $_REQUEST);
+    $runtime->db->sqlrun($module, 'ReassignProjectTickets', $_REQUEST);
   }
 }
 

@@ -18,7 +18,7 @@ if ($poll <> 0) {
     $objN = new objNotification($r);
     $nid = $objN->add_notification('poll', $poll, $subject, $digest);
     $cnt = $objN->add_notification_recipient_employees($nid, $ids);
-    set_cookie('flash', 'Notification sent to ' . $cnt . ' persons.')
+    $_SESSION['flash'] = 'Notification sent to ' . $cnt . ' persons.')
   } else {
     set_cookie('error', 'Poll not found');
   }

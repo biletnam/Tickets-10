@@ -57,10 +57,10 @@ $tabDashboard->setDefaultTab(lavnn('tab') || 'notifications');
 $pageParams['tabcontrol'] = $tabDashboard->getHTML(); 
 $runtime->saveMoment(' rendered tab control');
 
-$page['js'] = dotmod('main', 'tabcontrol.js');
-$page['css'] = dotmod('main', 'tabcontrol.css');
-$page['js'] .= dotmod('main', 'notifications.js');
-$page->add('css',  dotmod('main', 'notifications.css');
+$page['js'] = $runtime->txt->do_template('main', 'tabcontrol.js');
+$page['css'] = $runtime->txt->do_template('main', 'tabcontrol.css');
+$page['js'] .= $runtime->txt->do_template('main', 'notifications.js');
+$page->add('css',  $runtime->txt->do_template('main', 'notifications.css');
 $runtime->saveMoment(' included custom JavaScript and CSS');
 
 $pageParams['pagetitle'] = $page->add('title',  $runtime->txt->do_template($module, 'title.dashboard');
@@ -70,6 +70,6 @@ $runtime->saveMoment(' rendered main part of the page');
 
 
 # register pageview
-srun('main', 'RegisterPageview', array('entity_type' => 'dashboard', 'entity_id' => '', 'viewer_type' => 'U', 'viewer_id' => $r['userID']));
+$runtime->db->sqlrun('main', 'RegisterPageview', array('entity_type' => 'dashboard', 'entity_id' => '', 'viewer_type' => 'U', 'viewer_id' => $r['userID']));
 
 ?>

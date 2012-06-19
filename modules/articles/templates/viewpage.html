@@ -1,0 +1,10 @@
+    <div class="IntranetArticlePage">
+      <h2>page <:v:seq_no></h2>
+      <:v:content|paragraphs|process>
+    </div>
+    <div class="IntranetArticlePagerBar">
+      Choose page: 
+      <a href="?p=<:v:_module_>/view&id=<:v:article>">main</a>
+      <:v:pager>
+      <br />You can see <a href="?p=<:v:_module_>/view&id=<:v:article>&page=everything">everything on one page</a>.
+    </div>

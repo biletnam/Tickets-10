@@ -1,0 +1,104 @@
+
+var timeout_id = 0;
+results = $('<div style="width:400px; height: 400px; border: solid 1px red;"></div>');
+
+function delayedSuggest(type, inputID, inputName, q) {
+  self.clearTimeout(timeout_id);
+  timeout_id = self.setTimeout("doSearch('" + type + "','" + inputID + "','" + inputName + "','"  + q + "')", 500);
+}
+
+function doSearch(type, inputID, inputName, q) {
+  if (q.length > 2) {
+    rez = $.ajax({ 
+      type: 'GET', 
+      url: 'index.pl', 
+      data: 'json=main/suggest&type=' + type + '&q=' + q, 
+      dataType: 'json', 
+      async: false 
+    }); 
+    searchResults = eval(rez.responseText);
+    testBuildResults($('#' + inputID), searchResults);
+  }
+}
+
+function testBuildResults(obj, resultObjects) {
+  var bOddRow = true, i, iFound = 0;
+  $(results).html('').show(); return;
+  for (i=0; i<resultObjects.length; i+=1) {
+    var item = $('<div />'), text = resultObjects[i].text;
+    $(item).append('<p class="text">'+text+'</p>');
+    if (typeof resultObjects[i].extra === 'string') {
+      $(item).append('<p class="extra">'+resultObjects[i].extra+'</p>');
+    }
+    if (typeof resultObjects[i].image === 'string') {
+      $(item).prepend('<img src="'+resultObjects[i].image+'" />').append('<br style="clear:both;" />');
+    }
+    $(item).addClass('resultItem').addClass((bOddRow) ? 'odd' : 'even').click(function (n) {
+      return function() {
+        //selectResultItem(resultObjects[n]);
+      };
+    } (i)).mouseover(function(el) {
+      return function() {
+        setHoverClass(el);
+      };
+    } (item));
+    $(results).append(item);
+    bOddRow =!bOddRow; iFound += 1;
+  }
+  if ($('div',results).length > 0) {
+    $(results).show().css('height','auto 300px').css('overflow', 'auto');
+  }
+}
+
+function selectResultItem(item) { 
+  obj.val(item.text);
+  $(results).html('').hide();
+  /*
+  if (typeof settings.onSelect === 'function') { 
+    settings.onSelect(item);
+  }
+  */
+}
+
+function setHoverClass(el) {
+  $('div.resultItem', results).removeClass('hover');
+  $(el).addClass('hover');
+}
+
+function buildResults(resultObjects) {
+  var bOddRow = true, i, iFound = 0;
+  $(results).html('').hide();
+  for (i=0; i<resultObjects.length; i+=1) {
+    var item = $('<div />'), text = resultObjects[i].text;
+    if (settings.highlightMatches === true) {
+      text = text.replace(filterPatt, "<strong>$1</strong>");
+    }
+    $(item).append('<p class="text">'+text+'</p>');
+    if (typeof resultObjects[i].extra === 'string') {
+      $(item).append('<p class="extra">'+resultObjects[i].extra+'</p>');
+    }
+    if (typeof resultObjects[i].image === 'string') {
+      $(item).prepend('<img src="'+resultObjects[i].image+'" />').append('<br style="clear:both;" />');
+    }
+    $(item).addClass('resultItem').addClass((bOddRow) ? 'odd' : 'even').click(function (n) {
+      return function() {
+        selectResultItem(resultObjects[n]);
+      };
+    } (i)).mouseover(function(el) {
+      return function() {
+        setHoverClass(el);
+      };
+    } (item));
+    $(results).append(item);
+    bOddRow =!bOddRow;
+    iFound += 1;
+    if (typeof settings.maxResults === 'number' && iFound>=settings.maxResults) { break; }
+  }
+  if ($('div',results).length > 0) {
+    currentSelection = undefined;
+    $(results).show().css('height','auto');
+    if ($(results).height() > settings.maxHeight) {
+      $(results).css(['overflow':'auto', 'height':settings.maxHeight + 'px']);
+    }
+  }
+}

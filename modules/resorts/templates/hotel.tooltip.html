@@ -1,0 +1,31 @@
+<table class="form" width="100%">
+  <tr>
+    <th>Name</th>
+    <td><a href="?p=<:v:_module_>/edithotel&id=<:v:hotel_id>"><:v:hotel_name></a></td>
+  </tr>
+  <tr>
+    <th>Location</th>
+    <td><:v:location_name></td>
+  </tr> 
+  <tr>
+    <th>Address</th>
+    <td><:v:address></td>
+  </tr>
+  <tr>
+    <th>Phone</th>
+    <td><:v:phone></td>
+  </tr>
+  <tr>
+    <th>Fax</th>
+    <td><:v:fax></td>
+  </tr> 
+  <tr>
+    <th>Reservation E-mail</th>
+    <td><:v:reservation_email></td>
+  </tr> 
+  <tr>
+    <th>Reservation Contact</th>
+    <td><:v:reservation_contact></td>
+  </tr> 
+<:_:contract|stopifempty:varname=contract_doc_id|forwardtemplate?module=&name=hotel.tooltip.contract>
+</table>

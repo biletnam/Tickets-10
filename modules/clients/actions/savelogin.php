@@ -12,14 +12,14 @@ if ($id > 0) {
     if (count($existingClientData) > 0 && $existingClientData['client_id'] <> $id) {
       set_cookie('error', 'Selected new Web access is already reserved for other client');
     } elseif (count($clientData) > 0) {
-      srun($module, 'UpdateClientData', $_REQUEST);
-      set_cookie('flash', 'Web access info changed');
+      $runtime->db->sqlrun($module, 'UpdateClientData', $_REQUEST);
+      $_SESSION['flash'] = 'Web access info changed');
     }
   } else {
     # new client to get web-enabled
     if ($username <> '' && $password <> '') {
-      srun($module, 'InsertClientData', $_REQUEST);
-      set_cookie('flash', 'Web access info changed');
+      $runtime->db->sqlrun($module, 'InsertClientData', $_REQUEST);
+      $_SESSION['flash'] = 'Web access info changed');
     }
   }
   # Go back to editing page

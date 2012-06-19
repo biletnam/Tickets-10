@@ -12,6 +12,6 @@ if (count($specialoffers) > 0) {
   $page->add('main',  $runtime->txt->do_template($module, 'specialoffers', array('specialoffers' => $specialoffers));
 }
 
-print dotmod($module, 'index', $page);
+print $runtime->txt->do_template($module, 'index', $page);
 
 ?>

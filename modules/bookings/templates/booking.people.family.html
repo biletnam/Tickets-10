@@ -1,0 +1,28 @@
+<h2>More guests</h2>
+
+<table class="list" width="100%">
+  <tr>
+    <th>&nbsp;</th>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Relationship</th>
+    <th>Passport</th>
+    <th>Birthdate</th>
+    <th>Age</th>
+    <th>&nbsp;</th>
+  </tr>
+  <:a:familymembers|looptemplate?name=booking.people.family.member>
+</table>
+
+<p>
+<a class="bookfamilytooltip" href="#" rel="?i=<:v:_module_>/bookfamilytooltip&book_id=<:v:book_id>" title="Adding another guest"><img src="../images/icons/preview.png" border="0" height="16" width="16" /></a>Add another guest
+</p>
+
+<script>
+$('a.bookfamilytooltip').cluetip({
+  width: 720,
+  sticky: true,
+  closePosition: 'title',
+  mouseOutClose: false
+});
+</script>

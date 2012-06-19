@@ -13,7 +13,7 @@ if ($id == 0 && $article <> 0) {
 } elseif($id <> 0 && $article == 0) {
   $statusinfo = $runtime->s2r('main', 'GetReviewStatus', array('id' => $id));
   $article = $statusinfo['resource_id'];
-  srun('main', 'UpdateReviewStatus', $_REQUEST);
+  $runtime->db->sqlrun('main', 'UpdateReviewStatus', $_REQUEST);
 }
 
 
@@ -34,10 +34,10 @@ if ($article > 0) {
   $objN = new objNotification($r);
   $notification_id = $objN->add_notification('articlereview', $article, $msgsubj, $msgbody);
   if ($notification_id > 0) {
-    $receivers = array(hash2ref(('user_id' => $articleInfo['Author'])));
+    $receivers = array(array('user_id' => $articleInfo['Author'])));
     $objN->distribute_notification($notification_id, @receivers);
   }
-  set_cookie('flash', 'Your opinion is saved');
+  $_SESSION['flash'] = 'Your opinion is saved');
   go("?p=$module/review&id=$article");
 } else {
   go("?p=$module/home");

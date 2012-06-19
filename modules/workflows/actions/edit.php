@@ -9,8 +9,8 @@ if ($id > 0) {
   $workflowInfo['constants'] = arr2ref($objW->get_constants(%_REQUEST));  
   $workflowInfo['actions'] = arr2ref($objW->get_actions(%_REQUEST));  
   
-  $page['js'] .= dotmod('main', 'tabcontrol.js');
-  $page->add('css',  dotmod('main', 'tabcontrol.css');
+  $page['js'] .= $runtime->txt->do_template('main', 'tabcontrol.js');
+  $page->add('css',  $runtime->txt->do_template('main', 'tabcontrol.css');
   use ctlTab;
   $tabEditWorkflow = new ctlTab($r, "tcEditWorkflow");
 #  $pollInfo['lmreviewoptions'] = arr2ref(genOptions($yesno, 'key', 'value', $workflowInfo['lm_review']));

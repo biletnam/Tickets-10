@@ -1,0 +1,7 @@
+  function replyComment (ticket) {
+    if (ticket > 0) {
+      $('#ticket_id').show().val(ticket);
+      $('#op').val('reply');
+    }
+    $('#commentary').focus();
+  }

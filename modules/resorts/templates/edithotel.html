@@ -1,0 +1,10 @@
+<h1><:v:pagetitle></h1>
+
+<p>Besides, you can also <a href="?p=<:v:_module_>/bookings&hotel=<:v:id>">setup and manage booking requests</a>.</p>
+
+<:v:tabcontrol>
+
+<script>
+  $('#prices').load('?i=<:v:_module_>/hotelprices&id=<:v:id>');
+  $('#profitability').load('?i=<:v:_module_>/hotelprofit&id=<:v:id>');
+</script>

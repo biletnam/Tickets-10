@@ -21,7 +21,7 @@ if ($tablename <> '') {
   if (count($fieldnames) > 0) {
     $query = "INSERT INTO $tablename (" . join(', ', @fieldnames) . ') VALUES (' . join(', ', @fieldvalues) . ')';
     $rows_affected = $r['db']run_query($query);
-    set_cookie('flash', 'Success!') if $rows_affected > 0;
+    $_SESSION['flash'] = 'Success!') if $rows_affected > 0;
   }
 }
 

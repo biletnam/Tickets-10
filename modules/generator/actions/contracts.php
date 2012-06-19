@@ -55,13 +55,13 @@ if ($gen_user_id > 0) {
   }
 
   # register pageview
-  srun('main', 'RegisterPageview', array('entity_type' => 'contracts', 'entity_id' => 0, 'viewer_type' => 'G', 'viewer_id' => $gen_user_id));
+  $runtime->db->sqlrun('main', 'RegisterPageview', array('entity_type' => 'contracts', 'entity_id' => 0, 'viewer_type' => 'G', 'viewer_id' => $gen_user_id));
 }
 
 $page['baseurl'] = $pageParams['baseurl'];
 $page->add('main', $runtime->txt->do_template($module, 'contracts', $pageParams);
 $page['js'] = $runtime->txt->do_template($module, 'contracts.js'); 
-print dotmod($module, 'index', $page);
+print $runtime->txt->do_template($module, 'index', $page);
 
 
 

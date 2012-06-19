@@ -1,0 +1,51 @@
+<form method="post" action="">
+<input type="hidden" name="f" value="<:v:_module_>/addvouchers" />
+<input type="hidden" name="serie" value="<:v:id>" />
+<table class="form">
+  <tr>
+    <th>References</th>
+    <td>
+      <textarea name="references" rows="6" cols="20"></textarea>
+    </td>
+  </tr>
+  <tr>
+    <th>Quantity</th>
+    <td>
+      <input type="text" name="qty" size="2" maxlength="3" /> 
+      * just specify number of vouchers if you don't know the references
+    </td>
+  </tr>
+  <tr>
+    <th>Set location:</th>
+    <td>
+      <select name="doc_location_type" onchange="$('#morevouchers_location_chooser').load('?i=<:v:_module_>/ajaxlocation&type=' + this.value);">
+        <option value="">Choose location type</option>
+        <option value="hotel">Hotel</option>
+        <option value="provider">Provider</option>
+        <option value="stock">Stock</option>
+        <option value="employee">Employee</option>
+      </select>
+      <span id="morevouchers_location_chooser">
+        ...
+      </span>
+  </tr>
+  <tr>
+    <th>Set ownership:</th>
+    <td>
+      <select name="owner_type" onchange="$('#morevouchers_owner_chooser').load('?i=<:v:_module_>/ajaxowner&type=' + this.value);">
+        <option value="">Choose owner type</option>
+        <option value="owner">Internal Company</option>
+        <option value="client">Client</option>
+        <option value="employee">Employee</option>
+      </select>
+      <span id="morevouchers_owner_chooser">
+        ...
+      </span>
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Save" /></td>
+  </tr>
+</table>
+</form>

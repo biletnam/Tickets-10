@@ -1,0 +1,30 @@
+<div class="notification" id="n_<:v:nrid>">
+  <div class="notification_subject clearfix" id="ns_<:v:nrid>">
+    <div class="notification_showdetails" id="ns_show_<:v:nrid>">
+      <img src="../images/icons/button.down.png" width="16" height="16" valign="top" />
+      <a href="javascript:read_notification(<:v:nrid>);">Show Details</a>
+    </div>
+    <div class="notification_date" id="ns_date_<:v:nrid>">
+      <:v:DateCreated|dateformat?format=timeonly>
+    </div>
+    <div class="notification_summary" id="ns_summary_<:v:nrid>">
+      <img src="../images/icons/<:v:source_type>.png" width="16" height="16" valign="top" />
+      <:v:subject>
+    </div>
+  </div>
+  <div class="notification_details clearfix" id="nd_<:v:nrid>">
+    <div class="notification_details_keep_unread">
+      <input type="hidden" id="source_<:v:nrid>" value="<:v:source_type>:<:v:source_id>" name="hiddensource" />
+      <a href="javascript:forget_notification(<:v:nrid>);"><img title="Forget this notification" src="../images/icons/delete.png" width="16" height="16" border="0" valign="top" /></a> &nbsp;
+      <a href="javascript:forget_related_notifications(<:v:nrid>, '<:v:source_type>', <:v:source_id>);"><img title="Forget this and related notifications" src="../images/icons/stop.png" width="16" height="16" border="0" valign="top" /></a> &nbsp;
+      <a href="javascript:unread_notification(<:v:nrid>);"><img title="Keep this notification unread" src="../images/icons/reload.png" width="16" height="16" border="0" valign="top" /></a>
+    </div>
+    <div class="notification_details_text"><:v:digest></div>
+  </div>
+</div>
+<script>
+  $('#nd_<:v:nrid>').hide();
+  if ('<:v:is_unread>' == '1') {
+    $('#ns_<:v:nrid> div').css('font-weight', 'bold');
+  }
+</script>

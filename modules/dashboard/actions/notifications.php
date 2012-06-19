@@ -29,14 +29,14 @@ $pageParams['notifications_cnt'] = $notification_cnt;
 $pageParams['didyouknow'] = $runtime->txt->do_template($module, 'notifications.didyouknow') if $notification_cnt > 1;
 $runtime->saveMoment(' processed retrieved list of notifications');
 
-$page['js'] .= dotmod('main', 'notifications.js');
-$page->add('css',  dotmod('main', 'notifications.css');
+$page['js'] .= $runtime->txt->do_template('main', 'notifications.js');
+$page->add('css',  $runtime->txt->do_template('main', 'notifications.css');
 $runtime->saveMoment(' included custom JavaScript and CSS');
 
 $pageParams['pagetitle'] = $page->add('title',  $runtime->txt->do_template($module, 'title.notifications', $pageParams);
 $page->add('main', $runtime->txt->do_template($module, 'notifications', $pageParams);
 
 
-srun('main', 'RegisterPageview', array('entity_type' => 'dashboard.notifications', 'entity_id' => '', 'viewer_type' => 'U', 'viewer_id' => $r['userID']));
+$runtime->db->sqlrun('main', 'RegisterPageview', array('entity_type' => 'dashboard.notifications', 'entity_id' => '', 'viewer_type' => 'U', 'viewer_id' => $r['userID']));
 
 ?>

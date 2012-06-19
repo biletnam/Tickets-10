@@ -3,7 +3,7 @@ $book_id = lavnn('book_id', $_REQUEST, '');
 if ($book_id <> '') {
   $id = lavnn('id', $_REQUEST, '');
   if ($id <> '') {
-    srun($module, 'UpdateBookingGuest', $_REQUEST);
+    $runtime->db->sqlrun($module, 'UpdateBookingGuest', $_REQUEST);
   } else {
     $id = sid($module, 'InsertBookingGuest', $_REQUEST);
   }

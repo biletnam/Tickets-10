@@ -1,7 +1,7 @@
 <?php
 $newid = $objT->create_ticket(%_REQUEST);
 if ($newid > 0) {
-  set_cookie('flash', 'Ticket created');
+  $_SESSION['flash'] = 'Ticket created');
   if ($newid % 1000 == 0) {
     set_cookie('easteregg', "coolticket:$newid");
   }

@@ -1,0 +1,138 @@
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/save">
+<input type="hidden" name="id" value="<:v:id>">
+<table class="form">
+  <tr>
+    <th>Preview link</th>
+    <td><a href="?p=<:v:_module_>/view&id=<:v:id>">?p=<:v:_module_>/view&id=<:v:id></a></td>
+  </tr>
+  <tr>
+    <th>Embed-code</th>
+    <td>
+      <table>
+        <tr>
+          <th>For internal use:</th>
+          <td><input type="text" size="20" maxlength="255" value="<:v:id|wrap:tag=article>" /></td>
+        </tr>
+        <tr>
+          <th>For generators:</th>
+          <td><input type="text" size="60" value="http://www.clubabsolute.ru/v2/?p=main/news&id=<:v:id>" /></td>
+        </tr>
+        <tr>
+          <th>For clients:</th>
+          <td><input type="text" size="60" value="http://www.clubabsolute.ru/v2/?p=main/clientnews&id=<:v:id>" /></td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <th>Is draft?</th>
+    <td><select name="draft"><:a:draftoptions|looptemplate?module=main&name=option></select></td>
+  </tr>
+  <tr>
+    <th>Lifetime</th>
+    <td>
+      from <input type="text" class="calendardate" title="Click to select date" name="valid_from" id="valid_from" value="<:v:valid_from|dateformat?format=fulldate>" size="10" maxlength="10" />
+      to <input type="text" class="calendardate" title="Click to select date" name="valid_to" id="valid_to" value="<:v:valid_to|dateformat?format=fulldate>" size="10" maxlength="10" />  
+      * leave any or both empty if life time is not lilmited. 
+    </td>
+  </tr>
+  <tr>
+    <th>Title</th>
+    <td><input type="text" size="30" maxlength="255" name="title" value="<:v:Title>" /></td>
+  </tr>
+  <tr>
+    <th>Teaser</th>
+    <td>
+      <textarea name="teaser" id="teaser" rows="5" cols="80"><:v:Teaser></textarea>
+      <script type="text/javascript">
+				// CKEDITOR.replace('teaser');
+			</script>
+    </td>
+  </tr>
+  <tr>
+    <th>Contents</th>
+    <td>
+      <textarea name="contents" id="contents" rows="25" cols="80"><:v:Contents></textarea>
+      <script type="text/javascript">
+				// CKEDITOR.replace('contents');
+			</script>
+
+    </td>
+  </tr>
+  <tr>
+    <th>More pages</th>
+    <td>
+      <div id="pages">
+      <:a:pages|looptemplate?name=edit.contents.page>
+      </div>
+      <div id="addpagelink">
+        <p><a href="javascript: showNewPageForm();">Add another page</a></p>
+      </div>
+      <div id="addpage" style="display:none;">
+        <h2>Adding new page for the article</h2>
+        <table class="form">
+          <tr>
+            <th>Seq. no</th>
+            <td><input type="text" size="2" maxlength="2" id="seq_no_0" /></td>
+          </tr>
+          <tr>
+            <th>Content</th>
+            <td><textarea rows="10" cols="80" id="content_0"></textarea></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>
+              <input type="button" value="Save new page" onclick="savePage(0, <:v:id>); hideNewPageForm();" />
+              <input type="button" value="Cancel" onclick="hideNewPageForm();" />
+            </td>
+          </tr>
+        </table>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <th>Type</th>
+    <td>
+      <select name="type">
+        <option value="">-- Undefined --</option>
+        <:a:articletypes|looptemplate?module=main&name=option>    
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th>Blocks</th>
+    <td>
+      <:a:articleblocks|looptemplate?module=main&name=checkbox>    
+    </td>
+  </tr>
+  <tr>
+    <th>Tags</th>
+    <td><input type="text" name="tags" size="80" maxlength="255" value="<:v:simpletags>" /></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>
+      <br />
+      <input type="submit" value="Save Article" />
+      <input type="button" value="Delete Article" onclick="gc('Do you really want to delete article \'<:v:Title|jssafe>\'?', '?f=<:v:_module_>/delete&id=<:v:id>');">
+    </td>
+  </tr>
+</table>
+</form>
+
+<script>
+  $('#valid_from').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+  $('#valid_to').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+</script>
+
+<h2>Versions</h2>
+
+<table class="list" width="100%">
+  <tr>
+    <th>Editor</th>
+    <th>Date</th>
+  </tr>
+  <:a:history|looptemplate?name=edit.contents.version>
+</table>

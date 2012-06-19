@@ -1,0 +1,20 @@
+<h2>Overdue</h2>
+<form name="frmChangeOverdue" method="post" action="">
+<input type="hidden" name="f" value="<:v:_module_>/replan" />
+<input type="hidden" name="ids" value="<:a:overdueitems|joincolumn:glue=,&key=id>">
+<table class="list" width="100%">
+  <tr>
+    <th>For</th>
+    <th>#</th>
+    <th>Title/Description</th>
+    <th>Date</th>
+    <th>&nbsp;</th>
+  </tr>
+  <:a:overdueitems|looptemplate?name=dashboard.planner.listitem.overdue>
+</table>
+<input type="submit" value="Save changes" />
+</form>
+
+<script>
+  $('#planner_cnt').append('O: <:a:overdueitems|length>');
+</script>

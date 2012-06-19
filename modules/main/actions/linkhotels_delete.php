@@ -2,7 +2,7 @@
 
 $id = lavnn('id', $_REQUEST, '');
 if ($id <> '') {
-  srun($module, 'DeleteHotelsLink', $_REQUEST);
+  $runtime->db->sqlrun($module, 'DeleteHotelsLink', $_REQUEST);
   print "OK";
 } else {
   print "";

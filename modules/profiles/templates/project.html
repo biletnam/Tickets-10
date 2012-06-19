@@ -1,0 +1,35 @@
+<h1><:v:pagetitle></h1>
+
+<table class="projectprofile">
+  <tr>
+    <td class="avatar">
+      <img alt="project" src="../images/project.jpg" width="75" height="75" />
+    </td>
+    <td class="basicinfo">
+      <div class="oneline">
+        <strong><:v:title></strong> &nbsp;
+        <:_:editlink|stopifempty:varname=editable|forwardtemplate?module=&name=project.editlink>
+        <br />
+        Created: <:v:DateCreated|dateformat?format=fulldate>
+        <br />
+        Creator:
+        <img src="../images/icons/user.png" border="0" width="16" height="16"> 
+        <a href="?p=<:v:_module_>/employee&id=<:v:creator>"><:v:CreatorName></a> &nbsp;
+        <br />  
+        Moderator:      
+        <img src="../images/icons/user.png" border="0" width="16" height="16"> 
+        <a href="?p=<:v:_module_>/employee&id=<:v:moderator>"><:v:ModeratorName></a> &nbsp;
+      </div>
+    </td>
+  </tr>
+</table>
+
+<div class="projectstats">
+  <table>
+    <tr>
+      <td><img src="../images/icons/attachment.png" width="16" height="16" border="0"> <:v:wall_documents> Public document(s) &nbsp; </td>
+      <td><img src="../images/icons/ticket.png" width="16" height="16" border="0"> <:v:cnt_tickets> Ticket(s) &nbsp; </td>
+    </tr>
+  </table>
+  <:_:docs|stopifempty:varname=wall_documents|forwardtemplate?module=&name=attachments.list>
+</div>

@@ -9,6 +9,6 @@ if ($sess['user_id'] <> '') {
   }
 }
 
-print dotmod('main', 'client', $page);
+print $runtime->txt->do_template('main', 'client', $page);
  
 ?>

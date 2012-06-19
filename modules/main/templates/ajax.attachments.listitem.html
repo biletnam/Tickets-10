@@ -1,0 +1,13 @@
+  <tr class="mod2_<:v:_mod2_>">
+    <td><a target="_blank" href="<:conf:BASEURL_PICTURES>/<:v:fileid>.<:v:filename_safe>"><:v:filename_safe></a></td>
+    <td><:v:DateUpdated|dateformat?format=shortdate></td>
+    <td><:v:EditorName></td>
+    <td><:v:doctype_name></td>
+    <td>
+      <a href="javascript:update_attachment_description('<:v:id>');" title="Click to edit attachment's description"><img src="../images/icons/pen.png" border="0" width="16" height="16" /></a> 
+      <span id="attachment_description_<:v:id>"><:v:description></span>
+    </td>
+    <td><:v:valid_from|dateformat?format=fulldate></td>
+    <td><:v:valid_to|dateformat?format=fulldate></td>
+    <td><a href="javascript:gc('Are you sure to delete the attachment?', '?f=<:v:_module_>/deleteattachment&id=<:v:id>');">Delete</a></td>
+  </tr>

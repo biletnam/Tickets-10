@@ -31,50 +31,50 @@ $basequery = "
   LEFT JOIN zProjects prj ON prj.id = t.project
 ";
 $fields = array();
-push @fields, hash2ref((
+push @fields, array(
   'scope' => 'dimension',
   'level' => 1, 'type' => 'str', 'valuefield' => 'status', 
   'showfield' => 'status', 'caption' => 'Status'
 )); 
-push @fields, hash2ref((
+push @fields, array(
   'scope' => 'dimension',
   'level' => 1, 'type' => 'int', 'valuefield' => 'CreatorDepartment', 
   'showfield' => 'CreatorDepartmentName', 'caption' => 'Creator Department'
 )); 
-push @fields, hash2ref((
+push @fields, array(
   'scope' => 'dimension',
   'level' => 1, 'type' => 'int', 'valuefield' => 'CreatorOffice', 
   'showfield' => 'CreatorOfficeName', 'caption' => 'Creator Office'
 )); 
-push @fields, hash2ref((
+push @fields, array(
   'scope' => 'dimension',
   'level' => 1, 'type' => 'int', 'valuefield' => 'HandlerDepartment', 
   'showfield' => 'HandlerDepartmentName', 'caption' => 'Handler Department'
 )); 
-push @fields, hash2ref((
+push @fields, array(
   'scope' => 'dimension',
   'level' => 1, 'type' => 'int', 'valuefield' => 'HandlerOffice', 
   'showfield' => 'HandlerOfficeName', 'caption' => 'Handler Office'
 )); 
-push @fields, hash2ref((
+push @fields, array(
   'scope' => 'dimension',
   'level' => 2, 'type' => 'int', 'valuefield' => 'creator', 
   'prerequisites' => 'CreatorDepartment,CreatorOffice',
   'showfield' => 'CreatorName', 'caption' => 'Creator Name'
 )); 
-push @fields, hash2ref((
+push @fields, array(
   'scope' => 'dimension',
   'level' => 2, 'type' => 'int', 'valuefield' => 'handler', 
   'prerequisites' => 'HandlerDepartment,HandlerOffice',
   'showfield' => 'HandlerName', 'caption' => 'Handler Name'
 )); 
-push @fields, hash2ref((
+push @fields, array(
   'scope' => 'dimension',
   'level' => 2, 'type' => 'int', 'valuefield' => 'project', 
   'prerequisites' => 'Handler',
   'showfield' => 'ProjectTitle', 'caption' => 'Project'
 )); 
-push @fields, hash2ref((
+push @fields, array(
   'scope' => 'listcolumn',
   'level' => 0, 'type' => 'str', 'valuefield' => 'title', 
   'showfield' => 'title', 'caption' => 'Title',

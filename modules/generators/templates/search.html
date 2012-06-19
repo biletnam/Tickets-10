@@ -1,0 +1,33 @@
+<h1><:v:pagetitle></h1>
+
+<form action="" id="frmSearchGenerators">
+<input type="hidden" name="p" value="<:v:_module_>/search">
+<table class="form">
+  <tr>
+    <th>Name</th>
+    <td><input type="text" name="name" size="40" maxlength="20" value="<:v:name>" /></td>
+  </tr>
+  <tr>
+    <th>Web Login</th>
+    <td><input type="text" name="weblogin" size="40" maxlength="20" value="<:v:weblogin>" /></td>
+  </tr>
+  <tr>
+    <th>E-mail</th>
+    <td><input type="text" name="email" size="40" maxlength="20" value="<:v:email>" /></td>
+  </tr>
+  <tr>
+    <th>Office</th>
+    <td><select name="office"><option value="" ></option><:a:officeoptions|looptemplate?module=main&name=option></select></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>
+      <input type="submit" id="btnSearchGenerators" name="btnSearchGenerators" value="Search!" />
+    </td>
+  </tr>
+</table>
+</form>
+
+<div id="searchresults">
+<:v:results>
+</div>

@@ -11,7 +11,7 @@ if ($id > 0) {
   if ($hotel > 0) {
     $hotelInfo = $runtime->s2r($module, 'GetHotelInfo', $_REQUEST);
     $fu->delete_attachment($id);
-    set_cookie('flash', 'Attachment deleted');
+    $_SESSION['flash'] = 'Attachment deleted');
   } else {
     set_cookie('error', 'Could not delete attachment');
   }

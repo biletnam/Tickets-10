@@ -1,0 +1,11 @@
+  <tr class="mod2_<:v:_mod2_> bookreq_status_<:v:SafeStatus>">
+    <td class="a-c"><:v:status|lookupdict?module=&name=bookreq.status> <:v:BookingStatus></td>
+    <td class="a-l"><:v:hotel_name></td>
+    <td class="a-c"><:v:type_name></td>
+    <td class="a-c"><:v:arrdate|dateformat?format=shortdate> - <:v:depdate|dateformat?format=shortdate></td>
+    <td class="a-l"><:v:fname1> <:v:lname1></td>
+    <td class="a-c">
+      <a href="?p=<:v:_module_>/bookingreq&id=<:v:id>"><img border="0" src="http://<:conf:SERVERURL_EXTERNAL>/john/images/icons24/preview.png" title="<:l:details>"></a>
+      <:_:can_delete|stopifempty:varname=can_delete|forwardtemplate?module=&name=listrequests.listitem.deletelink>
+    </td>
+  </tr>

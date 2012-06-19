@@ -6,7 +6,7 @@ if ($id > 0) {
   $localtypeInfo = $runtime->s2r($module, 'GetLocalTypeInfo', $_REQUEST);
   if (count($localtypeInfo) > 0) {
     $hotel = $localtypeInfo['hotel_id'];
-    srun($module, 'DeleteLocalType', $_REQUEST);
+    $runtime->db->sqlrun($module, 'DeleteLocalType', $_REQUEST);
   }
 }
 if ($hotel > 0) {

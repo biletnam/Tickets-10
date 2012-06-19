@@ -49,12 +49,12 @@ if ($client_id == 0) {
   push @errors, $runtime->hash2ref( ('code' => 'GetMemberMessages.MissingClientID', 'text' => 'Client id is not provided') );
 } else {
   $messages = $runtime->s2a($controller, 'ListMemberMessages', $apiparams);
-  $output = $runtime->dotmod($controller, 'API.GetMemberMessages', array('messages' => $messages));
+  $output = $runtime->$runtime->txt->do_template($controller, 'API.GetMemberMessages', array('messages' => $messages));
 }
 
 # Return resulting XML API output - quite similar to all APIs
 print "content-type: $contenttype; charset=$charset;\n\n";
-print $runtime->dotmod($controller, 'API.Envelope', array(
+print $runtime->$runtime->txt->do_template($controller, 'API.Envelope', array(
   'result' => $result,
   'output' => $output,
   'warnings' => Arrays::a2xml($warnings, 'Warnings', 'Warning'),

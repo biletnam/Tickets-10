@@ -1,0 +1,31 @@
+<h1><:v:pagetitle></h1>
+
+<p>Here you can manage all trade-in weeks for which memberships are legalized</p>
+
+<table class="list" width="100%">
+  <tr>
+    <th>Resort</th>
+    <th>Apt</th>
+    <th>Week</th>
+    <th>Membership</th>
+    <th>&nbsp;</th>
+  </tr>
+  <:a:weeks|looptemplate?name=tradeins.week>
+</table>
+
+<p>
+<a class="tradeintooltip" href="#" rel="?i=<:v:_module_>/tradeintooltip" title="Adding another trade-in week"><img src="../images/icons/preview.png" border="0" height="16" width="16" /> Add another trade-in week</a>
+&nbsp;
+<a href="?p=<:v:_module_>/extresorts">Manage Resorts</a> 
+&nbsp;
+<a href="?p=<:v:_module_>/extseasons">Manage Resort Seasons</a> 
+</p>
+
+<script>
+$('a.tradeintooltip').cluetip({
+  width: 720,
+  sticky: true,
+  closePosition: 'title',
+  mouseOutClose: false
+});
+</script>

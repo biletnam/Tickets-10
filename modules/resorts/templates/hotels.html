@@ -1,0 +1,102 @@
+<h1><:v:pagetitle></h1>
+
+<p>Here you can see the list of hotels. You can narrow down search using the filters:</p>
+
+<form action="" method="get">
+<input type="hidden" name="p" value="<:v:_module_>/hotels">
+<table class="form">
+  <tr>
+    <th>Name</th>
+    <td><input type="name" name="name" value="<:v:name>"></td>
+    <th>Location</th>
+    <td>
+      <select name="location_id">
+        <option value=""></option>
+        <:a:locationoptions|looptemplate?module=main&name=option>
+      </select>
+    </td>
+    <th>with valid </th>
+    <td>
+      <select name="doctype_id">
+        <option value=""></option>
+        <:a:doctypeoptions|looptemplate?module=main&name=option>
+      </select>
+      on date (today by default) :
+      <input type="text" name="validity_check_date" id="validity_check_date" class="calendardate" value="<:v:validity_check_date>" size="10" maxlength="10" />
+    </td>
+  </tr>
+  <tr>
+    <td colspan="4"><input type="submit" value="Apply filters" /></td>
+  </tr>
+</table>
+</form>
+
+<p>Results of search: <:a:hotels|length></p>
+
+<:_:preselection_notice|stopifempty:varname=ids|forwardtemplate?module=&name=hotels.preselection.notice>
+
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/multihotel">
+<input type="hidden" name="op" value="">
+<table class="list" width="100%">
+  <tr>
+    <th><input type="checkbox" onclick="checkAllBoxes(this.form, 'id_', this.checked);"></th>
+    <th>ID</th>
+    <th>Location</th>
+    <th>Name</th>
+    <th>Docs</th>
+    <th>Booking Staff</th>
+    <th>NEW BookReqs</th>
+    <th>&nbsp;</th>
+  </tr>
+<:a:hotels|looptemplate?name=hotels.listitem>
+</table>
+<p>Assign booking request handlers to selected hotels:</p>
+<table class="form">
+  <tr>
+    <td>
+      Language: 
+      <select name="language" onchange="this.form.op.value='assign_book_req_handler'; ">
+        <option value="">Choose language</option>
+        <:a:languages|looptemplate?module=main&name=option>
+      </select>
+      Employee:
+      <input type="text" class="peoplesearch" title="Start typing to get suggestions" id="h" />
+      <input type="button" value="Assign handler" onclick="if (this.form.op.value != 'assign_book_req_handler') { alert('Please choose language'); } else if (this.form.handler == undefined || this.form.handler.value == '') { alert('Please choose employee'); } else  { this.form.submit(); }" />
+    </td>
+  </tr>
+</table>
+<p>Or add follower:</p>
+<table class="form">
+  <tr>
+    <td>
+      Employee:
+      <input type="text" class="peoplesearch" title="Start typing to get suggestions" id="f" />
+      <input type="button" value="Add follower" onclick="this.form.op.value='add_hotel_follower'; this.form.submit();" />
+    </td>
+  </tr>
+</table>
+<p>Or <input type="button" value="Show documents on one page" onclick="this.form.op.value='show_documents'; this.form.submit();" ></p>
+</form>
+
+<p>
+<a href="?p=<:v:_module_>/edithotel">Add new hotel</a>
+</p>
+
+<script>
+
+$('#validity_check_date').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+
+$('a.hoteltooltip').cluetip({
+  width: 600,
+  sticky: true,
+  closePosition: 'title',
+  mouseOutClose: true
+});
+
+suggestPerson('U', 'h', 'handler');
+suggestPerson('U', 'f', 'follower');
+
+preselectCheckboxes('id_', '<:v:ids>');
+
+</script>

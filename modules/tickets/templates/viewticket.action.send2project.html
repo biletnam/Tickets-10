@@ -1,0 +1,10 @@
+<p>
+  <input type="radio" name="op" value="send2project" id="send2project"> 
+  <img src="../images/icons/forward.png" /> 
+  <label for="send2project"> Send to project</label>
+  <br />
+  <select name="project" onchange="setCheckedValue(document.frmChangeTicket.op, 'send2project');">
+    <option value="">-- choose one --</option>
+    <:a:projects|looptemplate?module=main&name=option>
+  </select>
+</p>

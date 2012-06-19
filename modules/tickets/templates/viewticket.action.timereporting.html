@@ -1,0 +1,31 @@
+      <p>
+        <script>
+          var hours = 0; var mins = 0; var secs = 0; var working = 1;
+        </script>
+        <b>Report working time (optional)</b><br />
+        <input type="text" size="2" maxlength="2" name="reported_hours" id="reported_hours" value="0" onkeypress="working = 0;" />hour(s), 
+        <input type="text" size="2" maxlength="2" name="reported_minutes" id="reported_minutes" value="0" onkeypress="working = 0;" /> minute(s),
+        <span id="reported_seconds">00</span> second(s)
+        <br />
+        <b>Set different reporting date (optional)</b><br />
+        <input type="text" size="10" maxlength="10" name="reporting_date" id="reporting_date" value="" />
+        <br />
+        * manual editing of times will stop the timer!
+        <script>
+          window.setInterval(function() {
+            if (working == 1) {
+              secs += 1;
+              if (secs == 60) { 
+                secs = 0; mins += 1; 
+                if (mins == 60) { 
+                  mins = 0; hours += 1; 
+                }
+                document.getElementById('reported_minutes').value = mins;
+                document.getElementById('reported_hours').value = hours;
+              }
+              $('#reported_seconds').html((secs < 10 ? '0': '') + secs);
+            } 
+          }, 1000);
+          
+        </script>
+      </p>

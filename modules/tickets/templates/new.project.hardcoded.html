@@ -1,0 +1,9 @@
+        <tr>
+          <td><input type="radio" name="destination" value="project" checked> Send to project:</td>
+          <td>
+            <select name="project" onchange="setCheckedValue(this.form.destination, 'project');">
+              <option value="">-- Choose one from the list --</option>
+              <:a:projects|looptemplate?module=main&name=option>
+            </select>
+          </td>
+        </tr>

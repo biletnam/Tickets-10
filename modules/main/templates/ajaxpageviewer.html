@@ -1,0 +1,29 @@
+<input type="text" class="peoplesearch" title="Start typing to get suggestions" id="<:v:name>_suggestbox" /> <span id="<:v:name>_tip">&lt;- start typing (min. <:v:chars> characters)</span>
+
+<script>
+$('#<:v:name>_suggestbox').jsonSuggest(
+  function(text, wildCard, caseSensitive, notCharacter) {    
+    rez = $.ajax({ 
+      type: 'GET', 
+      url: 'index.pl', 
+      data: 'json=main/suggest&type=<:v:type>&q=' + text, 
+      dataType: 'json', 
+      async: false 
+    }); 
+    return eval(rez.responseText); 
+  }, 
+  { 
+    ajaxResults: true,
+    minCharacters: <:v:chars>,
+    onSelect: callback_<:v:name>
+  }
+);
+
+function callback_<:v:name>(item) {
+	var a = '<a onclick="' + "$('#<:v:name>_container').remove(); $('#<:v:name>_suggestbox').val('').show();" + '" style="text-decoration: none;" title="click to remove"> X </a>';
+	$('#<:v:name>_suggestbox')
+    .after('<div id="<:v:name>_container" class="suggesteditem clearfix"><div class="suggestedname"><input type="hidden" name="<:v:name>" value="' + item.id + '">' + item.text + ' &nbsp; </div><div class="suggestedclose">' + a + '</div></div>')
+    .hide();
+}
+
+</script>

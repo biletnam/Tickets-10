@@ -14,7 +14,7 @@ if ($id > 0) {
   $obligationInfo = $runtime->s2r($module, 'GetObligationData', array('id' => $id));
   if (count($obligationInfo) > 0) {
     if (count($ids) > 0) {
-      srun($module, 'DeleteContractObligations', array('ids' => join(',', @ids)));
+      $runtime->db->sqlrun($module, 'DeleteContractObligations', array('ids' => join(',', @ids)));
     } else {
       $runtime->set_cookie('error', 'Select some contracts first');
     }

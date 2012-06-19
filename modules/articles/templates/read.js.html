@@ -1,0 +1,43 @@
+
+function savePage(id, article) {
+  var seqno = $('#seq_no_' + id).val();
+  var content = $('#content_' + id).val();
+  $('#page_' + id).html('waiting...');
+  $.post(
+    "index.pl", 
+    { 
+      f: "<:v:_module_>/savepage",
+      id: 0+id,
+      article: 0+article,
+      seq_no: seqno,
+      content: content
+    },
+    function(data) {
+     $('#pages').html(data);
+    }
+  );
+  
+}
+
+function deletePage(id) {
+  if (confirm('Are you sure to delete article part?')) {
+    $.post(
+      "index.pl", 
+      { 
+        f: "<:v:_module_>/deletepage",
+        id: 0+id
+      },
+      function(data) {
+        $('#page_' + id).hide('slow');
+      }
+    );
+  } 
+}
+
+function showNewPageForm() {
+  $('#addpage').show(); $('#addpagelink').hide();
+}
+
+function hideNewPageForm() {
+  $('#addpagelink').show(); $('#addpage').hide();
+}

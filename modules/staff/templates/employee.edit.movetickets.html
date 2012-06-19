@@ -1,0 +1,17 @@
+<h2>Outstanding tickets</h2>
+
+<p>You can move <:v:outstanding_tickets|numberformat> outstanding tickets of this employee to another person.</p>
+
+<p>
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/movetickets" />
+New person:
+<input type="hidden" name="from" value="<:v:lngId>" /> &nbsp;
+<input type="text" class="peoplesearch" title="Start typing to get suggestions" id="qto" /> &nbsp;
+<input type="submit" value="Reassign tickets" />
+</form>
+</p>
+
+<script>
+  suggestPerson('U', 'qto', 'to');
+</script>

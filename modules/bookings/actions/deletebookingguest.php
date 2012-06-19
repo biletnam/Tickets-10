@@ -5,7 +5,7 @@ if ($id <> '') {
   if (count($bookingFamilyInfo) > 0) {
     $book_id = $bookingFamilyInfo['book_id'] || '';
     if ($book_id <> '') {
-      srun($module, 'DeleteBookingGuest', array('id' => $id));
+      $runtime->db->sqlrun($module, 'DeleteBookingGuest', array('id' => $id));
       go("?p=$module/view&id=$book_id&tab=people");
     }
   }

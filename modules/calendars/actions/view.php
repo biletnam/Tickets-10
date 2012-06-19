@@ -12,7 +12,7 @@ if ($special == 'employeeabsence') {
   } else {
     $id = $specialInfo['id'];
     # register pageview
-    srun('main', 'RegisterPageview', array('entity_type' => 'absencecalendar', 'entity_id' => '', 'viewer_type' => 'U', 'viewer_id' => $r['userID']));
+    $runtime->db->sqlrun('main', 'RegisterPageview', array('entity_type' => 'absencecalendar', 'entity_id' => '', 'viewer_type' => 'U', 'viewer_id' => $r['userID']));
   }
 } 
 if ($id <> '') {
@@ -90,12 +90,12 @@ if ($id <> '') {
     $page->add('main', $runtime->txt->do_template($module, 'view.notfound', $calendarInfo);
   }
   
-  $page['js'] .= dotmod('main', 'tabcontrol.js');
-  $page['js'] .= dotmod('main', 'linkpeople.js');
-  $page['js'] .= dotmod($module, 'calendar.js', array('id' => $id));
-  $page->add('css',  dotmod('main', 'tabcontrol.css');
-  $page->add('css',  dotmod('main', 'linkpeople.css');
-  $page->add('css',  dotmod($module, 'calendar.css');
+  $page['js'] .= $runtime->txt->do_template('main', 'tabcontrol.js');
+  $page['js'] .= $runtime->txt->do_template('main', 'linkpeople.js');
+  $page['js'] .= $runtime->txt->do_template($module, 'calendar.js', array('id' => $id));
+  $page->add('css',  $runtime->txt->do_template('main', 'tabcontrol.css');
+  $page->add('css',  $runtime->txt->do_template('main', 'linkpeople.css');
+  $page->add('css',  $runtime->txt->do_template($module, 'calendar.css');
   $page->add('css',  $runtime->txt->do_template($module, 'css');
   $page['cssfiles'] = $runtime->link_cssfiles(qw(calendar));
 }

@@ -4,7 +4,7 @@ $editor = $_REQUEST['editor'] = $r['userInfo']['staff_id'];
 $id = sid($module, 'CreateArticle', $_REQUEST);
 if ($id > 0) {
   $_REQUEST['id'] = $id;
-  srun($module, 'InsertArticleHistory', $_REQUEST);  
+  $runtime->db->sqlrun($module, 'InsertArticleHistory', $_REQUEST);  
   # Look if there are some tags to add
   $tags = lavnn('tags', $_REQUEST, '');
   if ($tags <> '') {
@@ -18,11 +18,11 @@ if ($id > 0) {
         $tag = $prefix; $prefix = ''; $newtag = ":$t";
       }
       %taginfo = array('article' => $id, 'fulltag' => $t, 'prefix' => $prefix, 'tag' => $tag);
-      srun($module, 'AddArticleTag', $taginfo);
+      $runtime->db->sqlrun($module, 'AddArticleTag', $taginfo);
     }
   }
   # Delete draft if any
-  srun($module, 'DeleteArticleDraft', array('user_id' => $editor, $article_id => ''));
+  $runtime->db->sqlrun($module, 'DeleteArticleDraft', array('user_id' => $editor, $article_id => ''));
   # Relocate to the same article in edit mode
   go("?p=$module/edit&id=$id");
 } else {

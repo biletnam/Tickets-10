@@ -1,0 +1,27 @@
+<form name="frmManageMyArticles" action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/multiarticles" />
+<input type="hidden" name="op" value="" />
+<table class="list" width="100%">
+  <tr>
+    <th><input type="checkbox" onclick="checkAllBoxes(this.form, 'id_', this.checked);"></th>
+    <th>Author</th>
+    <th>Last Update</th>
+    <th>Title</th>
+    <th>Type</th>
+    <th>Block</th>
+    <th>&nbsp;</th>
+  </tr>
+  <:a:drafts|looptemplate?name=myarticles.listitem>
+</table>
+
+With selected: 
+<select onchange="this.form.op.value = this.value; this.form.submit();">
+  <option value="">-- Choose an action --</option>
+  <option value="marknotdraft">Mark as Published</option>
+  <option value="markdeleted">Mark as Deleted</option>
+</select>
+</form>
+
+<p>
+<a href="?p=<:v:_module_>/new">Add new article</a>
+</p>

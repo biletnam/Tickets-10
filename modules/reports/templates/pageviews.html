@@ -1,0 +1,59 @@
+<h1><:v:pagetitle></h1>
+
+<p>Use the filter form to narrow down the results</p>
+
+<form action="" method="get">
+<input type="hidden" name="p" value="<:v:_module_>/pageviews" />
+<table class="form">
+  <tr>
+    <th>Viewer type</th>
+    <td>
+      <select name="viewer_type" id="viewer_type" onchange="showViewerOptions(this.value);">
+        <option value=""></option>
+        <:a:viewertypes|looptemplate?module=main&name=option>
+      </select>
+      <span id="viewer">
+        &lt;- choose viewer type
+      </span>
+      <script>
+        var vt = $('#viewer_type').val();
+        if (vt != '') {
+          if (0 != 0<:v:viewer_id>) {
+            $('#viewer').html('<:v:viewer_id> <a href="javascript:showViewerOptions(\'<:v:viewer_type>\');">Choose anew</a>');
+          } else {
+            showViewerOptions(vt);
+          }
+        }
+      </script>
+    </td>
+  </tr>
+  <tr>
+    <th>Entity type</th>
+    <td>
+      <select name="entity_type" onchange="showEntityOptions(this.value);">
+        <option value=""></option>
+        <:a:entitytypes|looptemplate?module=main&name=option>
+      </select>
+      <span id="entity">
+        &lt;- choose entity type
+      </span>
+      <script>
+        var et = $('#entity_type').val();
+        if (et != '') {
+          if (0 != 0<:v:entity_id>) {
+            $('#entity').html('<:v:entity_id> <a href="javascript:showEntityOptions(\'<:v:entity_type>\');">Choose anew</a>');
+          } else {
+            showEntityOptions(et);
+          }
+        }
+      </script>
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Filter" /></td>
+  </tr>
+</table>
+</form>
+
+<:v:results>

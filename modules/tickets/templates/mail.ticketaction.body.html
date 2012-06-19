@@ -1,0 +1,50 @@
+<html>
+
+<head>
+  <base href="<:v:siteroot>/" />
+  <style>
+    th { 
+      text-align: left;
+      vertical-align: top; 
+    }
+  </style>
+</head>
+
+<body>
+
+<h2>Ticket change</h2>
+
+<hr />
+
+<p>
+Ticket #<:v:ticket>, '<:v:TicketTitle>' was changed at <:v:DateUpdated|dateformat?format=fulltime>.
+<:v:EditorName> <:v:explained|striptags>
+</p>
+
+<hr />
+
+<h2>Ticket information</h2>
+
+<:v:ticketInfo>
+
+<hr />
+
+<p>
+This is an automated mail message sent by robot. Therefore, do NOT reply to this mail!
+</p>
+
+<p>
+To view/edit this ticket, 
+<a href="<:conf:SERVERURL_LOCAL><:conf:BASEURL_SCRIPTS>/index.pl?p=<:v:_module_>/viewticket&id=<:v:ticket>">follow this link</a> from Central office,
+or <a href="<:conf:SERVERURL_EXTERNAL><:conf:BASEURL_SCRIPTS>/index.pl?p=<:v:_module_>/viewticket&id=<:v:ticket>">this link</a> from elsewhere.
+</p>
+
+<hr />
+
+<p style="color:green;">
+Please, consider the environment before printing this email.
+</p>
+
+</body>
+
+</html>

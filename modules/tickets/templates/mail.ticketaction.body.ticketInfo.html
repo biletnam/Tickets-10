@@ -1,0 +1,38 @@
+<table>
+  <tr>
+    <th>Title</th>
+    <td><:v:title|untitled></td>
+    <th>Status</th>
+    <td><:v:status|lookupdict?module=tickets&name=status></td>
+  </tr>
+  <tr>
+    <th>Creator</th>
+    <td><:v:CreatorName></td>
+    <th>Handler</th>
+    <td><:v:HandlerName></td>
+  </tr>
+  <tr>
+    <th>Reviewer</th>
+    <td><:v:ReviewerName></td>
+    <th>Project</th>
+    <td><:v:ProjectTitle></td>
+  </tr>
+  <tr>
+  </tr>
+  <tr>
+    <th>Priority</th>
+    <td><:v:priority|lookupdict?module=tickets&name=priority></td>
+    <th>DueDate</th>
+    <td><:v:duedate|dateformat?format=shortdate></td>
+  </tr>
+  <tr>
+    <th>Date created</th>
+    <td><:v:DateCreated|dateformat?format=shortdate></td>
+    <th>Last updated</th>
+    <td><:v:LastUpdated|dateformat?format=shortdate></td>
+  </tr>
+  <tr>
+    <th>Summary</th>
+    <td colspan="3"><:v:contents></td>
+  </tr>
+</table>

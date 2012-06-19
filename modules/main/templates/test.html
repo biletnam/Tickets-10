@@ -1,0 +1,33 @@
+<div id="<:v:tabcontrolname>" class="tabcontrol">
+
+  <div id="<:v:tabcontrolname>_control" class="tabcontrolcontrol"></div>
+  
+  <div id="<:v:tabcontrolname>_header" class="tabcontrolheader">
+    <div id="<:v:tabcontrolname>_headercontainer" class="tabcontorlheadercontainer clearfix">
+      <div id="<:v:tabcontrolname>_tabs_all" class="tab floatleft"><a href="#" onclick="switchTab('#<:v:tabcontrolname>_control', '#<:v:tabcontrolname>_tabs_all');">All</a></div>
+      <div id="<:v:tabcontrolname>_tabs_activity" class="tab floatleft"><a href="#" onclick="switchTab('#<:v:tabcontrolname>_control', '#<:v:tabcontrolname>_tabs_activity');">Activity</a></div>
+      <div id="<:v:tabcontrolname>_tabs_attachments" class="tab floatleft"><a href="#" onclick="switchTab('#<:v:tabcontrolname>_control', '#_<:v:tabcontrolname>tabs_attachments');">Attachments</a></div>
+      <div id="<:v:tabcontrolname>_tabs_actions" class="tab floatright"><a href="#" onclick="switchTab('#<:v:tabcontrolname>_control', '#<:v:tabcontrolname>_tabs_actions');">Action</a></div>
+    </div>
+  </div>
+  
+  <div id="<:v:tabcontrolname>_body" class="tabcontrolbody">
+    <div id="<:v:tabcontrolname>_tabs_all_content" class="hiddentabbody">
+      All content
+    </div>
+    <div id="<:v:tabcontrolname>_tabs_activity_content" class="hiddentabbody">
+      Activity
+    </div>
+    <div id="<:v:tabcontrolname>_tabs_attachments_content" class="hiddentabbody">
+      Attachments
+    </div>
+    <div id="<:v:tabcontrolname>_tabs_actions_content" class="hiddentabbody">
+      Actions
+    </div>
+  </div>
+  
+</div>
+
+<script>
+  switchTab('#<:v:tabcontrolname>_control', '#<:v:tabcontrolname>_tabs_all');    
+</script>

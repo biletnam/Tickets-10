@@ -1,0 +1,23 @@
+<p>
+<a href="#" onclick="$('#usertime_bymonths_selector').show('slow'); $('#usertime_bymonths_details').empty();">Show month selection</a>
+</p>
+
+<table class="list" width="100%">
+  <tr>
+    <th>Date</th>
+    <th>Project</th>
+    <th>ID</th>
+    <th>Title</th>
+    <th>Time reported</th>
+  </tr>
+<:a:timereports|looptemplate?name=usertimearchive.listitem>
+</table>
+
+<script>
+$('a.tickettooltip_archive').cluetip({
+  width: 720,
+  sticky: true,
+  closePosition: 'title',
+  mouseOutClose: true
+});
+</script>

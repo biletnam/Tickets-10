@@ -1,0 +1,33 @@
+<tr>
+  <th>Type</th>
+  <td>
+    <input type="hidden" name="dirty" id="dirty_<:v:id>" value="" />
+    <:v:type>
+  </td>
+</tr>
+<tr>
+  <th>Name</th>
+  <td><input type="text" size="20" name="name_<:v:id>" value="<:v:name>" onchange="$('#dirty_<:v:id>').val('<:v:id>');" /></td>
+</tr>
+<tr>
+  <th>Prompt</th>
+  <td><input type="text" size="30" name="prompt_<:v:id>" value="<:v:prompt>" onchange="$('#dirty_<:v:id>').val('<:v:id>');" /></td>
+</tr>
+<tr>
+  <th>Description</th>
+  <td><textarea rows="6" cols="60" name="description_<:v:id>" onchange="$('#dirty_<:v:id>').val('<:v:id>');"><:v:description></textarea></td>
+</tr>
+<tr>
+  <th>Mandatory?</th>
+  <td>
+    <select name="mandatory_<:v:id>" onchange="$('#dirty_<:v:id>').val('<:v:id>');" />
+      <:a:mandatoryoptions|looptemplate?module=main&name=option>
+    </select>
+  </td>
+</tr>
+<tr>
+  <td colspan="2">
+    <a href="javascript: gc('Really delete this parameter?', '?f=<:v:_module_>/deleteparameter&id=<:v:id>');">Delete</a>
+    <hr />
+  </td>
+</tr>

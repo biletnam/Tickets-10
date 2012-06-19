@@ -1,0 +1,9 @@
+  <tr class="mod2_<:v:_mod2_>">
+    <td><:v:table_name></td>
+    <td><:v:include_dates|lookupdict?module=main&name=yesno></td>
+    <td><:v:include_numbers|lookupdict?module=main&name=yesno></td>
+    <td>
+      <a href="?p=admin/editable&id=<:v:id>">Edit</a>
+      <a href="javascript: gc('Really delete table from this list?', '?f=admin/deletable&id=<:v:id>');">Delete</a>
+    </td>
+  </tr>

@@ -15,8 +15,8 @@ if ($old == '') {
 } else {
   # Everything's allright, yes, everything fine. And we want you to sleep well tonight. Let the world turn without you tonight.
   $r['userInfo']['psswrd'] = $new;
-  srun('users', 'SetNewPassword', $r['userInfo']);
-  set_cookie('flash', 'New password is set');
+  $runtime->db->sqlrun('users', 'SetNewPassword', $r['userInfo']);
+  $_SESSION['flash'] = 'New password is set');
   go('?p='.$_CONFIG['DEFAULT_ACTION']);
 }
 

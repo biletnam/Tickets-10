@@ -1,0 +1,52 @@
+<h1><:v:pagetitle></h1>
+
+<form method="get" action="">
+<input type="hidden" name="p" value="<:v:_module_>/search" />
+<table class="form">
+  <tr>
+    <th>Domain:</th>
+    <td>
+      <select name="domain">
+        <option value=""></option>
+        <:a:domainoptions|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th>Scope:</th>
+    <td>
+      <select name="scope">
+        <:a:scopeoptions|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th>Employee Office:</th>
+    <td>
+      <select name="office">
+        <option value=""></option>
+        <:a:officeoptions|looptemplate?module=main&name=option>
+      </select>
+      * only primary e-mails searched
+    </td>
+  </tr>
+  <tr>
+    <th>Employee Department:</th>
+    <td>
+      <select name="department">
+        <option value=""></option>
+        <:a:departmentoptions|looptemplate?module=main&name=option>
+      </select>
+      * only primary e-mails searched
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Search" /></td>
+  </tr>
+</table>
+</form>
+
+<:v:results>
+
+<:v:bulkadd>

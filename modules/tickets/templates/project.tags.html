@@ -1,0 +1,10 @@
+<div class="tagcloud clearfix">
+  <:a:tags|looptemplate?module=main&name=tagcloud.tag>
+</div>
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/addprojecttags" />
+<input type="hidden" name="id" value="<:v:id>" />
+New Tags:<br />
+<textarea name="newtags" rows="3" cols="80"></textarea><br />
+<input type="submit" value="Add new tags"> * comma-separated
+</form>

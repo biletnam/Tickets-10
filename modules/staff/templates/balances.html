@@ -1,0 +1,31 @@
+<h1><:v:pagetitle></h1>
+
+<p>
+  [<a href="?p=<:v:_module_>/office&office=<:v:lngId>">Office Info</a>] 
+  [<a href="?p=<:v:_module_>/office&office=<:v:lngId>&tab=calendars">Office Calendars</a>]
+  [<a href="?p=<:v:_module_>/officeabsences&office=<:v:lngId>">Office Absences</a>]
+</p>
+
+<table class="list" width="100%">
+  <tr>
+    <th>Name</th>
+    <th>Year</th>
+    <th>From</th>
+    <th>To</th>
+    <th>Absences</th>
+    <th><img src="../images/icons/airplane.png" border="0" height="16" width="16" title="Business Trip" /></th>
+    <th>Vacation</th>
+    <th class="a-r">Balance</th>
+    <th class="a-r">Unpaid</th>
+  </tr>
+  <:a:employees|looptemplate?name=balances.employee>
+</table>
+
+<script>
+$('a.unpaidtooltip').cluetip({
+  width: 400,
+  sticky: true,
+  closePosition: 'title',
+  mouseOutClose: true
+});
+</script>

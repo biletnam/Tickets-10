@@ -9,7 +9,7 @@ if ($serie > 0) {
   if (count($vouchers) > 0) {
     set_cookie('error', "Only series without vouchers can be deleted");
   } else {
-    srun($module, 'DeleteVoucherSerie', $_REQUEST);
+    $runtime->db->sqlrun($module, 'DeleteVoucherSerie', $_REQUEST);
   }
 }
 go("?p=$module/home&tab=series");

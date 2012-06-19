@@ -1,0 +1,18 @@
+
+<div style="display:none;">
+<textarea id="autosaved_title"><:v:title></textarea>
+<textarea id="autosaved_teaser"><:v:teaser></textarea>
+<textarea id="autosaved_contents"><:v:contents></textarea>
+</div>
+
+<script>
+  if (confirm('Do you want to restore from autosaved draft?')) {
+    var title = $('#autosaved_title').val();
+    $('#new_article_title').val(title);
+    var teaser = $('#autosaved_teaser').val();
+    $('#new_article_teaser').val(teaser);
+    var contents = $('#autosaved_contents').val();
+    $('#new_article_contents').val(contents);
+  }
+</script>
+ 

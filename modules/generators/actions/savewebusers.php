@@ -6,7 +6,7 @@ if ($id > 0) {
   foreach $id (@ids) {
     $password = lavnn("password_$id", $_REQUEST, '');
     if ($password <> '') {
-      srun($module, 'ChangeUserPassword', array('user_id' => $id, 'password' => trim($password)));
+      $runtime->db->sqlrun($module, 'ChangeUserPassword', array('user_id' => $id, 'password' => trim($password)));
     }
   }
   go("?p=$module/view&id=$id&tab=webaccess");

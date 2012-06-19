@@ -1,0 +1,15 @@
+  <tr class="mod2_<:v:_mod2_>">
+    <td><input type="input" value="<:v:id|wrap:tag=poll>" size="8" maxlength="20" /></td>
+    <td><:v:title|untitled></td>
+    <td><:v:CreatorName></td>
+    <td><:v:DateCreated|dateformat?format=fulldate></td>
+    <td><:v:is_template|lookupdict?module=main&name=yesno></td>
+    <td><:v:cnt_answered></td>
+    <td>
+      <a title="Click to edit" href="?p=<:v:_module_>/edit&id=<:v:id>">Edit</a>
+      <a title="Click to see statistics of answering this poll" href="?p=<:v:_module_>/pollstats&id=<:v:id>">Statistics</a>
+      <a title="Click to delete" href="javascript:gc('Are you sure to delete poll <:v:title|jssafe>?', '?f=<:v:_module_>/delete&id=<:v:id>');">Delete</a>
+      <:_:hidelink|stopifempty:varname=template|forwardtemplate?module=&name=editlist.listitem.hidelink>      
+      <:_:clonelink|stopifempty:varname=is_template|forwardtemplate?module=&name=editlist.listitem.clonelink>      
+    </td>
+  </tr>

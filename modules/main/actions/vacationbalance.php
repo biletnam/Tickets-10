@@ -8,6 +8,6 @@ $runtime->saveMoment(' rendered main part of the page');
 
 
 # register pageview
-srun('main', 'RegisterPageview', array('entity_type' => 'vacationbalance', 'entity_id' => '', 'viewer_type' => 'U', 'viewer_id' => $r['userID']));
+$runtime->db->sqlrun('main', 'RegisterPageview', array('entity_type' => 'vacationbalance', 'entity_id' => '', 'viewer_type' => 'U', 'viewer_id' => $r['userID']));
 
 ?>

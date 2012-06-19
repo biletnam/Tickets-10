@@ -1,0 +1,37 @@
+<h1><:v:pagetitle></h1>
+
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/saveapartmenttype" />
+<input type="hidden" name="id" value="<:v:id>" />
+<input type="hidden" name="hotel" value="<:v:hotel>" />
+<table class="form">
+  <tr>
+    <th>Apartment type name</th>
+    <td><input type="text" name="name" value="<:v:name>" size="30" maxlength="50"></td>
+  </tr>
+  <tr>
+    <th>Absolute internal type</th>
+    <td><select name="abs_type"><:a:apttypeoptions|looptemplate?module=main&name=option></select></td>
+  </tr>
+  <tr>
+    <th>Block</th>
+    <td><input type="hidden" name="block" value="<:v:block>"><:v:block|lookupdict?module=main&name=aptblocktype></td>
+  </tr>
+  <tr>
+    <th>Max Sleeping Capacity, adult</th>
+    <td><input type="text" name="max_sleeping_adult" value="<:v:max_sleeping_adult>" size="2" maxlength="2"></td>
+  </tr>
+  <tr>
+    <th>Max Sleeping Capacity, child</th>
+    <td><input type="text" name="max_sleeping_child" value="<:v:max_sleeping_child>" size="2" maxlength="2"></td>
+  </tr>
+  <tr>
+    <th>Extra beds</th>
+    <td><input type="text" name="extra_beds" value="<:v:extra_beds>" size="2" maxlength="2"></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Save" /></td>
+  </tr>
+</table>
+</form>

@@ -1,0 +1,47 @@
+<p>
+This is the list of all web users that are defined for this generator
+</p>
+
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/savewebusers" />
+<input type="hidden" name="generator_id" value="<:v:generator_id>" />
+<table class="list">
+  <tr>
+    <th>Username</th>
+    <th>Password</th>
+    <th>&nbsp;</th>
+  </tr>
+  <:a:webusers|looptemplate?name=view.webaccess.user>
+</table>
+<input type="submit" value="Save changes" />
+</form>
+
+<h2>New user</h2>
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/addwebuser" />
+<input type="hidden" name="generator_id" value="<:v:generator_id>" />
+<table class="form">
+  <tr>
+    <th>Username</th>
+    <td><input type="text" name="username" value="<:v:username>" /></td>
+  </tr>
+  <tr>
+    <th>Password</th>
+    <td><input type="text" name="password" value="<:v:password>" /></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Save changes" /></td>
+  </tr>
+</table>
+</form>
+
+<h2>Login failures</h2>
+<table class="list">
+  <tr>
+    <th>Username</th>
+    <th>(Wrong) Password</th>
+    <th>Attempted</th>
+  </tr>
+  <:a:loginfailures|looptemplate?name=view.webaccess.loginfailure>
+</table>

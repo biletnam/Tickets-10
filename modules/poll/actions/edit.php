@@ -35,10 +35,10 @@ if ($id <> '') {
   } elseif ($access == 'edit') { 
     $page->add('title',  $pollInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.edit', $pollInfo);
     $pollInfo['questions'] = $objP->render(('id' => $id, 'mode' => 'edit')) || 'None.';
-    $page['js'] .= dotmod('main', 'tabcontrol.js');
-    $page->add('css',  dotmod('main', 'tabcontrol.css');
-    $page['js'] .= dotmod('main', 'linkpeople.js');
-    $page->add('css',  dotmod('main', 'linkpeople.css');
+    $page['js'] .= $runtime->txt->do_template('main', 'tabcontrol.js');
+    $page->add('css',  $runtime->txt->do_template('main', 'tabcontrol.css');
+    $page['js'] .= $runtime->txt->do_template('main', 'linkpeople.js');
+    $page->add('css',  $runtime->txt->do_template('main', 'linkpeople.css');
     use ctlTab;
     $tabEditPoll = new ctlTab($r, "tcEditPoll");
     $pollInfo['lmreviewoptions'] = arr2ref(genOptions($yesno, 'key', 'value', $pollInfo['lm_review']));

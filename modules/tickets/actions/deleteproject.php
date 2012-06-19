@@ -9,8 +9,8 @@ if ($id <> '') {
     } elseif ($projectInfo['can_delete'] == '0') {
       set_cookie('error', 'Only empty projects can be deleted');
     } else {
-      srun($module, 'DeleteProject', $_REQUEST);
-      set_cookie('flash', "Project '".$projectInfo['title']."' deleted");
+      $runtime->db->sqlrun($module, 'DeleteProject', $_REQUEST);
+      $_SESSION['flash'] = "Project '".$projectInfo['title']."' deleted");
     }
   } else {
     set_cookie('error', 'Requested project was not found');

@@ -2,7 +2,7 @@
 
 $id = lavnn('id', $_REQUEST, 0);
 if ($id > 0) {
-  srun($module, 'UpdateHotelApartmentType', $_REQUEST);
+  $runtime->db->sqlrun($module, 'UpdateHotelApartmentType', $_REQUEST);
 } else {
   $id = sid($module, 'InsertHotelApartmentType', $_REQUEST);
 }

@@ -1,0 +1,68 @@
+<h1><:v:pagetitle></h1>
+
+<form method="post" method="post" action="">
+<input type="hidden" name="f" value="resorts/save" />
+<input type="hidden" name="id" value="<:v:id>" />
+<table class="form">
+  <tr>
+    <th>Code</th>
+    <td><input type="textbox" name="Code" value="<:v:Code>"></td>
+  </tr>
+  <tr>
+    <th>Name</th>
+    <td><input type="textbox" name="Name" value="<:v:Name>"></td>
+  </tr>
+  <tr>
+    <th>Address</th>
+    <td><input type="textbox" name="Address" value="<:v:Address>"></td>
+  </tr>
+  <tr>
+    <th>Post code</th>
+    <td><input type="textbox" name="Postcode" value="<:v:Postcode>"></td>
+  </tr>
+  <tr>
+    <th>Country</th>
+    <td><input type="textbox" name="Country" value="<:v:Country>"></td>
+  </tr>
+  <tr>
+    <th>Phone</th>
+    <td><input type="textbox" name="Phone" value="<:v:Phone>"></td>
+  </tr>
+  <tr>
+    <th>Fax</th>
+    <td><input type="textbox" name="Fax" value="<:v:Fax>"></td>
+  </tr>
+  <tr>
+    <th>Description</th>
+    <td><textarea name="Description"rows="8" cols="50"><:v:Description></textarea></td>
+  </tr>
+  <tr>
+    <th>Text Memo</th>
+    <td><textarea name="Memo" rows="8" cols="50"><:v:Memo></textarea></td>
+  </tr>
+  <tr>
+    <th>Resort Type</th>
+    <td>
+      <select name="Resort_Type">
+        <:a:resorttypeoptions|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th>In use</th>
+    <td>
+      <select name="In_Use">
+        <:a:resortusageoptions|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th>No external weeks</th>
+    <td><input type="textbox" name="no_external_weeks" value="<:v:no_external_weeks>"></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Save" size="80" maxlength="255"></td>
+  </tr>
+</table>
+</form>

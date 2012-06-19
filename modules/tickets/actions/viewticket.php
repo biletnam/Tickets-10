@@ -9,8 +9,8 @@ $ticketInfo = $runtime->s2r($module, 'GetTicketInfo', $_REQUEST);
 if (count($ticketInfo) > 0) {
 
   $ticket_id = $ticketInfo['id'];
-  $page['js'] .= dotmod('main', 'tabcontrol.js');
-  $page->add('css',  dotmod('main', 'tabcontrol.css');
+  $page['js'] .= $runtime->txt->do_template('main', 'tabcontrol.js');
+  $page->add('css',  $runtime->txt->do_template('main', 'tabcontrol.css');
 
   $comments = $runtime->s2a($module, 'ListTicketComments', $_REQUEST);
   $ticketInfo['comments'] = $comments;
@@ -254,7 +254,7 @@ if (count($ticketInfo) > 0) {
   $page->add('main', $runtime->txt->do_template($module, 'viewticket', $ticketInfo);
 
   # register pageview
-  srun('main', 'RegisterPageview', array('entity_type' => 'ticket', 'entity_id' => $_REQUEST['id'], 'viewer_type' => 'U', 'viewer_id' => $r['userID']));
+  $runtime->db->sqlrun('main', 'RegisterPageview', array('entity_type' => 'ticket', 'entity_id' => $_REQUEST['id'], 'viewer_type' => 'U', 'viewer_id' => $r['userID']));
 } else {
   $page->add('main', $runtime->txt->do_template($module, 'viewticket.notfound', $ticketInfo);
 }

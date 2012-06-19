@@ -9,7 +9,7 @@ if ($user_id <> '' && $comment <> '') {
   $sqlParams = array('id' => $user_id, 'editor' => $r['userID'], 'comment' => $comment);
   $result = $objSM->add_comment(%sqlParams); 
   if ($result > 0) {
-    set_cookie('flash', 'Comment added');
+    $_SESSION['flash'] = 'Comment added');
     go("?p=$module/employee&id=$user_id&tab=comments");  
   } else {
     set_cookie('error', 'Could not add comment');

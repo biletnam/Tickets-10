@@ -42,14 +42,20 @@ class CDatabase {
         return $this->get_row($query);
     }
 
+    public function runsql($modulename, $templatename, $params) {
+        /* Returns result of INSERT/DELETE/UPDATE query stored in the template */
+        $query = $this->r->txt->do_sql_template($modulename, $templatename, $params);
+        return $this->run_query($query);
+    }
+
     public function update($modulename, $templatename, $params) {
-        /* Returns result of UPDATE query stired in the template */
+        /* Returns result of UPDATE query stored in the template */
         $query = $this->r->txt->do_sql_template($modulename, $templatename, $params);
         return $this->run_query($query);
     }
 
     public function delete($modulename, $templatename, $params) {
-        /* Returns result of DELETE query stired in the template */
+        /* Returns result of DELETE query stored in the template */
         $query = $this->r->txt->do_sql_template($modulename, $templatename, $params);
         return $this->run_query($query);
     }
@@ -61,7 +67,7 @@ class CDatabase {
     }
 
     public function count($modulename, $templatename, $params) {
-        /* Returns number of rows restured by SELECT query stored in the template */
+        /* Returns number of rows returned by SELECT query stored in the template */
         $query = $this->r->txt->do_sql_template($modulename, $templatename, $params);
         $result = $this->get_row("SELECT COUNT(*) AS cnt FROM ($query) basequery");
         return $result['cnt'];

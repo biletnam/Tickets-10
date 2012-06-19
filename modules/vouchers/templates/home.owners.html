@@ -1,0 +1,24 @@
+<table class="list">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>&nbsp;</th>
+  </tr>
+<:a:owners|looptemplate?name=home.owners.listitem>
+</table>
+
+<h2>Add new owner</h2>
+
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/saveowner">
+<table class="form">
+  <tr>
+    <th class="required">Name</th>
+    <td><input type="text" name="name" /></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Save" /></td>
+  </tr>
+</table>
+</form>

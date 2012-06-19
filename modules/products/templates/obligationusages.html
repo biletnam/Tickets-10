@@ -1,0 +1,29 @@
+<h1><:v:pagetitle></h1>
+
+<table class="form">
+  <tr>
+    <th>Product</th>
+    <td><:v:product_name> (<:v:resort_code>, <:v:type_of_contract>)</td>
+  </tr>
+  <tr>
+    <th>Obligation</th>
+    <td><:v:code> (qty=<:v:qty>, breakable=<:v:is_breakable|lookupdict?module=main&name=yesno>, periodical=<:v:is_periodical|lookupdict?module=main&name=yesno>)</td>
+  </tr>
+</table>
+
+<p>You can select one or many contract obligations and delete this obligation from them</p>
+
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/deletecontractobligations" />
+<input type="hidden" name="obligation" value="<:v:id>" />
+<table class="list">
+  <tr>
+    <th><input type="checkbox" onclick="checkAllBoxes(this.form, 'id_', this.checked);">
+    <th>Contract #</th>
+    <th>Date from</th>
+    <th>Date to</th>
+  </tr>
+<:a:contracts|looptemplate?name=obligationusages.listitem>
+</table>
+<input type="submit" value="Delete selected" />
+</form>

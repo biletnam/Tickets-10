@@ -1,0 +1,22 @@
+function sortStaffSearchResults(url, oldsortdiv, newsort, divname) {
+  var oldsortfound = 0; var newsortfound = 0;
+  var oldsort = $(oldsortdiv).html();
+  var urlpairs = url.split('&');
+  for (var i = 0; i < urlpairs.length; i++) {
+    if (urlpairs[i].substr(0, 2) == '_=') {
+      urlpairs[i] += '.1';
+    } else if(urlpairs[i].substr(0, 8) == 'newsort=') {
+      urlpairs[i] = 'newsort=' + urlencode(newsort); newsortfound = 1;
+    } else if(urlpairs[i].substr(0, 8) == 'oldsort=') {
+      urlpairs[i] = 'oldsort=' + urlencode(oldsort); oldsortfound = 1;
+    }
+  }
+  if (oldsortfound == 0) {
+    urlpairs.push('oldsort=' + urlencode(oldsort));
+  }
+  if (newsortfound == 0) {
+    urlpairs.push('newsort=' + urlencode(newsort));
+  }
+  url = urlpairs.join('&');
+  $(divname).load('?' + url);
+}

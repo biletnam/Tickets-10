@@ -9,7 +9,7 @@ if ($id > 0) {
       'param_caption' => lavnn("caption_$input"), 
       'param_name' => lavnn("name_$input")
     );
-    srun($module, 'UpdateInputParameter', $params);
+    $runtime->db->sqlrun($module, 'UpdateInputParameter', $params);
   }
   
   # Also add new inputs if both name and type are provided\

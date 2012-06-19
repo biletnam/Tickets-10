@@ -1,0 +1,68 @@
+<h1><:v:pagetitle></h1>
+
+<p>On this page, you can edit prices of the apartments, per period.</p>
+
+<h2>Prices in Central database</h2>
+
+<:v:p>
+
+<h2>Price of Hard Block Apartments</h2>
+
+<form action="" method="post">
+  <input type="hidden" name="f" value="<:v:_module_>/saveprices" />
+  <input type="hidden" name="hotel" value="<:v:id>" />
+
+  <table class="list hotelprices" width="100%">
+  <:v:rowheader>
+  <:v:hbrows>
+  </table>
+
+  <center>
+  <table>
+    <tr>
+      <td class="a-l">
+      <input type="radio"  id="saveprices_op_clear" name="op" value="clear" /><label for="saveprices_op_clear">Delete price</label>
+      <br />
+      <input type="radio"  id="saveprices_op_set" name="op" value="set" /><label for="saveprices_op_set">Set price to </label>
+      <input type="text" name="price" size="3" maxlength="10" onchange="setCheckedValue(this.form.op, 'set');" /> 
+      <select name="price_currency" onchange="setCheckedValue(this.form.op, 'set');" /><:a:currencies|looptemplate?module=main&name=option></select>
+      <br />
+      * empty field is ignored
+      </td>
+      <td class="a-l">
+      <input type="submit" value="Save Price Changes" />
+      </td>
+    </tr>
+  </table>
+  </center>
+</form>
+
+<h2>Price of Soft Block Apartments</h2>
+
+<form action="" method="post">
+  <input type="hidden" name="f" value="<:v:_module_>/saveprices" />
+
+  <table class="list hotelprices" width="100%">
+  <:v:rowheader>
+  <:v:sbrows>
+  </table>
+
+  <center>
+  <table>
+    <tr>
+      <td class="a-l">
+      <input type="radio"  id="saveprices_op_clear" name="op" value="clear" /><label for="saveprices_op_clear">Delete price</label>
+      <br />
+      <input type="radio"  id="saveprices_op_set" name="op" value="set" /><label for="saveprices_op_set">Set price to </label>
+      <input type="text" name="price" size="3" maxlength="10" onchange="setCheckedValue(this.form.op, 'set');" /> 
+      <select name="price_currency" onchange="setCheckedValue(this.form.op, 'set');" /><:a:currencies|looptemplate?module=main&name=option></select>
+      <br />
+      * empty field is ignored
+      </td>
+      <td class="a-l">
+      <input type="submit" value="Save Price Changes" />
+      </td>
+    </tr>
+  </table>
+  </center>
+</form>

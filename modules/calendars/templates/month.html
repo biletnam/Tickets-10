@@ -1,0 +1,40 @@
+<div class="working" id="working_monthview" style="display:none;">Please wait...</div>
+
+<form name="frmEditMonth">
+<input type="hidden" name="monthview_collected_days" id="monthview_collected_days" value="" />
+<input type="hidden" name="monthview_calendar_id" id="monthview_calendar_id" value="<:v:id>" />
+<input type="hidden" name="monthview_year" id="monthview_year" value="<:v:year>" />
+<input type="hidden" name="monthview_month" id="monthview_month" value="<:v:month>" />
+<input type="hidden" name="monthview_object_type" id="monthview_object_type" value="<:v:object_type>" />
+<input type="hidden" name="monthview_object_id" id="monthview_object_id" value="<:v:object_id>" />
+<div class="clearfix" style="width: 970px;">
+  <div style="float:left;">
+    Month:
+    <:v:prevmonth>
+    <select id="monthcalendar_month" name="month" onchange="changeMonth(<:v:id>, <:v:year>, <:v:month>, this.value);">
+      <:a:months|looptemplate?module=main&name=option>
+    </select>
+    <select id="monthcalendar_year" name="year" onchange="changeYear(<:v:id>, <:v:year>, <:v:month>, this.value);">
+      <:a:years|looptemplate?module=main&name=option>
+    </select>
+    <:v:nextmonth>
+  </div>
+</div>
+
+<div>
+  <table class="weekgrid object_type_<:v:object_type>" width="100%">
+    <tr>
+      <th class="weekday <:v:weekend_1>" width="14%">Monday</th>
+      <th class="weekday <:v:weekend_2>" width="14%">Tuesday</th>
+      <th class="weekday <:v:weekend_3>" width="14%">Wednesday</th>
+      <th class="weekday <:v:weekend_4>" width="14%">Thursday</th>
+      <th class="weekday <:v:weekend_5>" width="14%">Friday</th>
+      <th class="weekday <:v:weekend_6>" width="14%">Saturday</th>
+      <th class="weekday <:v:weekend_7>" width="14%">Sunday</th>
+    </tr>
+  <:v:weeks>
+  </table>
+</div>
+
+<:v:edit>
+</form>

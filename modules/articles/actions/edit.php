@@ -81,7 +81,7 @@ if ($id <> '') {
     $page->add('main', $runtime->txt->do_template($module, 'edit', $articleInfo);
 
     # register pageview
-    srun('main', 'RegisterPageview', array('entity_type' => 'viewarticle', 'entity_id' => $id, 'viewer_type' => 'U', 'viewer_id' => $r['userID']));
+    $runtime->db->sqlrun('main', 'RegisterPageview', array('entity_type' => 'viewarticle', 'entity_id' => $id, 'viewer_type' => 'U', 'viewer_id' => $r['userID']));
   }  
 } else {
   $page->add('title',  $articleInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.notfound');
@@ -89,10 +89,10 @@ if ($id <> '') {
 }
 
 $page['js'] .= $runtime->txt->do_template($module, 'read.js');
-$page['js'] .= dotmod('main', 'tabcontrol.js');
-$page['js'] .= dotmod('main', 'linkpeople.js');
-$page->add('css',  dotmod('main', 'tabcontrol.css');
-$page->add('css',  dotmod('main', 'linkpeople.css');
+$page['js'] .= $runtime->txt->do_template('main', 'tabcontrol.js');
+$page['js'] .= $runtime->txt->do_template('main', 'linkpeople.js');
+$page->add('css',  $runtime->txt->do_template('main', 'tabcontrol.css');
+$page->add('css',  $runtime->txt->do_template('main', 'linkpeople.css');
 $page->add('css',  $runtime->txt->do_template($module, 'css');
 
 

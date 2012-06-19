@@ -1,0 +1,8 @@
+<td>
+  <a href="?p=<:v:_module_>/viewmeeting&id=<:v:id>" title="Click to view meeting">View</a>
+  <a href="?p=<:v:_module_>/newmeeting&clone=<:v:id>" title="Click to clone meeting">Clone</a>
+  <a href="?p=<:v:_module_>/printmeeting&id=<:v:id>" title="Click to get a version for printing">Print</a>
+  <a href="javascript:gc('Really send meeting minutes? (It will take some time)', '?f=<:v:_module_>/sendminutes&id=<:v:id>');" title="Click to send notification to participants">Send minutes</a>
+  (<a href="javascript:gc('Really send meeting minutes? (It will take some time)', '?f=<:v:_module_>/sendminutes&id=<:v:id>&withpdf=1');" title="Click to send notification with attached PDF">w/PDF</a>)
+  <:_:deletelink|stopifnotempty:varname=issues_cnt|forwardtemplate?module=&name=meetings.listitem.deletelink>
+</td>

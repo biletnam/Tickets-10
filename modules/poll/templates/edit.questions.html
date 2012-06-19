@@ -1,0 +1,30 @@
+<h2>Current questions: </h2>
+
+<:v:questions>
+
+<h2>Add another question</h2>
+
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/addquestion" />
+<input type="hidden" name="poll" value="<:v:id>" />
+<table class="form">
+  <tr>
+    <th>Question text</th>
+    <td><input type="text" name="question" /></td>
+  </tr>
+  <tr>
+    <th>Type</th>
+    <td>
+      <select name="question_type">
+        <option value="generic">General question
+        <option value="yesno">Yes/No
+        <option value="dropdown">Dropdown list of predefined answers
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Save" /></td>
+  </tr>
+</table>
+</form>

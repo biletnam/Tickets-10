@@ -17,8 +17,8 @@ if ($acc->is_superadmin()) {
   $tabSettings->setDefaultTab(lavnn('tab') || 'contacttypes');
   $pageParams['tabcontrol'] = $tabSettings->getHTML();
   
-  $page['js'] = dotmod('main', 'tabcontrol.js');
-  $page['css'] = dotmod('main', 'tabcontrol.css');    
+  $page['js'] = $runtime->txt->do_template('main', 'tabcontrol.js');
+  $page['css'] = $runtime->txt->do_template('main', 'tabcontrol.css');    
   $page->add('main', $runtime->txt->do_template($module, 'settings', $pageParams);
 } else {
   $page->add('main', $runtime->txt->do_template($module, 'settings.notallowed', $pageParams);

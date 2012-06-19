@@ -1,0 +1,61 @@
+<h1><:v:pagetitle></h1>
+
+<p>
+Use the form below to automatically create a project for marketing campaign.
+The list of clients you specify will be used to create a separate ticket for every client.
+</p>
+<p>
+Alternatively, you can provide a list of contracts, so tickets will be linked to contracts instead.
+You can even combine the lists, but in this case you are fully responsible for ticket targets.
+</p>
+<p>
+You will be marked as creator of the project, so you will always have possibility to see project progress in Tickets :: My Projects section.
+</p>
+
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/save" />
+<table class="form">
+  <tr >
+    <th>Title</th>
+    <td><input type="text" name="title" size="30" /></td>
+    <td>This will become a title for project, automatically created for you.</td>
+  </tr>
+  <tr>
+    <th>Clients</th>
+    <td><textarea name="clients" rows="15" cols="10"></textarea></td>
+    <td>Paste list of clients (e.g. from Excel), one client per row</td>
+  </tr>
+  <tr>
+    <th>Contracts</th>
+    <td><textarea name="contracts" rows="15" cols="10"></textarea></td>
+    <td>Paste list of contract (e.g. from Excel), one contract per row</td>
+  </tr>
+  <tr>
+    <th>Responsible</th>
+    <td><input type="text" class="peoplesearch" title="Start typing to get suggestions" id="q" name="q" /></td>
+    <td>Moderator of new project, who can redefine handlers for tickets (by default, he is the handler)</td>
+  </tr>
+  <tr>
+    <th>Due Date</th>
+    <td><input type="text" class="calendardate" title="Click to select date" id="duedate" name="duedate" size="10" maxlength="10" /></td>
+    <td>DueDate for project's tickets to be closed</td>
+  </tr>
+  <tr>
+    <th>Summary</th>
+    <td><textarea name="summary" rows="5" cols="30"></textarea></td>
+    <td>Standard Summary for each ticket to be created</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Save" /></td>
+  </tr>
+</table>
+</form>
+
+<script>
+$('#duedate').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+</script>
+
+<script>
+  suggestPerson('U', 'q', 'moderator');
+</script>

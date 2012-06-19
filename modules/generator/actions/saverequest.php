@@ -60,7 +60,7 @@ if ($gen_user_id > 0) {
       );
       # redirect to the list of requests
       $urlsuccess = "?p=$module/listrequests&gen_user_id=$gen_user_id#top";
-      $runtime->set_cookie('flash', 'New booking request registered ');
+      $runtime->$_SESSION['flash'] = 'New booking request registered ');
       go($urlsuccess);
       exit();
     } else {

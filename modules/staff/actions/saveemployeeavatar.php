@@ -22,7 +22,7 @@ if ($employee > 0) {
         'attachmentid' => $attachmentid,
       ));
       if ($checkid == $attachmentid) {
-        set_cookie('flash', 'Avatar set');
+        $_SESSION['flash'] = 'Avatar set');
       } else {
         set_cookie('error', 'Could not set avatar');
       }

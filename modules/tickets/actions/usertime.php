@@ -57,8 +57,8 @@ $tabUserTime->addTab('bymonth', dot('usertime.bymonth.tabheader', $pageParams), 
 $tabUserTime->addTab('report', dot('usertime.report.tabheader', $pageParams), dot('usertime.report', $pageParams));
 $pageParams['tabcontrol'] = $tabUserTime->getHTML();
        
-$page['js'] = dotmod('main', 'tabcontrol.js');
-$page['css'] = dotmod('main', 'tabcontrol.css');
+$page['js'] = $runtime->txt->do_template('main', 'tabcontrol.js');
+$page['css'] = $runtime->txt->do_template('main', 'tabcontrol.css');
 if ($r['userID'] == $user_id) {
   $page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.mytime', $pageParams);  
 } else {

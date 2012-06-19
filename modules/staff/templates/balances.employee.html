@@ -1,0 +1,14 @@
+  <tr>
+    <td><a href="?p=calendars/view&special=employeeabsence&employee_id=<:v:employee>&tab=year"><img border="0" width="16" height="16" src="../images/icons/calendar-green.png" title="Click to view absence calendar for <:v:EmployeeName>"></a> <:v:EmployeeName></td>
+    <td><:v:Y></td>
+    <td><:v:date_from|dateformat?format=fulldate></td>
+    <td><:v:date_to|dateformat?format=fulldate></td>
+    <td><:v:absences></td>
+    <td><:v:businesstrip></td>
+    <td><:v:approved> / <:v:entitled> + <:v:overworked></td>
+    <td class="a-r"><strong><:v:vacationbalance></strong></td>
+    <td class="a-r"><:_:showunpaidlink|stopifempty:varname=has_unpaid|forwardtemplate?module=&name=balances.employee.unpaid></td>
+  </tr>
+  
+  
+  

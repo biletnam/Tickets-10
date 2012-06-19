@@ -6,25 +6,25 @@ if (count($result) > 0) {
   if ((scalar keys %sessionInfo) > 0) {
     # User has logged before
     $sessionInfo['remote_ip'] = $r['IP'];
-    srun('users', 'UpdateWebSession', $sessionInfo); 
+    $runtime->db->sqlrun('users', 'UpdateWebSession', $sessionInfo); 
   } else {
     # User logs in for the first time
     $sessionInfo['type'] = 'client';
     $sessionInfo['id'] = $result['client_id'];
     $sessionInfo['GUID'] = genNewSessionID();
     $sessionInfo['ip'] = $r['IP'];
-    srun('users', 'InsertWebSession', $sessionInfo); 
+    $runtime->db->sqlrun('users', 'InsertWebSession', $sessionInfo); 
   }
   set_cookie('sessionID_client', $sessionInfo['GUID']);
   # register pageview
-  srun('main', 'RegisterPageview', array('entity_type' => 'client_login', 'entity_id' => $result['client_id'], 'viewer_type' => 'C', 'viewer_id' => 0));    
+  $runtime->db->sqlrun('main', 'RegisterPageview', array('entity_type' => 'client_login', 'entity_id' => $result['client_id'], 'viewer_type' => 'C', 'viewer_id' => 0));    
   # go to last requested page or default page
   $nextURL = lavnn('nextURL') <> '' ? '?'.lavnn('nextURL') : '?p='.$_CONFIG['DEFAULT_CLIENT_URL']; 
   go2('client.pl', $nextURL);
 } else {
   # Register login failure
-  srun('main', 'RegisterPageview', array('entity_type' => 'client_login_failed', 'entity_id' => $result['client_id'], 'viewer_type' => 'C', 'viewer_id' => 0));    
-  srun('main', 'RegisterLoginFailure', array('user_type' => 'C', 'username' => $result['client_id'], 'password' => $result['password']));
+  $runtime->db->sqlrun('main', 'RegisterPageview', array('entity_type' => 'client_login_failed', 'entity_id' => $result['client_id'], 'viewer_type' => 'C', 'viewer_id' => 0));    
+  $runtime->db->sqlrun('main', 'RegisterLoginFailure', array('user_type' => 'C', 'username' => $result['client_id'], 'password' => $result['password']));
   # Go back to login screen
   set_cookie('error', 'Invalid client ID or password ');
   go2('client.pl', "?p=$module/login");  

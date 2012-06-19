@@ -56,7 +56,7 @@ if ($apiparams['fname1'] == '' || $apiparams['lname1'] == '') {
   $objB = new objBooking($r);
   $client_id = $objB->create_client(%apiparams);
   if ($client_id > 0) {
-    $output = $runtime->dotmod($controller, 'API.CreateClient', array('client_id' => $client_id));
+    $output = $runtime->$runtime->txt->do_template($controller, 'API.CreateClient', array('client_id' => $client_id));
   } else {
     $result = 'ERR'; 
     push @errors, $runtime->hash2ref( ('code' => 'RequestBooking.Failure', 'text' => 'Could not create client') );
@@ -65,7 +65,7 @@ if ($apiparams['fname1'] == '' || $apiparams['lname1'] == '') {
 
 # Return resulting XML API output - quite similar to all APIs
 print "content-type: $contenttype; charset=$charset;\n\n";
-print $runtime->dotmod($controller, 'API.Envelope', array(
+print $runtime->$runtime->txt->do_template($controller, 'API.Envelope', array(
   'result' => $result,
   'output' => $output,
   'warnings' => Arrays::a2xml($warnings, 'Warnings', 'Warning'),

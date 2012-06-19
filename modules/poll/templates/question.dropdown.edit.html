@@ -1,0 +1,32 @@
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/savequestion" />
+<input type="hidden" name="id" value="<:v:id>" />
+<input type="hidden" name="poll" value="<:v:poll>" />
+<input type="hidden" name="type" value="<:v:question_type>" />
+<table class="editpollquestion" width="100%">
+  <tr>
+    <th width="20%">Question type</th>
+    <td width="80%"><:v:question_type></td>
+  </tr>
+  <tr>
+    <th>Question</th>
+    <td><input type="text" name="question" value="<:v:question>" size="50" maxlength="250" /></td>
+  </tr>
+  <tr>
+    <th>Answer Choices</th>
+    <td><div id="question_<:v:id>_choices"></div></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>
+      <input type="submit" value="Save" />
+      <input type="button" value="Delete" onclick="gc('Really delete question?', '?f=<:v:_module_>/deletequestion&id=<:v:id>');" />
+      <input type="button" value="Clone" onclick="g('?f=<:v:_module_>/clonequestion&id=<:v:id>')" />
+    </td>
+  </tr>
+</table>
+</form>
+
+<script>
+  $('#question_<:v:id>_choices').load('?i=<:v:_module_>/choices&question=<:v:id>');
+</script>

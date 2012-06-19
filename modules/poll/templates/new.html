@@ -1,0 +1,46 @@
+<h1><:v:pagetitle></h1>
+
+<p>
+  Return to the <a href="?p=<:v:_module_>/list&tab=editlist">list of polls</a> you can edit.
+</p>
+
+<p>
+Please provide some information about new poll:
+</p>
+
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/create">
+<table class="form">
+  <tr>
+    <th>Title</th>
+    <td><input type="text" name="title" value="<:v:title>" size="60" maxlength="250" /></td>
+  </tr>
+  <tr>
+    <th>Comment</th>
+    <td><textarea name="comment" cols="60" rows="3"><:v:comment></textarea></td>
+  </tr>
+  <:_:validfrom|forwardtemplate?module=&name=edit.data.validfrom>
+  <:_:validto|forwardtemplate?module=&name=edit.data.validto>
+  <tr>
+    <th>LM review?</th>
+    <td><select name="lm_review"><:a:lmreviewoptions|looptemplate?module=main&name=option></select></td>
+  </tr>
+  <tr>
+    <th>Is template?</th>
+    <td><select name="is_template"><:a:templateoptions|looptemplate?module=main&name=option></select></td>
+  </tr>
+  <tr>
+    <th>Editable results?</th>
+    <td><select name="can_edit"><:a:editableoptions|looptemplate?module=main&name=option></select></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Create" /></td>
+  </tr>
+</table>
+</form>
+
+<script>
+  $('#valid_from').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+  $('#valid_to').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+</script>

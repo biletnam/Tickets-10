@@ -6,7 +6,7 @@ if ($from > 0) {
     use objTicketing;
     $objT = new objTicketing($r);
     $objT->move_user_tickets($from, $to);
-    set_cookie('flash', 'Tickets transferred to another employee');
+    $_SESSION['flash'] = 'Tickets transferred to another employee');
   }
   go("?p=$module/employee&id=$from");
 } else {

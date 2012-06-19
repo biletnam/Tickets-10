@@ -10,7 +10,7 @@ if ($tableid > 0) {
     if ($tablename <> '' && $idfield <> '' && $idvalue <> '') {
       $query = "delete from $tablename where $idfield = $idvalue";
       $rows_affected = $r['db']run_query($query);
-      set_cookie('flash', 'Success!') if $rows_affected > 0;
+      $_SESSION['flash'] = 'Success!') if $rows_affected > 0;
       go("?p=$module/anytable&id=$tableid");
     }
   }

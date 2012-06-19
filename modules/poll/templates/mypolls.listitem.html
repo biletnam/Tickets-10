@@ -1,0 +1,16 @@
+  <tr class="mod2_<:v:_mod2_>">
+    <td><:v:id></td>
+    <td><:v:title|untitled></td>
+    <td><:v:CreatorName></td>
+    <td><:v:DateCreated|dateformat?format=fulldate></td>
+    <td><:v:DateTaken|dateformat?format=fulldate></td>
+    <td>
+      <:_:viewlink|stopifempty:varname=can_change|forwardtemplate?module=&name=mypolls.listitem.viewlink>
+      <:_:viewresultslink|stopifnotempty:varname=can_change|forwardtemplate?module=&name=mypolls.listitem.viewresultslink>
+<!--
+      <:_:viewlink|stopifnotempty:varname=DateTaken|forwardtemplate?module=&name=mypolls.listitem.viewlink>
+      <:_:viewresultslink|stopifempty:varname=DateTaken|forwardtemplate?module=&name=mypolls.listitem.viewresultslink>
+-->
+
+    </td>
+  </tr>

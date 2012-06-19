@@ -1,0 +1,10 @@
+<p>
+  <input type="radio" name="op" value="send2handler" id="send2handler"> 
+  <img src="../images/icons/forward.png" /> 
+  <label for="send2handler"> Send to handler</label>
+  <br /><input type="text" id="h" onclick="setCheckedValue(document.frmChangeTicket.op, 'send2handler');">
+</p>
+
+<script>
+  suggestPerson('U', 'h', 'handler');
+</script>

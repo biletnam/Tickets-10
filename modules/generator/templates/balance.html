@@ -1,0 +1,41 @@
+<h1><:h:generatorinfo|field:name=generator_name></h1>
+
+<form action="" method="get">
+<input type="hidden" name="p" value="<:v:_module_>/balance" />
+<table class="form">
+  <tr>
+    <th><:l:paymentdate></th>
+    <td>
+      <:l:from> <input type="text" class="calendardate" title="Click to select date" name="date_from" id="date_from" size="10" maxlength="10" value="<:v:date_from>" />
+      <:l:to> <input type="text" class="calendardate" title="Click to select date" name="date_to" id="date_to" size="10" maxlength="10" value="<:v:date_to>" />
+    </td>
+  </tr>
+  <tr>
+    <th><:l:category></th>
+    <td>
+      <select name="category">
+        <option value=""><:l:all></option>
+        <:a:categories|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th><:l:contractnumber></th>
+    <td><input type="text" name="contract_number" size="20" maxlength="20" value="<:v:contract_number>" /></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="<:l:show>" /></td>
+  </tr>
+</table>
+
+<:v:otherexpenses>
+
+<:v:expenselist>
+
+<:v:intercompany>
+
+<script>
+$('#date_from').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1, yearRange: 'c-20:c+0']);
+$('#date_to').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1, yearRange: 'c-20:c+1']);
+</script>

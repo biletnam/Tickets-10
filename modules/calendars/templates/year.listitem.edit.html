@@ -1,0 +1,10 @@
+  <div class="yearview_event mod2_<:v:_mod2_> clearfix" id="event_<:v:id>">
+    <div class="yearview_event_edit">
+      <a href="javascript:renameEventOnYearView(<:v:id>, '<:v:description|jssafe>', <:v:calendar>, '<:v:Y>', '<:v:M|padnumber:length=2>');" title="Click to rename event"><img src="../images/icons/pen.png" width="16" height="16" border="0" /></a>
+      <a href="javascript:deleteEventOnYearView(<:v:id>, 'Really delete event?', <:v:calendar>, '<:v:Y>', '<:v:M|padnumber:length=2>');" title="Click to delete event"><img src="../images/icons/delete.png" width="16" height="16" border="0" /></a>
+    </div>
+    <div class="yearview_event_date">
+      <:v:D|padnumber:length=2>.<:v:M|padnumber:length=2>.<:v:Y>
+    </div>
+    <div class="yearview_event_description" id="event_description_<:v:id>"><:v:description></div>
+  </div>

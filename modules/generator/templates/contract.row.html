@@ -1,0 +1,41 @@
+  <tr>
+    <td colspan=4><:l:office>: <:v:office_name></td>
+  </tr>
+  <tr>
+    <td><:v:date_contract|dateformat?format=fulldate></td>
+    <td><:v:contract_number></td>
+    <th colspan="2" style="background-color: #dddddd">
+      <:v:first_name> <:v:last_name>
+      / <:v:first_name2> <:v:last_name2>
+    </th>
+  </tr>
+  <tr>
+    <td colspan=2><:v:conditions></td>
+    <td colspan=2><:v:address></td>
+  </tr>
+  <tr>
+    <th colspan=4 style="background-color: #dddddd"><:l:paymentdetails></th>
+  </tr>
+  <tr>
+    <td><:l:price> (<:v:currency_code>):</td>
+    <td class="a-r"><:v:price|numberformat></td>
+    <td rowspan=9 colspan=2 style="padding: 0 0 0 0;" align="center">
+      <table>
+        <:a:paymentrows|looptemplate?name=contract.row.payment>
+      </table>
+    </td>
+  </tr>
+  <tr><td><:l:deposit>:</td><td class="a-r"><:v:deposit_not_paid|numberformat></td></tr>
+  <tr><td><:l:tradein>:</td><td class="a-r"><:v:exch_fees|numberformat></td></tr>
+  <tr><td><:l:maint>:</td><td class="a-r"><:v:man_fees|numberformat></td></tr>
+  <tr><td><:l:legal>:</td><td class="a-r"><:v:admin_fees|numberformat></td></tr>
+  <tr><td><:l:rcifee>:</td><td class="a-r"><:v:other_fees|numberformat></td></tr>
+  <tr><td><:l:gtotal>:</td><td class="a-r"><:v:gifts|numberformat></td></tr>
+  <tr><td><:l:disc>:</td><td class="a-r"><:v:discount|numberformat></td></tr>
+  <tr><td><:l:netprice>:</td><td class="a-r"><:v:net_price|numberformat></td></tr>
+
+  <tr><td colspan=4><b><:l:gdetail>:</b></td></tr>
+  <:a:giftrows|looptemplate?name=contract.row.gift>
+  
+  <tr><th colspan=4 style="background-color: #dddddd"><:l:comments></th></tr>
+  <tr><td colspan=4><:v:comment></td></tr>

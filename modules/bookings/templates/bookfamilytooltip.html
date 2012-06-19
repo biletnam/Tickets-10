@@ -1,0 +1,36 @@
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/savebookingguest" />
+<input type="hidden" name="book_id" value="<:v:book_id>" />
+<input type="hidden" name="id" value="<:v:person_id>" />
+<table class="form">
+  <tr>
+    <th>First name</th>
+    <td><input type="text" name="first_name" value="<:v:first_name>" size="20" maxlength="50" /></td>
+  </tr>
+  <tr>
+    <th>Last name</th>
+    <td><input type="text" name="last_name" value="<:v:last_name>" size="20" maxlength="50" /></td>
+  </tr>
+  <tr>
+    <th>Passport number</th>
+    <td><input type="text" name="passport" value="<:v:passport>" size="20" maxlength="50" /></td>
+  </tr>
+  <tr>
+    <th>Occupation</th>
+    <td><input type="text" name="job" value="<:v:utf8_job>" size="50" maxlength="50" /></td>
+  </tr>
+  <tr>
+    <th>Relationship</th>
+    <td><select name="relationship_id"><option value="" /><:a:relationshipoptions|looptemplate?module=main&name=option></select></td>
+  </tr>
+  <tr>
+    <th>Birthdate</th>
+    <td><input type="text" class="calendardate" title="Click to select date" size="10" maxlength="10" name="date_birth" id="date_birth" value="<:v:date_birth|dateformat?format=fulldate>"  /></td>
+  </tr>
+</table>
+<input type="submit" value="Save" />
+</form>
+
+<script>
+$('#date_birth').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+</script>

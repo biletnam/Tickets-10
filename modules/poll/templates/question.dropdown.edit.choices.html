@@ -1,0 +1,15 @@
+<form>
+<table class="list">
+  <tr>
+    <th>Value</th>
+    <th>Text</th>
+    <th>&nbsp;</th>
+  </tr>
+<:a:choices|looptemplate?name=question.dropdown.edit.choices.listitem>
+  <tr>
+    <th><input type="text" name="newchoicevalue" size="3" maxlength="5" /></th>
+    <th><input type="text" name="newchoice" size="50" maxlength="150" /></th>
+    <th><input type="button" value="Add choice" onclick="$('#question_<:v:id>_choices').load('?f=<:v:_module_>/addchoice&question=<:v:id>&numeric_value=' + this.form.newchoicevalue.value + '&choice=' + urlencode(this.form.newchoice.value))"></th>
+  </tr>
+</table>
+</form>

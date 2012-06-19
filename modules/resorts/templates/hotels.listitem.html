@@ -1,0 +1,18 @@
+  <tr class="mod2_<:v:_mod2_>">
+    <td><input type="checkbox" name="id_<:v:hotel_id>" id="id_<:v:hotel_id>"></td>
+    <td><nobr><a class="hoteltooltip" title="<:v:hotel_name>" rel="?i=<:v:_module_>/hoteltooltip&id=<:v:hotel_id>" href="#"><img src="../images/icons/preview.png" border="0" height="16" width="16" /></a> #<:v:hotel_id></nobr></td>
+    <td><:v:location_name></td>
+    <td>
+      <a href="?p=profiles/hotel&id=<:v:hotel_id>" title="Click to write on the wall"><img src="../images/icons/write2wall.png" border="0" height="16" width="16" /></a>
+      <a href="?p=<:v:_module_>/edithotel&id=<:v:hotel_id>" title="Click to edit"><:v:hotel_name></a>
+    </td>
+    <td><:v:cnt_valid_docs></td>
+    <td>EN/RU : <a href="?p=<:v:_module_>/bookings&hotel=<:v:hotel_id>&tab=handlers"><:v:booking_en>/<:v:booking_ru></a></td>
+    <td>EN/RU : <a href="?p=<:v:_module_>/bookings&hotel=<:v:hotel_id>&tab=newreqs"><:v:bookreq_en>/<:v:bookreq_ru></a></td>
+    <td>
+      <a href="?p=<:v:_module_>/edithotel&id=<:v:hotel_id>" title="Edit"><img src="../images/icons/pen.png" /></a>
+      <a href="?p=<:v:_module_>/edithotel&id=<:v:hotel_id>&tab=profitability" title="Profitability Report"><img src="../images/icons/coins.png" /></a>
+      &nbsp;
+      <a href="javascript:gc('Really delete hotel?', '?f=<:v:_module_>/deletehotel&id=<:v:hotel_id>');" title="Delete"><img src="../images/icons/delete.png" /></a>
+    </td>
+  </tr>

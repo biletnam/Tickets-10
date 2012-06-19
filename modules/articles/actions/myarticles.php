@@ -37,8 +37,8 @@ $pageParams['tabcontrol'] = $tcArticles->getHTML();
 $pageParams['pagetitle'] = $page->add('title',  $runtime->txt->do_template($module, 'title.myarticles');
 $page->add('main', $runtime->txt->do_template($module, 'myarticles', $pageParams);
 
-$page['js'] .= dotmod('main', 'tabcontrol.js');
-$page->add('css',  dotmod('main', 'tabcontrol.css');
+$page['js'] .= $runtime->txt->do_template('main', 'tabcontrol.js');
+$page->add('css',  $runtime->txt->do_template('main', 'tabcontrol.css');
       
 
 

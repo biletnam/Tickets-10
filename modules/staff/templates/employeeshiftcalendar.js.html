@@ -1,0 +1,38 @@
+
+function recalculateDefinedHours() {
+  var defd = 0;
+  for (i = 1; i <= 7; i++) {
+    defd = defd + parseInt($('#planned_' + i).val());
+  } 
+  $('#definedhours').html(defd);
+  alertUndefinedHours();
+}
+
+function recalculateRealHours() {
+  var rh = 0;
+  for (i = 1; i <= 7; i++) {
+    rh = rh + parseInt($('#real_' + i).val());
+  } 
+  $('#realhours').html(rh);
+  alertOvertimeHours();
+}
+
+function alertUndefinedHours() {
+  if ($('#definedhours').html() == $('#normhours').html()) {
+    $('#definedstatus').removeClass('red'); 
+  } else {
+    $('#definedstatus').addClass('red'); 
+  }
+}
+
+function alertOvertimeHours() {
+  var delta = parseInt($('#realhours').html()) - parseInt($('#plannedhours').html());
+  $('#overhours').html(delta);
+  if (delta < 0) {
+    $('#overhours').addClass('red'); 
+  } else if(delta > 0) {
+    $('#overhours').addClass('b'); 
+  } else {
+    $('#overhours').removeClass('red b'); 
+  }
+}

@@ -6,7 +6,7 @@ if ($id > 0) {
     if ($objW->delete_workflow(%_REQUEST) == 0) {
       set_cookie('error', 'Could not delete workflow');
     } else {
-      set_cookie('flash', 'Workflow deleted');
+      $_SESSION['flash'] = 'Workflow deleted');
     }
   } else {
     set_cookie('error', 'Please specify valid workflow to delete!');

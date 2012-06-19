@@ -1,0 +1,26 @@
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/addtarget" />
+<input type="hidden" name="ticket" value="<:v:ticket>" />
+<input type="hidden" name="target_type" value="generator" />
+<div id="newtickettarget">
+  <table class="form">
+    <tr>
+      <th>Target type</th>
+      <td><strong>Generator</strong></td>
+    </tr>
+    <tr>
+      <th>Target ID</th>
+      <td>
+        <input type="text" class="peoplesearch" title="Start typing to get suggestions" id="generator" />
+        <script>
+          suggestPerson('G', 'generator', 'target_id');
+        </script>
+      </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><input type="submit" value="Save" /></td>
+    </tr>
+  </table>
+</div>
+</form>  

@@ -1,0 +1,23 @@
+<table class="list" width="100%">
+  <tr>
+    <th>&nbsp;</th>
+    <th>Serie</th>
+    <th>
+      Reference
+    </th>
+    <th>Created</th>
+    <th colspan="2">Owner</th>
+    <th>Written off</th>
+    <th>History</th>
+  </tr>
+  <:a:writtenoff|looptemplate?name=stock.writtenoff.listitem>
+</table>
+
+<script>
+$('a.dochistorytooltip').cluetip({
+  width: 720,
+  sticky: true,
+  closePosition: 'title',
+  mouseOutClose: true
+});
+</script>

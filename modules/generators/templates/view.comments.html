@@ -1,0 +1,46 @@
+<h2>New comment</h2>
+
+<form action="" method="post" name="frmSendComment" id="frmSendComment">
+<input type="hidden" name="f" value="<:v:_module_>/sendcomment" />
+<input type="hidden" name="generator_id" value="<:v:generator_id>">
+<table class="form">
+  <tr>
+    <th>Comment</th>
+    <td><textarea name="commentary" id="commentary" rows="3" cols="60"></textarea></td>
+  </tr>
+  <tr>
+    <th>Ticketing options</th>
+    <td>
+      <select id="op" name="op" onchange="if (this.value == 'reply') $('#ticket_id').show(); else $('#ticket_id').hide();">
+        <option value="">No action</option>
+        <option value="reply">Reply to ticket:</option>
+        <:a:projectoptions|looptemplate?name=view.comments.projectoption>
+      </select>
+      <input type="text" name="ticket_id" id="ticket_id" value="" /><br />
+      * All projects with 'special:generatorcomment' tag are automatically listed
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Save comment" /></td>
+  </tr>
+</table>
+</form>
+
+<script>
+  $('#ticket_id').hide();
+</script>
+
+<h2>Comments up to date</h2>
+
+<table class="list">
+  <tr>
+    <th>Date</th>
+    <th>Entered by</th>
+    <th>Comment</th>
+    <th>Ticket</th>
+    <th>&nbsp;</th>
+  </tr>
+  <:a:comments|looptemplate?name=view.comments.listitem>
+</table>
+

@@ -1,0 +1,22 @@
+<table class="list" width="100%">
+  <tr>
+    <th>Name</th>
+    <th>Provider</th>
+    <th>Quantity</th>
+    <th>Delivery</th>
+    <th>Used</th>
+    <th>Value</th>
+    <th>Real Price</th>
+    <th>&nbsp;</th>
+  </tr>
+  <:a:series|looptemplate?name=home.series.listitem>
+</table>
+
+<script>
+$('a.serietooltip').cluetip({
+  width: 720,
+  sticky: true,
+  closePosition: 'title',
+  mouseOutClose: true
+});
+</script>

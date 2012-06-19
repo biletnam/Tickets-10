@@ -1,0 +1,54 @@
+<form name="frmChangeTicket" id="frmChangeTicket" action="" method="post" enctype="multipart/form-data" onSubmit="return false;">
+<input type="hidden" name="f" value="<:v:_module_>/change">
+<input type="hidden" name="ticket" value="<:v:id>">
+<table width="100%">
+  <tr valign="top">
+    <td width="40%">
+      <p>
+      <input type="radio" name="op" checked value="" id="leaveincurrentstatus">
+      <label for="leaveincurrentstatus">Leave in current status (<b><:v:status|lookupdict?module=tickets&name=status></b>)</label>
+      </p>
+      
+      <:v:actions>
+      
+      <:v:timereporting>
+      
+    </td>
+    <td width="60%">
+
+      <:v:setpriority>
+      <:v:setduedate>
+      <div id="action-reminders"><:v:reminders></div>
+                  
+    </td>
+  </tr>
+  <tr valign="top">
+    <td width="40%">
+      <p>
+        <b>Upload file (optional)</b><br />    
+        <input type="file" name="attachment">
+      </p>
+      <p>
+        <b>Leave a comment (optional)</b>
+        
+        <br />
+        <textarea name="comment" rows="8" cols="40"></textarea>
+      </p>
+    </td>
+    <td width="60%">
+      <:v:edittitle>
+      <:v:editsummary>
+    </td>
+  </tr>
+
+</table>
+
+<br />
+<input type="button" value="Submit changes" onclick="if (getCheckedValue(this.form.op) != 'delete' || confirm('Really delete ticket?')) this.form.submit(); else return false;" />
+
+</form>
+
+<script>
+$('#duedate').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+$('#actiondate').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+</script>

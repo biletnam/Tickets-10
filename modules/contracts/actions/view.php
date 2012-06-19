@@ -27,8 +27,8 @@ if ($id > 0) {
 #  print Dumper($gifts) . spreview($module, 'ListContractGifts', array('contract_no' => $id));
   $contractData['gifts'] = $gifts;
   # Create a client view tab control
-  $page['js'] = dotmod('main', 'tabcontrol.js');
-  $page['css'] = dotmod('main', 'tabcontrol.css');
+  $page['js'] = $runtime->txt->do_template('main', 'tabcontrol.js');
+  $page['css'] = $runtime->txt->do_template('main', 'tabcontrol.css');
   $tabContractView = new ctlTab($r, "tcContractView");
   $tabContractView->addTab('details', dot('view.details.tabheader'), dot('view.details', $contractData)); 
   $tabContractView->addTab('obligations', dot('view.obligations.tabheader'), dot('view.obligations', $contractData)); 

@@ -1,0 +1,13 @@
+  <tr class="mod2_<:v:_mod2_>">
+    <td width="11%"><:v:entity_type></td>
+    <td width="7%">
+      <a class="<:v:entity_type>tooltip" href="#" rel="?fwd=<:v:entity_type>tooltip&id=<:v:entity_id>" title="#<:v:entity_id>, <:v:event_text>"><img src="../images/icons/preview.png" border="0" height="16" width="16" /></a> 
+      #<a href="?fwd=<:v:entity_type>&id=<:v:entity_id>" target="_blank"><:v:entity_id></a>
+    </td>
+    <td width="65%"><:v:event_text></td>
+    <td width="10%"><:v:event_date|dateformat?format=fulldate></td>
+    <td width="7%">
+      <:_:forget|forwardtemplate?module=&name=dashboard.planner.forget>
+      <:_:postpone|forwardtemplate?module=&name=dashboard.planner.postpone>
+    </td>
+  </tr>

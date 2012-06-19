@@ -44,19 +44,19 @@ if ($username == 'vacation' && $password == 'absolute') {
   $hardcoded = 'Vacation';
 }
 if ($hardcoded == 'Vacation') {
-  $output = $runtime->dotmod($controller, 'API.Login.Hardcoded.Vacation', $apiparams);
+  $output = $runtime->$runtime->txt->do_template($controller, 'API.Login.Hardcoded.Vacation', $apiparams);
   push @warnings, $runtime->hash2ref( ('code' => 'MemberLogin.Hardcoded', 'text' => 'Combination of username and password matched to one hardcoded for Vacation') );
 } elseif ($username <> '' && $password <> '') {
   $memberData = $runtime->s2r($controller, 'CheckMemberLogin', $apiparams);
   if (count($memberData) > 0) {
     $contracts = $runtime->s2a($controller, 'ListMemberContracts', $memberData);
     $memberData['contracts'] = $contracts;
-    $output = $runtime->dotmod($controller, 'API.Login', $memberData);
-    $runtime->srun($controller, 'LogMemberLogin', $memberData);
+    $output = $runtime->$runtime->txt->do_template($controller, 'API.Login', $memberData);
+    $runtime->($controller, 'LogMemberLogin', $memberData);
   } else {
     $result = 'ERR'; 
-    $runtime->srun('main', 'RegisterPageview', array('entity_type' => 'client_login_failed', 'entity_id' => $memberData['client_id'], 'viewer_type' => 'C', 'viewer_id' => 0));    
-    $runtime->srun('main', 'RegisterLoginFailure', array('user_type' => 'C', 'username' => $username, 'password' => $password));
+    $runtime->('main', 'RegisterPageview', array('entity_type' => 'client_login_failed', 'entity_id' => $memberData['client_id'], 'viewer_type' => 'C', 'viewer_id' => 0));    
+    $runtime->('main', 'RegisterLoginFailure', array('user_type' => 'C', 'username' => $username, 'password' => $password));
     push @errors, $runtime->hash2ref( ('code' => 'MemberLogin.InvalidPassword', 'text' => 'Combination of username and password does not match to any member') );
   }
 } else {
@@ -66,7 +66,7 @@ if ($hardcoded == 'Vacation') {
 
 # Return resulting XML API output - quite similar to all APIs
 print "content-type: $contenttype; charset=$charset;\n\n";
-print $runtime->dotmod($controller, 'API.Envelope', array(
+print $runtime->$runtime->txt->do_template($controller, 'API.Envelope', array(
   'result' => $result,
   'output' => $output,
   'warnings' => Arrays::a2xml($warnings, 'Warnings', 'Warning'),

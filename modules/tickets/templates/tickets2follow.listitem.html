@@ -1,0 +1,19 @@
+  <tr class="mod2_<:v:_mod2_>">
+    <td><input type="checkbox" name="id_<:v:id>"></td>
+    <td><:v:id></td>
+    <td>
+      <a 
+        id="myfollow_ticketlink_<:v:id>" 
+        href="javascript: showAjaxPopup({url: '?i=<:v:_module_>/tooltip&id=<:v:id>', width:800, id:'myfollow_ticketlink_<:v:id>']);" 
+        title="Click to preview"
+      ><img src="../images/icons/preview.png" border="0" height="16" width="16" /></a> 
+      <a href="?p=<:v:_module_>/viewticket&id=<:v:id>"><:v:title|untitled|shortener?words=5></a>
+    </td>
+    <td><a href="?p=profiles/employee&id=<:v:reviewer>" title="<:v:ReviewerName>"><:v:ReviewerNick></a></td>
+    <td><a href="?p=profiles/employee&id=<:v:handler>" title="<:v:HandlerName>"><:v:HandlerNick></a></td>
+    <td><a href="?p=<:v:_module_>/project&id=<:v:project>""><:v:ProjectTitle></a></td>
+    <td><:v:status|lookupdict?module=tickets&name=status></td>
+    <td class="duedate_<:v:duedate_class>"><:v:duedate|dateformat?format=shortdate></td>
+    <td><:v:priority|lookupdict?module=tickets&name=priority></td>
+    <td><:v:LastUpdated|dateformat?format=shortdate></td>
+  </tr>

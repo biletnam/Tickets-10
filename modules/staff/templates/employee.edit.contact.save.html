@@ -1,0 +1,5 @@
+<script>
+  $('#contacts_for_<:v:type>').append($('<div>').load('?i=<:v:_module_>/ajaxcontact&id=<:v:id>'));
+  $('#newcontact_for_<:v:type>').load('?i=<:v:_module_>/newcontact&key=<:v:type>&user_id=<:v:user_id>');
+  $('#<:v:div>_<:v:type>').hide();
+</script>

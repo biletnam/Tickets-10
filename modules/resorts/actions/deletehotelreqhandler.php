@@ -7,7 +7,7 @@ if ($id > 0) {
     $hotelInfo = $runtime->s2r($module, 'GetHotelInfo', array('id' => $reqhandlerInfo['hotel_id']));
     if (count($hotelInfo) > 0) {
       $hotel = $hotelInfo['hotel_id'];
-      srun($module, 'DeleteHotelReqHander', $_REQUEST);
+      $runtime->db->sqlrun($module, 'DeleteHotelReqHander', $_REQUEST);
       go("?p=$module/bookings&hotel=$hotel&tab=handlers");
     }
   }

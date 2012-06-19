@@ -1,0 +1,10 @@
+  <tr>
+    <td>
+      <input name="seqno_<:v:id>" type="text" size="2" maxlength="3" value="<:v:seqno>" onChange="this.form._dirty_<:v:id>.value=1;" />
+      <input type="hidden" name="_dirty_<:v:id>" value="" />
+    </td>
+    <td><input name="code_<:v:id>" type="text" size="10" maxlength="50" value="<:v:code>" onChange="this.form._dirty_<:v:id>.value=1;" /></td>
+    <td><input name="name_<:v:id>" type="text" size="30" maxlength="50" value="<:v:name>" onChange="this.form._dirty_<:v:id>.value=1;" /></td>
+    <td><input name="image_<:v:id>" type="text" size="30" maxlength="50" value="<:v:image>" onChange="this.form._dirty_<:v:id>.value=1;" /></td>
+    <td><a href="javascript:gc('Really delete block?', '?f=<:v:_module_>/deleteblock&id=<:v:id>');">Delete</a></td>
+  </tr>

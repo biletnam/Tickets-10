@@ -1,0 +1,16 @@
+<form name="frmEditProject" action="" method="post" onSubmit="return false">
+<input type="hidden" name="f" value="<:v:_module_>/saveproject">
+<input type="hidden" name="id" value="<:v:id>">
+<input type="hidden" name="moderator" value="<:v:moderator>">
+<table class="form">
+  <tr>
+    <th>Title</th>
+    <td><input type="text" name="title" value="<:v:title>" size="40" maxlength="255" /></td>
+  </tr>
+  <:v:setmoderator>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="button" value="Save" onclick="if (this.form.moderator.value == '' && this.form.new_moderator.value == '') { alert('Please choose moderator!'); return false; } else this.form.submit();" /></td>
+  </tr>
+</table>
+</form>

@@ -1,0 +1,47 @@
+<h1>Add more selectors</h1>
+
+<p>Below, you can select people. You can start your search in three different ways</p>
+<table width="100%">
+  <tr valign="top">
+    <td width="33%">
+      <h2>Start from office</h2>
+      <form id="frm_linkpeople_<:v:controlname>_office">
+        <input type="hidden" name="source_link" id="linkpeople_<:v:controlname>_office_sourcelink" value="<:v:src>">
+        <select name="office" id="linkpeople_<:v:controlname>_office_office" onchange="loadDepartments('<:v:controlname>', this.value);">
+          <option value="">Choose office</option>
+          <:a:officeoptions|looptemplate?module=main&name=option>
+        </select>
+        <div id="linkpeople_<:v:controlname>_listdepartments">
+        </div>
+      </form>
+    </td>
+    <td width="33%">
+      <h2>Start from department</h2>
+      <form id="frm_linkpeople_<:v:controlname>_department">
+        <input type="hidden" name="source_link" id="linkpeople_<:v:controlname>_department_sourcelink" value="<:v:src>">
+        <select name="department" id="linkpeople_<:v:controlname>_department_department" onchange="loadOffices('<:v:controlname>', this.value);">
+          <option value="">Choose department</option>
+          <:a:departmentoptions|looptemplate?module=main&name=option>
+        </select>
+        <div id="linkpeople_<:v:controlname>_listoffices">
+        </div>
+      </form>
+    </td>
+    <td width="33%">
+      <h2>Person lookup</h2>
+      <form id="frm_linkpeople_<:v:controlname>_person">
+        <input type="hidden" name="source_link" id="linkpeople_<:v:controlname>_person_sourcelink" value="<:v:src>">
+        Choose person to add:
+        <br />
+        <input type="text" class="peoplesearch" title="Start typing to get suggestions" id="emp_<:v:controlname>">
+        <br />
+        <input type="button" value="Add" onclick="addPerson('<:v:controlname>');">
+        <p>* - Submitting an empty form will make article public.</p>
+      </form>
+    </td>
+  </tr>  
+</table>
+
+<script>
+  suggestPerson('U', 'emp_<:v:controlname>', 'linkpeople_<:v:controlname>_person_employee');
+</script>

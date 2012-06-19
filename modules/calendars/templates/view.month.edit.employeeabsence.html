@@ -1,0 +1,31 @@
+      <tr>
+        <td colspan="2">
+          Your current <strong>Vacation</strong> balance for <:v:year> is <strong><:v:vacationbalance> day(s)</strong> (<:v:approved> used of <:v:entitled>+<:v:overworked>).
+          <br />
+          <:a:absencebalances|looptemplate?name=view.month.edit.employeeabsence.absencebalance>
+          <br />
+          Make sure that you don't exceed your limits. 
+          <br />
+          Exceeding days might be marked as Unpaid Leave by your manager.
+        </td>
+      </tr>
+      <tr>
+        <th>Day type:</th>
+        <td>
+          <div style="margin-left: 20px; margin-right: 20px;" id="monthview_addcomment_daytype">
+            <select name="monthview_moredata_day_type" id="monthview_moredata_day_type">
+              <:a:day_type_options|looptemplate?module=main&name=option>
+            </select>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th>Quantity:</th>
+        <td>
+          <div style="margin-left: 20px; margin-right: 20px;" id="monthview_addcomment_qty">
+            <select name="monthview_moredata_qty" id="monthview_moredata_qty">
+              <:a:qty_options|looptemplate?module=main&name=option>
+            </select>
+          </div>
+        </td>
+      </tr>

@@ -1,0 +1,31 @@
+<h1><:v:pagetitle></h1>
+
+<p>
+  <a href="?p=<:v:_module_>/list">Return to list of workflows</a>
+</p>
+
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/saveaction">
+<input type="hidden" name="id" value="<:v:id>">
+<table class="form">
+  <tr>
+    <th>Workflow</th>
+    <td><a href="?p=<:v:_module_>/edit&id=<:v:workflow>&tab=actions"><:v:WorkflowName></a></td>
+  </tr>
+  <tr>
+    <th>Action type</th>
+    <td><:v:action_type|lookupdict?module=&name=actiontypes></td>
+  </tr>
+  <tr>
+    <th>Action name</th>
+    <td><input type="text" name="action_name" value="<:v:action_name>" size="40" maxlength="150" /></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Save changes" /></td>
+  </tr>
+</table>
+</form>
+
+<:v:actionparams>
+

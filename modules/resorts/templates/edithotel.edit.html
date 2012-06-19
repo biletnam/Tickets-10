@@ -1,0 +1,46 @@
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/savehotel" />
+<input type="hidden" name="id" value="<:v:hotel_id>" />
+<table class="form">
+  <tr>
+    <th>Preview</th>
+    <td><a href="?p=profiles/hotel&id=<:v:hotel_id>" title="Click to see hotel profile">Click here to preview, including wall</a></td>
+  </tr>
+  <tr>
+    <th>Name</th>
+    <td><input type="text" name="name" value="<:v:hotel_name>" size="40" /></td>
+  </tr>
+  <tr>
+    <th>Address</th>
+    <td><input type="text" name="address" value="<:v:address>" size="80" /></td>
+  </tr>
+  <tr>
+    <th>Phone</th>
+    <td><input type="text" name="phone" value="<:v:phone>" size="20" /></td>
+  </tr>
+  <tr>
+    <th>Fax</th>
+    <td><input type="text" name="fax" value="<:v:fax>"  size="20" /></td>
+  </tr>
+  <tr>
+    <th>Manager</th>
+    <td><input type="text" name="manager" value="<:v:manager>"  size="20" /></td>
+  </tr>
+  <tr>
+    <th>Location</th>
+    <td><select name="location"><:a:locations|looptemplate?module=main&name=option></select></td>
+  </tr>
+  <tr>
+    <th>Reservation Email</th>
+    <td><input type="text" name="res_email" value="<:v:reservation_email>" size="30" /></td>
+  </tr>
+  <tr>
+    <th>Reservation Contact</th>
+    <td><input type="text" name="res_contact" value="<:v:reservation_contact>"  size="40" /></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Save" /></td>
+  </tr>
+</table>
+</form>

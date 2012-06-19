@@ -1,0 +1,50 @@
+
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/savereportparams" />
+<input type="hidden" name="report" value="<:req:id>" />
+
+<table class="form">
+<:a:params|joincolumn:key=rendered>
+</table>
+
+<h2>Add new parameter</h2>
+
+<table class="form">
+  <tr>
+    <th>Name</th>
+    <td><input type="text" name="name_new" /></td>
+  </tr>
+  <tr>
+    <th>Prompt</th>
+    <td><input type="text" name="prompt_new" /></td>
+  </tr>
+  <tr>
+    <th>Type</th>
+    <td>
+      <select name="type_new" onchange="$('#report_parameter_type_description').load('?i=<:v:_module_>/describeparameter&type=' + this.value);">
+        <option value=""></option>
+        <option value="number">Number</option>
+        <option value="string">String</option>
+        <option value="date">Date</option>
+        <option value="yesno">Yes/No</option>
+        <option value="dblookup">DB Lookup</option>
+        <option value="employee">Employee</option>
+      </select>
+      <div id="report_parameter_type_description">
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <th>Mandatory?</th>
+    <td>
+      <select name="mandatory_new">
+        <option value="0">No</option>
+        <option value="1" selected>Yes</option>
+      </select>
+    </td>
+  </tr>
+</table>
+
+<p><input type="submit" name="Save" /></p>
+
+</form>

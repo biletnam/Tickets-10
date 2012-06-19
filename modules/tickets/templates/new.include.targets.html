@@ -1,0 +1,9 @@
+  <tr>
+    <th>Target(s)</th>
+    <td>
+      <input type="hidden" id="target" name="target" value="" />
+      <input type="hidden" id="detectedtargets" name="detectedtargets" value="<:v:targets>" />
+      <input type="checkbox" name="targetdetect" id="targetdetect" onchange="$('#target').val(this.checked ? $('#detectedtargets').val() : '');" />
+      <label for="targetdetect">Detect automatically from page context</label>
+    </td>
+  </tr>

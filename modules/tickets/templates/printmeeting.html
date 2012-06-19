@@ -1,0 +1,27 @@
+<h1><:v:pagetitle></h1>
+
+<p class="red noprint">NB! Print in landscape mode!</p>
+
+<table class="form" width="100%">
+  <tr>
+    <th>Location</th>
+    <td><:v:location></td>
+  </tr>
+  <tr>
+    <th>Date</th>
+    <td><:v:meetingdate|dateformat?format=fulldate></td>
+  </tr>
+  <tr>
+    <th>Participants</th>
+    <td><:a:participants|looptemplate?name=printmeeting.participant></td>
+  </tr>
+  <tr>
+    <th>Issues</th>
+    <td>
+      <table width="100%">
+      <:a:tickets|looptemplate?name=printmeeting.ticket>
+      </table>
+    </td>
+  </tr>
+</table>
+

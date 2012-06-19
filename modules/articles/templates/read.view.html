@@ -1,0 +1,32 @@
+<div class="IntranetArticle">
+  
+  <div class="IntranetArticleAuthor">
+    <p>by <:v:AuthorName></p>
+    <p>Last updated: <:v:DateUpdated|dateformat?format=fulltime> by <:v:LastEditorName></p>
+    <:v:filedinblocks>
+  </div>
+
+  
+  <div class="IntranetArticleTeaser">
+    <:v:Teaser|paragraphs|process>
+  </div>
+    
+  <div class="IntranetArticleContents">
+    <:v:Contents|paragraphs|process>
+  </div>
+  
+  <div id="pages">
+  </div>
+</div>
+
+<:v:typespecial>
+
+<div class="IntranetArticleEmbedCode">
+  <form>Embed code: <input type="text" size="12" maxlength="12" value="<:v:id|wrap:tag=article>" /></form>
+</div>
+
+<script>
+  if ('<:a:pages|length>' != '') {
+    $('#pages').load('?i=<:v:_module_>/viewpage&article=<:v:id>&page=<:req:page>');
+  }
+</script>

@@ -6,5 +6,5 @@ $popupParams = array(
   'content' => dot('paronagedetails', $paronageDetails),
 );
 
-print dotmod('main', 'popup', $popupParams);
+print $runtime->txt->do_template('main', 'popup', $popupParams);
 ?>

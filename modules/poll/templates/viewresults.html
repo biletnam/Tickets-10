@@ -1,0 +1,21 @@
+<h1><:v:pagetitle></h1>
+
+<p>
+  Return to the <a href="?p=<:v:_module_>/list&tab=editlist">list of polls</a> you can edit.
+</p>
+
+<table class="form">
+  <tr>
+    <th>Title</th>
+    <td><:v:title></td>
+  </tr>
+  <tr>
+    <th>Comment</th>
+    <td><:v:comment></td>
+  </tr>
+  <:_:validfrom|stopifempty:varname=valid_from|forwardtemplate?module=&name=view.validfrom>
+  <:_:validto|stopifempty:varname=valid_to|forwardtemplate?module=&name=view.validto>
+</table>
+
+<p>&nbsp;</p>
+<:v:questions>

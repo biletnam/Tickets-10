@@ -5,7 +5,7 @@ $objCal = new objCalendar($r);
 
 $newid = $objCal->clone_office_calendar(%_REQUEST);
 if ($newid > 0) {
-  set_cookie('flash', 'Calendar cloned');
+  $_SESSION['flash'] = 'Calendar cloned');
   go("?p=$module/officecalendar&id=$newid");
 } else {
   set_cookie('error', 'Could not clone the calendar');

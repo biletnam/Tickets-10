@@ -5,7 +5,7 @@ foreach $key (keys %_REQUEST) {
     $id = lavnn($key);
     substr($key, 0, 3, 'seq_no_');
     $value = lavnn($key);
-    srun($module, 'SetMenuOrder', array('id' => $id, 'seq_no' => $value)) if ($value > 0 && $id > 0);
+    $runtime->db->sqlrun($module, 'SetMenuOrder', array('id' => $id, 'seq_no' => $value)) if ($value > 0 && $id > 0);
   }
 }
 

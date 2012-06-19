@@ -15,10 +15,10 @@ if (get_cookie('booking_search_source_type') <> '') {
  
 #print spreview($module, 'GetBookingInfo', $_REQUEST) . Dumper($bookingInfo);
 if (count($bookingInfo) > 0) {
-  $page['js'] = dotmod('main', 'tabcontrol.js');
-  $page['js'] .= dotmod('main', 'linkpeople.js');
-  $page['css'] = dotmod('main', 'tabcontrol.css');
-  $page->add('css',  dotmod('main', 'linkpeople.css');
+  $page['js'] = $runtime->txt->do_template('main', 'tabcontrol.js');
+  $page['js'] .= $runtime->txt->do_template('main', 'linkpeople.js');
+  $page['css'] = $runtime->txt->do_template('main', 'tabcontrol.css');
+  $page->add('css',  $runtime->txt->do_template('main', 'linkpeople.css');
 
   $tabBookingView = new ctlTab($r, "tcBookingView");
   $bookingInfo['statusoptions'] = arr2ref(genOptions(arr2ref(s2a($module, 'ListBookingStatuses')), 'status_id', 'status_name', $bookingInfo['status_id']));

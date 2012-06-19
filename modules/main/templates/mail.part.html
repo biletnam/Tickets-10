@@ -1,0 +1,11 @@
+<div style="border-bottom: solid 1px black; margin-bottom: 10px;">
+  <h1 style="background-color:#D4DCE8; font-weight: bold; font-size: 2em; padding: 2px;"><:v:subject|striptags></h1>
+  <div style="border-bottom: solid 1px #D4DCE8; margin-bottom: 10px; padding-bottom: 5px;">
+    <:v:explained>
+    <:_:feedback-employee|stopifempty:varname=ticket|stopifempty:varname=user_id|forwardtemplate?module=main&name=mail.part.feedback.employee>
+    <:_:feedback-external|stopifempty:varname=ticket|stopifempty:varname=external_email|forwardtemplate?module=main&name=mail.part.feedback.external>
+  </div>
+  <div style="padding-left:100px; padding-bottom:10px; margin-bottom: 10px;">
+    <:a:notifications|looptemplate?module=main&name=mail.part.notification>
+  </div>
+</div>

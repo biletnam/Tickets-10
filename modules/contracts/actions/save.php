@@ -4,7 +4,7 @@ $contract_number = lavnn('contract_no', $_REQUEST, 0);
 if ($contract_number > 0) {
   $contractInfo = $runtime->s2r($module, 'GetContractData', $_REQUEST);
   if (count($contractInfo) > 0) {
-    $result = srun($module, 'UpdateContract', $_REQUEST);
+    $result = $runtime->db->sqlrun($module, 'UpdateContract', $_REQUEST);
     if ($result > 0) {
       set_cookie("flash", "Success!");
     } else {

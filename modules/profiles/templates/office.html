@@ -1,0 +1,53 @@
+<h1><:v:pagetitle></h1>
+
+<table class="officeprofile">
+  <tr>
+    <td class="avatar">
+      <img alt="office" src="../images/office.jpg" width="75" height="78" />
+    </td>
+    <td class="basicinfo">
+      <div class="oneline">
+        <strong><:v:strName></strong> &nbsp;
+        <br />
+        <img src="../images/icons/currency.png" border="0" width="16" height="16"> <:v:strCurrency> &nbsp;
+        <:_:account|stopifempty:varname=account_name|forwardtemplate?module=&name=office.account>
+        <br />        
+        <img src="../images/icons/calendar-red.png" border="0" width="16" height="16"><a href="?p=staff/officeabsences&office=<:v:lngId>">Absence calendar</a> &nbsp; 
+        <br />
+        <:_:address|stopifempty:varname=address|forwardtemplate?module=&name=office.address>
+      </div>
+    </td>
+  </tr>
+</table>
+
+<div class="officestats">
+  <table>
+    <tr>
+      <td>
+        <img src="../images/icons/users.png" width="16" height="16" border="0">  &nbsp;
+        <!--
+        <a href="javascript: $('#officestaff').load('?i=<:v:_module_>/officecontactsheet&id=<:v:lngId>');"><:v:cnt_employees> Employee(s)</a> &nbsp; 
+        -->
+        <a href="javascript: ajaxload('officestaff', '?i=<:v:_module_>/officecontactsheet&id=<:v:lngId>');"><:v:cnt_employees> Employee(s)</a> &nbsp; 
+      </td>
+      <td><img src="../images/icons/attachment.png" width="16" height="16" border="0"> <:v:wall_documents> Public document(s) &nbsp; 
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<div id="officestaff">
+</div>
+
+<form action="">
+<input type="hidden" name="f" value="<:v:_module_>/sendwallpost" />
+<input type="hidden" name="entity_type" value="office" />
+<input type="hidden" name="entity_id" value="<:v:lngId>" />
+<textarea name="comment" rows="2" style="width:980px;">
+</textarea>
+<br />
+<input type="submit" value="Send to the wall" />
+</form>
+
+<:v:wall>

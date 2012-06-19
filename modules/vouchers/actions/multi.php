@@ -48,7 +48,7 @@ if ($access <> 'none') { # default for authorized users
             $count_success += $result; 
             $count_failure += (1 - $result);
           }
-          set_cookie('flash', "Location set for ".$count_success." vouchers") if $count_success > 0;
+          $_SESSION['flash'] = "Location set for ".$count_success." vouchers") if $count_success > 0;
           set_cookie('error', "Location was not set for ".$count_failure." vouchers") if $count_failure > 0;
           if ($count_success > 0 && $doc_location_type == 'employee' && $doc_location_id <> $r['userID']) {
             # Send notification about new vouchers to be arrived

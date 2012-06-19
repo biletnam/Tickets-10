@@ -35,7 +35,7 @@ foreach $employee (@employees) {
 }
 
 if (count($processed) > 0) {
-  set_cookie('flash', 'Absence (or overwork) requested for ' . join(', ', @processed));
+  $_SESSION['flash'] = 'Absence (or overwork) requested for ' . join(', ', @processed));
 }
 
 $office = lavnn('office', $_REQUEST, 0);

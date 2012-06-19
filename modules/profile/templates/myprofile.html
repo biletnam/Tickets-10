@@ -1,0 +1,44 @@
+
+<h1>My Profile</h1>
+
+<form action="" method="post">
+<input type="hidden" name="f" value="profile/save" />
+<table class="form">
+  <tr>
+    <th>First Name</th>
+    <td><input type="text" name="strFirstName" value="<:v:strFirstName>" />
+  </tr>
+  <tr>
+    <th>Last Name</th>
+    <td><input type="text" name="strLastName" value="<:v:strLastName>" />
+  </tr>
+  <tr>
+    <th>Office Email</th>
+    <td><input type="text" name="strLocalOfficeEmail" value="<:v:strLocalOfficeEmail>" />
+  </tr>
+  <tr>
+    <th>Yahoo ID</th>
+    <td><input type="text" name="yahoo_id" value="<:v:yahoo_id>" />
+  </tr>
+  <tr>
+    <th>Mobile Phone</th>
+    <td><input type="text" name="strLocalMobilePhone" value="<:v:strLocalMobilePhone>" />
+  </tr>
+  <tr>
+    <th>Birthdate</th>
+    <td>
+      <input type="text" name="dateBirth" value="<:v:dateBirth|dateformat?format=shortdate>" />
+      <input type="button" onclick="PopupCalendar('http://apache4:8080/john', 1900, 2010, 1, 'dateBirth');">
+    </td>
+  </tr>
+  <tr>
+    <th>Home Address</th>
+    <td><input type="text" name="strLocalAddress" value="<:v:strLocalAddress>" />
+  </tr>
+
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Save changes" />
+  </tr>  
+</table>
+</form>

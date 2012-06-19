@@ -1,0 +1,21 @@
+<tr class="datagrid-row-data mod2_<:v:_mod2_>">
+  <td class="align-varchar" colspan="2">
+    <a target="_blank" href="?p=clients/viewclient&id=<:v:sender_client_id>&tab=bookings"><img src="../images/icons/zoom.png" width="16" height="16" border="0" /></a>
+    <a href="?p=reports/paronnage&report=ParonageClients&sender=<:v:sender_client_id>" title="Click the name to filter"><:v:sender_first_name> <:v:sender_last_name></a>
+  </td>
+  <td class="align-varchar" colspan="2">
+    <a target="_blank" href="?p=clients/viewclient&id=<:v:sent_client_id>&tab=bookings"><img src="../images/icons/zoom.png" width="16" height="16" border="0" /></a>
+    <:v:sent_first_name> <:v:sent_last_name>
+  </td>
+  <td class="align-varchar"><a href="?p=bookings/view&id=<:v:sent_booking_id>&tab=payments"><:v:ref_no></a></td>
+  <td class="align-varchar"><:v:contract_number></td>
+  <td class="align-varchar"><:v:Date_completed|dateformat?format=fulldate></td>
+  <td class="align-varchar"><:v:Type_of_Contract></td>
+  <td class="align-int"><:v:amount></td>
+  <td class="align-int">
+    <a id="paronage_details_<:v:id>" href="javascript: showAjaxPopup({url: '?i=reports/paronagedetails&id=<:v:ppid>', width:800, id:'paronage_details_<:v:id>']);" title="Click to preview"><img src="../images/icons/pen.png" border="0" height="16" width="16"></a>
+    <:v:amount_paid>
+  </td>
+  <td class="align-int"><:v:NetPrice></td>
+  <td class="align-int"><:v:amount_report> <input type="checkbox" name="ids[]" value="<:v:id>"></td>
+</tr>

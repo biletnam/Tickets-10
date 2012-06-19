@@ -1,0 +1,25 @@
+<h2>Status by reviewer</h2>
+
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/buzz" />
+<input type="hidden" name="article" value="<:v:id>">
+
+<:a:reviewstatus|looptemplate?name=review.listitem.status>
+
+<p>You can select reviewers and buzz them with the custom message.</p>
+
+<table class="form">
+  <tr>
+    <th>Custom message</th>
+    <td><textarea name="message" rows="3" cols="80"></textarea></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Buzz selected reviewers" /></td>
+  </tr>
+</table>
+</form>
+
+<h2>Full history of status reviews</h2>
+
+<:a:reviewhistory|looptemplate?name=review.listitem.history>

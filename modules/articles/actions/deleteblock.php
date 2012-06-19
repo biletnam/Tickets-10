@@ -1,6 +1,6 @@
 <?php
 
-srun($module, 'DeleteArticleBlock', $_REQUEST);
+$runtime->db->sqlrun($module, 'DeleteArticleBlock', $_REQUEST);
 go("?p=$module/blocks");
 
 ?>

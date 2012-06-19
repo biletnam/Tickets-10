@@ -29,10 +29,10 @@ if ($gen_user_id > 0 && $id > 0) {
   }
 
   # register pageview
-  srun('main', 'RegisterPageview', array('entity_type' => 'contract', 'entity_id' => $id, 'viewer_type' => 'G', 'viewer_id' => $gen_user_id));
+  $runtime->db->sqlrun('main', 'RegisterPageview', array('entity_type' => 'contract', 'entity_id' => $id, 'viewer_type' => 'G', 'viewer_id' => $gen_user_id));
 
   $page->add('main', $runtime->txt->do_template($module, 'contract', $firstentry);
 }
 
-print dotmod($module, 'index', $page);
+print $runtime->txt->do_template($module, 'index', $page);
 ?>

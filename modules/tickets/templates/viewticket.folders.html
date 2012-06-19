@@ -1,0 +1,45 @@
+<h2>Folders</h2>
+
+<p>List of your personal folders. Use them to group tickets by your own liking.</p>
+
+<p>Check folders where this ticket should belong to:</p>
+
+<form>
+<input type="hidden" name="f" value="<:v:_module_>/savefolders" />
+<input type="hidden" name="ticket_id" value="<:v:id>" />
+<table class="list">
+  <tr>
+    <th>&nbsp;</th>
+    <th>Name</th>
+    <th>Folder actions</th>
+    <th>Comment</th>
+  </tr>
+  <:a:allfolders|looptemplate?name=viewticket.folders.listitem>
+</table>
+<!--
+-->
+<br />
+<input type="submit" value="Save Changes" />
+</form>
+
+<h2>Create Folder</h2>
+
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/addfolder" />
+<input type="hidden" name="ticket_id" value="<:v:id>" />
+<table class="form">
+  <tr>
+    <th>Name</th>
+    <td><input type="text" name="name" /></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="checkbox" id="autoadd" name="autoadd" /><label for="autoadd" />Add this ticket to new folder automatically</label></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Save" /></td>
+  </tr>
+</table>
+</form>
+      

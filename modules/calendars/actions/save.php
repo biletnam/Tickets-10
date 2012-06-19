@@ -13,7 +13,7 @@ if ($id <> '') {
   $_REQUEST['object_id'] = $r['userID'];
   $id = $objCal->create_calendar(%_REQUEST);
   if ($id > 0) {
-    set_cookie('flash', 'Calendar created');
+    $_SESSION['flash'] = 'Calendar created');
     go("?p=$module/view&id=$id&tab=month");
   } else {
     set_cookie('error', 'Could not add calendar');

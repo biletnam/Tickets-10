@@ -1,0 +1,17 @@
+<div id="employeeteam_<:v:id>">  
+  <div class="clearfix">
+    <div style="float:left; width: 20px;">
+      <img src="../images/icons/calendar-blue.png" width="16" height="16" border="0">
+    </div>
+    <div style="float:left; width: 180px;">
+      <:v:DateStarted|dateformat?format=fulldate> - 
+      <:v:DateFinished|dateformat?format=fulldate><:_:present|stopifnotempty:varname=DateFinished|forwardtemplate?module=main&name=present>:
+    </div>
+    <div style="float:left; vertical-align: middle;">
+      <i><:v:JobTitle></i> in <strong><:v:TeamName></strong> &nbsp;
+    </div>
+    <div style="float:left; vertical-align: middle;">
+      <a href="javascript: deleteEmployeeTeam(<:v:id>)" title="Click to delete"><img src="../images/icons/delete.png" width="16" height="16" border="0" alt="Delete"></a>
+    </div>
+  </div>
+</div>

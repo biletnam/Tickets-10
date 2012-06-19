@@ -1,0 +1,61 @@
+<h1><:v:pagetitle></h1>
+
+<form method="post" action="">
+<input type="hidden" name="f" value="<:v:_module_>/multi" />
+<input type="hidden" name="op" value="" />
+<input type="hidden" name="employee" value="<:v:employee>" />
+<table class="list" width="100%">
+  <tr>
+    <th>&nbsp;</th>
+    <th>
+      <input type="checkbox" onclick="checkAllBoxes(this.form, 'id_', this.checked);"  /> 
+      Reference
+    </th>
+    <th>Doc. location</th>
+    <th>Used on</th>
+    <th>User</th>
+    <th>Office</th>
+    <th>Client</th>
+    <th>&nbsp;</th>
+  </tr>
+  <:a:vouchers|looptemplate?name=vouchers.listitem>
+</table>
+
+
+<script>
+$('a.dochistorytooltip').cluetip({
+  width: 720,
+  sticky: true,
+  closePosition: 'title',
+  mouseOutClose: true
+});
+</script>
+
+<p>
+With selected vouchers:
+</p>
+
+<table class="form">
+  <tr>
+    <td>Set location:</td>
+    <td>
+      <select name="doc_location_type" onchange="$('#location_chooser').load('?i=<:v:_module_>/ajaxlocation&type=' + this.value);">
+        <option value="">Choose location type</option>
+        <option value="hotel">Hotel</option>
+        <option value="provider">Provider</option>
+        <option value="office">Office</option>
+        <option value="employee">Employee</option>
+      </select>
+    </td>
+    <td>
+      <div id="location_chooser">
+        ...
+      </div>
+    </td>
+    <td>
+      Delivering by <input type="text" name="delivery_method" />
+    </td>
+    <td><input type="button" value="Set" onclick="this.form.op.value='setlocation'; this.form.submit();" /></td>
+  </tr>
+</table>
+</form>

@@ -52,7 +52,7 @@ if ($calendar_id > 0) {
           }
         }
       }
-      set_cookie('flash', 'Authorization of absence request(s) succeeded');
+      $_SESSION['flash'] = 'Authorization of absence request(s) succeeded');
       go("?p=$module/view&id=$calendar_id&tab=year");
     } else {
       set_cookie('error', 'Authorization of employee absence request is only allowed to line manager of employee');

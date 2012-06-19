@@ -1,0 +1,64 @@
+<h1><:v:pagetitle></h1>
+
+<p class="red" align="center">NB! Only employees with absence calendars are shown here</p>
+
+<p>
+  <table width="100%">
+    <tr>
+      <td class="a-c">
+        [<a href="?p=<:v:_module_>/office&office=<:v:lngId>">Office Info</a>] 
+        [<a href="?p=<:v:_module_>/office&office=<:v:lngId>&tab=calendars">Office Calendars</a>]
+        [<a href="?p=<:v:_module_>/balances&office=<:v:lngId>">Balances</a>]
+        &nbsp; &nbsp;
+        <a href="?p=<:v:_module_>/officeabsences&office=<:v:lngId>&Y=<:v:Y>&M=<:v:M>&move=previous">&lt;&lt; Previous</a>
+        <strong>&nbsp;<:v:M|padnumber:length=2|lookupdict?module=main&name=month> <:v:Y>&nbsp;</strong>
+        <a href="?p=<:v:_module_>/officeabsences&office=<:v:lngId>&Y=<:v:Y>&M=<:v:M>&move=next">Next &gt;&gt;</a>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+        <br >
+        <table>
+          <tr>
+            <td class="a-l"><span class="monthmatrixday_empty DoW_7" style="width:20px; border: solid 1px silver;">&nbsp;&nbsp;&nbsp;</span> <span>weekend &nbsp;</span></td>
+            <td class="a-l"><span class="monthmatrixday_PH" style="width:20px; border: solid 1px silver;">&nbsp;&nbsp;&nbsp;</span> <span>public holiday &nbsp;</span></td>
+
+            <:a:daytypes|looptemplate?name=officeabsences.legend.daytype>
+            <!--
+            <td class="a-l"><span class="monthmatrixday_V" style="width:20px; border: solid 1px silver;">&nbsp;&nbsp;&nbsp;</span> <span>vacation &nbsp;</span></td>
+            <td class="a-l"><span class="monthmatrixday_S" style="width:20px; border: solid 1px silver;">&nbsp;&nbsp;&nbsp;</span> <span>sickness &nbsp;</span></td>
+            <td class="a-l"><span class="monthmatrixday_BT" style="width:20px; border: solid 1px silver;">&nbsp;&nbsp;&nbsp;</span> <span>business trip &nbsp;</span></td>
+            <td class="a-l"><span class="monthmatrixday_OW" style="width:20px; border: solid 1px silver;">&nbsp;&nbsp;&nbsp;</span> <span>work/overwork &nbsp;</span></td>
+            <td class="a-l"><span class="monthmatrixday_UL" style="width:20px; border: solid 1px silver;">&nbsp;&nbsp;&nbsp;</span> <span>unpaid leave &nbsp;</span></td>
+            -->
+
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+        <table>
+          <tr>
+            <td class="a-l"><img src="../images/icons/question.png"> <span>pending authorization &nbsp;</span></td>
+            <td class="a-l"><img src="../images/icons/lock.png"> <span>authorized &nbsp;</span></td>
+            <td class="a-l"><img src="../images/icons/cake.png"> <span>birthday &nbsp;</span></td>
+            <td class="a-l"><span style="width:20px; border: dotted 2px black;">&nbsp;&nbsp;&nbsp;</span> <span>half day &nbsp;</span></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</p>
+
+<table class="monthmatrix" width="100%">
+  <tr>
+    <th>Employee</th>
+    <:a:days|looptemplate?module=main&name=monthmatrix.dayheader>
+  </tr>
+  <:v:employees>
+  <tr>
+    <th>&nbsp;</th>
+    <:a:days|looptemplate?module=main&name=monthmatrix.dayheader>
+  </tr>
+</table>

@@ -1,0 +1,37 @@
+<h1><:v:pagetitle></h1>
+
+<table class="form">
+  <tr>
+    <th>First Name</th>
+    <td><:v:strFirstName></td>
+  </tr>
+  <tr>
+    <th>Last Name</th>
+    <td><:v:strLastName></td>
+  </tr>
+  <tr>
+    <th>Nick</th>
+    <td><:v:strNick></td>
+  </tr>
+  <tr>
+    <th>Office</th>
+    <td><a href="?p=<:v:_module_>/office&office=<:v:lngWorkPlace>"><:v:OfficeName></a></td>
+  </tr>
+  <tr>
+    <th>Department</th>
+    <td><a href="?p=<:v:_module_>/department&id=<:v:team_id>"><:v:DepartmentName></a></td>
+  </tr>
+  <tr>
+    <th>Line Manager</th>
+    <td><a href="?p=<:v:_module_>/employee&id=<:v:line_manager>"><:v:LineManagerName></a></td>
+  </tr>
+  <tr>
+    <th>Deputy Staff</th>
+    <td><a href="?p=<:v:_module_>/employee&id=<:v:deputy_staff>"><:v:DeputyStaffName></a></td>
+  </tr>
+  <tr>
+    <th>Works since</th>
+    <td><:v:dateStartWork|dateformat?format=fulldate></td>
+  </tr>
+<:a:contacts|looptemplate?name=employee.view.contacts.listitem>
+</table>

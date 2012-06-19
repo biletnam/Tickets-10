@@ -1,0 +1,195 @@
+<h1><:v:pagetitle></h1>
+
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/process" />
+<input type="hidden" name="id" value="<:v:id>" />
+<input type="hidden" name="generator_id" value="<:v:generator_id>" />
+<table class="form">
+  <tr>
+    <th>Status</th>
+    <td><:v:status|lookupdict?module=&name=bookreq.status></td>
+    <td><:v:SafeStatus> (<:v:SafeStatus|lookupdict?module=&name=bookreq.status>)</td>
+  </tr>
+  <tr>
+    <th>Date Created</th>
+    <td><:v:DateCreated|dateformat?format=fulldate></td>
+  </tr>
+  <:_:generatorname|stopifempty:varname=generator_id|forwardtemplate?module=&name=view.generatorname>
+  <tr>
+    <th>Operator name</th>
+    <td><:v:sender_name></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <th>Operator e-mail</th>
+    <td><a href="mailto:<:v:sender_email>"><:v:sender_email></a></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="2" class="a-c b"><h2>Contract info</h2></td>
+  </tr>
+  <tr>
+    <th>Contract ID</th>
+    <td>
+      <input type="hidden" name="contract_id" value="<:v:contract_id>" />
+      <a href="#" class="contracttooltip" rel="?i=<:v:_module_>/contracttooltip&id=<:v:contract_id>" title="Contract #<:v:contract_id>"><img src="../images/icons/preview.png" border="0" height="16" width="16" /></a> <:v:contract_id>
+    </td>
+  </tr>
+  <tr>
+    <th>Client ID</th>
+    <td>
+      <input type="text" size="8" maxlength="12" name="clientid" value="<:v:client_id>" />
+      <a href="?p=clients/search&fname=<:v:fname1|urlencode>&lname=<:v:lname1|urlencode>" target="_blank">Look up</a>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="a-c b"><h2>First guest</h2></td>
+  </tr>
+  <tr>
+    <th>First name</th>
+    <td><input type="text" name="fname1" value="<:v:fname1>" /></td>
+  </tr>
+  <tr>
+    <th>Last name</th>
+    <td><input type="text" name="lname1" value="<:v:lname1>" /></td>
+  </tr>
+  <tr>
+    <th>Nationality</th>
+    <td><input type="hidden" name="nationality" value="<:v:nationality>" /><:v:nationality_name></td>
+  </tr>
+  <tr>
+    <th>Passport number</th>
+    <td><input type="text" name="passport1" value="<:v:passport1>" /></td>
+  </tr>
+  <tr>
+    <th>Birthdate</th>
+    <td><input type="hidden" name="dob1" value="<:v:dob1>" /><:v:dob1|dateformat?format=fulldate></td>
+  </tr>
+  <tr>
+    <th>Occupation</th>
+    <td><input type="text" name="occupation1" value="<:v:occupation1>" /></td>
+  </tr>
+  <tr>
+    <th>Home phone</th>
+    <td><input type="text" name="homephone" value="<:v:homephone>" /></td>
+  </tr>
+  <tr>
+    <th>Work phone</th>
+    <td><input type="text" name="workphone" value="<:v:workphone>" /></td>
+  </tr>
+  <tr>
+    <th>Mobile phone</th>
+    <td><input type="text" name="mobilephone" value="<:v:mobilephone>" /></td>
+  </tr>
+  <tr>
+    <th>Marital status</th>
+    <td><input type="hidden" name="rel1" value="<:v:ms1>" /><:v:ms1|lookupdict?module=&name=relationship></td>
+  </tr>
+  <tr>
+    <td colspan="2" class="a-c b"><h2>Second guest</h2></td>
+  </tr>
+  <tr>
+    <th>First name</th>
+    <td><input type="text" name="fname2" value="<:v:fname2>" /></td>
+  </tr>
+  <tr>
+    <th>Last name</th>
+    <td><input type="text" name="lname2" value="<:v:lname2>" /></td>
+  </tr>
+  <tr>
+    <th>Passport number</th>
+    <td><input type="text" name="passport2" value="<:v:passport2>" /></td>
+  </tr>
+  <tr>
+    <th>Birthdate</th>
+    <td><input type="hidden" name="dob2" value="<:v:dob2>" /><:v:dob2|dateformat?format=fulldate></td>
+  </tr>
+  <tr>
+    <th>Occupation</th>
+    <td><input type="text" name="occupation2" value="<:v:occupation2>" /></td>
+  </tr>
+  <tr>
+    <th>Contact phone</th>
+    <td><input type="text" name="contactphone" value="<:v:contactphone>" /></td>
+  </tr>
+  <tr>
+    <th>Marital status</th>
+    <td><input type="hidden" name="rel2" value="<:v:ms2>" /><:v:ms2|lookupdict?module=&name=relationship></td>
+  </tr>
+  <input type="hidden" name="morepeople" value="<:v:morepeople>" />
+  <:v:otherpeople>
+  <tr>
+    <td colspan="2" class="a-c b"><h2>Hotel information</h2></td>
+  </tr>
+  <tr>
+    <th>Hotel location</th>
+    <td><input type="hidden" name="location_id" value="<:v:hotel_location>" /><:v:location_name></td>
+  </tr>
+  <tr>
+    <th>Hotel name</th>
+    <td><input type="hidden" name="hotel_id" value="<:v:hotel>" /><:v:hotel_name></td>
+  </tr>
+  <tr>
+    <th>Hotel alternative</th>
+    <td><textarea name="hotel_alternative"><:v:hotel_alternative></textarea></td>
+  </tr>
+  <tr>
+    <th>Office</th>
+    <td><select name="office_id"><:a:offices|looptemplate?module=main&name=option></select></td>
+  </tr>
+  <tr>
+    <th>Apartment type</th>
+    <td><input type="hidden" name="type_name" value="<:v:type_name>" /><:v:type_name></td>
+  </tr>
+  <tr>
+    <th>Arrival, transfer</th>
+    <td>
+      <input type="hidden" name="arrdate" value="<:v:arrdate>" />
+      <input type="hidden" name="arrtransfer" value="<:v:arrtransfer>" />
+      <:v:arrdate|dateformat?format=fulldate>, 
+      <:v:arrtransfer|lookupdict?module=main&name=yesno>
+    </td>
+  </tr>
+  <tr>
+    <th>Departure, transfer</th>
+    <td>
+      <input type="hidden" name="depdate" value="<:v:depdate>" />
+      <input type="hidden" name="deptransfer" value="<:v:deptransfer>" />
+      <:v:depdate|dateformat?format=fulldate>, 
+      <:v:deptransfer|lookupdict?module=main&name=yesno>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="a-c b"><h2>Additional information</h2></td>
+  </tr>
+  <tr>
+    <th>Previous Club Country Visits</th>
+    <td><:v:clubcountryvisits></td>
+  </tr>
+  <tr>
+    <th>Previous Club Country Visits</th>
+    <td><:v:clubvacations></td>
+  </tr>
+  <tr>
+    <th>Family credit cards</th>
+    <td><:v:hasCC|lookupdict?module=main&name=yesno></td>
+  </tr>
+  <tr>
+    <th>Additional Comments</th>
+    <td><:v:comment></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Convert to booking"></td>
+  </tr>
+</table>
+</form>
+
+<script>
+$('a.contracttooltip').cluetip({
+  width: 720,
+  sticky: true,
+  closePosition: 'title',
+  mouseOutClose: true
+});
+</script>

@@ -6,8 +6,8 @@ if ($id > 0) {
   $paramInfo = $runtime->s2r($module, 'GetParameterData', $_REQUEST);
   if (count($paramInfo) > 0) {
     $report = $paramInfo['report'];
-    if (0 < srun($module, 'DeleteParameter', $_REQUEST)) {
-      set_cookie('flash', 'Parameter deleted');
+    if (0 < $runtime->db->sqlrun($module, 'DeleteParameter', $_REQUEST)) {
+      $_SESSION['flash'] = 'Parameter deleted');
     } else {
       set_cookie('error', 'Parameter not deleted');
     }

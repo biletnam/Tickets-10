@@ -49,12 +49,12 @@ if ($id == 0) {
   use objEmployee;
   $objEmployee = new objEmployee($r); 
   $employeeContacts = $objEmployee->get_employee_contacts(('id' => $id));
-  $output = $runtime->dotmod($controller, 'API.EmployeeContacts', array('contacts' => $employeeContacts));
+  $output = $runtime->$runtime->txt->do_template($controller, 'API.EmployeeContacts', array('contacts' => $employeeContacts));
 }
 
 # Return resulting XML API output - quite similar to all APIs
 print "content-type: $contenttype; charset=$charset;\n\n";
-print $runtime->dotmod($controller, 'API.Envelope', array(
+print $runtime->$runtime->txt->do_template($controller, 'API.Envelope', array(
   'result' => $result,
   'output' => $output,
   'warnings' => Arrays::a2xml($warnings, 'Warnings', 'Warning'),

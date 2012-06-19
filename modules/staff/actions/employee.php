@@ -108,8 +108,8 @@ if ($id <> '') {
       $tabEmployee->setDefaultTab(lavnn('tab') || 'personal');
       $personInfo['tabcontrol'] = $tabEmployee->getHTML();
       
-      $page['js'] = dotmod('main', 'tabcontrol.js');
-      $page['css'] = dotmod('main', 'tabcontrol.css');    
+      $page['js'] = $runtime->txt->do_template('main', 'tabcontrol.js');
+      $page['css'] = $runtime->txt->do_template('main', 'tabcontrol.css');    
       $page['js'] .= $runtime->txt->do_template($module, 'employeeteams.js');
 
       $page->add('title',  $personInfo['pagetitle'] = $runtime->txt->do_template($module, 'person.title.edit', $personInfo);
@@ -139,8 +139,8 @@ if ($id <> '') {
       $tabEmployee->setDefaultTab(lavnn('tab') || 'view');
       $personInfo['tabcontrol'] = $tabEmployee->getHTML();
       
-      $page['js'] = dotmod('main', 'tabcontrol.js');
-      $page['css'] = dotmod('main', 'tabcontrol.css');    
+      $page['js'] = $runtime->txt->do_template('main', 'tabcontrol.js');
+      $page['css'] = $runtime->txt->do_template('main', 'tabcontrol.css');    
       $page->add('title',  $personInfo['pagetitle'] = $runtime->txt->do_template($module, 'person.title.view', $personInfo);
       $page->add('main', $runtime->txt->do_template($module, 'employee.edit', $personInfo);
       $runtime->saveMoment('  main part of the page rendered');

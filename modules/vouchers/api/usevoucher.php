@@ -23,7 +23,7 @@ if ($serie <> '' && $client_id <> '') {
     $result = 'ERR'; 
     push @errors, $runtime->hash2ref( ('code' => 'UseVoucher.Failed', 'text' => 'Voucher could not be used. ' . $voucherInfo['error']) );
   } else {
-    $output = $runtime->dotmod($controller, 'api.UseVoucher', $voucherInfo);
+    $output = $runtime->$runtime->txt->do_template($controller, 'api.UseVoucher', $voucherInfo);
   }
 } else {
   $result = 'ERR'; 
@@ -32,7 +32,7 @@ if ($serie <> '' && $client_id <> '') {
 
 # Return resulting XML API output - quite similar to all APIs
 print "content-type: $contenttype; charset=$charset;\n\n";
-print $runtime->dotmod($controller, 'Envelope', array(
+print $runtime->$runtime->txt->do_template($controller, 'Envelope', array(
   'result' => $result,
   'output' => $output,
   'warnings' => Arrays::a2xml($warnings, 'Warnings', 'Warning'),

@@ -1,0 +1,11 @@
+<h2>New articles</h2>
+
+<p>Accordingly to your profile settings, this list contains articles updated during <b>last <:v:days> days</b>.</p>
+
+<table>
+  <:a:articles|looptemplate?name=home.article>
+</table>
+
+<script>
+$('#articles_cnt').html('<:a:articles|length>');
+</script>

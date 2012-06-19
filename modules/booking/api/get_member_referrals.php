@@ -59,12 +59,12 @@ if ($client_id == 0) {
   push @errors, $runtime->hash2ref( ('code' => 'GetMemberReferrals.MissingClientID', 'text' => 'Client id is not provided') );
 } else {
   $referrals = $runtime->s2a($controller, 'ListMemberReferrals', $apiparams);
-  $output = $runtime->dotmod($controller, 'API.GetMemberReferrals', array('referrals' => $referrals));
+  $output = $runtime->$runtime->txt->do_template($controller, 'API.GetMemberReferrals', array('referrals' => $referrals));
 }
 
 # Return resulting XML API output - quite similar to all APIs
 print "content-type: $contenttype; charset=$charset;\n\n";
-print $runtime->dotmod($controller, 'API.Envelope', array(
+print $runtime->$runtime->txt->do_template($controller, 'API.Envelope', array(
   'result' => $result,
   'output' => $output,
   'warnings' => Arrays::a2xml($warnings, 'Warnings', 'Warning'),

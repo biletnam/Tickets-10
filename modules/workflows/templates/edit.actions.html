@@ -1,0 +1,25 @@
+<form action="" method="post">
+<input type="hidden" name="f" value="<:v:_module_>/saveactions" />
+<input type="hidden" name="id" value="<:v:id>" />
+<table class="list">
+  <tr>
+    <th>#</th>
+    <th>Action name</th>
+    <th>Action type</th>
+    <th>&nbsp;</th>
+  </tr>
+<:a:actions|looptemplate?name=edit.actions.listitem>
+  <tr>
+    <td>[NEW]</td>
+    <td><input type="text" name="new_name" size="40" /></td>
+    <td>
+      <select name="new_type">
+        <option value="" />
+        <:v:param_type|dictselectoptions:module=&name=actiontypes>
+      </select>
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<input type="submit" value="Save Actions" />
+</form>

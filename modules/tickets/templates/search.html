@@ -1,0 +1,93 @@
+<h1><:v:pagetitle></h1>
+
+<form action="" id="frmSearchTickets">
+<input type="hidden" name="p" value="<:v:_module_>/search">
+<table class="form" width="100%">
+  <tr>
+    <th>#</th>
+    <td><input type="text" name="id" size="4" maxlength="6" value="<:v:id>" /></td>
+    <th>Text</th>
+    <td colspan="3"><input type="text" name="text" size="20" maxlength="20" value="<:v:text>" /> * Title, content and comments are searched</td>
+  </tr>
+  <tr>
+    <th>Creator</th>
+    <td><:v:creatorfilter></td>
+    <th>Reviewer</th>
+    <td><:v:reviewerfilter></td>
+    <th>Handler</th>
+    <td><:v:handlerfilter></td>
+  </tr>
+  <tr>
+    <td colspan="2">&nbsp;</td>
+    <th>Related ID</th>
+    <td><input type="text" name="related_id" size="8" maxlength="10" value="<:v:related_id>" /></td>
+    <th>Has attachments</th>
+    <td><select name="has_attachments"><option value="">Not important</option><:a:attachmentoptions|looptemplate?module=main&name=option></select></td>
+  </tr>
+  <tr>
+    <th>Status</th>
+    <td colspan="5">
+      <!--span id="selectAllStatuses"><input type="button" onclick="checkAllBoxes(this.form, 'statusoption', true); $('#selectAllStatuses').hide();" value="Select All" /></span-->
+      <:a:statuscheckboxes|looptemplate?module=main&name=checkbox.nonewline>
+    </td>
+  </tr>
+  <tr>
+    <th>Priority</th>
+    <td colspan="5">
+      <!--span id="selectAllPriorities"><input type="button" onclick="checkAllBoxes(this.form, 'priorityoption', true); $('#selectAllPriorities').hide();" value="Select All" /></span-->
+      <:a:prioritycheckboxes|looptemplate?module=main&name=checkbox.nonewline>
+    </td>
+  </tr>
+  <tr>
+    <th>Project</th>
+    <td colspan="2">
+      <select name="project">
+        <option value=""></option>
+        <:a:projectoptions|looptemplate?module=main&name=option>
+      </select>
+    </td>
+    <th>Created</th>
+    <td colspan="2">
+      between <input type="text" class="calendardate" title="Click to select date" id="created_from" name="created_from" size="10" maxlength="10"  value="<:v:created_from>" /> 
+      and <input type="text" class="calendardate" title="Click to select date" id="created_to" name="created_to" size="10" maxlength="10" value="<:v:created_to>" />
+    </td>
+  </tr>
+  <tr>
+    <th>Folder</th>
+    <td colspan="2">
+      <:v:folderfilter>
+    </td>
+    <th>Last activity</th>
+    <td colspan="2">
+      between <input type="text" class="calendardate" title="Click to select date" id="lastactivity_from" name="lastactivity_from" size="10" maxlength="10" value="<:v:lastactivity_from>" /> 
+      and <input type="text" class="calendardate" title="Click to select date" id="lastactivity_to" name="lastactivity_to" size="10" maxlength="10" value="<:v:lastactivity_to>" />
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td colspan="5">
+      <input type="submit" name="btnSearchTickets" id="btnSearchTickets" value="Search!" />
+    </td>
+  </tr>
+</table>
+</form>
+
+<div id="searchresults">
+<:v:results>
+</div>
+
+<script>
+$('#created_from').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+$('#created_to').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+$('#lastactivity_from').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+$('#lastactivity_to').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+</script>
+
+<script>
+$('a.tickettooltip').cluetip({
+  width: 720,
+  sticky: true,
+  closePosition: 'title',
+  mouseOutClose: true
+});
+</script>

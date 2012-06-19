@@ -1,0 +1,10 @@
+<div id="linkhotels_<:v:controlname>_links">
+</div>
+<div id="linkhotels_<:v:controlname>_results"></div>
+<div id="working_<:v:controlname>" style="display:none;">Working...</div>
+<div id="linkhotels_<:v:controlname>_form">
+</div>
+<script>
+  $('#linkhotels_<:v:controlname>_links').load('?i=<:v:_module_>/linkhotels_list&<:_:nocache|nocachetoken>&controlname=<:v:controlname>&src=<:v:src|urlencode>');
+  $('#linkhotels_<:v:controlname>_form').load('?i=<:v:_module_>/linkhotels_form&<:_:nocache|nocachetoken>&controlname=<:v:controlname>&src=<:v:src|urlencode>');
+</script>

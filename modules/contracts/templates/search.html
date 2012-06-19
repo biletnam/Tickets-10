@@ -1,0 +1,142 @@
+<h1><:v:pagetitle></h1>
+
+<form action="" id="frmSearchContracts" method="get">
+<input type="hidden" name="p" value="<:v:_module_>/search">
+<table class="form">
+  <tr>
+    <th>Client #</th>
+    <td><input type="text" name="client_id" size="10" maxlength="10" value="<:v:client_id>" /></td>
+    <th>First name</th>
+    <td><input type="text" name="first_name" size="20" maxlength="20" value="<:v:first_name>" /></td>
+    <th>Last name</th>
+    <td><input type="text" name="last_name" size="20" maxlength="20" value="<:v:last_name>" /></td>
+  </tr>
+  <tr>
+    <th>Contract #</th>
+    <td><input type="text" name="contract_no" size="10" maxlength="10" value="<:v:contract_no>" /></td>
+    <th>Contract status</th>
+    <td>
+      <select name="status">
+        <option value="" />
+        <:a:contractstatuses|looptemplate?module=main&name=option>
+      </select>
+    </td>
+    <th>Type of contract</th>
+    <td colspan="3">
+      <select name="type_of_contract">
+        <option value="" />
+        <:a:contracttypes|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th>Date</th>
+    <td>
+      <select name="datetype">
+        <:a:datetypeoptions|looptemplate?module=main&name=option>
+      </select>
+    </td>
+    <th>Date From</th>
+    <td><input type="text" name="datefrom" id="datefrom" size="10" maxlength="10" value="<:v:datefrom>" class="calendardate"  /></td>
+    <th>Date To</th>
+    <td><input type="text" name="dateto" id="dateto" size="10" maxlength="10" value="<:v:dateto>" class="calendardate"  /></td>
+  </tr>
+  <tr>
+    <th>Comments</th>
+    <td>
+      Follow-up
+    </td>
+    <th>Comment Date From</th>
+    <td><input type="text" name="commentdatefrom" id="commentdatefrom" size="10" maxlength="10" value="<:v:commentdatefrom>" class="calendardate"  /></td>
+    <th>Comment Date To</th>
+    <td><input type="text" name="commentdateto" id="commentdateto" size="10" maxlength="10" value="<:v:commentdateto>" class="calendardate"  /></td>
+  </tr>
+  <tr>
+    <th>Office</th>
+    <td>
+      <select name="office">
+        <option value="" />
+        <:a:officeoptions|looptemplate?module=main&name=option>
+      </select>
+    </td>
+    <th>Booking linked?</th>
+    <td>
+      <select name="has_booking_id">
+        <option value=""></option>
+        <:a:hasbookingoptions|looptemplate?module=main&name=option>
+      </select>
+    </td>
+    <th>Merlin booking linked?</th>
+    <td>
+      <select name="has_merlin_id">
+        <option value=""></option>
+        <:a:hasmerlinoptions|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th>Exclude contract source</th>
+    <td>
+      <select name="exclude_contract_source">
+        <option value="" />
+        <:a:excludesources|looptemplate?module=main&name=option>
+      </select>
+    </td>
+    <th>Currency</th>
+    <td>
+      <select name="ccy">
+        <option value=""></option>
+        <:a:currencyoptions|looptemplate?module=main&name=option>
+      </select>
+    </td>
+    <th>Cold line?</th>
+    <td>
+      <select name="is_coldline">
+        <option value=""></option>
+        <:a:coldlineoptions|looptemplate?module=main&name=option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th>Resort code</th>
+    <td colspan="3">
+      <select name="resort_code">
+        <option value="" />
+        <:a:resortcodes|looptemplate?module=main&name=option>
+      </select>
+    </td>
+    <th>Min debt *</th>
+    <td><input type="text" name="debtyears" size="2" maxlength="2" value="<:v:debtyears>" /></td>
+  </tr>
+  <tr>
+    <th>Has gift</th>
+    <td colspan="3">
+      <select name="gift_code">
+        <option value=""></option>
+        <:a:giftcodeoptions|looptemplate?module=main&name=option>
+      </select>
+    </td>
+    <th>FU Comment</th>
+    <td><input type="text" name="fucomment" size="20" maxlength="20" value="<:v:fucomment>" /></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td colspan="5">
+      <input type="submit" id="btnSearchContracts" name="btnSearchContracts" value="Search!" />
+    </td>
+  </tr>
+</table>
+</form>
+
+<p>* Number of years since 2005 when Maintance Fee was not fully paid (50 EUR are tolerated).</p>
+
+<div id="searchresults">
+<:v:results>
+</div>
+
+<script>
+$('#datefrom').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+$('#dateto').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+$('#commentdatefrom').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+$('#commentdateto').datepick({dateFormat: 'dd.mm.yyyy', firstDay: 1});
+</script>

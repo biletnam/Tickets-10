@@ -6,7 +6,7 @@ if ($id > 0) {
   $pollInfo = $objP->get_info(%_REQUEST);
   $id = $objP->hide(%_REQUEST);
   if ($id > 0) {
-    set_cookie('flash', "Poll '".$pollInfo['title']."' is now hidden");
+    $_SESSION['flash'] = "Poll '".$pollInfo['title']."' is now hidden");
   }
 }
 

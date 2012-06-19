@@ -13,7 +13,7 @@ if (lavnn('name') == '' ) {
     # INSERT
     $id = $objVouchers->create_owner(%_REQUEST);
     if ($id > 0) {
-      set_cookie('flash', 'New voucher owner is registered');
+      $_SESSION['flash'] = 'New voucher owner is registered');
     } else {
       set_cookie('error', 'Voucher owner could not be added');
     }

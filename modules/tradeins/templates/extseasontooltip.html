@@ -1,0 +1,28 @@
+<form action="">
+<input type="hidden" name="f" value="<:v:_module_>/saveextseason" />
+<input type="hidden" name="id" value="<:v:id>" />
+<table class="form" width="100%">
+  <tr>
+    <th>Resort</th>
+    <td>
+      <select name="resort"><option value=""></option><:a:resortoptions|looptemplate?module=main&name=option></select> 
+    </td>
+  </tr>
+  <tr>
+    <th>Name</th>
+    <td>
+      <input type="text" name="name" size="50" maxlength="50" value="<:v:name>" />
+    </td>
+  </tr>
+  <tr>
+    <th>Comments</th>
+    <td>
+      <textarea name="comments" cols="30" rows="4"><:v:comments></textarea>
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" value="Save external resort season" /></td>
+  </tr>
+</table>
+</form>

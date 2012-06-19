@@ -1,0 +1,14 @@
+  <tr class="mod2_<:_mod2_>">
+    <td><input type="checkbox" name="id_<:v:id>"></td>
+    <td><a href="?p=profiles/employee&id=<:v:Author>" title="Click to jump to employee's page"><:v:AuthorName></a></td>
+    <td>
+      <:v:DateUpdated|dateformat?format=shortdate>
+      by <a href="?p=profiles/employee&id=<:v:LastEditor>" title="Click to jump to employee's page"><:v:LastEditorName></a>
+    </td>
+    <td><a href="?p=<:v:_module_>/edit&id=<:v:id>" title="Click to edit article"><:v:SafeTitle></a></td>
+    <td><:v:Type|lookupdict?module=main&name=articletypes></td>
+    <td><:v:BlockName></td>
+    <td>
+      <:_:attachment|stopifempty:varname=cnt_attachments|forwardtemplate?module=&name=myarticles.listitem.attachment>
+    </td>
+  </tr>

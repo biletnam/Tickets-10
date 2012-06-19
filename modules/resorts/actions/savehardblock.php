@@ -9,7 +9,7 @@ if ($local_type == 0) {
   $localtypeInfo = $runtime->s2r($module, 'GetLocalTypeInfo', array('id' => $local_type));
   $_REQUEST['apt_type_id'] = $localtypeInfo['apt_type_id'];
   if ($id > 0 && $hotel > 0) {
-    srun($module, 'UpdateHardBlock', $_REQUEST);
+    $runtime->db->sqlrun($module, 'UpdateHardBlock', $_REQUEST);
   } else {
     $id = sid($module, 'InsertHardBlock', $_REQUEST);
   }

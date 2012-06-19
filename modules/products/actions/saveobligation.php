@@ -7,7 +7,7 @@ if ($product_id > 0) {
   $productInfo = $runtime->s2r($module, 'GetProductData', array('id' => $product_id)); 
   $_REQUEST['product_name'] = $productInfo['product_name'];
   if ($id > 0) { #update
-    srun($module, 'UpdateProductObligation', $_REQUEST);
+    $runtime->db->sqlrun($module, 'UpdateProductObligation', $_REQUEST);
   } else { #insert
     $_REQUEST['product_id'] = $product_id;
     $id = sid($module, 'InsertProductObligation', $_REQUEST);  

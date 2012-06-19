@@ -58,7 +58,7 @@ if ($id == 0) {
     $page->add('title',  $tableInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.anytable.edit', $tableInfo);
     $page->add('main', $runtime->txt->do_template($module, 'anytable', $tableInfo);
   }
-  print dotmod('main', 'index.wide', $page);
+  print $runtime->txt->do_template('main', 'index.wide', $page);
 }
 
 1;

@@ -22,8 +22,8 @@ if ($hotel <> '') {
 }
 if ($id <> '') {
   # Create a tab control for hard block
-  $page['js'] = dotmod('main', 'tabcontrol.js');
-  $page['css'] = dotmod('main', 'tabcontrol.css');
+  $page['js'] = $runtime->txt->do_template('main', 'tabcontrol.js');
+  $page['css'] = $runtime->txt->do_template('main', 'tabcontrol.css');
   $tabHardBlockView = new ctlTab($r, "tcHardBlockView");
 
   $tabHardBlockView->addTab('edit', dot('hardblock.edit.tabheader'), dot('hardblock.edit', $pageParams));

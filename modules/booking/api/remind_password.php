@@ -45,7 +45,7 @@ if ($apiparams['email'] == '' && $apiparams['contract_id'] == '') {
 } else {
   $loginInformation = $runtime->s2a($controller, 'MatchLoginCredentials', $apiparams);
   if (count($loginInformation) > 0) {
-    $output = $runtime->dotmod($controller, 'API.RemindPassword', array('credentials' => $loginInformation));
+    $output = $runtime->$runtime->txt->do_template($controller, 'API.RemindPassword', array('credentials' => $loginInformation));
   } else {
     $result = 'ERR'; 
     push @errors, $runtime->hash2ref( ('code' => 'RemindPassword.NothingFound', 'text' => 'Failed to find login information using data provided') );
@@ -54,7 +54,7 @@ if ($apiparams['email'] == '' && $apiparams['contract_id'] == '') {
 
 # Return resulting XML API output - quite similar to all APIs
 print "content-type: $contenttype; charset=$charset;\n\n";
-print $runtime->dotmod($controller, 'API.Envelope', array(
+print $runtime->$runtime->txt->do_template($controller, 'API.Envelope', array(
   'result' => $result,
   'output' => $output,
   'warnings' => Arrays::a2xml($warnings, 'Warnings', 'Warning'),

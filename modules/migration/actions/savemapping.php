@@ -18,9 +18,9 @@ foreach $id_field_value (@ids) {
       'id_field_name' => lavnn('id_field_name')
     );
     if ($id <> '' && $merlinvalue <> '') { #update mapping
-      srun($module, 'UpdateMapping', $sqlParams);
+      $runtime->db->sqlrun($module, 'UpdateMapping', $sqlParams);
     } else { # insert mapping
-      srun($module, 'InsertMapping', $sqlParams);
+      $runtime->db->sqlrun($module, 'InsertMapping', $sqlParams);
     }
   }
 }

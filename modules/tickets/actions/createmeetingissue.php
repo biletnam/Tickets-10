@@ -17,7 +17,7 @@ if ($id > 0) {
 
   $newid = $objT->create_ticket(%sqlParams);
   if ($newid > 0) {
-    $runtime->set_cookie('flash', 'Issue is saved');
+    $runtime->$_SESSION['flash'] = 'Issue is saved');
     $notified = lavnn('notified');
     foreach $np (@notified) {
       $objT->add_notification_recipient($newid, array('staff_id' => $np));
