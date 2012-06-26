@@ -9,13 +9,13 @@ $editor = $r['userID'] || 0;
 if ($article > 0) {
   $fileid = $fu->uploadfile("attachment", $_REQUEST, 0); 
   if ($fileid > 0) {
-    $id = sid($module, 'AddAttachment', array('article' => $article, 'fileid' => $fileid, 'editor' => $editor)); 
+    $id = $runtime->sid($module, 'AddAttachment', array('article' => $article, 'fileid' => $fileid, 'editor' => $editor)); 
     if ($id > 0) {
       $_SESSION['flash'] = 'Attachment added');
       # Also, set metada if provided
       if (dot('addattachment.conditions', $_REQUEST) <> '') {
         $_REQUEST['id'] = $id;
-        $fu->save_metadata(%_REQUEST);
+        $fu->save_metadata($_REQUEST);
       }
 
       $articleInfo = $objA->get_article(('id' => $article));
@@ -23,10 +23,10 @@ if ($article > 0) {
       # TODO Distribute notification about new attachment?
 
     } else {
-      set_cookie('error', "Could not add attachment $fileid");
+      $_SESSION['error'] = "Could not add attachment $fileid");
     }
   } else {
-    set_cookie('error', 'Could not upload file');
+    $_SESSION['error'] = 'Could not upload file');
   }
 }
 if ($article > 0) {

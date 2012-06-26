@@ -8,10 +8,10 @@ if ($id <> '') {
     $_SESSION['flash'] = 'Person excluded from notification list');
     go("?p=tickets/viewticket&id=$ticket_id&tab=notified");
   } else {
-    set_cookie('error', 'Invalid notification requested');
+    $_SESSION['error'] = 'Invalid notification requested');
   }
 } else {
-  set_cookie('error', 'Please specify a person to exclude from notification list');
+  $_SESSION['error'] = 'Please specify a person to exclude from notification list');
 }
     
 go('?p=tickets/mytickets');

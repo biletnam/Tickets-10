@@ -6,7 +6,7 @@ if ($id > 0) {
   if ($result > 0) {
     $_SESSION['flash'] = 'Contact type deleted');
   } else {
-    set_cookie('error', 'Contact type could not be deleted');
+    $_SESSION['error'] = 'Contact type could not be deleted');
   }
 }
 

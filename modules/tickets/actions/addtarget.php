@@ -14,10 +14,10 @@ if ($ticket > 0) {
     if ($result > 0) {
       $_SESSION['flash'] = 'New target linked to the ticket');
     } else {
-      set_cookie('error', 'Could not link a new target');
+      $_SESSION['error'] = 'Could not link a new target');
     }
   } else {
-    set_cookie('error', 'Could not link a new target');
+    $_SESSION['error'] = 'Could not link a new target');
   }
   go("?p=$module/viewticket&id=$ticket");
 } else {

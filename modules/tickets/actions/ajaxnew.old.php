@@ -31,6 +31,6 @@ if ($project <> '') {
 $priorityoptions = $runtime->getSortedDictArr($module, 'priority', 0);
 $ticketInfo['priorities'] = $priorityoptions;
 
-print dot('new', $ticketInfo);
+print $runtime->txt->do_template($module, 'new', $ticketInfo);
 
 ?>

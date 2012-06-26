@@ -1,6 +1,6 @@
 <?php
 
-$searchInfo = %_REQUEST;
+$searchInfo = $_REQUEST;
 
 $resortcodes = $runtime->s2a($module, 'ListResorts'); 
 $searchInfo['resortcodes'] = arr2ref(genOptions($resortcodes, 'Resort_Code', 'Resort_Name', $_REQUEST['resort_code']));
@@ -28,9 +28,9 @@ $resultsHtml = '';
 
   use ctlDataGrid;
   
-  $basequery = spreview($module, 'SearchContracts', $_REQUEST); print "<!-- $basequery -->";
+  $basequery = $runtime->spreview($module, 'SearchContracts', $_REQUEST); print "<!-- $basequery -->";
   $grid1 = new ctlDataGrid($r, 'contracts', $basequery, $module);
-  $descriptor = $runtime->rf($module, 'sql/SearchContracts.columns.txt');
+  $descriptor = $runtime->txt->get_module_file($module, 'sql/SearchContracts.columns.txt');
   $columns = $grid1->parse_columns_descriptor($descriptor);
   $grid1->set_columns(@columns);
   $grid1->set_pager(50);

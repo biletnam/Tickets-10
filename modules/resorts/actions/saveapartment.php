@@ -15,7 +15,7 @@ if ($id > 0) {
     $cnt = 0;
     foreach $name (split('\n', $names)) {
       $hash = array('hotel' => $hotel, 'apartment_type' => $apttype, 'name' => $name);
-      $id = sid($module, 'InsertHotelApartment', $hash);
+      $id = $runtime->sid($module, 'InsertHotelApartment', $hash);
       $cnt++ if ($id > 0);
     }    
     $_SESSION['flash'] = dot('flash.apartments.added', array('cnt' => $cnt))) if $cnt > 0;

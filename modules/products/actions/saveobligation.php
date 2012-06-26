@@ -10,11 +10,11 @@ if ($product_id > 0) {
     $runtime->db->sqlrun($module, 'UpdateProductObligation', $_REQUEST);
   } else { #insert
     $_REQUEST['product_id'] = $product_id;
-    $id = sid($module, 'InsertProductObligation', $_REQUEST);  
+    $id = $runtime->sid($module, 'InsertProductObligation', $_REQUEST);  
   }
   go("?p=$module/view&id=$product_id&tab=obligations");
 } else {
-  $runtime->set_cookie('error', 'No product chosen');
+  $runtime->$_SESSION['error'] = 'No product chosen');
   go("?p=$module/list")
 }
 

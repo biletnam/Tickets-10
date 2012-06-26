@@ -7,10 +7,10 @@ if ($id > 0) {
     $_SESSION['flash'] = 'Form submitted!') if ($objA->submit_empform(('id' => $id)) > 0);
     go("?p=$module/view&id=$id");
   } else {
-    set_cookie('error', 'Article not found!');
+    $_SESSION['error'] = 'Article not found!');
   }
 } else {
-  set_cookie('error', 'Malformed request!');
+  $_SESSION['error'] = 'Malformed request!');
 }
 go("$module/home");
 

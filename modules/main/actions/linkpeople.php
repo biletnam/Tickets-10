@@ -4,7 +4,7 @@ $source = lavnn('src');
 $controlname = lavnn('controlname');
 if ($source <> '' && $controlname <> '') {
   $pageParams = array('src' => $source, 'controlname' => $controlname);
-  print dot('linkpeople', $pageParams);
+  print $runtime->txt->do_template($module, 'linkpeople', $pageParams);
 }
 
 1;

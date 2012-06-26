@@ -10,7 +10,7 @@ if ($id > 0) {
   # Also add new inputs if both name and type are provided\
   if (lavnn('new_type') <> '' && lavnn('new_name') <> '') {
     $params = array('workflow' => $id, 'action_type' => lavnn('new_type'), 'action_name' => lavnn('new_name'));
-    $input = sid($module, 'InsertAction', $params);
+    $input = $runtime->sid($module, 'InsertAction', $params);
   }
   
   go("?p=$module/edit&id=$id&tab=actions");

@@ -7,7 +7,7 @@ if ($id > 0) {
   $runtime->db->sqlrun($module, 'AddMeetingTickets', array('tickets' => $tickets, 'id' => $id)) if $tickets <> '';
   go("?p=$module/viewmeeting&id=$id&tab=issues");
 } else {
-  $runtime->set_cookie('error', 'Could not create meeting!');
+  $runtime->$_SESSION['error'] = 'Could not create meeting!');
   go("?p=$module/newmeeting");
 }
 

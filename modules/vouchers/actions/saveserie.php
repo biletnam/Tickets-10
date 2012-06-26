@@ -6,10 +6,10 @@ $id = lavnn('id');
 if ($id <> '') {
 
   if (lavnn('name') == '' || lavnn('code') == '' ) {
-    set_cookie('error', 'Please provide value for name and code');
+    $_SESSION['error'] = 'Please provide value for name and code');
     go("?p=$module/serie&tab=edit&id=$id");
   } else {
-    $objVouchers->save_serie(%_REQUEST); 
+    $objVouchers->save_serie($_REQUEST); 
     # TODO: add tags if they were provided!
     $tags = lavnn('tags', $_REQUEST, '');
     if ($tags <> '') {

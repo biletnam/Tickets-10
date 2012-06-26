@@ -5,11 +5,11 @@ if ($book_id <> '') {
   if ($id <> '') {
     $runtime->db->sqlrun($module, 'UpdateBookingGuest', $_REQUEST);
   } else {
-    $id = sid($module, 'InsertBookingGuest', $_REQUEST);
+    $id = $runtime->sid($module, 'InsertBookingGuest', $_REQUEST);
   }
   go("?p=$module/view&id=$book_id&tab=people");
 } else {
-  set_cookie('error', 'Unknown or corrupted booking');
+  $_SESSION['error'] = 'Unknown or corrupted booking');
   go("?p=$module/search");
 }
 

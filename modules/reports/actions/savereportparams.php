@@ -21,7 +21,7 @@ if ($report > 0) {
   $newdescription = lavnn('description_new', $_REQUEST, '');
   $newmandatory = lavnn('mandatory_new', $_REQUEST, '');
   if ($newname <> '' && $newprompt <> '' && $newtype <> '') {
-    $newid = sid($module, 'InsertParameter', array(
+    $newid = $runtime->sid($module, 'InsertParameter', array(
       'report' => $report,
       'name' => $newname, 
       'prompt' => $newprompt,

@@ -1,6 +1,6 @@
 <?php
 $_REQUEST['creator'] = $r['userID'];
-$id = sid($module, 'CreateMeeting', $_REQUEST);
+$id = $runtime->sid($module, 'CreateMeeting', $_REQUEST);
 if ($id > 0) {
   $originalmeeting = lavnn('originalmeeting');
   if ($originalmeeting <> '') { # clone
@@ -14,7 +14,7 @@ if ($id > 0) {
   }
   go("?p=$module/viewmeeting&id=$id&tab=participants");
 } else {
-  $runtime->set_cookie('error', 'Could not create meeting!');
+  $runtime->$_SESSION['error'] = 'Could not create meeting!');
   go("?p=$module/newmeeting");
 }
 

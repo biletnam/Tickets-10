@@ -55,9 +55,9 @@ if ($id <> '') {
     }
     # Get history of pageviews
     use ctlDataGrid;
-    $basequery = spreview('main', 'GetPageviewStats', array('entity_type' => 'viewarticle', 'entity_id' => $id)); 
+    $basequery = $runtime->spreview('main', 'GetPageviewStats', array('entity_type' => 'viewarticle', 'entity_id' => $id)); 
     $gridArticlePageviews = new ctlDataGrid($r, 'pageviews', $basequery, $module);
-    $descriptor = $runtime->rf('main', 'sql/GetPageviewStats.columns.txt');
+    $descriptor = $runtime->txt->get_module_file('main', 'sql/GetPageviewStats.columns.txt');
     $columns = $gridArticlePageviews->parse_columns_descriptor($descriptor);
     $gridArticlePageviews->set_columns(@columns);
     $gridArticlePageviews->set_width('100%');

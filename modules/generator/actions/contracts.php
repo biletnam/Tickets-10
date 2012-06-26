@@ -48,7 +48,7 @@ if ($gen_user_id > 0) {
       $cc = $contracts_by_generator{$generator_id]; 
       push @genhtml, prepare_generator_contracts($cc, $pageParams);
     }
-    $pageParams['contractlist'] = join('', @genhtml);
+    $pageParams['contractlist'] = join('', $genhtml);
   } else {
     $pageParams['generatorselection'] = $runtime->txt->do_template($module, 'generator.name', ${$generators[0]});
     $pageParams['contractlist'] = prepare_generator_contracts($contracts);
@@ -93,7 +93,7 @@ function prepare_generator_contracts {
       push @rows, dot('contracts.listitem.abnormal', $c);
     }
   }
-  $firstentry['contracts'] = join('', @rows);
+  $firstentry['contracts'] = join('', $rows);
   $firstentry['length'] = count($rows);
   $html .= $runtime->txt->do_template($module, 'contracts.list', $firstentry);
 }

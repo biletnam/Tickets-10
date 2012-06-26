@@ -16,7 +16,7 @@ if ($id <> '') {
   checkDates($errors, @teams);
   $personInfo['problems'] = $runtime->txt->do_template($module, 'employeeteams.problems', array('errors' => $errors)) if (count($errors) > 0); 
   
-  print dot('employeeteams', $personInfo);
+  print $runtime->txt->do_template($module, 'employeeteams', $personInfo);
 }
 
 function checkDates {

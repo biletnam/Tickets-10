@@ -7,11 +7,11 @@ if ($ticket_id <> '') {
     $_SESSION['flash'] = 'Person added to notification list');
   } else {
     $error_description = $result['error_description'];
-    set_cookie('error', "Could not add person to notification list ($error_description)");
+    $_SESSION['error'] = "Could not add person to notification list ($error_description)");
   }
   go("?p=tickets/viewticket&id=$ticket_id&tab=notified");
 } else {
-  set_cookie('error', 'Please specify correct ticket for editing its notification list!');
+  $_SESSION['error'] = 'Please specify correct ticket for editing its notification list!');
 }
 
 go('?p=tickets/mytickets');

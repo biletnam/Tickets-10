@@ -12,7 +12,7 @@ $editor = $r['userID'] || 0;
 if ($etype <> '' && $eid <> 0) {
   $fileid = $fu->uploadfile("attachment");
   if ($fileid > 0) {
-    $id = sid($module, 'AddAttachment', array(
+    $id = $runtime->sid($module, 'AddAttachment', array(
       'etype' => $etype,
       'eid' => $eid, 
       'fileid' => $fileid, 
@@ -23,7 +23,7 @@ if ($etype <> '' && $eid <> 0) {
       # Also, set metada if provided
       if (dot('addattachment.conditions', $_REQUEST) <> '') {
         $_REQUEST['id'] = $id;
-        $fu->save_metadata(%_REQUEST);
+        $fu->save_metadata($_REQUEST);
       }
       # send automatic notification to subscribers
       $objE->notify_new_attachment((
@@ -39,10 +39,10 @@ if ($etype <> '' && $eid <> 0) {
       ));
       go($url);
     } else {
-      set_cookie('error', "Could not add attachment $fileid");
+      $_SESSION['error'] = "Could not add attachment $fileid");
     }
   } else {
-    set_cookie('error', 'Could not upload file');
+    $_SESSION['error'] = 'Could not upload file');
   }
 }
 

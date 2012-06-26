@@ -17,7 +17,7 @@ if ($type == 'number') {
 #  $paramInfo['input'] = $runtime->txt->do_template($module, 'describeparameter.input.string', $paramInfo);
 } elseif ($type == 'dblookup') {
   $paramInfo['input'] = $runtime->txt->do_template($module, 'describeparameter.input.dblookup', $paramInfo);
-  print dot('describeparameter', $paramInfo);
+  print $runtime->txt->do_template($module, 'describeparameter', $paramInfo);
 } elseif ($type == 'employee') {
 #  $paramInfo['input'] = $runtime->txt->do_template($module, 'describeparameter.input.employee', $paramInfo);
 }

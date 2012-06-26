@@ -9,11 +9,11 @@ if ($ticket_id <> '' && $comment <> '') {
     $_SESSION['flash'] = 'Comment added');
     go("?p=tickets/viewticket&id=$ticket_id");  
   } else {
-    set_cookie('error', 'Could not add comment');
+    $_SESSION['error'] = 'Could not add comment');
     go('?p=tickets/mytickets');
   }
 } else {
-  set_cookie('error', 'Malformed request, showing list of tickets instead');
+  $_SESSION['error'] = 'Malformed request, showing list of tickets instead');
   go('?p=tickets/mytickets');
 }
 

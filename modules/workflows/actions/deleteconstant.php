@@ -7,11 +7,11 @@ if ($id > 0) {
     if ($runtime->db->sqlrun($module, 'DeleteConstant', $_REQUEST) > 0) {
       $_SESSION['flash'] = 'Constant deleted');    
     } else {
-      set_cookie('error', 'Could not delete constant');    
+      $_SESSION['error'] = 'Could not delete constant');    
     }
     go("?p=$module/edit&id=$workflow&tab=constants");
   } else {
-    set_cookie('error', 'Could not find constant to delete');
+    $_SESSION['error'] = 'Could not find constant to delete');
   }
 }
 go("?p=$module/list");

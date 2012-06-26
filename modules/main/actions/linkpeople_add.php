@@ -14,14 +14,14 @@ if ($type == 'office') {
   $sqlParams['link_type'] = 3;
 }
 if ($sqlParams['link_type'] <> '') {
-  $newid = sid($module, 'AddPersonLink', $sqlParams);
+  $newid = $runtime->sid($module, 'AddPersonLink', $sqlParams);
   if ($newid > 0) {
     $_REQUEST['flash'] = $runtime->txt->do_template($module, 'ajaxmessage.flash', array('controlname' => $controlname, 'text' => 'Successfully added'));
   } else {
     $_REQUEST['error'] = $runtime->txt->do_template($module, 'ajaxmessage.error', array('controlname' => $controlname, 'text' => 'Adding failed'));
   }
 }
-print dot('linkpeople.add', $_REQUEST);
+print $runtime->txt->do_template($module, 'linkpeople.add', $_REQUEST);
 
 1;
 

@@ -20,7 +20,7 @@ if ($id <> '') {
     }
     $runtime->saveMoment('  access checked with result: '.$access);
     if ($access == 'none') {
-      set_cookie('error', 'You have no permissions to access article "' . $articleInfo['Title'] . '"');
+      $_SESSION['error'] = 'You have no permissions to access article "' . $articleInfo['Title'] . '"');
       # fall through to default redirect
     } elseif ($access == 'read') {
       go("?p=$module/view&id=$id");

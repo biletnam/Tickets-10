@@ -4,9 +4,9 @@ $poll = lavnn('id');
 if ($poll > 0) {
   $pollInfo = $runtime->s2r($module, 'GetPollDetails', array('id' => $poll, 'user_type' => 'U', 'user_id' => $r['userID']));
   if (count($pollInfo) == 0) {
-    set_cookie('error', 'Poll not found');
+    $_SESSION['error'] = 'Poll not found');
   } elseif ($pollInfo['can_change'] <> 1 && $pollInfo['DateTaken'] <> '') {
-    set_cookie('error', 'You can not answer twice to the same poll!');
+    $_SESSION['error'] = 'You can not answer twice to the same poll!');
   } else {
     if ($pollInfo['DateTaken'] <> '') {
       $runtime->db->sqlrun($module, 'UpdatePollDateTaken', array('poll' => $poll, 'user_type' => 'U', 'user_id' => $r['userID']));

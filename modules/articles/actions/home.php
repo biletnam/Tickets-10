@@ -1,6 +1,6 @@
 <?php
 
-$pageParams = %_REQUEST;
+$pageParams = $_REQUEST;
 
 # Make sure that we understand what tag was requested
 $fulltag = lavnn('tag') || ':';
@@ -54,7 +54,7 @@ $sortedblocks = array();
 foreach $key (sort keys %blocks) {
   push @sortedblocks, $blocks{$key};
 }
-$pageParams['blocks'] = join('', @sortedblocks);
+$pageParams['blocks'] = join('', $sortedblocks);
 
 # Render page from all calculated parts
 $page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.home');

@@ -16,6 +16,6 @@ $sqlParams = array(
 $articles = $objA->search_articles(%sqlParams);
 $pageParams = array('days' => $dashboard_articleage);
 $pageParams['articles'] = $articles;
-print dot('dashboard', $pageParams);
+print $runtime->txt->do_template($module, 'dashboard', $pageParams);
 
 ?>

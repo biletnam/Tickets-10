@@ -13,7 +13,7 @@ if ($type == 'runreport') {
 } else {
   print 'not supported yet';
 }
-print dot('ajaxpageentity', $_REQUEST);
+print $runtime->txt->do_template($module, 'ajaxpageentity', $_REQUEST);
 
 
 ?>

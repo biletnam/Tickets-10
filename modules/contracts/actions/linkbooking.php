@@ -9,7 +9,7 @@ if ($booking <> '' && $contract <> '') {
     delete_cookie('booking_search_source_type');
     delete_cookie('booking_search_source_id');
   } else {
-    set_cookie('error', 'Booking not (re)linked ');
+    $_SESSION['error'] = 'Booking not (re)linked ');
   }
 }
 

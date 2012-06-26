@@ -10,9 +10,9 @@ if (count($eventInfo) > 0) {
     %dateTypeInfo = $runtime->s2r($module, 'GetAbsenceTypeInfo', array('code' => $eventInfo['day_type']));
     $alert = $runtime->txt->do_template($module, 'alert.typenotchanged');
   }
-  print dot('daytype', $dateTypeInfo) . $alert;
+  print $runtime->txt->do_template($module, 'daytype', $dateTypeInfo) . $alert;
 } else {
-  print dot('alert.typenotchanged');
+  print $runtime->txt->do_template($module, 'alert.typenotchanged');
 }
 
 1;

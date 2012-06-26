@@ -24,7 +24,7 @@ foreach $eD (reverse sort keys %nn) {
   }
   push @notifications, dot('notifications.list', $nhash);
 }
-$pageParams['notifications'] = join('', @notifications);
+$pageParams['notifications'] = join('', $notifications);
 $pageParams['notifications_cnt'] = $notification_cnt;
 $pageParams['didyouknow'] = $runtime->txt->do_template($module, 'notifications.didyouknow') if $notification_cnt > 1;
 $runtime->saveMoment(' processed retrieved list of notifications');

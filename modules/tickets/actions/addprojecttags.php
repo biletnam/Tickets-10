@@ -7,7 +7,7 @@ if ($id > 0) {
     $success = 0;
     foreach $fulltag (@tags) {
       ($prefix, $tag) = split(':', $fulltag);
-      $newid = sid($module, 'AddProjectTag', array('project' => $id, 'fulltag' => $fulltag, 'prefix' => $prefix, 'tag' => $tag));
+      $newid = $runtime->sid($module, 'AddProjectTag', array('project' => $id, 'fulltag' => $fulltag, 'prefix' => $prefix, 'tag' => $tag));
       $success += ($newid > 0);
     }
     $_SESSION['flash'] = "Added $success new tags to project") if $success > 0;

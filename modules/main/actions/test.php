@@ -1,5 +1,6 @@
 <?php
-$page->add('title',  'Test';
-print dot('index', $page);
+
+$page->add('title',  'Test');
+print $runtime->txt->do_template($module, 'index', $page);
 
 ?>

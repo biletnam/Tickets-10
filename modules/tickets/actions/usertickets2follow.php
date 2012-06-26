@@ -32,9 +32,9 @@ if (count($userInfo) == 0) {
     $pageParams['alltickets2follow'] = $runtime->txt->do_template($module, 'tickets2follow.none', $pageParams);
   }
   use ctlDataGrid;
-  $basequery = spreview($module, 'ListTickets2Follow', $_REQUEST);  print "<!-- $basequery -->";
+  $basequery = $runtime->spreview($module, 'ListTickets2Follow', $_REQUEST);  print "<!-- $basequery -->";
   $grid1 = new ctlDataGrid($r, 'tickets2follow', $basequery, $module);
-  $descriptor = $runtime->rf($module, 'sql/ListTickets2Follow.columns.txt');
+  $descriptor = $runtime->txt->get_module_file($module, 'sql/ListTickets2Follow.columns.txt');
   $columns = $grid1->parse_columns_descriptor($descriptor); 
   $grid1->set_columns(@columns);
   $grid1->set_pager(50);

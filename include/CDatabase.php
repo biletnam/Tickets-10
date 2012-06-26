@@ -87,7 +87,7 @@ class CDatabase {
         $result = mysql_query($query);
         if (!$result) {
             $error = $this->lasterror = mysql_error();
-            $this->r->save_moment("Could not successfully run query ($sql)" . $error);
+            $this->r->save_moment("Could not successfully run query ($query)" . $error);
         } elseif (mysql_num_rows($result) > 0) {
             while ($row = mysql_fetch_assoc($result)) {
                 $output[] = $row + array('_i_' => $i, '_mod2_' => $i++ % 2);
@@ -103,7 +103,7 @@ class CDatabase {
         $result = mysql_query($query);
         if (!$result) {
             $error = $this->lasterror = mysql_error();
-            $this->r->save_moment("Could not successfully run query ($sql)" . $error);
+            $this->r->save_moment("Could not successfully run query ($query)" . $error);
         } elseif (mysql_num_rows($result) > 0) {
             $output = mysql_fetch_assoc($result);
         }
@@ -116,7 +116,7 @@ class CDatabase {
         $result = mysql_query($query);
         if (!$result) {
             $error = $this->lasterror = mysql_error();
-            $this->r->save_moment("Could not successfully run query ($sql)" . $error);
+            $this->r->save_moment("Could not successfully run query ($query)" . $error);
             return -1;
         } else {
             $this->affectedrows = $n = mysql_affected_rows();
@@ -124,6 +124,36 @@ class CDatabase {
         }
     }
 
+  	public function getFieldMetadata($res, $i) {
+        $metadata = mysql_fetch_field($res, $i);
+        return array(
+          'name' => $metadata['name'], 
+          'type' => $metadata['type'], 
+          'nullable' => 1 - $metadata['not_null'], 
+          'scale' => $metadata['max_length'],
+          'align' => $this->getFieldAlignment($metadata['type']),
+        );
+    }
+  
+    public function getQueryMetadata($query) {
+      $output = array(); $num = 0;
+      $result = mysql_query($query);
+      for ($i = 0; $i < mysql_num_fields($res); $i++) {
+        $output[] = getFieldMetadata($res, $i);
+      }
+      return $output;
+    }
+    
+    public function getFieldAlignment($type) {
+      switch($type) {
+        case "int":
+          return 'left'; 
+          break;
+        default:
+          return 'right';
+      }
+    }
+	
 }
 
 ?>

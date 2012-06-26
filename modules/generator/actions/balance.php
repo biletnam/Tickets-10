@@ -54,7 +54,7 @@ if ($gen_user_id > 0) {
           $b{$currabbr} = 0;
         }
       } 
-      $amountsTemplate = join('', @cc);
+      $amountsTemplate = join('', $cc);
 
       # Print out the list of expenses
       $expenses = $runtime->s2a($module, 'ListExpenses', $sqlParams);
@@ -67,10 +67,10 @@ if ($gen_user_id > 0) {
           $e['out_'.$currabbr} = -$curramount if ($curramount < 0);
           $b{$currabbr} += $curramount;
           $e['balance_'.$currabbr} = -$b{$currabbr};
-          $e['amounts'] = $r['txt']doText($amountsTemplate, $e);
-          push @ee, $r['txt']doText($rowTemplate, $e);
+          $e['amounts'] = $r->txt->do_text($amountsTemplate, $e);
+          push @ee, $r->txt->do_text($rowTemplate, $e);
         }
-        $pageParams['expenses'] = join('', @ee);
+        $pageParams['expenses'] = join('', $ee);
         $pageParams['expenselist'] = $runtime->txt->do_template($module, 'expenses.list', $pageParams);
       }
       

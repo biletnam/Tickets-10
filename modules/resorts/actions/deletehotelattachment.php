@@ -13,7 +13,7 @@ if ($id > 0) {
     $fu->delete_attachment($id);
     $_SESSION['flash'] = 'Attachment deleted');
   } else {
-    set_cookie('error', 'Could not delete attachment');
+    $_SESSION['error'] = 'Could not delete attachment');
   }
 }
 if ($hotel > 0) {

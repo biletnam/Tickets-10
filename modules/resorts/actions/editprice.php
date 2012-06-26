@@ -24,6 +24,6 @@ if ($hotelid > 0) {
   $topccy = $existingcurrencies[0]; # Top currency is used for preselecting currency lists.
   $priceInfo['currencies'] = arr2ref(genOptions(arr2ref(s2a($module, 'ListCurrencies')), 'currency_id', 'currency_name', array($priceInfo['currency_id'] || $topccy['currency_id'])));  
   $priceInfo['realcurrencies'] = arr2ref(genOptions(arr2ref(s2a($module, 'ListCurrencies')), 'currency_id', 'currency_name', array($priceInfo['real_currency_id'] || $topccy['currency_id'])));  
-  print dot('editprices.form', $priceInfo);
+  print $runtime->txt->do_template($module, 'editprices.form', $priceInfo);
 }
 ?>

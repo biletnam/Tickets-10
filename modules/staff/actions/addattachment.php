@@ -16,13 +16,13 @@ if ($employee > 0) {
       # Also, set metada if provided
       if (dot('addattachment.conditions', $_REQUEST) <> '') {
         $_REQUEST['id'] = $id;
-        $fu->save_metadata(%_REQUEST);
+        $fu->save_metadata($_REQUEST);
       }
     } else {
-      set_cookie('error', "Could not add attachment $fileid");
+      $_SESSION['error'] = "Could not add attachment $fileid");
     }
   } else {
-    set_cookie('error', 'Could not upload file');
+    $_SESSION['error'] = 'Could not upload file');
   }
 }
 if ($employee > 0) {

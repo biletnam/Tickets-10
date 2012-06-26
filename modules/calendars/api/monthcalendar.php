@@ -79,7 +79,7 @@ if (($year - $year_start) * 12 + $month > 1) {
   if (0 == $month - 1) {
     %linkparams = array('month' => 12, 'year' => $year - 1);
   }
-  $apiresults['prevmonth'] = $r['txt']doText($templatePrevMonth, $linkparams);
+  $apiresults['prevmonth'] = $r->txt->do_text($templatePrevMonth, $linkparams);
 }
 # prepare next month link if needed
 if (($year_end + 1 - $year) * 12 - $month > 0) {
@@ -87,7 +87,7 @@ if (($year_end + 1 - $year) * 12 - $month > 0) {
   if ($month == 12) {
     %linkparams = array('month' => 1, 'year' => $year + 1);
   }
-  $apiresults['nextmonth'] = $r['txt']doText($templateNextMonth, $linkparams);
+  $apiresults['nextmonth'] = $r->txt->do_text($templateNextMonth, $linkparams);
 }
 
 # gather some useful statistics about this month
@@ -145,7 +145,7 @@ for ($i = 1; $i <= $num_of_days; $i++) {
     $templateText = $templateSelectable || $templateNoData;
   }
 
-  $week .= $r['txt']doText($templateText, $dayParams);  
+  $week .= $r->txt->do_text($templateText, $dayParams);  
   if (($i + $base - 1) % 7 == 0) {
     $apiresults['weeks'] .= "<tr>$week</tr>";
     $week = '';

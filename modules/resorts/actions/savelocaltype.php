@@ -5,7 +5,7 @@ $hotel = lavnn('hotel_id', $_REQUEST, 0);
 if ($id > 0 && $hotel > 0) {
   $runtime->db->sqlrun($module, 'UpdateLocalType', $_REQUEST);
 } else {
-  $id = sid($module, 'InsertLocalType', $_REQUEST);
+  $id = $runtime->sid($module, 'InsertLocalType', $_REQUEST);
 }
 if ($hotel > 0) {
   go("?p=resorts/edithotel&id=$hotel&tab=localtypes");

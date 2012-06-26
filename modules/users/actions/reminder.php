@@ -12,9 +12,9 @@ if ($field == 'username') {
 
 # Show error or send the password
 if (count($userData) == 0) {
-  set_cookie('error', 'User not found');
+  $_SESSION['error'] = 'User not found');
 } elseif($userData['strLocalOfficeEmail'] == '') {
-  set_cookie('error', 'Your user does not have e-mail defined. Please contact your Line Manager.');
+  $_SESSION['error'] = 'Your user does not have e-mail defined. Please contact your Line Manager.');
 } else {
   mail($userData['strLocalOfficeEmail'], '', 'Your Password', 'This is a reminder of your password: <b>'.$userData['psswrd'].'</b>');
   $_SESSION['flash'] = 'Password for '.$userData['username'].' has been sent to their e-mail address');

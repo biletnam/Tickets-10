@@ -1,7 +1,7 @@
 <?php
 
 $editor = $_REQUEST['editor'] = $r['userInfo']['staff_id'];
-$id = sid($module, 'CreateArticle', $_REQUEST);
+$id = $runtime->sid($module, 'CreateArticle', $_REQUEST);
 if ($id > 0) {
   $_REQUEST['id'] = $id;
   $runtime->db->sqlrun($module, 'InsertArticleHistory', $_REQUEST);  

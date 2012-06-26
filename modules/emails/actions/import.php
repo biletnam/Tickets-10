@@ -24,7 +24,7 @@ foreach ($actual_domains as $domainname => $usernames) {
     $failed = array(); $success = 0;
     foreach ($usernames as $user) {
       #print Dumper($user);
-      $newid = sid($module, 'InsertEmailAddress', array(
+      $newid = $runtime->sid($module, 'InsertEmailAddress', array(
 #      print spreview($module, 'InsertEmailAddress', array(
         'username' => $user['username'], 'domain' => $allowed_domains{$domainname}, 'email' => $user['email'], 'employee' => $user['id'] 
       ));

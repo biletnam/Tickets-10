@@ -14,13 +14,13 @@ if ($id <> '') {
         $url = "?p=$module/project&id=$pid";
       }
     } else {
-      set_cookie('error', 'Only creator can delete the ticket');
+      $_SESSION['error'] = 'Only creator can delete the ticket');
     }
   } else {
-    set_cookie('error', 'Requested ticket was not found');
+    $_SESSION['error'] = 'Requested ticket was not found');
   }
 } else {
-  set_cookie('error', 'Choose ticket to delete');
+  $_SESSION['error'] = 'Choose ticket to delete');
 }
 go($url);
 

@@ -25,12 +25,12 @@ if (count($staff) > 0) {
     @officeoptions = genOptions($offices, 'lngId', 'strName');
     $pageParams['offices'] = $officeoptions;
     #$pageParams['newemployeeform'] = $runtime->txt->do_template($module, 'newemployeeform', $pageParams) if $_REQUEST['fired'] <> '1'; # TODO
-    print dot('searchresults.editoffice.list', $pageParams);
+    print $runtime->txt->do_template($module, 'searchresults.editoffice.list', $pageParams);
   } elseif ($department <> '' && $acc->can_edit_department($department)) {
     @departments = $runtime->s2a($module, 'ListDepartments');
     @departmentoptions = genOptions($departments, 'team_id', 'team_name');
     $pageParams['departments'] = $departmentoptions;
-    print dot('searchresults.editdepartment.list', $pageParams);
+    print $runtime->txt->do_template($module, 'searchresults.editdepartment.list', $pageParams);
   } else {
     $hroffices = $acc->list_access('editoffice', $r['userID']);
     if ($acc->is_superadmin() || count($hroffices) > 0) {
@@ -41,7 +41,7 @@ if (count($staff) > 0) {
   }
 } else {
 
-  print dot('searchresults.none');  
+  print $runtime->txt->do_template($module, 'searchresults.none');  
 }
 
 function decode_sort_params {

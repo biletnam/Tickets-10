@@ -13,14 +13,14 @@ if ($ticket <> '') {
     if ($result['returncode'] == 0 && $result['ticket_history_id'] > 0) {
       $_SESSION['flash'] = 'Attachment added');
     } else {
-      set_cookie('error', 'Could not add attachment');
+      $_SESSION['error'] = 'Could not add attachment');
     }
   } else {
-    set_cookie('error', 'Could not upload file');
+    $_SESSION['error'] = 'Could not upload file');
   }
   go("?p=tickets/viewticket&id=$ticket&tab=attachments");  
 } else {
-  set_cookie('error', 'Malformed request, showing list of tickets instead');
+  $_SESSION['error'] = 'Malformed request, showing list of tickets instead');
 }
 go('?p=tickets/mytickets');
 

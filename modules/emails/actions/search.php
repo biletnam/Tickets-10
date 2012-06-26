@@ -1,6 +1,6 @@
 <?php
 $domain = lavnn('domain', $_REQUEST, 0);
-$searchInfo = %_REQUEST;
+$searchInfo = $_REQUEST;
 $page->add('title',  $searchInfo['pagetitle'] =  dot('title.search');
 $resultsHtml = '';
 $domains = $runtime->s2a($module, 'ListAllDomainNames'); 
@@ -9,16 +9,16 @@ $offices = $runtime->s2a('staff', 'ListOffices');
 $searchInfo['officeoptions'] = arr2ref(genOptions($offices, 'lngId', 'strName', $_REQUEST['office']));
 $departments = $runtime->s2a('staff', 'ListDepartments');
 $searchInfo['departmentoptions'] = arr2ref(genOptions($departments, 'team_id', 'team_name', $_REQUEST['department']));
-$_REQUEST['scope'] ||= 3;
+$scope = $_REQUEST['scope'] = lavnn('scope', $_REQUEST, 3);
 $scopeoptions = $runtime->getDictArr($module, 'scope', $_REQUEST['scope']); 
 $searchInfo['scopeoptions'] = $scopeoptions;
 
 use ctlDataGrid;
 
 if ($domain > 0) {
-  $basequery = spreview($module, 'SearchEmailAddresses', $_REQUEST); #print $basequery;
+  $basequery = $runtime->spreview($module, 'SearchEmailAddresses', $_REQUEST); #print $basequery;
   $grid1 = new ctlDataGrid($r, 'emails', $basequery, $module);
-  $descriptor = $runtime->rf($module, 'sql/SearchEmailAddresses.columns.txt');
+  $descriptor = $runtime->txt->get_module_file($module, 'sql/SearchEmailAddresses.columns.txt');
   $columns = $grid1->parse_columns_descriptor($descriptor); 
   $grid1->set_columns(@columns);
   #$grid1->set_pager(20);

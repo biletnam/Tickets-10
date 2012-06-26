@@ -1,4 +1,4 @@
 <?php
-print dot('search.listitem.actions.forward', $_REQUEST);
-print dot('search.listitem.ajax.clear.forwarder', $_REQUEST);
+print $runtime->txt->do_template($module, 'search.listitem.actions.forward', $_REQUEST);
+print $runtime->txt->do_template($module, 'search.listitem.ajax.clear.forwarder', $_REQUEST);
 ?>

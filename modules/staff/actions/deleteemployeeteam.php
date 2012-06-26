@@ -7,6 +7,6 @@ if ($id > 0) {
   $objEmp->delete_team(('id' => $id));
 }
 
-print dot('employee.edit.team.delete', $_REQUEST);
+print $runtime->txt->do_template($module, 'employee.edit.team.delete', $_REQUEST);
 
 ?>

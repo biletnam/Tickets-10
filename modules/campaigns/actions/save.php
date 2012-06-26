@@ -9,7 +9,7 @@ $title = lavnn('title') || 'New Marketing Campaign';
 $summary = lavnn('summary');
 $duedate = lavnn('duedate');
 if ($clients.$contracts == '' ) {
-  set_cookie('error', 'Please specify some clients or contracts to start marketing campaign!');
+  $_SESSION['error'] = 'Please specify some clients or contracts to start marketing campaign!');
 } else {
 
   # Create a project
@@ -74,7 +74,7 @@ if ($clients.$contracts == '' ) {
     #$_SESSION['flash'] = dot('flash.save.success', array('title' => $title, 'success' => $success, 'failure' => $failure) ));
     go("?p=tickets/project&id=$project_id");
   } else {
-    set_cookie('error', 'Could not create a project!');
+    $_SESSION['error'] = 'Could not create a project!');
   }
 
 }

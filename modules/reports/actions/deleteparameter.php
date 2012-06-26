@@ -9,7 +9,7 @@ if ($id > 0) {
     if (0 < $runtime->db->sqlrun($module, 'DeleteParameter', $_REQUEST)) {
       $_SESSION['flash'] = 'Parameter deleted');
     } else {
-      set_cookie('error', 'Parameter not deleted');
+      $_SESSION['error'] = 'Parameter not deleted');
     }
   }
 }

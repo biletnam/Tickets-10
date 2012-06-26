@@ -5,13 +5,13 @@ $new = lavnn('new', $_REQUEST, '');
 $new2 = lavnn('new2', $_REQUEST, '');
 
 if ($old == '') {
-  set_cookie('error', 'Please provide your old password!');
+  $_SESSION['error'] = 'Please provide your old password!');
 } elseif ($new == '') {
-  set_cookie('error', 'You cannot set an empty password!');
+  $_SESSION['error'] = 'You cannot set an empty password!');
 } elseif ($new <> $new2) {
-  set_cookie('error', 'Password and confirmation should match!');
+  $_SESSION['error'] = 'Password and confirmation should match!');
 } elseif ($r['userInfo']['psswrd'] <> $old) {
-  set_cookie('error', 'Provided old password is not correct!');
+  $_SESSION['error'] = 'Provided old password is not correct!');
 } else {
   # Everything's allright, yes, everything fine. And we want you to sleep well tonight. Let the world turn without you tonight.
   $r['userInfo']['psswrd'] = $new;

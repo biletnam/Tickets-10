@@ -1,6 +1,6 @@
 <?php
 
-$id = sid($module, 'InsertPollQuestion', $_REQUEST);
+$id = $runtime->sid($module, 'InsertPollQuestion', $_REQUEST);
 $poll = lavnn('poll');
 if ($id > 0) {
   $questionInfo = $runtime->s2r($module, 'GetQuestionDetails', $_REQUEST);

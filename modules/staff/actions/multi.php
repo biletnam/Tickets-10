@@ -5,7 +5,7 @@ $objSM = new objStaffManagement($r);
 
 $op = lavnn('op', $_REQUEST, '');
 $ids = array();
-while (($request_key, $request_value) = each %_REQUEST) {
+while (($request_key, $request_value) = each $_REQUEST) {
   my($prefix, $suffix) = split('_', $request_key);
   if ($prefix == 'id' && $suffix <> '') {
     push @ids, $suffix;
@@ -24,7 +24,7 @@ if (count($ids) > 0 && $op <> '') {
         $count_failure += (1 - $result);
       }
       $_SESSION['flash'] = "Calendar type assigned to ".$count_success." users") if $count_success > 0;
-      set_cookie('error', "Calendar type was not assigned to ".$count_failure." users") if $count_failure > 0;
+      $_SESSION['error'] = "Calendar type was not assigned to ".$count_failure." users") if $count_failure > 0;
     }
   } elseif ($op == 'move2office') {
     $office = lavnn('newoffice', $_REQUEST, '');
@@ -34,7 +34,7 @@ if (count($ids) > 0 && $op <> '') {
       }      
       $_SESSION['flash'] = count($ids)." users moved to another office");
     } else {
-      set_cookie('error', "Could not move employees because current office information is lost");
+      $_SESSION['error'] = "Could not move employees because current office information is lost");
     }
   } elseif ($op == 'move2department') {
     $department = lavnn('newdepartment', $_REQUEST, '');
@@ -44,11 +44,11 @@ if (count($ids) > 0 && $op <> '') {
       }      
       $_SESSION['flash'] = count($ids)." users moved to another department");
     } else {
-      set_cookie('error', "Could not move employees because current department information is lost");
+      $_SESSION['error'] = "Could not move employees because current department information is lost");
     }
   }
 } else {
-  set_cookie('error', "Select some items in order to run multiple operation");
+  $_SESSION['error'] = "Select some items in order to run multiple operation");
 }
 
 $prevUrl = lavnn('url') || "p=$module/offices";

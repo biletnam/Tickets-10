@@ -1,6 +1,6 @@
 <?php
 
-$searchInfo = %_REQUEST; 
+$searchInfo = $_REQUEST; 
 
 $nationalities = $runtime->s2a($module, 'ListNationalities'); 
 $searchInfo['nationalityoptions'] = arr2ref(genOptions($nationalities, 'nationality_id', 'nationality_name', lavnn('nationality')));
@@ -17,9 +17,9 @@ if ($paramstr <> '') {
 
   use ctlDataGrid;
   
-  $basequery = spreview($module, 'SearchClients', $_REQUEST); 
+  $basequery = $runtime->spreview($module, 'SearchClients', $_REQUEST); 
   $grid1 = new ctlDataGrid($r, 'clients', $basequery, $module);
-  $descriptor = $runtime->rf($module, 'sql/SearchClients.columns.txt');
+  $descriptor = $runtime->txt->get_module_file($module, 'sql/SearchClients.columns.txt');
   $columns = $grid1->parse_columns_descriptor($descriptor);
   $grid1->set_columns(@columns);
   $grid1->set_pager(50);

@@ -37,19 +37,19 @@ if ($gen_id > 0) {
   # The following code is not an "else" branch, because $op can change while processing original "if" part  
   if ($op == '') {
     $sqlParams = array('id' => $gen_id, 'editor' => $r['userID'], 'comment' => $commentary);
-    $id = sid($module, 'AddGeneratorComment', $sqlParams);
+    $id = $runtime->sid($module, 'AddGeneratorComment', $sqlParams);
     if ($id > 0) {
       $_SESSION['flash'] = 'Comment added');
       $_REQUEST['id'] = $id;
     } else {
-      set_cookie('error', 'Could not add comment');
+      $_SESSION['error'] = 'Could not add comment');
     }
   }
   
   
   go("?p=$module/view&id=$gen_id&tab=comments");  
 } else {
-  set_cookie('error', 'Generator not found');
+  $_SESSION['error'] = 'Generator not found');
   go("?p=$module/search");
 }
 

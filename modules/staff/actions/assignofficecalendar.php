@@ -6,7 +6,7 @@ use objStaffManagement;
 $objSM = new objStaffManagement($r);
 
 $absencedays = array(); 
-while (($key, $value) = each %_REQUEST) {
+while (($key, $value) = each $_REQUEST) {
   ($prefix, $suffix) = split('_', $key, 2);
   if ($prefix == 'days' && $suffix <> '') {
     push @absencedays, array('day_type' => $suffix, 'days_cnt' => $value));
@@ -14,7 +14,7 @@ while (($key, $value) = each %_REQUEST) {
 }
 $_REQUEST['absencedays'] = $absencedays;
 
-$result = $objSM->assign_calendar(%_REQUEST);
+$result = $objSM->assign_calendar($_REQUEST);
 if ($result > 0) {
   if ($id > 0) {
     $_SESSION['flash'] = 'Information about assigned calendars changed');
@@ -22,7 +22,7 @@ if ($result > 0) {
     $_SESSION['flash'] = 'Office calendar asigned to employee');
   }
 } else {
-  set_cookie('error', 'Could not assign office calendar to employee');
+  $_SESSION['error'] = 'Could not assign office calendar to employee');
 }
 
 if ($employee > 0) {

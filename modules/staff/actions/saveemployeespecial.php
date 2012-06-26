@@ -7,7 +7,7 @@ $id = lavnn('id', $_REQUEST, 0);
 if ($id > 0) {
   $_REQUEST['tags'] =~ s/,\s+/, /g; # fix all spaces after separating commas
   $_REQUEST['tags'] =~ s/\s+,/,/g; # fix all spaces before separating commas
-  $objSM->save_user_specialdata(%_REQUEST);
+  $objSM->save_user_specialdata($_REQUEST);
   $_SESSION['flash'] = 'User special info updated');
   go("?p=$module/employee&id=$id#special");
 } else {

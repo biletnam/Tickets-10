@@ -9,9 +9,9 @@ if (count($userInfo) == 0) {
   $page->add('main', $runtime->txt->do_template($module, 'usertickets.nouser');
 } elseif ($user_id == $r['userID'] || $acc->is_superadmin() || $userInfo['deputy_staff'] == $r['userID'] || $userInfo['line_manager'] == $r['userID']) {
   use ctlDataGrid;
-  $basequery = spreview($module, 'ListTickets2Handle', $pageParams); # print "<!-- $basequery -->";
+  $basequery = $runtime->spreview($module, 'ListTickets2Handle', $pageParams); # print "<!-- $basequery -->";
   $grid1 = new ctlDataGrid($r, 'tickets2handle', $basequery, $module);
-  $descriptor = $runtime->rf($module, 'sql/ListTickets2Handle.columns.txt');
+  $descriptor = $runtime->txt->get_module_file($module, 'sql/ListTickets2Handle.columns.txt');
   $columns = $grid1->parse_columns_descriptor($descriptor);
   $grid1->set_columns(@columns);
   $grid1->set_pager(50);

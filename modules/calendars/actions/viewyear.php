@@ -65,7 +65,7 @@ if ($id > 0) {
   print "<!--$access-->";
 
   if ($access <> 'none') { 
-    %pageParams = %_REQUEST;
+    %pageParams = $_REQUEST;
     # Fill in Year select box
     $years = Calendar::getYears(2010, 2020, $year); 
     $pageParams['years'] = $years;
@@ -84,7 +84,7 @@ if ($id > 0) {
       $pageParams['absences'] = loopt('year.list.employeeabsence.typebalance', @absencedays);    
     }
 
-    print dot("year.list.$access", $pageParams);
+    print $runtime->txt->do_template($module, "year.list.$access", $pageParams);
   }
 }
 

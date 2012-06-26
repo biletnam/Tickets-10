@@ -1,3 +1,3 @@
 <?php
-print dot("4");
+print $runtime->txt->do_template($module, "4");
 ?>

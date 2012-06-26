@@ -9,7 +9,7 @@ if ($ticket > 0 && $weight > 0) {
   if ($ticketInfo['handler'] > 0 && $ticketInfo['status'] == 'OPN') {
     $runtime->db->sqlrun($module, 'RecalculateUserEstimations', array('user_id' => $ticketInfo['handler']));
   }
-  print dot('ticketweight', $_REQUEST);
+  print $runtime->txt->do_template($module, 'ticketweight', $_REQUEST);
 }
 
 1;

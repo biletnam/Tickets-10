@@ -9,11 +9,11 @@ if ($id > 0) {
     if ($result > 0) {
       $_SESSION['flash'] = 'Target deleted');
     } else {
-      set_cookie('error', 'Could not delete target');
+      $_SESSION['error'] = 'Could not delete target');
     }
     go("?p=$module/viewticket&id=$ticket");
   } else {
-    set_cookie('error', 'Could not delete target');
+    $_SESSION['error'] = 'Could not delete target');
   }
 }
 go('');

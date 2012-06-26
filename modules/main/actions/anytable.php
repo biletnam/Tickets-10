@@ -50,10 +50,10 @@ if ($id == 0) {
         push @newrowform, dot('anytable.newrowform.field', $column);
       }
     }
-    $rowtemplate  = $runtime->txt->do_template($module, 'anytable.rowtemplate', array('table_id' => $id, 'table_name' => $tableInfo['table_name'], 'columns' => join('', @templates))); 
-    $tableInfo['header'] = $runtime->txt->do_template($module, 'anytable.header', array('table_name' => $tableInfo['table_name'], 'columns' => join('', @headers)));
+    $rowtemplate  = $runtime->txt->do_template($module, 'anytable.rowtemplate', array('table_id' => $id, 'table_name' => $tableInfo['table_name'], 'columns' => join('', $templates))); 
+    $tableInfo['header'] = $runtime->txt->do_template($module, 'anytable.header', array('table_name' => $tableInfo['table_name'], 'columns' => join('', $headers)));
     $tableInfo['data'] = $txt->loopText($rowtemplate, @data);
-    $tableInfo['newrowform'] = $runtime->txt->do_template($module, 'anytable.newrowform', array('id' => $id, 'name' => $tableInfo['name'], 'fields' => join('', @newrowform)));
+    $tableInfo['newrowform'] = $runtime->txt->do_template($module, 'anytable.newrowform', array('id' => $id, 'name' => $tableInfo['name'], 'fields' => join('', $newrowform)));
     #print Dumper($data);
     $page->add('title',  $tableInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.anytable.edit', $tableInfo);
     $page->add('main', $runtime->txt->do_template($module, 'anytable', $tableInfo);

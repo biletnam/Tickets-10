@@ -19,13 +19,13 @@ if (count($ids) > 0) {
   $employeeSpecialData = $objSM->get_user_specialdata($employee);
   $linemanager = $employeeSpecialData['line_manager'] || 0;
   if ($linemanager == 0) {
-    set_cookie('error', 'Absence request cannot be sent because Line Manager is not defined');
+    $_SESSION['error'] = 'Absence request cannot be sent because Line Manager is not defined');
   } else {
     $objSM->request_absence($employee, $ids, lavnn('requestabsence_comment'));
   }
   
 } else {
-  set_cookie('error', 'Please select some items in order to send absence request')
+  $_SESSION['error'] = 'Please select some items in order to send absence request')
 }
 
 if ($employee > 0 && $employee <> $r['userID']) { # request was sent on employee's behalf by HR staff

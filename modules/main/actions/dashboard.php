@@ -43,7 +43,7 @@ foreach $eD (reverse sort keys %nn) {
   }
   push @notifications, dot('dashboard.notification.list', $nhash);
 }
-$pageParams['notifications'] = join('', @notifications);
+$pageParams['notifications'] = join('', $notifications);
 $pageParams['notifications_cnt'] = $notification_cnt;
 $runtime->saveMoment('  prepared notifications tab');
 

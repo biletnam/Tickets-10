@@ -1,5 +1,5 @@
 <?php
-$pageParams = %_REQUEST;
+$pageParams = $_REQUEST;
 $invoices = $runtime->s2a($module, 'ListBookingInvoices', $pageParams);
 $pageParams['payments'] = $invoices;
 $invoiceissues = $runtime->s2a($module, 'ListBookingInvoiceIssues', $pageParams);
@@ -52,6 +52,6 @@ if (count($orphanexpenses) > 0) {
   $pageParams['orphanexpenses'] = $runtime->txt->do_template($module, 'payments.orphanexpenses', array('orphanexpenses' => $orphanexpenses));
 }
 
-print dot('payments', $pageParams);
+print $runtime->txt->do_template($module, 'payments', $pageParams);
 
 ?>

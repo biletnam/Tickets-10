@@ -13,11 +13,11 @@ if ($id > 0) {
       go("?p=$module/list")
     }
   } else {
-    $runtime->set_cookie('error', 'No obligation chosen');
+    $runtime->$_SESSION['error'] = 'No obligation chosen');
     go("?p=$module/list")
   } 
 } else {
-  $runtime->set_cookie('error', 'No obligation chosen');
+  $runtime->$_SESSION['error'] = 'No obligation chosen');
   go("?p=$module/list")
 }
 

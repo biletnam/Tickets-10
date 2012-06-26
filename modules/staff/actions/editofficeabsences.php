@@ -62,7 +62,7 @@ if ($office <> 0) {
     push @rows, dot('officeabsences.department', array('name' => $departmentName, 'cnt' => $cnt, 'colspan' => 1));
     @rows = array(@rows, @deprows);
   }
-  $pageParams['employees'] = join('', @rows);
+  $pageParams['employees'] = join('', $rows);
   $absencetypes = $runtime->s2a($module, 'ListOfficeAbsenceTypes', array('office' => $office)); 
   $pageParams['day_type_options'] = arr2ref(genOptions($absencetypes, 'code', 'name', 'V')); 
   $pageParams['qty_options'] = arr2ref($runtime->getDictArr('calendars', 'absence.qty', '1.0'));

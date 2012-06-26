@@ -7,7 +7,7 @@ if ($id > 0) {
     # Get list of office calendars
     $calendars = $runtime->s2a($module, 'ListEmployeeOfficeCalendars', array('id' => $id));
     $personInfo['calendars'] = $calendars;
-    print dot('employee.view.calendars', $personInfo);
+    print $runtime->txt->do_template($module, 'employee.view.calendars', $personInfo);
   }
 }
 

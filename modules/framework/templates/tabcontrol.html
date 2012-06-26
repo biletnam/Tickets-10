@@ -1,0 +1,14 @@
+<div id="<:v:tabcontrolname>" class="tabcontrol <:v:customtabclass>">
+  <div id="<:v:tabcontrolname>_control" class="tabcontrolcontrol"></div>
+  <div id="<:v:tabcontrolname>_header" class="tabcontrolheader">
+    <div class="tabcontrolheadercontainer clearfix">
+<:v:tabs|rowtemplate:module=main&name=tabcontrol.tabheader>    
+    </div>
+  </div>
+  <div id="<:v:tabcontrolname>_body" class="tabcontrolbody">
+<:v:tabs|rowtemplate:module=main&name=tabcontrol.tabcontent>    
+  </div>
+</div>
+<script>
+  switchTab('#<:v:tabcontrolname>_control', '#<:v:tabcontrolname>_tab_<:v:firstid>');    
+</script>

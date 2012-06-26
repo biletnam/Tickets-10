@@ -14,9 +14,9 @@ if (ref($_REQUEST['typeoption']) == 'ARRAY') {
 }
 $pageParams['typecheckboxes'] = arr2ref(genCheckboxes($alltypes, 'typeoption', 'key', 'value', $ids));
 
-$basequery = spreview($module, 'LoginFailures', $_REQUEST); 
+$basequery = $runtime->spreview($module, 'LoginFailures', $_REQUEST); 
 $grid1 = new ctlDataGrid($r, 'loginfailures', $basequery, $module);
-$descriptor = $runtime->rf($module, 'sql/LoginFailures.columns.txt');
+$descriptor = $runtime->txt->get_module_file($module, 'sql/LoginFailures.columns.txt');
 $columns = $grid1->parse_columns_descriptor($descriptor);
 $grid1->set_columns(@columns);
 $grid1->set_pager(20);

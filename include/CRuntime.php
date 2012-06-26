@@ -184,6 +184,7 @@ class CRuntime {
         return lavnn($setting, $this->config, '');
     }
     
+    /* Shortcus for text processing methods */
 
     /* Shortcus for database methods */
     public function s2r($modulename, $templatename, $sqlparams) {
@@ -199,7 +200,7 @@ class CRuntime {
     }
     
     public function sinsert($modulename, $templatename, $sqlparams) {
-        $this->db->preview($modulename, $templatename, $sqlparams);
+        $this->db->insert($modulename, $templatename, $sqlparams);
     }
     
     public function sdelete($modulename, $templatename, $sqlparams) {

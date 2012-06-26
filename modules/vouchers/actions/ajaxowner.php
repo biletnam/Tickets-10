@@ -2,11 +2,11 @@
 $type = lavnn('type', $_REQUEST, '');
 if ($type == 'owner') {
   $owneroptions = genOptions(arr2ref(s2a($module, 'ListOwners')), 'id', 'name'); 
-  print dot('ajaxowner', array('owneroptions' => $owneroptions)); 
+  print $runtime->txt->do_template($module, 'ajaxowner', array('owneroptions' => $owneroptions)); 
 } elseif ($type == 'client') {
-  print dot('ajaxowner.client'); 
+  print $runtime->txt->do_template($module, 'ajaxowner.client'); 
 } elseif ($type == 'employee') {
-  print dot('ajaxowner.employee'); 
+  print $runtime->txt->do_template($module, 'ajaxowner.employee'); 
 } 
 
 1;

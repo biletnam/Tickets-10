@@ -20,7 +20,7 @@ if ($id > 0) {
       'param_caption' => lavnn('new_caption'),
       'param_name' => lavnn('new_name')
     );
-    $input = sid($module, 'InsertInputParameter', $params);
+    $input = $runtime->sid($module, 'InsertInputParameter', $params);
   }
   
   go("?p=$module/edit&id=$id&tab=inputs");

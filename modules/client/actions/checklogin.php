@@ -26,7 +26,7 @@ if (count($result) > 0) {
   $runtime->db->sqlrun('main', 'RegisterPageview', array('entity_type' => 'client_login_failed', 'entity_id' => $result['client_id'], 'viewer_type' => 'C', 'viewer_id' => 0));    
   $runtime->db->sqlrun('main', 'RegisterLoginFailure', array('user_type' => 'C', 'username' => $result['client_id'], 'password' => $result['password']));
   # Go back to login screen
-  set_cookie('error', 'Invalid client ID or password ');
+  $_SESSION['error'] = 'Invalid client ID or password ');
   go2('client.pl', "?p=$module/login");  
 }
 

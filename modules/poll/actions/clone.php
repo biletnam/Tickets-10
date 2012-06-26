@@ -1,8 +1,8 @@
 <?php
 
-$id = $objP->clone(%_REQUEST);
+$id = $objP->clone($_REQUEST);
 if ($id <> 0) {
-  $pollInfo = $objP->get_info(%_REQUEST);
+  $pollInfo = $objP->get_info($_REQUEST);
   $_SESSION['flash'] = "New poll is cloned using template '".$pollInfo['title']."', continue editing it below.");
   go("?p=$module/edit&id=$id&tab=edit");
 } else {

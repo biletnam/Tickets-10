@@ -21,7 +21,7 @@ if ($gen_user_id > 0 && $id > 0) {
     $c['giftrows'] = arr2ref(s2a($module, 'ListContractGifts', array('id' => $id)));
     push @entries, dot('contract.row', ${$c});
   }
-  $firstentry['rows'] = join('', @entries);
+  $firstentry['rows'] = join('', $entries);
 
   if ($genInfo['show_fu_comments'] == 1) {
     $fucomments = $runtime->s2a($module, 'ListFollowUpComments', $sqlParams);

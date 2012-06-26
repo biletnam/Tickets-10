@@ -34,7 +34,7 @@ if (count($ticketInfo) > 0) {
     }
   }
   push @targets, dot('viewticket.target.add', $ticketInfo);
-  $ticketInfo['targets'] = join('', @targets);  
+  $ticketInfo['targets'] = join('', $targets);  
   $runtime->saveMoment('  fetched list of targets');
   
   # Get history of the ticket

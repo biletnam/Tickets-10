@@ -1,5 +1,5 @@
 <?php
-$newid = $objT->create_ticket(%_REQUEST);
+$newid = $objT->create_ticket($_REQUEST);
 if ($newid > 0) {
   $_SESSION['flash'] = 'Ticket created');
   if ($newid % 1000 == 0) {
@@ -7,7 +7,7 @@ if ($newid > 0) {
   }
   go("?p=tickets/viewticket&id=$newid");
 } else {
-  set_cookie('error', 'Could not create ticket');
+  $_SESSION['error'] = 'Could not create ticket');
   go("?p=tickets/mytickets");
 }
 

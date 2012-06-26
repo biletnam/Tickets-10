@@ -29,11 +29,11 @@ if ($id > 0) {
     if ($result > 0) {
       $_SESSION['flash'] = "Minutes sent to $to");
     } else {
-      set_cookie('error', 'Meeting minutes not sent.');
+      $_SESSION['error'] = 'Meeting minutes not sent.');
     }
     
   } else {
-    set_cookie('error', 'Meeting not found, minutes not sent.');
+    $_SESSION['error'] = 'Meeting not found, minutes not sent.');
   }
 }
 

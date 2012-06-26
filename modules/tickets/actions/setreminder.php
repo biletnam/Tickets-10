@@ -4,7 +4,7 @@ $url = "?p=$module/mytickets";
 if ($id <> '') {
   $ticketInfo = $runtime->s2r($module, 'GetTicketInfo', array('id' => $id)); 
   if (count($ticketInfo) > 0) {
-    while (($request_key, $request_value) = each %_REQUEST) {
+    while (($request_key, $request_value) = each $_REQUEST) {
       my($prefix, $suffix) = split('_', $request_key);
       if ($prefix == 'id' && $suffix <> '') {
         $objT->add_reminder($id, array('user_id' => $suffix, 'event_text' => $_REQUEST['event_text'], 'event_date' => $_REQUEST['event_date']));
@@ -12,10 +12,10 @@ if ($id <> '') {
     } 
     $url = "?p=$module/viewticket&id=$id";
   } else {
-    set_cookie('error', 'Requested ticket was not found');
+    $_SESSION['error'] = 'Requested ticket was not found');
   }
 } else {
-  set_cookie('error', 'No ticket to work with');
+  $_SESSION['error'] = 'No ticket to work with');
 }
 go($url);
 

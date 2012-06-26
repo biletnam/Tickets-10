@@ -10,7 +10,7 @@ if ($source <> '' && $controlname <> '') {
   $departments = $runtime->s2a($module, 'ListDepartments');
   $departmentoptions = genOptions($departments, 'team_id', 'NameCounted');
   $pageParams['departmentoptions'] = $departmentoptions;
-  print dot('linkpeople.form', $pageParams);
+  print $runtime->txt->do_template($module, 'linkpeople.form', $pageParams);
 }
 
 1;

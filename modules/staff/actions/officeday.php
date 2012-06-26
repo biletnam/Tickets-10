@@ -1,6 +1,6 @@
 <?php
 
-$pageParams = %_REQUEST;
+$pageParams = $_REQUEST;
 
 $calendaritems = $runtime->s2a($module, 'GetOfficeCalendarDay', $_REQUEST);
 

@@ -17,5 +17,5 @@ $weekInfo['apttypes'] = arr2ref(genOptions($arrtypeoptions, 'type_id', 'type_nam
 $extresorts = arr2ref(s2a($module, 'ListExtResorts')); 
 $weekInfo['extresorts'] = arr2ref(genOptions($extresorts, 'id', 'name', $weekInfo['external_resort']));
 $weekInfo['membershiptypes'] = arr2ref($runtime->getDictArr($module, 'extresort.membertype', $weekInfo['membership_type'])); 
-print dot('tradeintooltip', $weekInfo);
+print $runtime->txt->do_template($module, 'tradeintooltip', $weekInfo);
 ?>

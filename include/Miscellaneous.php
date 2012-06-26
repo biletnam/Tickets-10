@@ -135,7 +135,7 @@ function genMenu {
       }    
     }
   }
-  $level1 = array('menuitems' => join('', @level1items));
+  $level1 = array('menuitems' => join('', $level1items));
   # Get second level menu items
   $level2items = array();
   ($module, $template) = split('\/', $level2desciptor);
@@ -163,7 +163,7 @@ function genMenu {
       }
     }
   }
-  $level2 = array('menuitems' => join('', @level2items));
+  $level2 = array('menuitems' => join('', $level2items));
   
   return $runtime->txt->do_template('main', 'navigation.level1', $level1).$runtime->txt->do_template('main', 'navigation.level2', $level2);
 }

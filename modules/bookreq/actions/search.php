@@ -1,6 +1,6 @@
 <?php
 
-$searchInfo = %_REQUEST;
+$searchInfo = $_REQUEST;
 
 $generators = $runtime->s2a($module, 'ListGenerators'); # TODO Bookreq specific - not all are visible to user!
 $searchInfo['generators'] = arr2ref(genOptions($generators, 'generator_id', 'safe_generator_name', $_REQUEST['generator_id']));
@@ -16,9 +16,9 @@ $page->add('title',  $searchInfo['pagetitle'] =  dot('title.search');
 $resultsHtml = '';
 
 use ctlDataGrid;
-$basequery = spreview($module, 'SearchBookReqs', $_REQUEST);
+$basequery = $runtime->spreview($module, 'SearchBookReqs', $_REQUEST);
 $grid1 = new ctlDataGrid($r, 'bookreqs', $basequery, $module);
-$descriptor = $runtime->rf($module, 'sql/SearchBookReqs.columns.txt');
+$descriptor = $runtime->txt->get_module_file($module, 'sql/SearchBookReqs.columns.txt');
 $columns = $grid1->parse_columns_descriptor($descriptor);
 $grid1->set_columns(@columns);
 $grid1->set_pager(50);

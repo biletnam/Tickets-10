@@ -11,9 +11,9 @@ if (count($userInfo) == 0) {
   
   # Render tickets
   use ctlDataGrid;
-  $basequery = spreview($module, 'ListTickets2React', $pageParams); print "<!-- $basequery -->";
+  $basequery = $runtime->spreview($module, 'ListTickets2React', $pageParams); print "<!-- $basequery -->";
   $grid1 = new ctlDataGrid($r, 'tickets2react', $basequery, $module);
-  $descriptor = $runtime->rf($module, 'sql/ListTickets2React.columns.txt');
+  $descriptor = $runtime->txt->get_module_file($module, 'sql/ListTickets2React.columns.txt');
   $columns = $grid1->parse_columns_descriptor($descriptor);
   $grid1->set_columns(@columns);
   $grid1->set_pager(50);

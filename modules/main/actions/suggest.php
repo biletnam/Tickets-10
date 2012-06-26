@@ -1,6 +1,6 @@
 <?php
 
-# %_REQUEST expected to have elements 'type' and 'q'
+# $_REQUEST expected to have elements 'type' and 'q'
 
 %_MODULE = array(
   'name' => 'main'

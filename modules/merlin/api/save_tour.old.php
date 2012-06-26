@@ -66,7 +66,7 @@ $errors = array();
 # API logic - save message to the database
 use objMerlin;
 $objM = new objMerlin($r);
-$id = $objM->save_tour(%_REQUEST);
+$id = $objM->save_tour($_REQUEST);
 if ($id == 0) {
   $result = 'ERR'; 
   push @errors, $runtime->hash2ref( ('code' => 'SaveTour.Failed', 'text' => 'Could not add tour') );

@@ -5,7 +5,7 @@ $op = lavnn('op', $_REQUEST, '');
 $hotelid = lavnn('hotel_id', $_REQUEST, 0);
 if ($hotelid > 0) {
   if ($priceids == '') {
-    set_cookie('error', 'Please select some prices first!');
+    $_SESSION['error'] = 'Please select some prices first!');
     go("?p=$module/edithotel&id=$hotelid&tab=prices");
   } else {
     if ($op == 'delete') { 
@@ -16,7 +16,7 @@ if ($hotelid > 0) {
   }
   go("?p=$module/edithotel&id=$hotelid&tab=prices");
 } else {
-  set_cookie('error', 'No hotel selected, saving price cancelled');
+  $_SESSION['error'] = 'No hotel selected, saving price cancelled');
   go("?p=$module/hotels");
 }
 

@@ -7,13 +7,13 @@ $editor = $r['userID'] || 0;
 if ($hotel > 0) {
   $fileid = $fu->uploadfile("attachment");
   if ($fileid > 0) {
-    $id = sid($module, 'AddAttachment', array('hotel' => $hotel, 'fileid' => $fileid, 'editor' => $editor)); 
+    $id = $runtime->sid($module, 'AddAttachment', array('hotel' => $hotel, 'fileid' => $fileid, 'editor' => $editor)); 
     if ($id > 0) {
       $_SESSION['flash'] = 'Attachment added');
       # Also, set metada if provided
       if (dot('addattachment.conditions', $_REQUEST) <> '') {
         $_REQUEST['id'] = $id;
-        $fu->save_metadata(%_REQUEST);
+        $fu->save_metadata($_REQUEST);
       }
 
       $hotelInfo = $runtime->s2r($module, 'GetHotelInfo', array('id' => $hotel));
@@ -30,10 +30,10 @@ if ($hotel > 0) {
       }        
 
     } else {
-      set_cookie('error', "Could not add attachment $fileid");
+      $_SESSION['error'] = "Could not add attachment $fileid");
     }
   } else {
-    set_cookie('error', 'Could not upload file');
+    $_SESSION['error'] = 'Could not upload file');
   }
 }
 if ($hotel > 0) {

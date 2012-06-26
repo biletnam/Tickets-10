@@ -22,9 +22,9 @@ if (count($userInfo) == 0) {
   
   # Search and render tickets
   use ctlDataGrid;
-  $basequery = spreview($module, 'ListTickets2Review', $_REQUEST);  print "<!-- $basequery -->";
+  $basequery = $runtime->spreview($module, 'ListTickets2Review', $_REQUEST);  print "<!-- $basequery -->";
   $grid1 = new ctlDataGrid($r, 'tickets2review', $basequery, $module);
-  $descriptor = $runtime->rf($module, 'sql/ListTickets2Review.columns.txt');
+  $descriptor = $runtime->txt->get_module_file($module, 'sql/ListTickets2Review.columns.txt');
   $columns = $grid1->parse_columns_descriptor($descriptor);
   $grid1->set_columns(@columns);
   $grid1->set_pager(50);

@@ -19,14 +19,14 @@ if ($hotelid > 0) {
     }
     foreach $officeid (@ids) {
       $_REQUEST['office_id'] = $officeid;
-      $id = sid($module, 'SavePriceInsert', $_REQUEST);
+      $id = $runtime->sid($module, 'SavePriceInsert', $_REQUEST);
       $runtime->db->sqlrun($module, 'SavePriceHistory', array('id' => $id, 'editor' => $r['userInfo']['staff_id'])) if $id > 0;
     }
   }
   $_SESSION['flash'] = dot('flash.price.saved'));
   go("?p=$module/edithotel&id=$hotelid&tab=prices");
 } else {
-  set_cookie('error', 'No hotel selected, saving price cancelled');
+  $_SESSION['error'] = 'No hotel selected, saving price cancelled');
   go("?p=$module/hotels");
 }
 

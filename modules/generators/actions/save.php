@@ -14,7 +14,7 @@ if ($id > 0) {
   $_SESSION['flash'] = 'Generator data changed');
   go("?p=$module/view&id=$id&tab=details");
 } else {
-  set_cookie('error', 'Failed to change generator data.');
+  $_SESSION['error'] = 'Failed to change generator data.');
   go("?p=$module/search");
 }
 ?>

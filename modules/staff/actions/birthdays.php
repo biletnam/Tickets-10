@@ -20,12 +20,12 @@ foreach $_row (@birthdays) {
   $bd = $_row};
   $newoffice = $bd['OfficeName'];
   if ($newoffice <> $oldoffice) {
-    push @rows, $r['txt']doText($sectiontemplate, $bd);  
+    push @rows, $r->txt->do_text($sectiontemplate, $bd);  
     $oldoffice = $newoffice;
   }
-  push @rows, $r['txt']doText($rowtemplate, $bd);
+  push @rows, $r->txt->do_text($rowtemplate, $bd);
 }
-$pageParams['birthdays'] = join('', @rows);
+$pageParams['birthdays'] = join('', $rows);
 
 $page->add('main',  $runtime->txt->do_template($module, 'birthdays', $pageParams);
 

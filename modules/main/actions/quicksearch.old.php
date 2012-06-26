@@ -1,4 +1,4 @@
 <?php
 
-print dot('quicksearch')
+print $runtime->txt->do_template($module, 'quicksearch')
 ?>

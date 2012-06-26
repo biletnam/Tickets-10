@@ -30,7 +30,7 @@ if ($id > 0) {
       }
     }
   } else {
-    $runtime->set_cookie('error', 'Could not save the issue!');
+    $runtime->$_SESSION['error'] = 'Could not save the issue!');
   }  
   go("?p=$module/viewmeeting&id=$id&tab=issues");
 } else {

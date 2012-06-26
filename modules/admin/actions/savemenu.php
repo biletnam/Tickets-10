@@ -1,6 +1,6 @@
 <?php
 
-foreach $key (keys %_REQUEST) {
+foreach $key (keys $_REQUEST) {
   if (substr($key, 0, 3) == 'id_') {
     $id = lavnn($key);
     substr($key, 0, 3, 'seq_no_');

@@ -7,7 +7,7 @@ if ($id <> 0) {
   $contacts = $runtime->s2a($module, 'ListStaff', $_REQUEST); 
   $offices = slice_array($contacts, 'OfficeName');
   $departmentData['contacts'] = $offices;
-  print dot('department.contactsheet', $departmentData); 
+  print $runtime->txt->do_template($module, 'department.contactsheet', $departmentData); 
 }
 
 ?>

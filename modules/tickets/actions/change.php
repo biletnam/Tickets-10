@@ -42,15 +42,15 @@ if (count($ticketInfo) > 0) {
   
   # check if ticket duplication option was selected
   if ($op == 'clone') {
-    $new_ticket_id = sid($module, 'CloneTicket', $ticketInfo);
+    $new_ticket_id = $runtime->sid($module, 'CloneTicket', $ticketInfo);
     if ($new_ticket_id > 0) {
       %ticketInfo = $runtime->s2r($module, 'GetTicketInfo', array('id' => $new_ticket_id));
       $ticketInfo['oldid'] = $ticket_id;
       $ticket_id = $new_ticket_id;
-      $comment_id = sid($module, 'AddTicketCloneComment', $ticketInfo);
+      $comment_id = $runtime->sid($module, 'AddTicketCloneComment', $ticketInfo);
       push @flash, 'Ticket cloned';
     } else {
-      set_cookie('error', 'Ticket cloning failed. Changes ignored.');
+      $_SESSION['error'] = 'Ticket cloning failed. Changes ignored.');
       $ignoreChanges = 1;
     }
   } 
@@ -68,7 +68,7 @@ if (count($ticketInfo) > 0) {
     #also, set the new handler
     $new_handler = lavnn('handler', $_REQUEST, '');
     if ($new_handler == '') {
-      set_cookie('error', 'Handler should be set!');
+      $_SESSION['error'] = 'Handler should be set!');
       $new_status = $old_status;
       $new_handler = '';
     }    
@@ -80,7 +80,7 @@ if (count($ticketInfo) > 0) {
     if (count($projectInfo) > 0) {
       $new_reviewer = $projectInfo['moderator'];
     } else {
-      set_cookie('error', 'Valid project should be set!');
+      $_SESSION['error'] = 'Valid project should be set!');
       $new_status = $old_status;
       $new_project = '';
     }
@@ -193,7 +193,7 @@ if (count($ticketInfo) > 0) {
   # add comment if any
   $comment = lavnn('comment', $_REQUEST, ''); # TODO Add it to separate table and get id
   if ($comment <> '' && !$ignoreChanges) {
-    $comment_id = sid($module, 'AddTicketComment', $_REQUEST);
+    $comment_id = $runtime->sid($module, 'AddTicketComment', $_REQUEST);
     push @flash, 'Comment added for the ticket';
   } else {
     $comment_id = '';
@@ -210,7 +210,7 @@ if (count($ticketInfo) > 0) {
       $_REQUEST['computed_hours'] = $computed_hours = int($total_minutes / 60); 
       $_REQUEST['computed_minutes'] = $total_minutes - $computed_hours * 60; 
       if ($total_minutes > 0) {
-        $timereport_id = sid($module, 'AddTicketTimeReport', $_REQUEST);
+        $timereport_id = $runtime->sid($module, 'AddTicketTimeReport', $_REQUEST);
         push @flash, 'Time reported for the ticket';
         # If there is another date specified for report, make change in the database
         $reporting_date = lavnn('reporting_date', $_REQUEST, '');
@@ -219,7 +219,7 @@ if (count($ticketInfo) > 0) {
         }
       }
     } else {
-      set_cookie('error', 'Number of reported hours/minutes should be integer');  
+      $_SESSION['error'] = 'Number of reported hours/minutes should be integer');  
     }
   }
   $runtime->saveMoment('  time reportings checked');
@@ -237,7 +237,7 @@ if (count($ticketInfo) > 0) {
       push @flash, 'Ticket completion time estimation is changed';
     }
   } else {
-    set_cookie('error', 'Number of hours/minutes left should be integer');  
+    $_SESSION['error'] = 'Number of hours/minutes left should be integer');  
   }
   $runtime->saveMoment('  new time estimation set');
 
@@ -245,7 +245,7 @@ if (count($ticketInfo) > 0) {
   $attachment_id = 0;
   $attachment_fileid = $fu->uploadfile("attachment");
   if ($attachment_fileid > 0 && !$ignoreChanges) {
-    $attachment_id = sid($module, 'AddTicketAttachment', array('ticket' => $ticket_id, 'editor' => $r['userInfo']['staff_id'], 'fileid' => $attachment_fileid));
+    $attachment_id = $runtime->sid($module, 'AddTicketAttachment', array('ticket' => $ticket_id, 'editor' => $r['userInfo']['staff_id'], 'fileid' => $attachment_fileid));
     if ($attachment_id > 0) {
       push @flash, 'Attachment uploaded for the ticket';
     }

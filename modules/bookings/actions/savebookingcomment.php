@@ -2,7 +2,7 @@
 $book_id = lavnn('book_id', $_REQUEST, '');
 if ($book_id <> '') {
   $_REQUEST['entered_by'] = $r['userID'];
-  $id = sid($module, 'InsertBookingComment', $_REQUEST);
+  $id = $runtime->sid($module, 'InsertBookingComment', $_REQUEST);
   if ($id > 0) {
     $_SESSION['flash'] = 'New comment added for a booking');
   }

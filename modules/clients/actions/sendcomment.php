@@ -53,19 +53,19 @@ if ($client_id > 0) {
   # The following code is not an "else" branch, because $op can change while processing original "if" part  
   if ($op == '') {
     # update follow up tables
-    $id = sid($module, 'AddClientComment', $_REQUEST);
+    $id = $runtime->sid($module, 'AddClientComment', $_REQUEST);
     if ($id > 0) {
       $_SESSION['flash'] = 'Comment added');
       $_REQUEST['id'] = $id;
     } else {
-      set_cookie('error', 'Could not add comment');
+      $_SESSION['error'] = 'Could not add comment');
     }
   }
   
   
   go("?p=$module/viewclient&id=$client_id&tab=comments");
 } else {
-  set_cookie('error', 'Client not found');
+  $_SESSION['error'] = 'Client not found');
   go("?p=$module/search");
 }
 

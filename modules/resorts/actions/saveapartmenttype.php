@@ -4,7 +4,7 @@ $id = lavnn('id', $_REQUEST, 0);
 if ($id > 0) {
   $runtime->db->sqlrun($module, 'UpdateHotelApartmentType', $_REQUEST);
 } else {
-  $id = sid($module, 'InsertHotelApartmentType', $_REQUEST);
+  $id = $runtime->sid($module, 'InsertHotelApartmentType', $_REQUEST);
 }
 # Reload hotel apartment type info
 $apttypeInfo = $runtime->s2r($module, 'GetHotelApartmentTypeInfo', array('id' => $id));

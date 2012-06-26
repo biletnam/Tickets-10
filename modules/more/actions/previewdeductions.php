@@ -1,5 +1,5 @@
 <?php
-$pageParams = %_REQUEST;
+$pageParams = $_REQUEST;
 $page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.previewdeductions');
 $amounts = lavnn('amounts');
 $months = $runtime->getDict('main', 'month');

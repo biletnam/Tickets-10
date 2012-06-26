@@ -54,7 +54,7 @@ if (count($line_manager_for) > 0 || count($deputy_staff_for) > 0) {
   if (count($birthdays) > 0) {
     push @rows, $runtime->txt->do_template('staff', 'officeabsences.birthdays', array('birthdays' => $objSM->render_employee_birthdays($days, $birthdays)));
   }
-  $pageParams['employees'] = join('', @rows);
+  $pageParams['employees'] = join('', $rows);
   $pageParams['daytypes'] = arr2ref(s2a('staff', 'ListCalendarDayTypes', array('office' => $r['userInfo']['lngWorkPlace'])));
 
   $page->add('css',  $runtime->txt->do_template('main', 'monthmatrix.css');

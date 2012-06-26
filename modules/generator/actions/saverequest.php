@@ -2,7 +2,7 @@
 use objBooking;
 $objB = new objBooking($r);
 
-$sqlParams = %_REQUEST; 
+$sqlParams = $_REQUEST; 
 $morepeople = lavnn('morepeople'); 
 $gen_user_id = $runtime->get_cookie('gen_user_id', $_REQUEST, 0);
 $bookreq_id = 0;
@@ -30,7 +30,7 @@ if ($gen_user_id > 0) {
   }
 
   # Now, try to create a record
-#  $bookreq_id = $sqlParams['bookreq'] = sid($module, 'InsertBookingRequest', $sqlParams);
+#  $bookreq_id = $sqlParams['bookreq'] = $runtime->sid($module, 'InsertBookingRequest', $sqlParams);
   $sqlResults = $objB->save_booking_request_from_generator(%sqlParams);
   if (count($sqlResults) > 0) {
     $bookreq_id = $sqlParams['bookreq'] = $sqlParams['bookreq_id'] = $sqlResults['id'] || 0;
@@ -64,16 +64,16 @@ if ($gen_user_id > 0) {
       go($urlsuccess);
       exit();
     } else {
-      $runtime->set_cookie('error', 'Could not insert booking request ' . $sqlResults['err']);
+      $runtime->$_SESSION['error'] = 'Could not insert booking request ' . $sqlResults['err']);
     }
   } else {
-    $runtime->set_cookie('error', 'Could not insert booking request');
+    $runtime->$_SESSION['error'] = 'Could not insert booking request');
   }
 }
 
 # Prepare URL for the case of failure
 delete $_REQUEST['f']; 
-$querystring = "?p=$module/newrequest&".Arrays::build_query_string(%_REQUEST);
+$querystring = "?p=$module/newrequest&".Arrays::build_query_string($_REQUEST);
 $urlfailure = lavnn('urlfailure') || $querystring;
 # Redirect to next page
 go($urlfailure.'#top');

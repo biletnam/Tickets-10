@@ -6,7 +6,7 @@ if ($hotel > 0) {
   if ($id > 0) {
     $runtime->db->sqlrun($module, 'UpdateHotelPeriod', $_REQUEST);
   } else {
-    $id = sid($module, 'InsertHotelPeriod', $_REQUEST);
+    $id = $runtime->sid($module, 'InsertHotelPeriod', $_REQUEST);
   }
   go("?p=resorts/hotelperiods&id=$hotel");
 } else {

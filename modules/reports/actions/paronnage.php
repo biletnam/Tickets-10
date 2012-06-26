@@ -7,9 +7,9 @@ $report = lavnn('report') || 'ParonageReport';
 if ($report <> '' && $runtime->eqmod($module, $report)) {
   if ($report == 'ParonageClients') {
 
-    $basequery = spreview($module, 'ParonageClients', $_REQUEST); 
+    $basequery = $runtime->spreview($module, 'ParonageClients', $_REQUEST); 
     $grid1 = new ctlDataGrid($r, 'paronageclients', $basequery, $module);
-    $descriptor = $runtime->rf($module, 'sql/ParonageClients.columns.txt');
+    $descriptor = $runtime->txt->get_module_file($module, 'sql/ParonageClients.columns.txt');
     $columns = $grid1->parse_columns_descriptor($descriptor);
     $grid1->set_columns(@columns);
     $grid1->set_pager(50);
@@ -26,9 +26,9 @@ if ($report <> '' && $runtime->eqmod($module, $report)) {
 
   } elseif ($report == 'ParonageReport') {
 
-    $basequery = spreview($module, 'ParonageReport', $_REQUEST); 
+    $basequery = $runtime->spreview($module, 'ParonageReport', $_REQUEST); 
     $grid1 = new ctlDataGrid($r, 'paronageclients', $basequery, $module);
-    $descriptor = $runtime->rf($module, 'sql/ParonageClients.columns.txt');
+    $descriptor = $runtime->txt->get_module_file($module, 'sql/ParonageClients.columns.txt');
     $columns = $grid1->parse_columns_descriptor($descriptor);
     $grid1->set_columns(@columns);
 #    $grid1->set_pager(50);

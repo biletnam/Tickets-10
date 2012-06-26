@@ -72,7 +72,7 @@ if ($office <> 0) {
     if ($acc->can_edit_staff($office)) { # provide links for notifying office workers (and maybe more staff) about office absences for specific day
       push @rows, dot('officeabsences.broadcast', array('days' => $days));
     }
-    $pageParams['employees'] = join('', @rows);
+    $pageParams['employees'] = join('', $rows);
   }
 }
 

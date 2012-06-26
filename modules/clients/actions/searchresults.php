@@ -4,12 +4,12 @@ $pageParams = array();
 #print spreview($module, 'SearchClients', $_REQUEST);
 $results = $runtime->s2a($module, 'SearchClients', $_REQUEST);
 if (count($results) > 100) {
-  print dot('searchclients.toomuch');
+  print $runtime->txt->do_template($module, 'searchclients.toomuch');
 } elseif (count($results) > 0) {
   $pageParams['clients'] = $results;
-  print dot('searchclients.list', $pageParams);
+  print $runtime->txt->do_template($module, 'searchclients.list', $pageParams);
 } else {
-  print dot('searchclients.none');
+  print $runtime->txt->do_template($module, 'searchclients.none');
 }
 
 ?>

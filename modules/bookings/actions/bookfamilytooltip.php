@@ -7,6 +7,6 @@ if (lavnn('id') <> '') {
 $relationships = $runtime->s2a($module, 'ListRelationships'); 
 $familymemberInfo['relationshipoptions'] = arr2ref(genOptions($relationships, 'rel_id', 'rel_name', $familymemberInfo['relationship_id']));
  
-print dot('bookfamilytooltip', $familymemberInfo);
+print $runtime->txt->do_template($module, 'bookfamilytooltip', $familymemberInfo);
 
 ?>

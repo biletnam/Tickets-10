@@ -5,9 +5,9 @@ $id = lavnn('id', $_REQUEST, 0);
 if ($id > 0) {
   $result = $runtime->db->sqlrun($module, 'UpdateCampaign', $_REQUEST);
 } else {
-  $id = sid($module, 'InsertCampaign', $_REQUEST);
+  $id = $runtime->sid($module, 'InsertCampaign', $_REQUEST);
   if ($id == 0) {
-    set_cookie('error', 'Could not insert campaign');  
+    $_SESSION['error'] = 'Could not insert campaign');  
   } else {
     $_SESSION['flash'] = 'Campaign saved');  
   }

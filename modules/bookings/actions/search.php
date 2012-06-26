@@ -1,6 +1,6 @@
 <?php
 
-$searchInfo = %_REQUEST;
+$searchInfo = $_REQUEST;
 
 if (get_cookie('booking_search_source_type') <> '') {
   $linkingInfo = array(
@@ -29,9 +29,9 @@ if (dot('search.checkfields', $_REQUEST) <> '') {
 
   use ctlDataGrid;
   
-  $basequery = spreview($module, 'SearchBookings', $_REQUEST);  print "<!-- $basequery -->";
+  $basequery = $runtime->spreview($module, 'SearchBookings', $_REQUEST);  print "<!-- $basequery -->";
   $grid1 = new ctlDataGrid($r, 'bookings', $basequery, $module);
-  $descriptor = $runtime->rf($module, 'sql/SearchBookings.columns.txt');
+  $descriptor = $runtime->txt->get_module_file($module, 'sql/SearchBookings.columns.txt');
   $columns = $grid1->parse_columns_descriptor($descriptor);
   $grid1->set_columns(@columns);
   $grid1->set_pager(50);

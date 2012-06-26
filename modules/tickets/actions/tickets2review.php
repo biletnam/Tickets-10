@@ -6,9 +6,9 @@ if (count($tickets2review) > 0) {
   $pageParams['tickets2review'] = $tickets2review;
   $priorityoptions = $runtime->getSortedDictArr($module, 'priority');
   $pageParams['ticketpriorities'] = $priorityoptions;
-  print dot('tickets2review.list', $pageParams);
+  print $runtime->txt->do_template($module, 'tickets2review.list', $pageParams);
 } else {
-  print dot('tickets2review.none');
+  print $runtime->txt->do_template($module, 'tickets2review.none');
 }
 
 ?>

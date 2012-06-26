@@ -55,11 +55,11 @@ if ($calendar_id > 0) {
       $_SESSION['flash'] = 'Authorization of absence request(s) succeeded');
       go("?p=$module/view&id=$calendar_id&tab=year");
     } else {
-      set_cookie('error', 'Authorization of employee absence request is only allowed to line manager of employee');
+      $_SESSION['error'] = 'Authorization of employee absence request is only allowed to line manager of employee');
       go("?p=$module/view&id=$calendar_id&tab=year");
     }
   } else {
-    set_cookie('error', 'Please select some items in order to authorize them');
+    $_SESSION['error'] = 'Please select some items in order to authorize them');
     go("?p=$module/view&id=$calendar_id&tab=year");
   }
 } else {

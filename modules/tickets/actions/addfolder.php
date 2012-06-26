@@ -1,12 +1,12 @@
 <?php
 $ticket_id = lavnn('ticket_id', $_REQUEST, 0);
 $_REQUEST['user_id'] = $r['userID'];
-$id = sid($module, 'InsertTicketFolder', $_REQUEST);
+$id = $runtime->sid($module, 'InsertTicketFolder', $_REQUEST);
 if ($id > 0) {
   $autoadd = lavnn('autoadd', $_REQUEST, '');
   if ($autoadd <> '') {
     $_REQUEST['folder_id'] = $id;
-    $id = sid($module, 'InsertTicketFolderMapping', $_REQUEST);
+    $id = $runtime->sid($module, 'InsertTicketFolderMapping', $_REQUEST);
     if ($id > 0) {
       $_SESSION['flash'] = 'Folder added, and ticket is automatically added to it');
     } else {
@@ -16,7 +16,7 @@ if ($id > 0) {
     $_SESSION['flash'] = 'Folder added');
   }
 } else {
-  set_cookie('error', 'Could not add folder');
+  $_SESSION['error'] = 'Could not add folder');
 }
 
 if ($ticket_id > 0) {

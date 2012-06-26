@@ -10,7 +10,7 @@ if ($id > 0) {
     # already exists, update if new username does not conflict with some other user
     $existingClientData = $runtime->s2r($module, 'GetClientWebLogin', array('username' => $username, 'id' => $id));
     if (count($existingClientData) > 0 && $existingClientData['client_id'] <> $id) {
-      set_cookie('error', 'Selected new Web access is already reserved for other client');
+      $_SESSION['error'] = 'Selected new Web access is already reserved for other client');
     } elseif (count($clientData) > 0) {
       $runtime->db->sqlrun($module, 'UpdateClientData', $_REQUEST);
       $_SESSION['flash'] = 'Web access info changed');
@@ -25,7 +25,7 @@ if ($id > 0) {
   # Go back to editing page
   go("?p=$module/viewclient&id=$id&tab=webaccess");
 } else {
-  set_cookie('error', 'Failed to change client data.');
+  $_SESSION['error'] = 'Failed to change client data.');
   go("?p=$module/search");
 }
 ?>

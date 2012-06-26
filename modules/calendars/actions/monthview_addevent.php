@@ -7,15 +7,15 @@ $id = lavnn('id', $_REQUEST, '');
 $year = lavnn('year', $_REQUEST, '');
 $month = lavnn('month', $_REQUEST, '');
 if ($id == '' || $year == '' || $month == '') {
-  set_cookie('error', 'Please provide calendar, date and comment to add event');  
+  $_SESSION['error'] = 'Please provide calendar, date and comment to add event');  
   # do nothing to return empty string
 } else {
   $calendarInfo = $runtime->s2r($module, 'GetCalendarData', array('id' => $id));
   $comment = lavnn('comment');
   if (count($calendarInfo) == 0) {
-    set_cookie('error', 'Calendar was not found');
+    $_SESSION['error'] = 'Calendar was not found');
   } elseif ($comment == '') {
-    set_cookie('error', 'Please provide comment to add event');  
+    $_SESSION['error'] = 'Please provide comment to add event');  
     go("?i=$module/viewmonth&id=$id&year=$year&month=$month&nocache=$nocache");
   } else {
     $object_type = $calendarInfo['object_type'];

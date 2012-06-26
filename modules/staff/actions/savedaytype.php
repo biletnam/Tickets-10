@@ -18,14 +18,14 @@ if ($id > 0) {
   $_SESSION['flash'] = 'Calendar day type updated');
 } else {
   $_REQUEST['offices'] = $ids;
-  $newid = sid($module, 'AddCalendarDayType', $_REQUEST);
+  $newid = $runtime->sid($module, 'AddCalendarDayType', $_REQUEST);
   if ($newid > 0) {
     foreach $off (lavnn('office')) {
       $runtime->db->sqlrun($module, 'InsertCalendarDayTypeOffice', array('office' => $off, 'daytype' => $newid));
     }
     $_SESSION['flash'] = 'Calendar day type added');
   } else {
-    set_cookie('error', 'Failed to add calendar day type');
+    $_SESSION['error'] = 'Failed to add calendar day type');
   }
 }
 

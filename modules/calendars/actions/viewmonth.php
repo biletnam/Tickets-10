@@ -108,7 +108,7 @@ if ($id > 0) {
     $result['edit'] = $runtime->txt->do_template($module, 'view.month.edit', $result) if $access == 'edit';
     $result['object_type'] = $object_type;
     $result['object_id'] = $object_id;
-    print dot('month', $result);
+    print $runtime->txt->do_template($module, 'month', $result);
   }
 }
 

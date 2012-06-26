@@ -2,7 +2,7 @@
 
 $id = lavnn('id');
 if ($id != 0) {
-  $newid = sid($module, 'ClonePollQuestion', $_REQUEST);
+  $newid = $runtime->sid($module, 'ClonePollQuestion', $_REQUEST);
   $qInfo = $runtime->s2r($module, 'GetQuestionDetails', array('id' => $newid));
   $poll = $qInfo['poll'] || 0;
   if ($poll > 0) {

@@ -52,7 +52,7 @@ if ($office <> 0) {
       $rows[] = dot('officeshifts.department', array('name' => $departmentName, 'cnt' => count($deprows), 'colspan' => count($days)));
       $rows += $deprows;
     }
-    $pageParams['employees'] = join('', @rows);
+    $pageParams['employees'] = join('', $rows);
   }
 }
 

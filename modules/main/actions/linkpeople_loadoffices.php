@@ -5,7 +5,7 @@ if ($department > 0) {
   $offices = $runtime->s2a($module, 'ListOffices', array('department' => $department));
   Arrays::add_array_column($offices, 'controlname', $controlname);
   if (count($offices) > 0) {
-    print dot('linkpeople.offices.list', array('controlname' => $controlname, 'offices' => $offices));
+    print $runtime->txt->do_template($module, 'linkpeople.offices.list', array('controlname' => $controlname, 'offices' => $offices));
   }
 }
 1;

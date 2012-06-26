@@ -26,15 +26,15 @@ if ($id > 0) {
         } 
       }      
 
-      print join('', @types);
+      print join('', $types);
     } else {
       $contacts = $objSM->get_employee_contact_info($id, '', 0, 1); 
       $defined_by_type = slice_array($contacts, 'contact_type');
       $personInfo['contacts'] = $defined_by_type;
-      print dot('employee.view.contact', $personInfo);
+      print $runtime->txt->do_template($module, 'employee.view.contact', $personInfo);
     }
   } else {
-    print dot('employee.notfound');
+    print $runtime->txt->do_template($module, 'employee.notfound');
   }
 } else {
   print 'Invalid call';

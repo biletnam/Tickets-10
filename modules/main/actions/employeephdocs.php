@@ -15,6 +15,6 @@ if (count($stock) > 0) {
 $personaldocs = $runtime->s2a($module, 'ListPersonalUserDocs', array('employee' => $r['userID']));  
 $pageParams['personaldocs'] = $personaldocs; 
 
-print dot('dashboard.phdocs', $pageParams);
+print $runtime->txt->do_template($module, 'dashboard.phdocs', $pageParams);
 
 ?>

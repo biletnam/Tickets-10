@@ -7,7 +7,7 @@ $id = lavnn('id', $_REQUEST, '');
 $year = lavnn('year', $_REQUEST, '');
 $month = lavnn('month', $_REQUEST, '');
 if ($id == '' || $year == '' || $month == '') {
-  set_cookie('error', 'Please specify calendar event to delete');  
+  $_SESSION['error'] = 'Please specify calendar event to delete');  
   # do nothing to return empty string
 } else {
   # Get calendar id
@@ -27,7 +27,7 @@ if ($id == '' || $year == '' || $month == '') {
     }
     go("?i=$module/viewmonth&id=$calendar_id&year=$year&month=$month&nocache=$nocache");
   } else {
-    set_cookie('error', 'Event not found');
+    $_SESSION['error'] = 'Event not found');
   }
 }
 

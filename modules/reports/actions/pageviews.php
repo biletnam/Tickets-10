@@ -15,9 +15,9 @@ $entitytypeoptions = genOptions($entitytypes, 'entity_type', 'entity_type', $ent
 $pageParams['entitytypes'] = $entitytypeoptions;
 $pageParams['entity_id'] = lavnn('entity_id');
 
-$basequery = spreview($module, 'Pageviews', $_REQUEST); 
+$basequery = $runtime->spreview($module, 'Pageviews', $_REQUEST); 
 $grid1 = new ctlDataGrid($r, 'pageviews', $basequery, $module);
-$descriptor = $runtime->rf($module, 'sql/Pageviews.columns.txt');
+$descriptor = $runtime->txt->get_module_file($module, 'sql/Pageviews.columns.txt');
 $columns = $grid1->parse_columns_descriptor($descriptor);
 $grid1->set_columns(@columns);
 $grid1->set_pager(50);

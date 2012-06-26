@@ -4,7 +4,7 @@ $id = lavnn('id', $_REQUEST, 0);
 if ($id > 0) {
   $serieInfo = $runtime->s2r($module, 'GetVoucherSerieData', $_REQUEST);
   if (count($serieInfo) > 0) {
-    print dot('ajaxserie', $serieInfo);  
+    print $runtime->txt->do_template($module, 'ajaxserie', $serieInfo);  
   }
 } else {
   print "where ID, dude?";

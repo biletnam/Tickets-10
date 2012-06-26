@@ -1,6 +1,6 @@
 <?php
 
-$searchInfo = %_REQUEST;
+$searchInfo = $_REQUEST;
 $page->add('title',  $searchInfo['pagetitle'] =  dot('title.search');
 $resultsHtml = '';
 use ctlDataGrid;
@@ -110,9 +110,9 @@ if (count($folders) > 0) {
 }
 
 if (dot('search.checkfields', $_REQUEST) <> '') {
-  $basequery = spreview($module, 'SearchTickets', $_REQUEST); #print $basequery;
+  $basequery = $runtime->spreview($module, 'SearchTickets', $_REQUEST); #print $basequery;
   $grid1 = new ctlDataGrid($r, 'tickets', $basequery, $module);
-  $descriptor = $runtime->rf($module, 'sql/SearchTickets.columns.txt');
+  $descriptor = $runtime->txt->get_module_file($module, 'sql/SearchTickets.columns.txt');
   $columns = $grid1->parse_columns_descriptor($descriptor);
   $grid1->set_columns(@columns);
   $grid1->set_pager(50);

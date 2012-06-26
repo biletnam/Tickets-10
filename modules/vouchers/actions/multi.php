@@ -21,7 +21,7 @@ if ($access <> 'none') { # default for authorized users
   if ($serie > 0 || $stock > 0) {
     # gather ids of checked vouchers    
     $ids = array();
-    while (($request_key, $request_value) = each %_REQUEST) {
+    while (($request_key, $request_value) = each $_REQUEST) {
       my($prefix, $suffix) = split('_', $request_key);
       if ($prefix == 'id' && $suffix <> '') {
         push @ids, $suffix;
@@ -49,7 +49,7 @@ if ($access <> 'none') { # default for authorized users
             $count_failure += (1 - $result);
           }
           $_SESSION['flash'] = "Location set for ".$count_success." vouchers") if $count_success > 0;
-          set_cookie('error', "Location was not set for ".$count_failure." vouchers") if $count_failure > 0;
+          $_SESSION['error'] = "Location was not set for ".$count_failure." vouchers") if $count_failure > 0;
           if ($count_success > 0 && $doc_location_type == 'employee' && $doc_location_id <> $r['userID']) {
             # Send notification about new vouchers to be arrived
             $delivery_method ||= '[unknown delivery method]';
@@ -69,7 +69,7 @@ if ($access <> 'none') { # default for authorized users
             }
           }
         } else {
-          set_cookie('error', "New location is not specified in full (code: $doc_location_type:$doc_location_id)");
+          $_SESSION['error'] = "New location is not specified in full (code: $doc_location_type:$doc_location_id)");
         }
       } elseif($op == 'setowner') {
         $owner_type = lavnn('owner_type');
@@ -90,7 +90,7 @@ if ($access <> 'none') { # default for authorized users
         }
       }
     } else {
-      set_cookie('error', "Select some items in order to run multiple operation");
+      $_SESSION['error'] = "Select some items in order to run multiple operation");
     }
     
     go("?p=$module/serie&tab=vouchers&id=$serie") if $serie > 0;
@@ -99,7 +99,7 @@ if ($access <> 'none') { # default for authorized users
     go("?p=$module/home");
   }
 } else { # default for unauthorized users
-  set_cookie('error', "You are not authorized to manage this stock");
+  $_SESSION['error'] = "You are not authorized to manage this stock");
   go("?p=main/dashboard&tab=docs");
 }
 

@@ -1,4 +1,4 @@
 <?php
 
-print dot('versions');
+print $runtime->txt->do_template($module, 'versions');
 ?>

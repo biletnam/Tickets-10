@@ -24,7 +24,7 @@ if ($id > 0) {
       go($url);
     }
   } else {
-    set_cookie('error', 'Could not delete attachment');
+    $_SESSION['error'] = 'Could not delete attachment');
   }
 }
 go('');

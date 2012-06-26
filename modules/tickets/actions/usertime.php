@@ -51,8 +51,8 @@ if (count($bymonth) > 0) {
 }
 
 $tabUserTime = new ctlTab($r, "tcUserTime"); 
-$tabUserTime->addTab('thisweek', dot('usertime.thisweek.tabheader', $pageParams), join('', @thisweek)) if (count($thisweek) > 0);
-$tabUserTime->addTab('lastweek', dot('usertime.lastweek.tabheader', $pageParams), join('', @lastweek)) if (count($lastweek) > 0);
+$tabUserTime->addTab('thisweek', dot('usertime.thisweek.tabheader', $pageParams), join('', $thisweek)) if (count($thisweek) > 0);
+$tabUserTime->addTab('lastweek', dot('usertime.lastweek.tabheader', $pageParams), join('', $lastweek)) if (count($lastweek) > 0);
 $tabUserTime->addTab('bymonth', dot('usertime.bymonth.tabheader', $pageParams), $time_by_months) if (count($bymonth) > 0);
 $tabUserTime->addTab('report', dot('usertime.report.tabheader', $pageParams), dot('usertime.report', $pageParams));
 $pageParams['tabcontrol'] = $tabUserTime->getHTML();

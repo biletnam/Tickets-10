@@ -1,6 +1,6 @@
 <?php
 
-$pageParams = %_REQUEST;
+$pageParams = $_REQUEST;
 
 $tagfilter = lavnn('tag', $_REQUEST, '');
 $search = lavnn('search', $_REQUEST, '');

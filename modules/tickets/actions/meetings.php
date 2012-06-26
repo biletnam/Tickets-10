@@ -6,9 +6,9 @@ $pageParams['meetings'] = $meetings;
 
   use ctlDataGrid;
   
-  $basequery = spreview($module, 'ListMeetings', array('user_id' => $r['userID'])); 
+  $basequery = $runtime->spreview($module, 'ListMeetings', array('user_id' => $r['userID'])); 
   $grid1 = new ctlDataGrid($r, 'meetings', $basequery, $module);
-  $descriptor = $runtime->rf($module, 'sql/ListMeetings.columns.txt');
+  $descriptor = $runtime->txt->get_module_file($module, 'sql/ListMeetings.columns.txt');
   $columns = $grid1->parse_columns_descriptor($descriptor);
   $grid1->set_columns(@columns);
   $grid1->set_pager(50);

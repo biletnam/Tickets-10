@@ -73,7 +73,7 @@ if ($resort_id <> '' && $travel_date <> '') {
     } 
   }
   if (count($slotgroups) > 0) {
-    $availabilityInfo['slotgroups'] = join('', @slotgroups);
+    $availabilityInfo['slotgroups'] = join('', $slotgroups);
   }
   $output = $runtime->$runtime->txt->do_template($controller, 'API.AvailabilityInfo2', $availabilityInfo);
   

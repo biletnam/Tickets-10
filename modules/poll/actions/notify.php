@@ -8,7 +8,7 @@ if ($poll <> 0) {
   if (count($pollInfo) > 0) {
     # Get IDs of all people who have not yet responded to the poll
     if ($ids == '') {
-      $respondents = $objP->list_pending_respondents(%_REQUEST);
+      $respondents = $objP->list_pending_respondents($_REQUEST);
       $ids = join_column(',', 'lngId', $respondents);
     }
     # Create notification and send it
@@ -20,10 +20,10 @@ if ($poll <> 0) {
     $cnt = $objN->add_notification_recipient_employees($nid, $ids);
     $_SESSION['flash'] = 'Notification sent to ' . $cnt . ' persons.')
   } else {
-    set_cookie('error', 'Poll not found');
+    $_SESSION['error'] = 'Poll not found');
   }
 } else {
-  set_cookie('error', 'Poll not found');
+  $_SESSION['error'] = 'Poll not found');
 }
 go("?p=$module/list&tab=editlist");
 ?>

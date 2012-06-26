@@ -24,13 +24,13 @@ if ($employee > 0) {
       if ($checkid == $attachmentid) {
         $_SESSION['flash'] = 'Avatar set');
       } else {
-        set_cookie('error', 'Could not set avatar');
+        $_SESSION['error'] = 'Could not set avatar');
       }
     } else {
-      set_cookie('error', 'Could not upload an attachment!');
+      $_SESSION['error'] = 'Could not upload an attachment!');
     }
   } else {
-    set_cookie('error', 'Could not upload file');
+    $_SESSION['error'] = 'Could not upload file');
   }
 }
 if ($employee > 0) {

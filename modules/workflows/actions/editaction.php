@@ -23,7 +23,7 @@ if ($id > 0) {
       $atype = 'unknown';
     }
     if (count($actionparams) > 0) {
-      $actionInfo['parameters'] = join('', @actionparams);
+      $actionInfo['parameters'] = join('', $actionparams);
       $actionInfo['actionparams'] = $runtime->txt->do_template($module, "editaction.parameters", $actionInfo);
     }
     $page->add('main', $runtime->txt->do_template($module, "editaction", $actionInfo);

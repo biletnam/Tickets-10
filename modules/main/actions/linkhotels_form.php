@@ -6,7 +6,7 @@ if ($source <> '' && $controlname <> '') {
   $locations = $runtime->s2a($module, 'ListHotelLocations');
   $locationoptions = genOptions($locations, 'id', 'location_name');
   $pageParams['locationoptions'] = $locationoptions;
-  print dot('linkhotels.form', $pageParams);
+  print $runtime->txt->do_template($module, 'linkhotels.form', $pageParams);
 }
 
 1;

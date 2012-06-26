@@ -2,7 +2,7 @@
 
 $op = lavnn('op', $_REQUEST, '');
 $ids = array();
-while (($request_key, $request_value) = each %_REQUEST) {
+while (($request_key, $request_value) = each $_REQUEST) {
   my($prefix, $suffix) = split('_', $request_key);
   if ($prefix == 'id' && $suffix <> '') {
     push @ids, $suffix;
@@ -23,7 +23,7 @@ if (count($ids) > 0 && $op <> '') {
     $_SESSION['flash'] = count($ids)." articles marked as Not Draft");
   }
 } else {
-    set_cookie('error', "Select some items in order to run multiple operation");
+    $_SESSION['error'] = "Select some items in order to run multiple operation");
 }
 
 go('?p='.$module.'/myarticles');

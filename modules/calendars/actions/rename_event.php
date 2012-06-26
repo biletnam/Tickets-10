@@ -5,12 +5,12 @@ $id = lavnn('id', $_REQUEST, '');
 $year = lavnn('year', $_REQUEST, '');
 $month = lavnn('month', $_REQUEST, '');
 if ($id == '' || $year == '' || $month == '') {
-  set_cookie('error', 'Please provide calendar event and new description to rename the event');  
+  $_SESSION['error'] = 'Please provide calendar event and new description to rename the event');  
   # do nothing to return empty string
 } else {
   $comment = lavnn('comment');
   if ($comment == '') {
-    set_cookie('error', 'Please provide new comment to rename event');  
+    $_SESSION['error'] = 'Please provide new comment to rename event');  
   } else {
     $sqlParams = array('id' => $id, 'comment' => $comment);
     $eventInfo = $objCal->get_event_info(%sqlParams);

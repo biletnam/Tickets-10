@@ -12,11 +12,11 @@ if ($user_id <> '' && $comment <> '') {
     $_SESSION['flash'] = 'Comment added');
     go("?p=$module/employee&id=$user_id&tab=comments");  
   } else {
-    set_cookie('error', 'Could not add comment');
+    $_SESSION['error'] = 'Could not add comment');
     go("?p=$module/employee&id=$user_id");
   }
 } else {
-  set_cookie('error', 'Malformed request, showing list of offices instead');
+  $_SESSION['error'] = 'Malformed request, showing list of offices instead');
   go("?p=$module/offices");
 }
 

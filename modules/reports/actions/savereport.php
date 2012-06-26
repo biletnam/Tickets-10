@@ -2,7 +2,7 @@
 
 $id = lavnn('id', $_REQUEST, 0);
 if ($id == 0) {
-  $id = sid($module, 'InsertPredefinedReport', $_REQUEST);
+  $id = $runtime->sid($module, 'InsertPredefinedReport', $_REQUEST);
 } else {
   $runtime->db->sqlrun($module, 'UpdatePredefinedReport', $_REQUEST);
 }

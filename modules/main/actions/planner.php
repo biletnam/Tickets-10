@@ -30,5 +30,5 @@ if (count($future_items) > 0) {
   $pageParams['future'] = $runtime->txt->do_template($module, 'dashboard.planner.future.empty');
 }
 
-print dot('dashboard.planner', $pageParams);
+print $runtime->txt->do_template($module, 'dashboard.planner', $pageParams);
 ?>

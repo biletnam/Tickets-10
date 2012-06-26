@@ -8,7 +8,7 @@ $handler = lavnn('handler');
 $handlerInfo = array($handler <> '') ? s2r($module, 'GetEmployeeInfo', array('id' => $handler)) : ();
 $priority = lavnn('priority');
 
-while (($request_key, $request_value) = each %_REQUEST) {
+while (($request_key, $request_value) = each $_REQUEST) {
   my($prefix, $suffix) = split('_', $request_key);
   if ($prefix == 'id' && $suffix <> '') {
     push @ids, $suffix;
@@ -22,7 +22,7 @@ if (count($ids) > 0 && $op <> '') {
       $runtime->db->sqlrun($module, 'SetTicketStatus', array('id' => $id, 'status' => 'CLD'));
       $sqlParams = array('ticket' => $id, 'editor' => $r['userInfo']['staff_id'], 'new_status' => 'CLD');
       $sqlParams['explained'] = $objT->explain_history_item($sqlParams);
-      $historyids{$id} = sid($module, 'AddTicketHistory', $sqlParams);
+      $historyids{$id} = $runtime->sid($module, 'AddTicketHistory', $sqlParams);
     }
     $_SESSION['flash'] = count($ids)." ticket(s) marked as Cancelled");
   } elseif ($op == 'markfixed') {
@@ -30,7 +30,7 @@ if (count($ids) > 0 && $op <> '') {
       $runtime->db->sqlrun($module, 'SetTicketStatus', array('id' => $id, 'status' => 'FIX'));
       $sqlParams = array('ticket' => $id, 'editor' => $r['userInfo']['staff_id'], 'new_status' => 'FIX');
       $sqlParams['explained'] = $objT->explain_history_item($sqlParams);
-      $historyids{$id} = sid($module, 'AddTicketHistory', $sqlParams);
+      $historyids{$id} = $runtime->sid($module, 'AddTicketHistory', $sqlParams);
     }
     $_SESSION['flash'] = count($ids)." ticket(s) marked as Fixed");
   } elseif ($op == 'close') {
@@ -38,7 +38,7 @@ if (count($ids) > 0 && $op <> '') {
       $runtime->db->sqlrun($module, 'SetTicketStatus', array('id' => $id, 'status' => 'CLO'));
       $sqlParams = array('ticket' => $id, 'editor' => $r['userInfo']['staff_id'], 'new_status' => 'CLO');
       $sqlParams['explained'] = $objT->explain_history_item($sqlParams);
-      $historyids{$id} = sid($module, 'AddTicketHistory', $sqlParams);
+      $historyids{$id} = $runtime->sid($module, 'AddTicketHistory', $sqlParams);
     }
     $_SESSION['flash'] = count($ids)." ticket(s) marked as Closed");
   } elseif ($op == 'setpriority' && $priority <> '') {
@@ -46,7 +46,7 @@ if (count($ids) > 0 && $op <> '') {
       $runtime->db->sqlrun($module, 'SetTicketPriority', array('id' => $id, 'priority' => $priority));
       $sqlParams = array('ticket' => $id, 'editor' => $r['userInfo']['staff_id'], 'new_priority' => $priority);
       $sqlParams['explained'] = $objT->explain_history_item($sqlParams);
-      $historyids{$id} = sid($module, 'AddTicketHistory', $sqlParams);
+      $historyids{$id} = $runtime->sid($module, 'AddTicketHistory', $sqlParams);
     }
     $_SESSION['flash'] = count($ids)." ticket(s) got a new priority");    
   } elseif ($op == 'add2proj' && count($projectInfo) > 0) {
@@ -55,7 +55,7 @@ if (count($ids) > 0 && $op <> '') {
       $runtime->db->sqlrun($module, 'SetTicketProject', array('id' => $id, 'project' => $project));
       $sqlParams = array('ticket' => $id, 'editor' => $r['userInfo']['staff_id'], 'new_project' => $project);
       $sqlParams['explained'] = $objT->explain_history_item($sqlParams);
-      $historyids{$id} = sid($module, 'AddTicketHistory', $sqlParams);
+      $historyids{$id} = $runtime->sid($module, 'AddTicketHistory', $sqlParams);
     }
     $_SESSION['flash'] = count($ids)." ticket(s) included to project ".$projectInfo['title']);    
   } elseif ($op == 'sethandler' && count($handlerInfo) > 0) {
@@ -63,7 +63,7 @@ if (count($ids) > 0 && $op <> '') {
       $runtime->db->sqlrun($module, 'SetTicketHandler', array('id' => $id, 'handler' => $handler));
       $sqlParams = array('ticket' => $id, 'editor' => $r['userInfo']['staff_id'], 'new_handler' => $handler);
       $sqlParams['explained'] = $objT->explain_history_item($sqlParams);
-      $historyids{$id} = sid($module, 'AddTicketHistory', $sqlParams);
+      $historyids{$id} = $runtime->sid($module, 'AddTicketHistory', $sqlParams);
     }
     $_SESSION['flash'] = count($ids)." ticket(s) assigned to ".$handlerInfo['strFullName']);    
   }
@@ -75,7 +75,7 @@ if (count($ids) > 0 && $op <> '') {
     }  
   }
 } else {
-    set_cookie('error', "Select some items in order to run multiple operation");
+    $_SESSION['error'] = "Select some items in order to run multiple operation");
 }
 
 go(lavnn('nextUrl'));
