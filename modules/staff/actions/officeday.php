@@ -23,15 +23,15 @@ foreach $calendaritem (@calendaritems) {
 }
 
 if (count($weekends) > 0) {
-  $pageParams['weekends'] = $runtime->txt->do_template($module, 'officeday.weekends', array('count' => count($weekends), 'weekends' => $weekends));
+  $pageParams['weekends'] = $r->txt->do_template($module, 'officeday.weekends', array('count' => count($weekends), 'weekends' => $weekends));
 }
 if (count($specialdays) > 0) {
-  $pageParams['specialdays'] = $runtime->txt->do_template($module, 'officeday.specialdays', array('count' => count($specialdays), 'specialdays' => $specialdays));
+  $pageParams['specialdays'] = $r->txt->do_template($module, 'officeday.specialdays', array('count' => count($specialdays), 'specialdays' => $specialdays));
 }
 if (count($absences) > 0) {
-  $pageParams['absences'] = $runtime->txt->do_template($module, 'officeday.absences', array('count' => count($absences), 'absences' =>$absences));
+  $pageParams['absences'] = $r->txt->do_template($module, 'officeday.absences', array('count' => count($absences), 'absences' =>$absences));
 }
 
-$page->add('main', $runtime->txt->do_template($module, 'officeday', $pageParams);
+$page->add('main', $r->txt->do_template($module, 'officeday', $pageParams);
 
 ?>

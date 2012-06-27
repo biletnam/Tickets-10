@@ -12,12 +12,12 @@ if ($id > 0) {
 
 #    $to = 'barcodex@gmail.com';
     
-    $subj = $runtime->txt->do_template($module, 'mail.subj.minutes');
-    $body = $runtime->txt->do_template($module, 'mail.body.minutes', array('id' => $id, 'body' => $meetingHtml));
+    $subj = $r->txt->do_template($module, 'mail.subj.minutes');
+    $body = $r->txt->do_template($module, 'mail.body.minutes', array('id' => $id, 'body' => $meetingHtml));
 
     $result = 0;
     if (lavnn('withpdf') > 0) {
-      $html = $runtime->txt->do_template('main', 'index.pdf', array('main' => $meetingHtml));
+      $html = $r->txt->do_template('main', 'index.pdf', array('main' => $meetingHtml));
       $pdfname = $r['fs']pdf($html, "Meeting.$id.pdf", 1);
       $f = array('filename' => 'Test.pdf', 'type' => 'application/pdf', 'path' => $pdfname);
       $files = array($f);

@@ -31,10 +31,10 @@ if ($id > 0) {
       $contacts = $objSM->get_employee_contact_info($id, '', 0, 1); 
       $defined_by_type = slice_array($contacts, 'contact_type');
       $personInfo['contacts'] = $defined_by_type;
-      print $runtime->txt->do_template($module, 'employee.view.contact', $personInfo);
+      print $r->txt->do_template($module, 'employee.view.contact', $personInfo);
     }
   } else {
-    print $runtime->txt->do_template($module, 'employee.notfound');
+    print $r->txt->do_template($module, 'employee.notfound');
   }
 } else {
   print 'Invalid call';

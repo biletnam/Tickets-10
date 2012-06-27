@@ -19,7 +19,7 @@ if ($target <> '') {
     $moretickets = $runtime->s2a($module, 'ListTargetTickets');
     if (count($moretickets) > 0) {
       $ti['moretickets'] = count($moretickets);
-      $ti['moreticketslink'] = $runtime->txt->do_template($module, 'new.target.more', $ticketInfo);
+      $ti['moreticketslink'] = $r->txt->do_template($module, 'new.target.more', $ticketInfo);
     }
     $targets[] = $ti;
   }
@@ -30,15 +30,15 @@ $projects = $objT->list_projects('read');
 $project = lavnn('project');
 if ($project <> '') {
   $projectoptions = genOptions($projects, 'id', 'title', $project);
-  $ticketInfo['projectselect'] = $runtime->txt->do_template($module, 'new.project.hardcoded', array('projects' => $projectoptions));
+  $ticketInfo['projectselect'] = $r->txt->do_template($module, 'new.project.hardcoded', array('projects' => $projectoptions));
 } else {
-  $ticketInfo['projectselect'] = $runtime->txt->do_template($module, 'new.project.select', array('projects' => $projects));
+  $ticketInfo['projectselect'] = $r->txt->do_template($module, 'new.project.select', array('projects' => $projects));
 }
 
 $priorityoptions = $runtime->getSortedDictArr($module, 'priority', 0);
 $ticketInfo['priorities'] = $priorityoptions;
-$ticketInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.new');
+$ticketInfo['pagetitle'] = $r->txt->do_template($module, 'title.new');
 $page->add('title', $ticketInfo['pagetitle']);
-$page->add('main', $runtime->txt->do_template($module, 'new', $ticketInfo));
+$page->add('main', $r->txt->do_template($module, 'new', $ticketInfo));
 
 ?>

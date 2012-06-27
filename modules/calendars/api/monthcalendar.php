@@ -128,7 +128,7 @@ for ($i = 1; $i <= $num_of_days; $i++) {
     $hash = $officeData[0];
     $dayParams['OfficeDayType'] = 'OfficeDayType_'.$hash['day_type'];
     if ($hash['day_type'] <> 'WE') {
-      $dayParams['data'] .= $runtime->$runtime->txt->do_template($module, 'api.monthcalendar.day.offevent', $hash);
+      $dayParams['data'] .= $runtime->$r->txt->do_template($module, 'api.monthcalendar.day.offevent', $hash);
     }
   } else {
     $dayParams['weekend'] = array(in_array(1 + (($i + $base - 2) % 7), $weekenddays) ? "weekend" : "");

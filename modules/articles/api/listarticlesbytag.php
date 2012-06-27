@@ -22,7 +22,7 @@ if ($tags <> '') {
     push @warnings, $runtime->hash2ref( ('code' => 'ListArticlesByTag.NothingFound', 'text' => 'No articles found for provided combination of tags') );
   } else {
     $apiparams['articles'] = $articles;
-    $output = $runtime->$runtime->txt->do_template($controller, 'api.ListArticles', array('articles' => $articles));
+    $output = $runtime->$r->txt->do_template($controller, 'api.ListArticles', array('articles' => $articles));
   }
 
 } else {
@@ -33,7 +33,7 @@ if ($tags <> '') {
 # Return resulting XML API output - quite similar to all APIs
 binmode STDOUT, ":utf8";
 print "content-type: $contenttype; charset=$charset;\n\n";
-print $runtime->$runtime->txt->do_template($controller, 'Envelope', array(
+print $runtime->$r->txt->do_template($controller, 'Envelope', array(
   'result' => $result,
   'output' => $output,
   'warnings' => Arrays::a2xml($warnings, 'Warnings', 'Warning'),

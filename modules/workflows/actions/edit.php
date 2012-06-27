@@ -4,13 +4,13 @@ $workflowInfo  = array();
 $id = lavnn('id', $_REQUEST, 0);
 if ($id > 0) {
   %workflowInfo = $objW->get_workflow($_REQUEST);
-  $page->add('title',  $workflowInfo['pagetitle'] = $runtime->txt->do_template($module, 'edit.title.edit', $workflowInfo); 
+  $page->add('title',  $workflowInfo['pagetitle'] = $r->txt->do_template($module, 'edit.title.edit', $workflowInfo); 
   $workflowInfo['parameters'] = arr2ref($objW->get_parameters($_REQUEST));  
   $workflowInfo['constants'] = arr2ref($objW->get_constants($_REQUEST));  
   $workflowInfo['actions'] = arr2ref($objW->get_actions($_REQUEST));  
   
-  $page['js'] .= $runtime->txt->do_template('main', 'tabcontrol.js');
-  $page->add('css',  $runtime->txt->do_template('main', 'tabcontrol.css');
+  $page['js'] .= $r->txt->do_template('main', 'tabcontrol.js');
+  $page->add('css',  $r->txt->do_template('main', 'tabcontrol.css');
   use ctlTab;
   $tabEditWorkflow = new ctlTab($r, "tcEditWorkflow");
 #  $pollInfo['lmreviewoptions'] = arr2ref(genOptions($yesno, 'key', 'value', $workflowInfo['lm_review']));
@@ -23,10 +23,10 @@ if ($id > 0) {
   $runtime->saveMoment('  tab control rendered');
   
 } else {
-  $page->add('title',  $workflowInfo['pagetitle'] = $runtime->txt->do_template($module, 'edit.title.new');
-  $workflowInfo['tabcontrol'] = $runtime->txt->do_template($module, 'edit.info', $workflowInfo);
+  $page->add('title',  $workflowInfo['pagetitle'] = $r->txt->do_template($module, 'edit.title.new');
+  $workflowInfo['tabcontrol'] = $r->txt->do_template($module, 'edit.info', $workflowInfo);
 }
-$page->add('main', $runtime->txt->do_template($module, 'edit', $workflowInfo);
+$page->add('main', $r->txt->do_template($module, 'edit', $workflowInfo);
 
 
 

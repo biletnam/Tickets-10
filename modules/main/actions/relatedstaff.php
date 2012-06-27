@@ -3,7 +3,7 @@
 use Calendar;
 
 $pageParams = array();
-$pageParams['pagetitle'] = $page->add('title',  $runtime->txt->do_template($module, 'title.relatedstaff');
+$pageParams['pagetitle'] = $page->add('title',  $r->txt->do_template($module, 'title.relatedstaff');
 
 use objStaffManagement;
 $objSM = new objStaffManagement($r);
@@ -39,7 +39,7 @@ if (count($line_manager_for) > 0 || count($deputy_staff_for) > 0) {
         } else {
           $employee['absences'] = $emptyrow; 
         }
-        push @rows, $runtime->txt->do_template('staff', 'officeabsences.employee.edit', $employee);   
+        push @rows, $r->txt->do_template('staff', 'officeabsences.employee.edit', $employee);   
         # Also, check if employee has birthday this month
         if ($employee['MonthBirth'] == $M) {
           $D = $employee['DayBirth'];
@@ -52,16 +52,16 @@ if (count($line_manager_for) > 0 || count($deputy_staff_for) > 0) {
   }
 
   if (count($birthdays) > 0) {
-    push @rows, $runtime->txt->do_template('staff', 'officeabsences.birthdays', array('birthdays' => $objSM->render_employee_birthdays($days, $birthdays)));
+    push @rows, $r->txt->do_template('staff', 'officeabsences.birthdays', array('birthdays' => $objSM->render_employee_birthdays($days, $birthdays)));
   }
   $pageParams['employees'] = join('', $rows);
   $pageParams['daytypes'] = arr2ref(s2a('staff', 'ListCalendarDayTypes', array('office' => $r['userInfo']['lngWorkPlace'])));
 
-  $page->add('css',  $runtime->txt->do_template('main', 'monthmatrix.css');
-  $page->add('css',  $runtime->txt->do_template('main', 'monthmatrix.legend.css', $pageParams);
-  $page->add('main', $runtime->txt->do_template('main', 'relatedstaff', $pageParams);
+  $page->add('css',  $r->txt->do_template('main', 'monthmatrix.css');
+  $page->add('css',  $r->txt->do_template('main', 'monthmatrix.legend.css', $pageParams);
+  $page->add('main', $r->txt->do_template('main', 'relatedstaff', $pageParams);
 } else {  
-  $page->add('main', $runtime->txt->do_template('main', 'relatedstaff.none', $pageParams);
+  $page->add('main', $r->txt->do_template('main', 'relatedstaff.none', $pageParams);
 }
 $runtime->saveMoment(' rendered main part of the page');
 

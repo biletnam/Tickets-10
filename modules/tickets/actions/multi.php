@@ -70,7 +70,7 @@ if (count($ids) > 0 && $op <> '') {
   while (($ticketid, $historyid) = each %historyids) {
     $historyitem = $runtime->s2r($module, 'GetTicketHistory', array('id' => $ticketid, 'historyid' => $historyid)); 
     if (count($historyitem) > 0) {
-      $historyitem['_subject_'] = $runtime->txt->do_template($module, 'tickethistory.subject', $historyitem);
+      $historyitem['_subject_'] = $r->txt->do_template($module, 'tickethistory.subject', $historyitem);
       $objT->mail_ticket_action($ticketid, $historyitem); # TODO Make sure this method is not really obsolete, as it does not use $objNotification
     }  
   }

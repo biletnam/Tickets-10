@@ -58,7 +58,7 @@ if (count($cleanparams) > 0) {
   $searchInfo = array(); 
   $tickets = $runtime->s2a($controller, 'SearchTickets', $apiparams); 
   $searchInfo['tickets'] = $tickets;
-  $output = $runtime->$runtime->txt->do_template($controller, 'API.SearchTickets', $searchInfo);
+  $output = $runtime->$r->txt->do_template($controller, 'API.SearchTickets', $searchInfo);
 } else {
   $result = 'ERR'; 
   push @errors, $runtime->hash2ref( ('code' => 'SearchTickets.InvalidInputParams', 'text' => 'Specify at least search parameter!') );
@@ -66,7 +66,7 @@ if (count($cleanparams) > 0) {
 
 # Return resulting XML API output - quite similar to all APIs
 print "content-type: $contenttype; charset=$charset;\n\n";
-print $runtime->$runtime->txt->do_template($controller, 'API.Envelope', array(
+print $runtime->$r->txt->do_template($controller, 'API.Envelope', array(
   'result' => $result,
   'output' => $output,
   'warnings' => Arrays::a2xml($warnings, 'Warnings', 'Warning'),

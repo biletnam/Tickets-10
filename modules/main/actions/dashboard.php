@@ -35,11 +35,11 @@ foreach $eD (reverse sort keys %nn) {
 #  print $eD, Dumper($n);
   $nhash = array('notifications' => loopt('dashboard.notification', @n));
   if ($n[0]['daysdiff'] == 0) {
-    $nhash['day'] = $runtime->txt->do_template($module, 'dashboard.notification.today');
+    $nhash['day'] = $r->txt->do_template($module, 'dashboard.notification.today');
   } elseif ($n[0]['daysdiff'] == 1) {
-    $nhash['day'] = $runtime->txt->do_template($module, 'dashboard.notification.yesterday');
+    $nhash['day'] = $r->txt->do_template($module, 'dashboard.notification.yesterday');
   } else {
-    $nhash['day'] = $runtime->txt->do_template($module, 'dashboard.notification.day', ${$n[0]});
+    $nhash['day'] = $r->txt->do_template($module, 'dashboard.notification.day', ${$n[0]});
   }
   push @notifications, dot('dashboard.notification.list', $nhash);
 }
@@ -57,14 +57,14 @@ $tabDashboard->setDefaultTab(lavnn('tab') || 'notifications');
 $pageParams['tabcontrol'] = $tabDashboard->getHTML(); 
 $runtime->saveMoment(' rendered tab control');
 
-$page['js'] = $runtime->txt->do_template('main', 'tabcontrol.js');
-$page['css'] = $runtime->txt->do_template('main', 'tabcontrol.css');
-$page['js'] .= $runtime->txt->do_template('main', 'notifications.js');
-$page->add('css',  $runtime->txt->do_template('main', 'notifications.css');
+$page['js'] = $r->txt->do_template('main', 'tabcontrol.js');
+$page['css'] = $r->txt->do_template('main', 'tabcontrol.css');
+$page['js'] .= $r->txt->do_template('main', 'notifications.js');
+$page->add('css',  $r->txt->do_template('main', 'notifications.css');
 $runtime->saveMoment(' included custom JavaScript and CSS');
 
-$pageParams['pagetitle'] = $page->add('title',  $runtime->txt->do_template($module, 'title.dashboard');
-$page->add('main', $runtime->txt->do_template('main', 'dashboard', $pageParams);
+$pageParams['pagetitle'] = $page->add('title',  $r->txt->do_template($module, 'title.dashboard');
+$page->add('main', $r->txt->do_template('main', 'dashboard', $pageParams);
 $runtime->saveMoment(' rendered main part of the page');
 
 

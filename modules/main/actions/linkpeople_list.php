@@ -25,9 +25,9 @@ if ($source <> '' && $controlname <> '') {
       $link['controlname'] = $controlname;
       push @links, dot('linkpeople.listitem.person', $link);
     }
-    print $runtime->txt->do_template($module, 'linkpeople.list', array('controlname' => $controlname, 'links' => join('', $links)));
+    print $r->txt->do_template($module, 'linkpeople.list', array('controlname' => $controlname, 'links' => join('', $links)));
   } else {
-    print $runtime->txt->do_template($module, 'linkpeople.list', array('controlname' => $controlname, 'links' => dot('linkpeople.none')));
+    print $r->txt->do_template($module, 'linkpeople.list', array('controlname' => $controlname, 'links' => dot('linkpeople.none')));
   }
 }
 

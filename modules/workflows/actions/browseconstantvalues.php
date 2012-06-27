@@ -6,7 +6,7 @@ if ($type == 'polltemplate') {
   $objP = new objPoll($r);
   $polltemplates = $objP->list_templates();
   $options = genOptions($polltemplates, 'id', 'title');
-  print $runtime->txt->do_template($module, 'browseconstantvalues.polltemplate', array('templates' => $options));
+  print $r->txt->do_template($module, 'browseconstantvalues.polltemplate', array('templates' => $options));
 }
 
 1;

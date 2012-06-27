@@ -8,8 +8,8 @@ $offs = '*' if $acc->is_superadmin();
 @offices = $runtime->s2a($module, 'OfficeStaffStatistics', array('staff_offices' => $offs, 'staff_offices_noasterisk' => ($offs == '*' || $offs == '' ? '0' : $offs)));
 $pageParams['offices'] = $offices;
 
-$page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.offices');
-$page->add('main', $runtime->txt->do_template($module, 'offices.list', $pageParams);
+$page->add('title',  $pageParams['pagetitle'] = $r->txt->do_template($module, 'title.offices');
+$page->add('main', $r->txt->do_template($module, 'offices.list', $pageParams);
 
 
 

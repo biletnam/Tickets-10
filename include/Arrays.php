@@ -107,4 +107,21 @@ function filter_array($arr, $column, $value) {
     return $output;
 }
 
+function genOptions($arr, $keyfield, $valuefield, $selectvalue) {
+  $output = array();
+  foreach ($arr as $item) {
+    $option = array(
+        'key' => $item[$keyfield],
+        'value' => $item[$valuefield]
+    );
+    if ($option['key'] == $selectvalue) {
+      $option['selected'] = 'selected';
+    }
+    if ($option['key'] <> '' && $option['value'] <> '') {
+      $output[] = $option;
+    }
+  }
+  return $output;
+}
+
 ?>

@@ -9,8 +9,8 @@ if ($target <> '') {
   $explanation = $objT->explain_target($target);
   $pageParams['explanationtitle'] = $explanation['title'];
   $pageParams['explanationtext'] = $explanation['text'];
-  $page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.viewtarget', $pageParams);
-  $page->add('main', $runtime->txt->do_template($module, 'viewtarget', $pageParams);
+  $page->add('title',  $pageParams['pagetitle'] = $r->txt->do_template($module, 'title.viewtarget', $pageParams);
+  $page->add('main', $r->txt->do_template($module, 'viewtarget', $pageParams);
 }
 
 

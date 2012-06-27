@@ -1,9 +1,9 @@
 <?php
 
 $pageParams = array();
-$pageParams['pagetitle'] = $page->add('title',  $runtime->txt->do_template($module, 'title.new');
+$pageParams['pagetitle'] = $page->add('title',  $r->txt->do_template($module, 'title.new');
 
-$page->add('main', $runtime->txt->do_template($module, 'new', $pageParams);
+$page->add('main', $r->txt->do_template($module, 'new', $pageParams);
 
 
 

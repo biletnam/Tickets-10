@@ -11,7 +11,7 @@ if ($id > 0) {
   if (count($articleData) > 0) {
     $articleData['gen_id'] = $gen_user_id;
     $articleData['baseurl'] = 'http://' . $ENV['SERVER_NAME'] . $r['config']['BASEURL_SCRIPTS'];
-    $page->add('main', $runtime->txt->do_template($module, 'article', $articleData);
+    $page->add('main', $r->txt->do_template($module, 'article', $articleData);
 
     # register pageview
     $runtime->db->sqlrun('main', 'RegisterPageview', array('entity_type' => 'viewarticle', 'entity_id' => $id, 'viewer_type' => 'G', 'viewer_id' => $gen_user_id));
@@ -20,7 +20,7 @@ if ($id > 0) {
 
 $page['baseurl'] = $pageParams['baseurl'];
 $page['menu'] = '';
-print $runtime->txt->do_template($module, 'index', $page);
+print $r->txt->do_template($module, 'index', $page);
 
 
 ?>

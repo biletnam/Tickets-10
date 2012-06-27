@@ -6,7 +6,7 @@ $pageParams = array('user_id' => $user_id);
 $userInfo = $runtime->s2r('staff', 'GetEmployeeDetails', array('id' => $user_id)); 
 
 if (count($userInfo) == 0) {
-  $page->add('main', $runtime->txt->do_template($module, 'usertickets.nouser');
+  $page->add('main', $r->txt->do_template($module, 'usertickets.nouser');
 } elseif ($user_id == $r['userID'] || $acc->is_superadmin() || $userInfo['deputy_staff'] == $r['userID'] || $userInfo['line_manager'] == $r['userID']) {
   # Prepare search form
   $ticketcreators = $runtime->s2a($module, 'ListReviewTicketCreators', array('user_id' => $user_id));
@@ -37,21 +37,21 @@ if (count($userInfo) == 0) {
   
   # Add multiple operation controls - in case if grid is not empty
   if ($grid1['length'] > 0) {
-    $pageParams['multi'] = $runtime->txt->do_template($module, 'tickets2review.multi', $pageParams);
+    $pageParams['multi'] = $r->txt->do_template($module, 'tickets2review.multi', $pageParams);
   }
     
   if ($user_id == $r['userID']) {
-    $page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.mytickets2review', $pageParams);  
-    $page->add('main', $runtime->txt->do_template($module, 'mytickets2review', $pageParams);  
+    $page->add('title',  $pageParams['pagetitle'] = $r->txt->do_template($module, 'title.mytickets2review', $pageParams);  
+    $page->add('main', $r->txt->do_template($module, 'mytickets2review', $pageParams);  
   } else {
     # TODO check if this user is somehow related to this person (HR? LM? DS?) and restrict access
     $userInfo = $runtime->s2r('staff', 'GetEmployeeDetails', array('id' => $user_id)); 
-    $page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.usertickets2review', $userInfo);  
-    $page->add('main', $runtime->txt->do_template($module, 'usertickets2review', $pageParams);  
+    $page->add('title',  $pageParams['pagetitle'] = $r->txt->do_template($module, 'title.usertickets2review', $userInfo);  
+    $page->add('main', $r->txt->do_template($module, 'usertickets2review', $pageParams);  
   }
 } else {
-  $page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.usertickets2review', $userInfo);  
-  $page->add('main', $runtime->txt->do_template($module, 'usertickets.denied', $pageParams);
+  $page->add('title',  $pageParams['pagetitle'] = $r->txt->do_template($module, 'title.usertickets2review', $userInfo);  
+  $page->add('main', $r->txt->do_template($module, 'usertickets.denied', $pageParams);
 }
 
 

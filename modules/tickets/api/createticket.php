@@ -55,7 +55,7 @@ if ($editor > 0) {
         }
         # Return new ticket information
         $ticketInfo = $runtime->s2r($controller, 'GetTicketInfo', array('id' => $newid));
-        $output = $runtime->$runtime->txt->do_template($controller, 'API.CreateTicket', $ticketInfo);
+        $output = $runtime->$r->txt->do_template($controller, 'API.CreateTicket', $ticketInfo);
       } else {
         $result = 'ERR'; 
         push @errors, $runtime->hash2ref( ('code' => 'CreateTicket.Failure', 'text' => 'Could not create a ticket with given parameters') );
@@ -75,7 +75,7 @@ if ($editor > 0) {
 
 # Return resulting XML API output - quite similar to all APIs
 print "content-type: $contenttype; charset=$charset;\n\n";
-print $runtime->$runtime->txt->do_template($controller, 'API.Envelope', array(
+print $runtime->$r->txt->do_template($controller, 'API.Envelope', array(
   'result' => $result,
   'output' => $output,
   'warnings' => Arrays::a2xml($warnings, 'Warnings', 'Warning'),

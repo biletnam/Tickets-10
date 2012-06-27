@@ -12,16 +12,16 @@ if ($id > 0) {
   $tabMenuItem->setDefaultTab(lavnn('tab') || 'edit');
   $menuitemInfo['tabcontrol'] = $tabMenuItem->getHTML();
   
-  $page['js'] .= $runtime->txt->do_template('main', 'tabcontrol.js');
-  $page['js'] .= $runtime->txt->do_template('main', 'linkpeople.js');
-  $page->add('css',  $runtime->txt->do_template('main', 'tabcontrol.css');
-  $page->add('css',  $runtime->txt->do_template('main', 'linkpeople.css');
+  $page['js'] .= $r->txt->do_template('main', 'tabcontrol.js');
+  $page['js'] .= $r->txt->do_template('main', 'linkpeople.js');
+  $page->add('css',  $r->txt->do_template('main', 'tabcontrol.css');
+  $page->add('css',  $r->txt->do_template('main', 'linkpeople.css');
 
-  $page->add('title',  $menuitemInfo['pagetitle'] = $runtime->txt->do_template($module, 'menuitem.title', $menuitemInfo);
-  $page->add('main', $runtime->txt->do_template($module, 'menuitem', $menuitemInfo);
+  $page->add('title',  $menuitemInfo['pagetitle'] = $r->txt->do_template($module, 'menuitem.title', $menuitemInfo);
+  $page->add('main', $r->txt->do_template($module, 'menuitem', $menuitemInfo);
 } else {
-  $page->add('title',  $menuitemInfo['pagetitle'] = $runtime->txt->do_template($module, 'menuitem.title.new', $menuitemInfo);
-  $page->add('main', $runtime->txt->do_template($module, 'menuitem.new', $menuitemInfo);
+  $page->add('title',  $menuitemInfo['pagetitle'] = $r->txt->do_template($module, 'menuitem.title.new', $menuitemInfo);
+  $page->add('main', $r->txt->do_template($module, 'menuitem.new', $menuitemInfo);
 }
 
 

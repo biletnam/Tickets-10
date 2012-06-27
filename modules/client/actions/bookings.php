@@ -5,9 +5,9 @@ $bookings = $runtime->s2a($module, 'ListClientBookings', array('client_id' => $c
 if (count($bookings) > 0) {
   $pageParams = array();
   $pageParams['bookings'] = $bookings;
-  print $runtime->txt->do_template($module, 'bookings', $pageParams);
+  print $r->txt->do_template($module, 'bookings', $pageParams);
 } else {
-  print $runtime->txt->do_template($module, 'bookings.none');
+  print $r->txt->do_template($module, 'bookings.none');
 }
 
 ?>

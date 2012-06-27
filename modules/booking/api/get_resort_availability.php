@@ -30,7 +30,7 @@ if ($resort_id <> '' && $start_date <> '' && $end_date <> '') {
 #  $slots = $runtime->s2a($controller, 'GetAvailabilitySlots', $apiparams); 
   $slots = $runtime->s2a($controller, 'ListAvailableHardBlocks', $apiparams);
   $availabilityInfo['slots'] = $slots;
-  $output = $runtime->$runtime->txt->do_template($controller, 'API.AvailabilityInfo', $availabilityInfo);
+  $output = $runtime->$r->txt->do_template($controller, 'API.AvailabilityInfo', $availabilityInfo);
 } else {
   $result = 'ERR'; 
   push @errors, $runtime->hash2ref( ('code' => 'GetResortAvailability.InvalidInputParams', 'text' => 'Either resort or dates are not provided') );
@@ -38,7 +38,7 @@ if ($resort_id <> '' && $start_date <> '' && $end_date <> '') {
 
 # Return resulting XML API output - quite similar to all APIs
 print "content-type: $contenttype; charset=$charset;\n\n";
-print $runtime->$runtime->txt->do_template($controller, 'API.Envelope', array(
+print $runtime->$r->txt->do_template($controller, 'API.Envelope', array(
   'result' => $result,
   'output' => $output,
   'warnings' => Arrays::a2xml($warnings, 'Warnings', 'Warning'),

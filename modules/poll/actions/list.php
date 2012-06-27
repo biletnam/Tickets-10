@@ -18,11 +18,11 @@ $tabPolls->addTab('editlist', dot('list.tab.editlist'), dot('editlist', $pagePar
 $tabPolls->setDefaultTab(lavnn('tab') || 'mypolls');
 $pageParams['tabcontrol'] = $tabPolls->getHTML();
 
-$page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.list');
-$page->add('main', $runtime->txt->do_template($module, 'list', $pageParams);
+$page->add('title',  $pageParams['pagetitle'] = $r->txt->do_template($module, 'title.list');
+$page->add('main', $r->txt->do_template($module, 'list', $pageParams);
 
-$page['js'] .= $runtime->txt->do_template('main', 'tabcontrol.js');
-$page->add('css',  $runtime->txt->do_template('main', 'tabcontrol.css');
+$page['js'] .= $r->txt->do_template('main', 'tabcontrol.js');
+$page->add('css',  $r->txt->do_template('main', 'tabcontrol.css');
 
 
 

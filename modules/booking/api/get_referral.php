@@ -53,12 +53,12 @@ if ($md5hash == 0) {
   push @errors, $runtime->hash2ref( ('code' => 'GetReferral.MissingMD5Hash', 'text' => 'MD5 hash is not provided') );
 } else {
   $referralInfo = $runtime->s2r($controller, 'GetReferral', $apiparams); 
-  $output = $runtime->$runtime->txt->do_template($controller, 'API.GetReferral', $referralInfo);
+  $output = $runtime->$r->txt->do_template($controller, 'API.GetReferral', $referralInfo);
 }
 
 # Return resulting XML API output - quite similar to all APIs
 print "content-type: $contenttype; charset=$charset;\n\n";
-print $runtime->$runtime->txt->do_template($controller, 'API.Envelope', array(
+print $runtime->$r->txt->do_template($controller, 'API.Envelope', array(
   'result' => $result,
   'output' => $output,
   'warnings' => Arrays::a2xml($warnings, 'Warnings', 'Warning'),

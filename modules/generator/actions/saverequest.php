@@ -44,8 +44,8 @@ if ($gen_user_id > 0) {
       # send notification to dashboards of request handlers
       use objNotification;
       $objN = new objNotification($r);
-      $subject = $runtime->txt->do_template($module, 'bookreq.notification.subject', $sqlParams);
-      $digest = $runtime->txt->do_template($module, 'bookreq.notification.digest', $sqlParams);
+      $subject = $r->txt->do_template($module, 'bookreq.notification.subject', $sqlParams);
+      $digest = $r->txt->do_template($module, 'bookreq.notification.digest', $sqlParams);
       $nid = $objN->add_notification('bookreq', $bookreq_id, $subject, $digest);
       $reqhandlers = $runtime->s2a($module, 'ListRequestHandlers', $sqlParams);
       if (count($reqhandlers) > 0) {

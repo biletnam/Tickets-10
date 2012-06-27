@@ -23,10 +23,10 @@ if ($id > 0) {
   $clientData['mfees'] = $mfees;
   $clientData['attachments'] = arr2ref(s2a($module, 'ListClientAttachments', array('id' => $id)));
   # Create a client view tab control
-  $page['js'] = $runtime->txt->do_template('main', 'tabcontrol.js');
-  $page['js'] .= $runtime->txt->do_template('main', 'linkpeople.js');
-  $page['css'] = $runtime->txt->do_template('main', 'tabcontrol.css');
-  $page->add('css',  $runtime->txt->do_template('main', 'linkpeople.css');
+  $page['js'] = $r->txt->do_template('main', 'tabcontrol.js');
+  $page['js'] .= $r->txt->do_template('main', 'linkpeople.js');
+  $page['css'] = $r->txt->do_template('main', 'tabcontrol.css');
+  $page->add('css',  $r->txt->do_template('main', 'linkpeople.css');
   $tabClientView = new ctlTab($r, "tcClientView");
   $tabClientView->addTab('details', dot('viewclient.details.tabheader'), dot('viewclient.details', $clientData)); 
   $tabClientView->addTab('webaccess', dot('viewclient.webaccess.tabheader'), dot('viewclient.webaccess', $clientData)); 
@@ -57,10 +57,10 @@ if ($id > 0) {
   $runtime->saveMoment('  tab control rendered');
 
   # Render the whole page
-  $page->add('main', $runtime->txt->do_template($module, 'viewclient', $clientData);
+  $page->add('main', $r->txt->do_template($module, 'viewclient', $clientData);
 }
 
-$page['js'] .= $runtime->txt->do_template($module, 'addcomment.js');
+$page['js'] .= $r->txt->do_template($module, 'addcomment.js');
 
 
 

@@ -9,7 +9,7 @@ $office = lavnn('office') || $r['userInfo']['lngWorkPlace'];
 if ($office <> 0) {
   %pageParams = $runtime->s2r($module, 'GetOfficeDetails', array('office' => $office)); 
   if (count($pageParams) > 0) {
-    $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.officeabsences', $pageParams);
+    $pageParams['pagetitle'] = $r->txt->do_template($module, 'title.officeabsences', $pageParams);
     # Get year and month from request, or set current by default
     $today = Calendar::getTodayArr();
     $Y = lavnn('Y') || $today['Y'];
@@ -35,7 +35,7 @@ if ($office <> 0) {
     $blockcnt = 0;
     foreach $departmentName (keys %ee) {
       $staff = $ee{$departmentName];
-      $departmentName ||= $runtime->txt->do_template($module, 'officeabsences.department.untitled');
+      $departmentName ||= $r->txt->do_template($module, 'officeabsences.department.untitled');
       $deprows = array(); $cnt = 0;
       foreach $employee (@staff) {
         if ($employee['AbsenceCalendarID'] <> '') { # Do not show employees that do not have absence calendar
@@ -81,10 +81,10 @@ $runtime->db->sqlrun('main', 'RegisterPageview', array('entity_type' => 'officea
 
 $pageParams['daytypes'] = arr2ref(s2a($module, 'ListCalendarDayTypes', array('office' => $office))); 
 
-$page->add('css',  $runtime->txt->do_template('main', 'monthmatrix.css');
-$page->add('css',  $runtime->txt->do_template('main', 'monthmatrix.legend.css', $pageParams);
+$page->add('css',  $r->txt->do_template('main', 'monthmatrix.css');
+$page->add('css',  $r->txt->do_template('main', 'monthmatrix.legend.css', $pageParams);
 $page->add('title',  $pageParams['pagetitle'];
-$page->add('main', $runtime->txt->do_template($module, 'officeabsences', $pageParams);
+$page->add('main', $r->txt->do_template($module, 'officeabsences', $pageParams);
 
 
 

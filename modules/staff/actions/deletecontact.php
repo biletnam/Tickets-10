@@ -8,6 +8,6 @@ if ($id > 0) {
   $objEmp->delete_contact(('id' => $id));
 }
 
-print $runtime->txt->do_template($module, 'employee.edit.contact.delete', $_REQUEST);
+print $r->txt->do_template($module, 'employee.edit.contact.delete', $_REQUEST);
 
 ?>

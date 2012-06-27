@@ -5,5 +5,5 @@ if ($_REQUEST['location_id'] <> '') {
   @hotels = $runtime->s2a($module, 'ListGeneratorHotelsByLocation', array('gen_id' => $gen_id, 'location_id' => $_REQUEST['location_id']));
 }
 $pageParams['hotels'] = arr2ref(genOptions($hotels, 'hotel_id', 'hotel_name'));
-print $runtime->txt->do_template($module, 'hotelselection', $pageParams);
+print $r->txt->do_template($module, 'hotelselection', $pageParams);
 ?>

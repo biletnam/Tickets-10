@@ -41,7 +41,7 @@ if ($gen_user_id > 0) {
   if ($has_other_generators) {
     $generatoroptions = genOptions($generators, 'generator_id', 'generator_name', $first_gen_id);
     $pageParams['generators'] = $generatoroptions; 
-    $pageParams['generatorselection'] = $runtime->txt->do_template($module, 'generator.selection', $pageParams);
+    $pageParams['generatorselection'] = $r->txt->do_template($module, 'generator.selection', $pageParams);
     $contracts_by_generator = slice_array ($contracts, 'generator_id');
     $genhtml = array();
     foreach $generator_id (keys %contracts_by_generator) {
@@ -50,7 +50,7 @@ if ($gen_user_id > 0) {
     }
     $pageParams['contractlist'] = join('', $genhtml);
   } else {
-    $pageParams['generatorselection'] = $runtime->txt->do_template($module, 'generator.name', ${$generators[0]});
+    $pageParams['generatorselection'] = $r->txt->do_template($module, 'generator.name', ${$generators[0]});
     $pageParams['contractlist'] = prepare_generator_contracts($contracts);
   }
 
@@ -59,9 +59,9 @@ if ($gen_user_id > 0) {
 }
 
 $page['baseurl'] = $pageParams['baseurl'];
-$page->add('main', $runtime->txt->do_template($module, 'contracts', $pageParams);
-$page['js'] = $runtime->txt->do_template($module, 'contracts.js'); 
-print $runtime->txt->do_template($module, 'index', $page);
+$page->add('main', $r->txt->do_template($module, 'contracts', $pageParams);
+$page['js'] = $r->txt->do_template($module, 'contracts.js'); 
+print $r->txt->do_template($module, 'index', $page);
 
 
 
@@ -95,7 +95,7 @@ function prepare_generator_contracts {
   }
   $firstentry['contracts'] = join('', $rows);
   $firstentry['length'] = count($rows);
-  $html .= $runtime->txt->do_template($module, 'contracts.list', $firstentry);
+  $html .= $r->txt->do_template($module, 'contracts.list', $firstentry);
 }
 
 ?>

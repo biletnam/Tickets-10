@@ -25,7 +25,7 @@ if ($stock > 0) {
     $runtime->saveMoment('  access checked with result: '.$access);  
     # render the stock depending access level
     if ($access == 'none') {
-      $page->add('main', $runtime->txt->do_template($module, 'stock.noaccess');
+      $page->add('main', $r->txt->do_template($module, 'stock.noaccess');
     } else {
       use ctlTab;
       $tabVoucherStock = new ctlTab($r, 'ctVoucherStock');
@@ -41,12 +41,12 @@ if ($stock > 0) {
       $tabVoucherStock->addTab('editaccess', dot('stock.tab.editors', $articleInfo), dot('stock.editors', $stockInfo)) if ($access == 'edit');
       $tabVoucherStock->setDefaultTab(lavnn('tab') || 'vouchers');
       $stockInfo['tabcontrol'] = $tabVoucherStock->getHTML();
-      $page['js'] = $runtime->txt->do_template('main', 'tabcontrol.js');
-      $page['js'] .= $runtime->txt->do_template('main', 'linkpeople.js');
-      $page->add('css',  $runtime->txt->do_template('main', 'tabcontrol.css');
-      $page->add('css',  $runtime->txt->do_template('main', 'linkpeople.css');
-      $page->add('title',  $stockInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.stock', $stockInfo);
-      $page->add('main', $runtime->txt->do_template($module, 'stock', $stockInfo);
+      $page['js'] = $r->txt->do_template('main', 'tabcontrol.js');
+      $page['js'] .= $r->txt->do_template('main', 'linkpeople.js');
+      $page->add('css',  $r->txt->do_template('main', 'tabcontrol.css');
+      $page->add('css',  $r->txt->do_template('main', 'linkpeople.css');
+      $page->add('title',  $stockInfo['pagetitle'] = $r->txt->do_template($module, 'title.stock', $stockInfo);
+      $page->add('main', $r->txt->do_template($module, 'stock', $stockInfo);
     }
     $runtime->saveMoment('  stock page constructed');  
   }

@@ -6,8 +6,8 @@ $params = array('user_id' => $r['userID'], 'object_type' => 'employee', 'object_
 $calendars = $objCal->list_calendars(%params); 
 $pageParams['calendars'] = $calendars;
 
-$page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.mycalendars');
-$page->add('main', $runtime->txt->do_template($module, 'mycalendars', $pageParams);
+$page->add('title',  $pageParams['pagetitle'] = $r->txt->do_template($module, 'title.mycalendars');
+$page->add('main', $r->txt->do_template($module, 'mycalendars', $pageParams);
 
 
 

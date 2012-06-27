@@ -9,8 +9,8 @@ if ($id <> '') {
   $campaign = $campaigns[0]; 
   $members = $objMCh->campaign_members($id);
   $campaign['members'] = $members ; 
-  $page->add('title',  $campaign['pagetitle'] = $runtime->txt->do_template($module, 'campaignmembers.title', $campaign);
-  $page->add('main', $runtime->txt->do_template($module, 'campaignmembers', $campaign);
+  $page->add('title',  $campaign['pagetitle'] = $r->txt->do_template($module, 'campaignmembers.title', $campaign);
+  $page->add('main', $r->txt->do_template($module, 'campaignmembers', $campaign);
 }
 
 

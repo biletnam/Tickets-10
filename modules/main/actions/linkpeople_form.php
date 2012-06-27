@@ -1,7 +1,7 @@
 <?php
 
-$source = lavnn('src');
-$controlname = lavnn('controlname');
+$source = lavnn('src', $_REQUEST, '');
+$controlname = lavnn('controlname', $_REQUEST, '');
 if ($source <> '' && $controlname <> '') {
   $pageParams = array('src' => $source, 'controlname' => $controlname);
   $offices = $runtime->s2a($module, 'ListOffices');
@@ -10,9 +10,7 @@ if ($source <> '' && $controlname <> '') {
   $departments = $runtime->s2a($module, 'ListDepartments');
   $departmentoptions = genOptions($departments, 'team_id', 'NameCounted');
   $pageParams['departmentoptions'] = $departmentoptions;
-  print $runtime->txt->do_template($module, 'linkpeople.form', $pageParams);
+  print $r->txt->do_template($module, 'linkpeople.form', $pageParams);
 }
-
-1;
 
 ?>

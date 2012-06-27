@@ -44,14 +44,14 @@ if ($username == 'vacation' && $password == 'absolute') {
   $hardcoded = 'Vacation';
 }
 if ($hardcoded == 'Vacation') {
-  $output = $runtime->$runtime->txt->do_template($controller, 'API.Login.Hardcoded.Vacation', $apiparams);
+  $output = $runtime->$r->txt->do_template($controller, 'API.Login.Hardcoded.Vacation', $apiparams);
   push @warnings, $runtime->hash2ref( ('code' => 'MemberLogin.Hardcoded', 'text' => 'Combination of username and password matched to one hardcoded for Vacation') );
 } elseif ($username <> '' && $password <> '') {
   $memberData = $runtime->s2r($controller, 'CheckMemberLogin', $apiparams);
   if (count($memberData) > 0) {
     $contracts = $runtime->s2a($controller, 'ListMemberContracts', $memberData);
     $memberData['contracts'] = $contracts;
-    $output = $runtime->$runtime->txt->do_template($controller, 'API.Login', $memberData);
+    $output = $runtime->$r->txt->do_template($controller, 'API.Login', $memberData);
     $runtime->($controller, 'LogMemberLogin', $memberData);
   } else {
     $result = 'ERR'; 
@@ -66,7 +66,7 @@ if ($hardcoded == 'Vacation') {
 
 # Return resulting XML API output - quite similar to all APIs
 print "content-type: $contenttype; charset=$charset;\n\n";
-print $runtime->$runtime->txt->do_template($controller, 'API.Envelope', array(
+print $runtime->$r->txt->do_template($controller, 'API.Envelope', array(
   'result' => $result,
   'output' => $output,
   'warnings' => Arrays::a2xml($warnings, 'Warnings', 'Warning'),

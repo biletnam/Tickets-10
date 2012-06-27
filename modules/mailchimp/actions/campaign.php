@@ -10,8 +10,8 @@ if ($id <> '') {
   $content = $objMCh->campaign_content($id); 
   $campaign['textcontent'] = $content['text']; 
   $campaign['htmlcontent'] = $content['html']; 
-  $page->add('title',  $campaign['pagetitle'] = $runtime->txt->do_template($module, 'campaign.title', $campaign);
-  $page->add('main', $runtime->txt->do_template($module, 'campaign', $campaign);
+  $page->add('title',  $campaign['pagetitle'] = $r->txt->do_template($module, 'campaign.title', $campaign);
+  $page->add('main', $r->txt->do_template($module, 'campaign', $campaign);
 }
 
 

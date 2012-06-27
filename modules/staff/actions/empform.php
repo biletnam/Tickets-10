@@ -10,8 +10,8 @@ if ($id > 0) {
 #  print Dumper($respondents);
   $pageParams['respondents'] = $respondents;  
 }
-$page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.empform', $pageParams);
-$page->add('main', $runtime->txt->do_template($module, 'empform', $pageParams);
+$page->add('title',  $pageParams['pagetitle'] = $r->txt->do_template($module, 'title.empform', $pageParams);
+$page->add('main', $r->txt->do_template($module, 'empform', $pageParams);
 
       
 ?>

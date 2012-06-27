@@ -10,9 +10,9 @@ if ($id <> '') {
   $access = $objT->check_access_meeting($id);
   $runtime->saveMoment('  access checked with result: '.$access);
 
-  $page->add('title',  $meetingInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.printmeeting', $meetingInfo);
+  $page->add('title',  $meetingInfo['pagetitle'] = $r->txt->do_template($module, 'title.printmeeting', $meetingInfo);
   if ($access == 'none') {
-    $page->add('main', $runtime->txt->do_template($module, 'viewmeeting.noaccess');
+    $page->add('main', $r->txt->do_template($module, 'viewmeeting.noaccess');
   } elseif ($access == 'edit' || $access == 'view') {
     $page->add('main',  $objT->print_meeting(%meetingInfo);
   }

@@ -15,8 +15,8 @@ $settingOptions['defaultviewoptions'] = $defaultviewoptions;
 $settingOptions['locationoptions'] = $locationoptions;
 $runtime->saveMoment('  read dashboard settings');
 
-$settingOptions['pagetitle'] = $page->add('title',  $runtime->txt->do_template($module, 'title.settings', $settingOptions);
-$page->add('main', $runtime->txt->do_template($module, 'settings', $settingOptions);
+$settingOptions['pagetitle'] = $page->add('title',  $r->txt->do_template($module, 'title.settings', $settingOptions);
+$page->add('main', $r->txt->do_template($module, 'settings', $settingOptions);
 
 
 $runtime->db->sqlrun('main', 'RegisterPageview', array('entity_type' => 'dashboard.settings', 'entity_id' => '', 'viewer_type' => 'U', 'viewer_id' => $r['userID']));

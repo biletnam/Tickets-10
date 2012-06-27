@@ -6,7 +6,7 @@ $attachments = $runtime->s2a('main', 'ListAttachments', array(
   'type' => $_REQUEST['etype'],
   'id' => $_REQUEST['eid']
 ));
-print $runtime->txt->do_template($module, 'ajax.attachments', array(
+print $r->txt->do_template($module, 'ajax.attachments', array(
   'etype' => $_REQUEST['etype'],
   'eid' => $_REQUEST['eid'],
   'doctypeoptions' => $doctypeoptions,

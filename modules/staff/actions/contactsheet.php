@@ -10,6 +10,6 @@ while (($key, $value) = each %departments) {
   push @dd, dot('office.contactsheet.department', array('key' => $key, 'contacts' => $subteams));
 }
 $officeData['contacts'] = join('', $dd);
-print $runtime->txt->do_template($module, 'office.contactsheet', $officeData);
+print $r->txt->do_template($module, 'office.contactsheet', $officeData);
 
 ?>

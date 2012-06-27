@@ -28,7 +28,7 @@ if ($office <> 0) {
   
   foreach $departmentName (keys %ee) {
     $staff = $ee{$departmentName];
-    $departmentName ||= $runtime->txt->do_template($module, 'officeabsences.department.untitled');
+    $departmentName ||= $r->txt->do_template($module, 'officeabsences.department.untitled');
     $deprows = array(); $cnt = 0; $processed = array();
     foreach $employee (@staff) { 
       if ($employee['AbsenceCalendarID'] <> '') { # Ignore staff without absence calendar 
@@ -43,15 +43,15 @@ if ($office <> 0) {
               if ($hash['OffDayType'] <> '') { 
                 # There is a special day for an office, but employee might have overwork!
                 if ($hash['EmpDayType'] == 'OW') {
-                  $employee['absence'] = $runtime->txt->do_template($module, 'editofficeabsences.employee.overwork', $hash);
+                  $employee['absence'] = $r->txt->do_template($module, 'editofficeabsences.employee.overwork', $hash);
                 } else {
-                  $employee['absence'] = $runtime->txt->do_template($module, 'editofficeabsences.employee.officeday', $hash);
+                  $employee['absence'] = $r->txt->do_template($module, 'editofficeabsences.employee.officeday', $hash);
                 }
               } else {
-                $employee['absence'] = $runtime->txt->do_template($module, 'editofficeabsences.employee.absence', $hash);
+                $employee['absence'] = $r->txt->do_template($module, 'editofficeabsences.employee.absence', $hash);
               }
             } else {
-              $employee['absence'] = $runtime->txt->do_template($module, 'editofficeabsences.employee.select', $employee); 
+              $employee['absence'] = $r->txt->do_template($module, 'editofficeabsences.employee.select', $employee); 
             }
             push @deprows, dot('editofficeabsences.employee', $employee);   
             $processed{$employee_id} = $employee_id; 
@@ -69,7 +69,7 @@ if ($office <> 0) {
 }
 
  
-$page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.editofficeabsences');
-$page->add('main', $runtime->txt->do_template($module, 'editofficeabsences', $pageParams);
+$page->add('title',  $pageParams['pagetitle'] = $r->txt->do_template($module, 'title.editofficeabsences');
+$page->add('main', $r->txt->do_template($module, 'editofficeabsences', $pageParams);
 
 ?>

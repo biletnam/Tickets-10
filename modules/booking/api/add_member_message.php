@@ -41,7 +41,7 @@ if ($client_id == 0) {
 } elseif ($messagetype <> '' && $content <> '') {
   $id = $runtime->sid($controller, 'AddMemberMessage', $apiparams);
   if ($id > 0) {
-    $output = $runtime->$runtime->txt->do_template($controller, 'API.AddMemberMessage', array('id' => $id));
+    $output = $runtime->$r->txt->do_template($controller, 'API.AddMemberMessage', array('id' => $id));
   } else {
     $result = 'ERR'; 
     push @errors, $runtime->hash2ref( ('code' => 'AddMemberMessage.Failure', 'text' => 'Could not complete INSERT operation:' . $runtime->spreview($controller, 'AddMemberMessage', $apiparams)) );
@@ -53,7 +53,7 @@ if ($client_id == 0) {
 
 # Return resulting XML API output - quite similar to all APIs
 print "content-type: $contenttype; charset=$charset;\n\n";
-print $runtime->$runtime->txt->do_template($controller, 'API.Envelope', array(
+print $runtime->$r->txt->do_template($controller, 'API.Envelope', array(
   'result' => $result,
   'output' => $output,
   'warnings' => Arrays::a2xml($warnings, 'Warnings', 'Warning'),

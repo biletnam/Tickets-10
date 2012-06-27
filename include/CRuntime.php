@@ -74,9 +74,14 @@ class CRuntime {
             $page->add('msg', $r->render_flash());
             $module = $this->module; // introduce $module for action
             require $filename;
-            $this->save_moment("Ready to render full page");
+            $this->save_moment("Ready to render full page...");
             print $page->render();
-            $this->save_moment("Finished to include action $p");
+            $this->save_moment("...done. Finished to include action $p");
+            if ($this->config['ENV'] == 'TEST') {
+                d($this->timegauge);
+            } elseif($this->config['ENV'] == 'PROD') {
+                dh($this->timegauge);
+            }
             exit();
         }
         // if request is not routed yet, most probably it is invalid. Reroute it to default

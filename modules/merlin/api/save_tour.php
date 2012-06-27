@@ -123,14 +123,14 @@ if ($id == 0) {
 } else {
   # Return output
   $tourInfo = $runtime->s2r($controller, 'GetTourInfo', array('id' => $id));
-  $output = $runtime->$runtime->txt->do_template($controller, 'API.SaveTour', $tourInfo);
+  $output = $runtime->$r->txt->do_template($controller, 'API.SaveTour', $tourInfo);
   $warning = $objM->get_last_warning(); 
   push @warnings, $runtime->hash2ref( ('code' => 'SaveTour.ImportFailed', 'text' => 'Tour added but not imported; ' . $warning) ) if ($warning <> '');
 }
 
 # Return resulting XML API output - quite similar to all APIs
 print "content-type: $contenttype; charset=$charset;\n\n";
-print $runtime->$runtime->txt->do_template($controller, 'API.Envelope', array(
+print $runtime->$r->txt->do_template($controller, 'API.Envelope', array(
   'result' => $result,
   'output' => $output,
   'warnings' => Arrays::a2xml($warnings, 'Warnings', 'Warning'),

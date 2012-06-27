@@ -3,7 +3,7 @@
 use ctlDataGrid;
 
 $pageParams = array();  
-$page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.expiringdocs');
+$page->add('title',  $pageParams['pagetitle'] = $r->txt->do_template($module, 'title.expiringdocs');
 
 $doctypes = $runtime->s2a('admin', 'ListDocTypes');
 $pageParams['doctypes'] = arr2ref(genOptions($doctypes, 'id', 'name', lavnn('document_type')));
@@ -20,7 +20,7 @@ $grid1->set_custom_template('datarow' => $runtime->gettmod($module, 'expiringdoc
 $pageParams['results'] = $grid1->render();
 $runtime->saveMoment('Finished rendering data grid');
 
-$page->add('main', $runtime->txt->do_template($module, 'expiringdocs', $pageParams);
+$page->add('main', $r->txt->do_template($module, 'expiringdocs', $pageParams);
 
 
 

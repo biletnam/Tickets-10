@@ -75,7 +75,7 @@ if ($id > 0) {
     $data = array(); $customdata = array();
     foreach $event (@events) {
       $day = $event['D'];
-      $data{$day} .= $runtime->txt->do_template($module, "month.event.$object_type", $event);
+      $data{$day} .= $r->txt->do_template($module, "month.event.$object_type", $event);
     }
     $apiparams['data'] = $data;
     $apiparams['year'] = $_REQUEST['year']; 
@@ -97,18 +97,18 @@ if ($id > 0) {
       $balanceInfo['absencebalances'] = $absencebalances;     
       $balanceInfo['day_type_options'] = arr2ref(genOptions($daytypes, 'code', 'name', 'V'));
       $balanceInfo['qty_options'] = arr2ref($runtime->getDictArr($module, 'absence.qty', '1.0'));
-      $result['morefields'] = $runtime->txt->do_template($module, 'view.month.edit.employeeabsence', $balanceInfo);
+      $result['morefields'] = $r->txt->do_template($module, 'view.month.edit.employeeabsence', $balanceInfo);
     } elseif ($object_type == 'office') {
       $opt = $runtime->getDictArr($module, 'office.day_type'); 
       $result['day_type_options'] = arr2ref($runtime->getDictArr($module, 'office.day_type', 'WE'));
       $result['mandatory_vacation_options'] = arr2ref($runtime->getDictArr('main', 'yesno', '0'));
       $result['transferable_options'] = arr2ref($runtime->getDictArr('main', 'yesno', '1'));
-      $result['morefields'] = $runtime->txt->do_template($module, 'view.month.edit.office', $result);
+      $result['morefields'] = $r->txt->do_template($module, 'view.month.edit.office', $result);
     }
-    $result['edit'] = $runtime->txt->do_template($module, 'view.month.edit', $result) if $access == 'edit';
+    $result['edit'] = $r->txt->do_template($module, 'view.month.edit', $result) if $access == 'edit';
     $result['object_type'] = $object_type;
     $result['object_id'] = $object_id;
-    print $runtime->txt->do_template($module, 'month', $result);
+    print $r->txt->do_template($module, 'month', $result);
   }
 }
 

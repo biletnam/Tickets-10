@@ -8,6 +8,6 @@ $_REQUEST['user_id'] = $r['userID'];
 $ticketInfo = $runtime->s2r($module, 'GetTicketInfo', $_REQUEST);
 if (count($ticketInfo) > 0) {
   $ticketInfo['allreminders'] = arr2ref(s2a($module, 'ListTicketReminders', array('ticket_id' => lavnn('id'))));
-  print $runtime->txt->do_template($module, 'viewticket.reminders', $ticketInfo);
+  print $r->txt->do_template($module, 'viewticket.reminders', $ticketInfo);
 }
 ?>

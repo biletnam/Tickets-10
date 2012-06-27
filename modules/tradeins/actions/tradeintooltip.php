@@ -6,10 +6,10 @@ if ($id > 0) {
   if ($weekInfo['external_resort'] <> '') {
     $extseasons = arr2ref(s2a($module, 'ListExtSeasons', array('resort' => $weekInfo['external_resort']))); 
     $extseasonoptions = arr2ref(genOptions($extseasons, 'id', 'name', $weekInfo['external_resort']));
-    $weekInfo['preselectseason'] = $runtime->txt->do_template($module, 'tradeintooltip.extseason', array('extseasons' => $extseasonoptions));
+    $weekInfo['preselectseason'] = $r->txt->do_template($module, 'tradeintooltip.extseason', array('extseasons' => $extseasonoptions));
   }  
 } else {
-  $weekInfo['preselectseason'] = $runtime->txt->do_template($module, 'tradeintooltip.extseason.wait');
+  $weekInfo['preselectseason'] = $r->txt->do_template($module, 'tradeintooltip.extseason.wait');
 }
 
 $arrtypeoptions = arr2ref(s2a($module, 'ListAptTypes')); 
@@ -17,5 +17,5 @@ $weekInfo['apttypes'] = arr2ref(genOptions($arrtypeoptions, 'type_id', 'type_nam
 $extresorts = arr2ref(s2a($module, 'ListExtResorts')); 
 $weekInfo['extresorts'] = arr2ref(genOptions($extresorts, 'id', 'name', $weekInfo['external_resort']));
 $weekInfo['membershiptypes'] = arr2ref($runtime->getDictArr($module, 'extresort.membertype', $weekInfo['membership_type'])); 
-print $runtime->txt->do_template($module, 'tradeintooltip', $weekInfo);
+print $r->txt->do_template($module, 'tradeintooltip', $weekInfo);
 ?>

@@ -7,6 +7,12 @@ require "CNumericFilter.php";
 
 class CTextProcessor {
 
+    public $r;
+    private $scalarFilter;
+    private $arrayFilter;
+    private $objectFilter;
+    private $numericFilter;
+    
     public function __construct($r) {
         // Link back to runtime context
         $this->r = $r;
@@ -44,6 +50,7 @@ class CTextProcessor {
             // process the text in cycle
             $output = array();
             foreach ($rows as $row) {
+                $row['_module_'] = $modulename;
                 $output[] = $this->do_text($template, $row);
             }
             return join('', $output);
@@ -56,6 +63,7 @@ class CTextProcessor {
         $template = $this->get_template($modulename, $templatename);
         if ($template != '') {
             // process the text
+            $params['_module_'] = $modulename;
             return $this->do_text($template, $params);
         } else
             return '';

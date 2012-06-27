@@ -6,12 +6,12 @@ $pageParams = array();
 $id = lavnn('hotel');
 if ($id <> '') {
   %pageParams = $runtime->s2r('resorts', 'GetHotelInfo', array('id' => $id)); 
-  $pageParams['pagetitle'] = $page->add('title',  $runtime->txt->do_template($module, 'bookings.title', $pageParams); 
+  $pageParams['pagetitle'] = $page->add('title',  $r->txt->do_template($module, 'bookings.title', $pageParams); 
   $pageParams['locations'] = arr2ref(genOptions(arr2ref(s2a($module, 'ListLocations')), 'id', 'location_name', $pageParams['location_id']));
 }
 
-$page['js'] .= $runtime->txt->do_template('main', 'tabcontrol.js');
-$page->add('css',  $runtime->txt->do_template('main', 'tabcontrol.css');
+$page['js'] .= $r->txt->do_template('main', 'tabcontrol.js');
+$page->add('css',  $r->txt->do_template('main', 'tabcontrol.css');
 $tabHotelBookings = new ctlTab($r, "tcHotelBookings");
 if ($id <> '') {
   $languages = $runtime->s2a($module, 'ListBookingRequestLanguages');
@@ -30,7 +30,7 @@ $tabHotelBookings->setDefaultTab(lavnn('tab') || 'reqhandlers');
 $pageParams['tabcontrol'] = $tabHotelBookings->getHTML();
 $runtime->saveMoment('  tab control rendered');
 
-$page->add('main', $runtime->txt->do_template($module, 'bookings', $pageParams);
+$page->add('main', $r->txt->do_template($module, 'bookings', $pageParams);
 
 
 

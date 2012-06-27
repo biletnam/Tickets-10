@@ -84,7 +84,7 @@ if ($id > 0) {
       $pageParams['absences'] = loopt('year.list.employeeabsence.typebalance', @absencedays);    
     }
 
-    print $runtime->txt->do_template($module, "year.list.$access", $pageParams);
+    print $r->txt->do_template($module, "year.list.$access", $pageParams);
   }
 }
 

@@ -9,15 +9,15 @@ if ($ticketing_type == '2' || $ticketing_type == '3') {
 }
 
 $targets = $objT->detect_targets(lavnn('url'));
-$ticketInfo['targets'] = $runtime->txt->do_template($module, 'new.include.targets', array('targets' => $targets)) if $targets <> ''; 
+$ticketInfo['targets'] = $r->txt->do_template($module, 'new.include.targets', array('targets' => $targets)) if $targets <> ''; 
 
 $projects = $objT->list_projects('read');
 $project = lavnn('project');
 if ($project <> '') {
   $projectoptions = genOptions($projects, 'id', 'title', $project);
-  $ticketInfo['projectselect'] = $runtime->txt->do_template($module, 'new.project.hardcoded', array('projects' => $projectoptions));
+  $ticketInfo['projectselect'] = $r->txt->do_template($module, 'new.project.hardcoded', array('projects' => $projectoptions));
 } else {
-  $ticketInfo['projectselect'] = $runtime->txt->do_template($module, 'new.project.select', array('projects' => $projects));
+  $ticketInfo['projectselect'] = $r->txt->do_template($module, 'new.project.select', array('projects' => $projects));
 }
 
 $priorityoptions = $runtime->getSortedDictArr($module, 'priority', 0);
@@ -28,6 +28,6 @@ $popupParams = array(
   'content' => dot('new', $ticketInfo),
 );
 
-print $runtime->txt->do_template('main', 'popup', $popupParams);
+print $r->txt->do_template('main', 'popup', $popupParams);
 
 ?>

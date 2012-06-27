@@ -77,7 +77,7 @@ if ($contract_no == '') {
   # Add obligation to the database
   $id = $runtime->sid($controller, 'AddProductObligation', $apiparams);
   if ($id > 0) {
-    $output = $runtime->$runtime->txt->do_template($controller, 'API.AddProductObligation', array('id' => $id));
+    $output = $runtime->$r->txt->do_template($controller, 'API.AddProductObligation', array('id' => $id));
   } else {
     $result = 'ERR'; 
     push @errors, $runtime->hash2ref( ('code' => 'AddProductObligation.Failure', 'text' => 'Could not complete INSERT operation:' . $runtime->spreview($controller, 'AddProductObligation', $apiparams)) );
@@ -86,7 +86,7 @@ if ($contract_no == '') {
 
 # Return resulting XML API output - quite similar to all APIs
 print "content-type: $contenttype; charset=$charset;\n\n";
-print $runtime->$runtime->txt->do_template($controller, 'API.Envelope', array(
+print $runtime->$r->txt->do_template($controller, 'API.Envelope', array(
   'result' => $result,
   'output' => $output,
   'warnings' => Arrays::a2xml($warnings, 'Warnings', 'Warning'),

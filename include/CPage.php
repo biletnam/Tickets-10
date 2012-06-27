@@ -26,11 +26,11 @@ class CPage {
     }
 
     function add_cssfile($filename) {
-        $this->blocks['cssfiles'] .= $this->r->doTemplate('framework', 'cssfile', array('filename' => $filename));
+        $this->blocks['cssfiles'] .= $this->r->txt->do_template('framework', 'cssfile', array('filename' => $filename));
     }
 
     function add_jsfile($filename) {
-        $this->blocks['jsfiles'] .= $this->r->doTemplate('framework', 'jsfile', array('filename' => $filename));
+        $this->blocks['jsfiles'] .= $this->r->txt->do_template('framework', 'jsfile', array('filename' => $filename));
     }
 
     function render($masterTemplatePath = '') {

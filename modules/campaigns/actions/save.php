@@ -29,7 +29,7 @@ if ($clients.$contracts == '' ) {
       if ($client_id <> '') {
         $clientInfo = $runtime->s2r($module, 'GetClientInfo', array('id' => $client_id));
         if (count($clientInfo) > 0) {
-          $tickettitle = $runtime->txt->do_template($module, 'ticket.title.client', $clientInfo); 
+          $tickettitle = $r->txt->do_template($module, 'ticket.title.client', $clientInfo); 
           %sqlParams = array(
             'title' => $tickettitle,
             'contents' => $summary,
@@ -53,7 +53,7 @@ if ($clients.$contracts == '' ) {
       if ($contract_id <> '') {
         $contractInfo = $runtime->s2r($module, 'GetContractInfo', array('id' => $contract_id));
         if (count($contractInfo) > 0) {
-          $tickettitle = $runtime->txt->do_template($module, 'ticket.title.contract', $contractInfo); 
+          $tickettitle = $r->txt->do_template($module, 'ticket.title.contract', $contractInfo); 
           %sqlParams = array(
             'title' => $tickettitle,
             'contents' => $summary,

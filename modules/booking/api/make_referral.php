@@ -55,12 +55,12 @@ if ($client_id == 0) {
     $result = 'ERR'; 
     push @errors, $runtime->hash2ref( ('code' => 'MakeReferral.UnknownFailure', 'text' => 'Unknown failure while creating referral client') );
   }
-  $output = $runtime->$runtime->txt->do_template($controller, 'API.MakeReferral', $sqlResult);
+  $output = $runtime->$r->txt->do_template($controller, 'API.MakeReferral', $sqlResult);
 }
 
 # Return resulting XML API output - quite similar to all APIs
 print "content-type: $contenttype; charset=$charset;\n\n";
-print $runtime->$runtime->txt->do_template($controller, 'API.Envelope', array(
+print $runtime->$r->txt->do_template($controller, 'API.Envelope', array(
   'result' => $result,
   'output' => $output,
   'warnings' => Arrays::a2xml($warnings, 'Warnings', 'Warning'),

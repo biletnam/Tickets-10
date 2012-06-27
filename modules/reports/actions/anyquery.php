@@ -17,9 +17,9 @@ if ($basequery <> '') {
 }
 
 
-$page['js'] .= $runtime->txt->do_template($module, 'pageviews.js');
-$page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.anyquery', $pageParams);
-$page->add('main', $runtime->txt->do_template($module, 'anyquery', $pageParams);
+$page['js'] .= $r->txt->do_template($module, 'pageviews.js');
+$page->add('title',  $pageParams['pagetitle'] = $r->txt->do_template($module, 'title.anyquery', $pageParams);
+$page->add('main', $r->txt->do_template($module, 'anyquery', $pageParams);
 
 
 

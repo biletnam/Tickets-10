@@ -14,9 +14,9 @@ if ($source <> '' && $controlname <> '') {
       $link['controlname'] = $controlname;
       push @links, dot('linkhotels.listitem.location', $link);
     }
-    print $runtime->txt->do_template($module, 'linkhotels.list', array('controlname' => $controlname, 'links' => join('', $links)));
+    print $r->txt->do_template($module, 'linkhotels.list', array('controlname' => $controlname, 'links' => join('', $links)));
   } else {
-    print $runtime->txt->do_template($module, 'linkhotels.list', array('controlname' => $controlname, 'links' => dot('linkhotels.none')));
+    print $r->txt->do_template($module, 'linkhotels.list', array('controlname' => $controlname, 'links' => dot('linkhotels.none')));
   }
 }
 

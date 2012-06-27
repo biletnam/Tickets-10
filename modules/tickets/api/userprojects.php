@@ -53,12 +53,12 @@ if ($user_id == 0) {
   $searchInfo = array();
   $projects = $runtime->s2a($controller, 'SearchProjects', $apiparams);
   $searchInfo['projects'] = $projects;
-  $output = $runtime->$runtime->txt->do_template($controller, 'API.UserProjects', $searchInfo);
+  $output = $runtime->$r->txt->do_template($controller, 'API.UserProjects', $searchInfo);
 }
 
 # Return resulting XML API output - quite similar to all APIs
 print "content-type: $contenttype; charset=$charset;\n\n";
-print $runtime->$runtime->txt->do_template($controller, 'API.Envelope', array(
+print $runtime->$r->txt->do_template($controller, 'API.Envelope', array(
   'result' => $result,
   'output' => $output,
   'warnings' => Arrays::a2xml($warnings, 'Warnings', 'Warning'),

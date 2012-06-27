@@ -136,7 +136,7 @@ if ($client_id <> '') {
     $contracts = $runtime->s2a($controller, 'ListMemberContracts', $apiparams);
     #die Dumper($contracts);
     $memberInfo['contracts'] = $contracts;
-    $output = $runtime->$runtime->txt->do_template($controller, 'API.MemberDetails', $memberInfo);
+    $output = $runtime->$r->txt->do_template($controller, 'API.MemberDetails', $memberInfo);
   } else {
     $result = 'ERR'; 
     push @errors, $runtime->hash2ref( ('code' => 'GetMemberDetails.NotFound', 'text' => 'Member data was not found') );
@@ -148,7 +148,7 @@ if ($client_id <> '') {
 
 # Return resulting XML API output - quite similar to all APIs
 print "content-type: $contenttype; charset=$charset;\n\n";
-print $runtime->$runtime->txt->do_template($controller, 'API.Envelope', array(
+print $runtime->$r->txt->do_template($controller, 'API.Envelope', array(
   'result' => $result,
   'output' => $output,
   'warnings' => Arrays::a2xml($warnings, 'Warnings', 'Warning'),

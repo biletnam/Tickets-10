@@ -1,6 +1,6 @@
 <?php
 
-$page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'editables.title');
+$page->add('title',  $pageParams['pagetitle'] = $r->txt->do_template($module, 'editables.title');
 if ($acc->can_access_menu('admin-setup-tables')) {
   $tableInfo = array();
   $id = lavnn('id', $_REQUEST, 0);
@@ -18,20 +18,20 @@ if ($acc->can_access_menu('admin-setup-tables')) {
     $tabEditable->addTab('access', dot('editable.tab.access'), dot('editable.access', $tableInfo));  
     $tabEditable->setDefaultTab(lavnn('tab') || 'edit');
     
-    $page['js'] .= $runtime->txt->do_template('main', 'tabcontrol.js');
-    $page['js'] .= $runtime->txt->do_template('main', 'linkpeople.js');
-    $page->add('css',  $runtime->txt->do_template('main', 'tabcontrol.css');
-    $page->add('css',  $runtime->txt->do_template('main', 'linkpeople.css');
+    $page['js'] .= $r->txt->do_template('main', 'tabcontrol.js');
+    $page['js'] .= $r->txt->do_template('main', 'linkpeople.js');
+    $page->add('css',  $r->txt->do_template('main', 'tabcontrol.css');
+    $page->add('css',  $r->txt->do_template('main', 'linkpeople.css');
   
-    $page->add('title',  $tableInfo['pagetitle'] = $runtime->txt->do_template($module, 'editable.title', $tableInfo);
+    $page->add('title',  $tableInfo['pagetitle'] = $r->txt->do_template($module, 'editable.title', $tableInfo);
     $tableInfo['tabcontrol'] = $tabEditable->getHTML();
   } else {
-    $page->add('title',  $tableInfo['pagetitle'] = $runtime->txt->do_template($module, 'editable.title.new', $tableInfo);
-    $tableInfo['tabcontrol'] = $runtime->txt->do_template($module, 'editable.edit', $tableInfo);
+    $page->add('title',  $tableInfo['pagetitle'] = $r->txt->do_template($module, 'editable.title.new', $tableInfo);
+    $tableInfo['tabcontrol'] = $r->txt->do_template($module, 'editable.edit', $tableInfo);
   }
-  $page->add('main', $runtime->txt->do_template($module, 'editable', $tableInfo);
+  $page->add('main', $r->txt->do_template($module, 'editable', $tableInfo);
 } else {
-  $page->add('main', $runtime->txt->do_template($module, 'noaccess', $pageParams);
+  $page->add('main', $r->txt->do_template($module, 'noaccess', $pageParams);
 }
 $pageParams  = array();
 

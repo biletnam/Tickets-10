@@ -20,7 +20,7 @@ if ($id == 0 && $article <> 0) {
 if ($article > 0) {
   $articleInfo = $runtime->s2r($module, 'GetArticleData', array('id' => $article));
   $reviewerInfo = $runtime->s2r('staff', 'GetEmployeeDetails', array('id' => $r['userID']));
-  $articleInfo['sender'] = $runtime->txt->do_template($module, 'employee.fullname', $reviewerInfo);
+  $articleInfo['sender'] = $r->txt->do_template($module, 'employee.fullname', $reviewerInfo);
   $articleInfo['message'] = lavnn('comment') || ' no comment ';
   if (lavnn('status') == '') {
     $articleInfo['explanation'] = ' withdrew their opinion, you may buzz them again!';
@@ -29,8 +29,8 @@ if ($article > 0) {
   } elseif (lavnn('status') == '1') {
     $articleInfo['explanation'] = ' approved this article with following comment:';
   }
-  $msgsubj = $runtime->txt->do_template($module, 'articlereview.subject', $articleInfo);
-  $msgbody = $runtime->txt->do_template($module, 'articlereview.body', $articleInfo);
+  $msgsubj = $r->txt->do_template($module, 'articlereview.subject', $articleInfo);
+  $msgbody = $r->txt->do_template($module, 'articlereview.body', $articleInfo);
   $objN = new objNotification($r);
   $notification_id = $objN->add_notification('articlereview', $article, $msgsubj, $msgbody);
   if ($notification_id > 0) {

@@ -8,32 +8,32 @@ if ($id <> '') {
   if (count($pollInfo) > 0) {
     if ($pollInfo['is_template'] == 1) {
       # We restrict showing the poll if it is a template. Only copy of template can be viewed
-      $page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.noaccess', $pageParams);
-      $page->add('main', $runtime->txt->do_template($module, 'noaccess', $pageParams);
+      $page->add('title',  $pageParams['pagetitle'] = $r->txt->do_template($module, 'title.noaccess', $pageParams);
+      $page->add('main', $r->txt->do_template($module, 'noaccess', $pageParams);
       
       
-#      $page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.viewtemplate', $pageParams);
+#      $page->add('title',  $pageParams['pagetitle'] = $r->txt->do_template($module, 'title.viewtemplate', $pageParams);
 #      $pollInfo['questions'] = $objP->render(('id' => $id, 'mode' => 'viewtemplate')) || 'None.';
-#      $page->add('main', $runtime->txt->do_template($module, 'viewtemplate', $pollInfo);
+#      $page->add('main', $r->txt->do_template($module, 'viewtemplate', $pollInfo);
       
       
     } elseif ($acc->check_resource("viewpoll:$id", $r['userID'])) {
       # We restrict showing the poll only to the people who are specified as viewers
-      $page->add('title',  $pollInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.view', $pollInfo);
+      $page->add('title',  $pollInfo['pagetitle'] = $r->txt->do_template($module, 'title.view', $pollInfo);
       if ($pollInfo['can_change'] == 1) {
         $pollInfo['questions'] = $objP->render(('id' => $id, 'mode' => 'view')) || 'None.';
-        $page->add('main', $runtime->txt->do_template($module, 'view', $pollInfo);
+        $page->add('main', $r->txt->do_template($module, 'view', $pollInfo);
       } else {
-        $page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.noaccess', $pageParams);
-        $page->add('main', $runtime->txt->do_template($module, 'noaccess', $pageParams);
+        $page->add('title',  $pageParams['pagetitle'] = $r->txt->do_template($module, 'title.noaccess', $pageParams);
+        $page->add('main', $r->txt->do_template($module, 'noaccess', $pageParams);
       }
     } else {
-      $page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.noaccess', $pageParams);
-      $page->add('main', $runtime->txt->do_template($module, 'noaccess', $pageParams);
+      $page->add('title',  $pageParams['pagetitle'] = $r->txt->do_template($module, 'title.noaccess', $pageParams);
+      $page->add('main', $r->txt->do_template($module, 'noaccess', $pageParams);
     } 
   } else {
-    $page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.notfound', $pageParams);
-    $page->add('main', $runtime->txt->do_template($module, 'notfound');
+    $page->add('title',  $pageParams['pagetitle'] = $r->txt->do_template($module, 'title.notfound', $pageParams);
+    $page->add('main', $r->txt->do_template($module, 'notfound');
   }
 
 } else {

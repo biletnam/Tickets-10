@@ -14,11 +14,11 @@ if ($id > 0) {
   $tabProduct->setDefaultTab(lavnn('tab') || 'edit');
   $productInfo['tabcontrol'] = $tabProduct->getHTML();
   
-  $page['js'] = $runtime->txt->do_template('main', 'tabcontrol.js');
-  $page['css'] = $runtime->txt->do_template('main', 'tabcontrol.css');    
+  $page['js'] = $r->txt->do_template('main', 'tabcontrol.js');
+  $page['css'] = $r->txt->do_template('main', 'tabcontrol.css');    
 
-  $page->add('title',  $productInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.view', $productInfo);
-  $page->add('main', $runtime->txt->do_template($module, 'view', $productInfo);
+  $page->add('title',  $productInfo['pagetitle'] = $r->txt->do_template($module, 'title.view', $productInfo);
+  $page->add('main', $r->txt->do_template($module, 'view', $productInfo);
 }
 
 

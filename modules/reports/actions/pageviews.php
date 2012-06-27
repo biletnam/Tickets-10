@@ -3,7 +3,7 @@
 use ctlDataGrid;
 
 $pageParams = array();  
-$page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.pageviews');
+$page->add('title',  $pageParams['pagetitle'] = $r->txt->do_template($module, 'title.pageviews');
 
 $viewertype = $pageParams['viewer_type'] = array(lavnn('viewer_type') || '');
 $viewertypes = $runtime->getDictArr('main', 'pageviewer.type', $viewertype);
@@ -28,9 +28,9 @@ $pageParams['results'] = $grid1->render();
 $runtime->saveMoment('Finished rendering data grid');
 
 $pageParams['reportname'] = $report;
-$page->add('main', $runtime->txt->do_template($module, 'pageviews', $pageParams);
+$page->add('main', $r->txt->do_template($module, 'pageviews', $pageParams);
 
-$page['js'] .= $runtime->txt->do_template($module, 'pageviews.js');
+$page['js'] .= $r->txt->do_template($module, 'pageviews.js');
 
 
 

@@ -4,7 +4,7 @@ $id = lavnn('id');
 $ticketInfo = $runtime->s2r($module, 'GetTicketInfo', array('id' => $id));
 print "<pre>Ticket before explaining";
 print Dumper($ticketInfo);
-$ticketInfo['explained'] = $runtime->txt->do_template($module, 'ticket.explain', $ticketInfo);
+$ticketInfo['explained'] = $r->txt->do_template($module, 'ticket.explain', $ticketInfo);
 print 'New explanation: '.$ticketInfo['explained'];
 $result = $runtime->db->sqlrun($module, 'UpdateTicketExplanation', $ticketInfo);
 print "Update result: $result";  

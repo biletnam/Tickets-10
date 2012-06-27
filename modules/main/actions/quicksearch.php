@@ -5,7 +5,7 @@ $popupParams = array(
   'content' => dot('quicksearch', $ticketInfo),
 );
 
-print $runtime->txt->do_template('main', 'popup', $popupParams);
+print $r->txt->do_template('main', 'popup', $popupParams);
 
 
 ?>

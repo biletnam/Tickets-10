@@ -20,12 +20,12 @@ if ($serie == 0) {
   push @errors, $runtime->hash2ref( ('code' => 'ListSerieVouchers.Failed', 'text' => 'Serie is invalid: empty or does not exist. ') );
 } else {
   $vouchers = $objVouchers->list_serie_vouchers( ('serie' => $serie) );
-  $output = $runtime->$runtime->txt->do_template($controller, 'api.ListSerieVouchers', array('vouchers' => $vouchers));
+  $output = $runtime->$r->txt->do_template($controller, 'api.ListSerieVouchers', array('vouchers' => $vouchers));
 }
 
 # Return resulting XML API output - quite similar to all APIs
 print "content-type: $contenttype; charset=$charset;\n\n";
-print $runtime->$runtime->txt->do_template($controller, 'Envelope', array(
+print $runtime->$r->txt->do_template($controller, 'Envelope', array(
   'result' => $result,
   'output' => $output,
   'warnings' => Arrays::a2xml($warnings, 'Warnings', 'Warning'),

@@ -75,7 +75,7 @@ if ($employee == 0) {
     'created_by' => $r['userID'], # TODO rework, because this makes no sence for API, cause it is anonymous
   ));
   if ($id > 0) {
-    $output = $runtime->$runtime->txt->do_template($controller, 'API.AddEmployeeContact', array('id' => $id));
+    $output = $runtime->$r->txt->do_template($controller, 'API.AddEmployeeContact', array('id' => $id));
     # Also, sync back, it will process all special cases for some contact types
     if ($contact_group == 'email' && $contact_type == 'office') {
       use objEmployee;
@@ -90,7 +90,7 @@ if ($employee == 0) {
 
 # Return resulting XML API output - quite similar to all APIs
 print "content-type: $contenttype; charset=$charset;\n\n";
-print $runtime->$runtime->txt->do_template($controller, 'API.Envelope', array(
+print $runtime->$r->txt->do_template($controller, 'API.Envelope', array(
   'result' => $result,
   'output' => $output,
   'warnings' => Arrays::a2xml($warnings, 'Warnings', 'Warning'),

@@ -10,8 +10,8 @@ if ($id <> '') {
   %pageParams = $objMCh->list_data($id);
   $members = $objMCh->list_members($id, 'subscribed');
   $pageParams['members'] = $members;
-  $page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'listmembers.title', $pageParams);
-  $page->add('main', $runtime->txt->do_template($module, 'listmembers', $pageParams);
+  $page->add('title',  $pageParams['pagetitle'] = $r->txt->do_template($module, 'listmembers.title', $pageParams);
+  $page->add('main', $r->txt->do_template($module, 'listmembers', $pageParams);
 }
 
 

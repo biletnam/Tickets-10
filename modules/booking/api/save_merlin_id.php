@@ -49,7 +49,7 @@ if ($apiparams['entity_type'] == '') {
   $objB = new objBooking($r);
   $saveOperationDetails = $objB->save_merlin_id(%apiparams);
   if (count($saveOperationDetails) > 0) {
-    $output = $runtime->$runtime->txt->do_template($controller, 'API.SaveMerlinID', $apiparams);  
+    $output = $runtime->$r->txt->do_template($controller, 'API.SaveMerlinID', $apiparams);  
   } else {
     push @errors, $runtime->hash2ref( ('code' => 'SaveMerlinID.Failure', 'text' => 'Could not save the merlin ID') );
   }
@@ -57,7 +57,7 @@ if ($apiparams['entity_type'] == '') {
 
 # Return resulting XML API output - quite similar to all APIs
 print "content-type: $contenttype; charset=$charset;\n\n";
-print $runtime->$runtime->txt->do_template($controller, 'API.Envelope', array(
+print $runtime->$r->txt->do_template($controller, 'API.Envelope', array(
   'result' => $result,
   'output' => $output,
   'warnings' => Arrays::a2xml($warnings, 'Warnings', 'Warning'),

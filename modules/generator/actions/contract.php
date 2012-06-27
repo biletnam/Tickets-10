@@ -25,14 +25,14 @@ if ($gen_user_id > 0 && $id > 0) {
 
   if ($genInfo['show_fu_comments'] == 1) {
     $fucomments = $runtime->s2a($module, 'ListFollowUpComments', $sqlParams);
-    $firstentry['fucomments'] = $runtime->txt->do_template($module, 'contract.emptyrow').loopt('contract.fucomment', @fucomments);
+    $firstentry['fucomments'] = $r->txt->do_template($module, 'contract.emptyrow').loopt('contract.fucomment', @fucomments);
   }
 
   # register pageview
   $runtime->db->sqlrun('main', 'RegisterPageview', array('entity_type' => 'contract', 'entity_id' => $id, 'viewer_type' => 'G', 'viewer_id' => $gen_user_id));
 
-  $page->add('main', $runtime->txt->do_template($module, 'contract', $firstentry);
+  $page->add('main', $r->txt->do_template($module, 'contract', $firstentry);
 }
 
-print $runtime->txt->do_template($module, 'index', $page);
+print $r->txt->do_template($module, 'index', $page);
 ?>

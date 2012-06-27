@@ -124,7 +124,7 @@ class CDatabase {
         }
     }
 
-  	public function getFieldMetadata($res, $i) {
+  public function getFieldMetadata($res, $i) {
         $metadata = mysql_fetch_field($res, $i);
         return array(
           'name' => $metadata['name'], 

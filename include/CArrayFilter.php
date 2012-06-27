@@ -71,7 +71,9 @@ class CArrayFilter {
                 }
                 $value = join(',', $rowvalues);
                 break;
+            case "rowtemplate":
             case "looptemplate":
+            case "loopt":
                 $modulename = $filterparams['module'] or '';
                 $templatename = $filterparams['name'] or '';
                 $value = $this->host->loop_template($modulename, $templatename, $value);

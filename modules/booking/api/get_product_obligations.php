@@ -112,7 +112,7 @@ if ($contract_no <> '') {
   $gifts = $runtime->s2a($controller, 'GetContractGifts', $apiparams);
   $apiparams['gifts'] = $gifts;
     
-  $output = $runtime->$runtime->txt->do_template($controller, 'API.ProductObligations', $apiparams);
+  $output = $runtime->$r->txt->do_template($controller, 'API.ProductObligations', $apiparams);
 } else {
   $result = 'ERR'; 
   push @errors, $runtime->hash2ref( ('code' => 'GetProductObligations.InvalidInputParams', 'text' => 'Contract number is not provided') );
@@ -121,7 +121,7 @@ if ($contract_no <> '') {
 
 # Return resulting XML API output - quite similar to all APIs
 print "content-type: $contenttype; charset=$charset;\n\n";
-print $runtime->$runtime->txt->do_template($controller, 'API.Envelope', array(
+print $runtime->$r->txt->do_template($controller, 'API.Envelope', array(
   'result' => $result,
   'output' => $output,
   'warnings' => Arrays::a2xml($warnings, 'Warnings', 'Warning'),

@@ -6,5 +6,5 @@ if ($id > 0) {
 }
 $resortoptions = arr2ref(s2a($module, 'ListExtResorts'));
 $seasonInfo['resortoptions'] = arr2ref(genOptions($resortoptions, 'id', 'name', $seasonInfo['resort']));
-print $runtime->txt->do_template($module, 'extseasontooltip', $seasonInfo);
+print $r->txt->do_template($module, 'extseasontooltip', $seasonInfo);
 ?>

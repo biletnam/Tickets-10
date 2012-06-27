@@ -18,8 +18,8 @@ if (count($projectInfo) > 0) {
   }
   $runtime->saveMoment('  access checked with result: '.$access);
   if ($access == 'none') {
-    $page->add('title',  $runtime->txt->do_template($module, 'title.noaccess');
-    $page->add('main', $runtime->txt->do_template($module, 'project.noaccess');
+    $page->add('title',  $r->txt->do_template($module, 'title.noaccess');
+    $page->add('main', $r->txt->do_template($module, 'project.noaccess');
   } else {
     $tickets = $runtime->s2a($module, 'ListProjectTickets', array('id' => $projectInfo['id'], 'user_id' => $r['userInfo']['staff_id']));
     $projectInfo['tickets'] = $tickets;
@@ -27,7 +27,7 @@ if (count($projectInfo) > 0) {
     $projectInfo['tags'] = $tags;
     if ($access == 'edit') {
       # Add controls to manage moderator
-      $projectInfo['setmoderator'] = $runtime->txt->do_template($module, 'project.edit.changemoderator', $projectInfo);
+      $projectInfo['setmoderator'] = $r->txt->do_template($module, 'project.edit.changemoderator', $projectInfo);
       # Prepare tab control
       use ctlTab;
       $tcProject = new ctlTab($r, 'tcProject');
@@ -40,33 +40,33 @@ if (count($projectInfo) > 0) {
       $tcProject->addTab('ticketaccess', dot('project.tab.ticketaccess', $projectInfo), dot('project.ticketaccess', $projectInfo));
       $tcProject->setDefaultTab(lavnn('tab')) if (lavnn('tab') <> '');
       $projectInfo['tabcontrol'] = $tcProject->getHTML();
-      $projectInfo['createticketlink'] = $runtime->txt->do_template($module, 'project.createticketlink', $projectInfo);
+      $projectInfo['createticketlink'] = $r->txt->do_template($module, 'project.createticketlink', $projectInfo);
       $runtime->saveMoment('  rendered tab control');
       # render the page
-      $page->add('title',  $runtime->txt->do_template($module, 'title.project', $projectInfo);
-      $projectInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.project.short', $projectInfo);
-      $page->add('main', $runtime->txt->do_template($module, 'project', $projectInfo);
+      $page->add('title',  $r->txt->do_template($module, 'title.project', $projectInfo);
+      $projectInfo['pagetitle'] = $r->txt->do_template($module, 'title.project.short', $projectInfo);
+      $page->add('main', $r->txt->do_template($module, 'project', $projectInfo);
     } elseif ($access == 'read') {
       $projectInfo['tabcontrol'] = view_project($projectInfo);
       # render the page
-      $page->add('title',  $runtime->txt->do_template($module, 'title.project', $projectInfo);
-      $projectInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.project.short', $projectInfo);
-      $page->add('main', $runtime->txt->do_template($module, 'project', $projectInfo);
+      $page->add('title',  $r->txt->do_template($module, 'title.project', $projectInfo);
+      $projectInfo['pagetitle'] = $r->txt->do_template($module, 'title.project.short', $projectInfo);
+      $page->add('main', $r->txt->do_template($module, 'project', $projectInfo);
     }
   }
 } else {
-  $page->add('title',  $projectInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.editproject.create');
-  $projectInfo['setmoderator'] = $runtime->txt->do_template($module, 'project.edit.setmoderator');
-  $projectInfo['tabcontrol'] = $runtime->txt->do_template($module, 'project.edit', $projectInfo);
-  $page->add('main', $runtime->txt->do_template($module, 'project', $projectInfo);
+  $page->add('title',  $projectInfo['pagetitle'] = $r->txt->do_template($module, 'title.editproject.create');
+  $projectInfo['setmoderator'] = $r->txt->do_template($module, 'project.edit.setmoderator');
+  $projectInfo['tabcontrol'] = $r->txt->do_template($module, 'project.edit', $projectInfo);
+  $page->add('main', $r->txt->do_template($module, 'project', $projectInfo);
 }
 
 
-$page['js'] .= $runtime->txt->do_template('main', 'tabcontrol.js');
-$page['js'] .= $runtime->txt->do_template('main', 'linkpeople.js');
-$page['js'] .= $runtime->txt->do_template('main', 'tagcloud.js');
-$page->add('css',  $runtime->txt->do_template('main', 'tabcontrol.css');
-$page->add('css',  $runtime->txt->do_template('main', 'linkpeople.css');
+$page['js'] .= $r->txt->do_template('main', 'tabcontrol.js');
+$page['js'] .= $r->txt->do_template('main', 'linkpeople.js');
+$page['js'] .= $r->txt->do_template('main', 'tagcloud.js');
+$page->add('css',  $r->txt->do_template('main', 'tabcontrol.css');
+$page->add('css',  $r->txt->do_template('main', 'linkpeople.css');
 
 
 

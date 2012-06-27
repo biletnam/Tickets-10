@@ -10,15 +10,15 @@ if (get_cookie('booking_search_source_type') <> '') {
     'source_type' => get_cookie('booking_search_source_type'),
     'source_id' => get_cookie('booking_search_source_id'),
   );
-  $bookingInfo['linking'] .= $runtime->txt->do_template($module, 'booking.linking.'.$linkingInfo['source_type'], $linkingInfo); 
+  $bookingInfo['linking'] .= $r->txt->do_template($module, 'booking.linking.'.$linkingInfo['source_type'], $linkingInfo); 
 }
  
 #print spreview($module, 'GetBookingInfo', $_REQUEST) . Dumper($bookingInfo);
 if (count($bookingInfo) > 0) {
-  $page['js'] = $runtime->txt->do_template('main', 'tabcontrol.js');
-  $page['js'] .= $runtime->txt->do_template('main', 'linkpeople.js');
-  $page['css'] = $runtime->txt->do_template('main', 'tabcontrol.css');
-  $page->add('css',  $runtime->txt->do_template('main', 'linkpeople.css');
+  $page['js'] = $r->txt->do_template('main', 'tabcontrol.js');
+  $page['js'] .= $r->txt->do_template('main', 'linkpeople.js');
+  $page['css'] = $r->txt->do_template('main', 'tabcontrol.css');
+  $page->add('css',  $r->txt->do_template('main', 'linkpeople.css');
 
   $tabBookingView = new ctlTab($r, "tcBookingView");
   $bookingInfo['statusoptions'] = arr2ref(genOptions(arr2ref(s2a($module, 'ListBookingStatuses')), 'status_id', 'status_name', $bookingInfo['status_id']));
@@ -37,7 +37,7 @@ if (count($bookingInfo) > 0) {
 #  print Dumper($bookingInfo);
   $familymembers = $runtime->s2a($module, 'GetBookingFamily', $_REQUEST); 
   if (count($familymembers) > 0) {
-    $bookingInfo['moreguests'] = $runtime->txt->do_template($module, 'booking.people.family', array('book_id' => $bookingInfo['book_id'], 'familymembers' => $familymembers));
+    $bookingInfo['moreguests'] = $r->txt->do_template($module, 'booking.people.family', array('book_id' => $bookingInfo['book_id'], 'familymembers' => $familymembers));
   }
   $tabBookingView->addTab('people', dot('booking.people.tabheader', $ticketInfo), dot('booking.people', $bookingInfo)); 
   $bookingInfo['user_id'] = $r['userID'];
@@ -50,10 +50,10 @@ if (count($bookingInfo) > 0) {
   $bookingInfo['tabcontrol'] = $tabBookingView->getHTML();
   $runtime->saveMoment('  tab control rendered');
   
-  $page->add('title',  $bookingInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.booking', $bookingInfo);
-  $page->add('main', $runtime->txt->do_template($module, 'booking', $bookingInfo);
+  $page->add('title',  $bookingInfo['pagetitle'] = $r->txt->do_template($module, 'title.booking', $bookingInfo);
+  $page->add('main', $r->txt->do_template($module, 'booking', $bookingInfo);
 } else {
-  $page->add('main', $runtime->txt->do_template($module, 'booking.notfound', $bookingInfo);
+  $page->add('main', $r->txt->do_template($module, 'booking.notfound', $bookingInfo);
 }
 
 

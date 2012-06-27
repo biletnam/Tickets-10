@@ -13,11 +13,11 @@ if ($id > 0) {
   if (count($obligations) > 0) {
     $contractData['obligations'] = $obligations; 
   } else {
-    $contractData['copyobligations'] = $runtime->txt->do_template($module, 'view.obligations.copy', $contractData); 
+    $contractData['copyobligations'] = $r->txt->do_template($module, 'view.obligations.copy', $contractData); 
   } 
   if ($contractData['merlin_id'] == '') {
     $contractData['merlin_upload_options'] = arr2ref($runtime->getDictArr('main', 'yesno', $contractData['merlin_upload_ready']));
-    $contractData['mark_merlin_import_ready'] = $runtime->txt->do_template($module, 'view.details.merlinready', $contractData);
+    $contractData['mark_merlin_import_ready'] = $r->txt->do_template($module, 'view.details.merlinready', $contractData);
   }
 
   $fucomments = $runtime->s2a($module, 'ListFollowUpComments', array('contract_no' => $id));
@@ -27,8 +27,8 @@ if ($id > 0) {
 #  print Dumper($gifts) . spreview($module, 'ListContractGifts', array('contract_no' => $id));
   $contractData['gifts'] = $gifts;
   # Create a client view tab control
-  $page['js'] = $runtime->txt->do_template('main', 'tabcontrol.js');
-  $page['css'] = $runtime->txt->do_template('main', 'tabcontrol.css');
+  $page['js'] = $r->txt->do_template('main', 'tabcontrol.js');
+  $page['css'] = $r->txt->do_template('main', 'tabcontrol.css');
   $tabContractView = new ctlTab($r, "tcContractView");
   $tabContractView->addTab('details', dot('view.details.tabheader'), dot('view.details', $contractData)); 
   $tabContractView->addTab('obligations', dot('view.obligations.tabheader'), dot('view.obligations', $contractData)); 
@@ -41,7 +41,7 @@ if ($id > 0) {
   $runtime->saveMoment('  tab control rendered');
 
   # Render the whole page
-  $page->add('main', $runtime->txt->do_template($module, 'view', $contractData);
+  $page->add('main', $r->txt->do_template($module, 'view', $contractData);
 }
 
 

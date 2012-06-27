@@ -4,7 +4,7 @@ use Calendar;
 
 $pageParams = array();
 
-$page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.birthdays');
+$page->add('title',  $pageParams['pagetitle'] = $r->txt->do_template($module, 'title.birthdays');
 
 $parsedToday = Calendar::parseDate(Calendar::getToday()); 
 $day = $_REQUEST['day'] || $parsedToday['day'];
@@ -27,7 +27,7 @@ foreach $_row (@birthdays) {
 }
 $pageParams['birthdays'] = join('', $rows);
 
-$page->add('main',  $runtime->txt->do_template($module, 'birthdays', $pageParams);
+$page->add('main',  $r->txt->do_template($module, 'birthdays', $pageParams);
 
 
 

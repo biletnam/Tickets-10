@@ -22,8 +22,8 @@ if ($hotel <> '') {
 }
 if ($id <> '') {
   # Create a tab control for hard block
-  $page['js'] = $runtime->txt->do_template('main', 'tabcontrol.js');
-  $page['css'] = $runtime->txt->do_template('main', 'tabcontrol.css');
+  $page['js'] = $r->txt->do_template('main', 'tabcontrol.js');
+  $page['css'] = $r->txt->do_template('main', 'tabcontrol.css');
   $tabHardBlockView = new ctlTab($r, "tcHardBlockView");
 
   $tabHardBlockView->addTab('edit', dot('hardblock.edit.tabheader'), dot('hardblock.edit', $pageParams));
@@ -31,18 +31,18 @@ if ($id <> '') {
   $hbb = $runtime->s2a($module, 'ListHardBlockBookings', array('id' => $id)); 
   $pageParams['bookings'] = $hbb;
   $hbstats = $runtime->s2r($module, 'GetHardBlockStats', array('id' => $id));
-  $pageParams['stats'] = $runtime->txt->do_template($module, 'hardblock.stats', $hbstats);
+  $pageParams['stats'] = $r->txt->do_template($module, 'hardblock.stats', $hbstats);
   $tabHardBlockView->addTab('report', dot('hardblock.report.tabheader'), dot('hardblock.report', $pageParams)); 
   $tabHardBlockView->setDefaultTab(lavnn('tab') || 'edit');
   $pageParams['tabcontrol'] = $tabHardBlockView->getHTML();
   $runtime->saveMoment('  tab control rendered');
-  $pageParams['pagetitle'] = $page->add('title',  $runtime->txt->do_template($module, 'title.hardblock.edit', $pageParams); 
-  $page->add('main', $runtime->txt->do_template($module, 'hardblock', $pageParams);
+  $pageParams['pagetitle'] = $page->add('title',  $r->txt->do_template($module, 'title.hardblock.edit', $pageParams); 
+  $page->add('main', $r->txt->do_template($module, 'hardblock', $pageParams);
 } else {
   # Just adding block -> can't show anything but create form
-  $pageParams['tabcontrol'] = $runtime->txt->do_template($module, 'hardblock.edit', $pageParams);
-  $pageParams['pagetitle'] = $page->add('title',  $runtime->txt->do_template($module, 'title.hardblock.add', $pageParams);
-  $page->add('main', $runtime->txt->do_template($module, 'hardblock', $pageParams);
+  $pageParams['tabcontrol'] = $r->txt->do_template($module, 'hardblock.edit', $pageParams);
+  $pageParams['pagetitle'] = $page->add('title',  $r->txt->do_template($module, 'title.hardblock.add', $pageParams);
+  $page->add('main', $r->txt->do_template($module, 'hardblock', $pageParams);
 }
 
 

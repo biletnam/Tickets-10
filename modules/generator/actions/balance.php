@@ -71,13 +71,13 @@ if ($gen_user_id > 0) {
           push @ee, $r->txt->do_text($rowTemplate, $e);
         }
         $pageParams['expenses'] = join('', $ee);
-        $pageParams['expenselist'] = $runtime->txt->do_template($module, 'expenses.list', $pageParams);
+        $pageParams['expenselist'] = $r->txt->do_template($module, 'expenses.list', $pageParams);
       }
       
       # Check if there are more expenses for the same generator but on other dates
       $otherexpenses = $runtime->s2r($module, 'CountOtherExpenses', $sqlParams);
       if ($otherexpenses['cnt'] > 0) {
-        $pageParams['otherexpenses'] = $runtime->txt->do_template($module, 'expenses.other', $otherexpenses);
+        $pageParams['otherexpenses'] = $r->txt->do_template($module, 'expenses.other', $otherexpenses);
       }
       
     } else {
@@ -85,12 +85,12 @@ if ($gen_user_id > 0) {
       $interc = $runtime->s2a($module, 'Intercompany', $sqlParams);
       if (count($interc) > 0) {
         $pageParams['interc'] = $interc;
-        $pageParams['intercompany'] = $runtime->txt->do_template($module, 'intercompany', $pageParams);
+        $pageParams['intercompany'] = $r->txt->do_template($module, 'intercompany', $pageParams);
       }
     }
 
   } else {
-    $page['flash'] .= $runtime->txt->do_template('main', 'error', array('error' => dot('error.balance.datemissing')));
+    $page['flash'] .= $r->txt->do_template('main', 'error', array('error' => dot('error.balance.datemissing')));
   }
 
   # register pageview
@@ -98,8 +98,8 @@ if ($gen_user_id > 0) {
 
 }
 
-$page->add('main', $runtime->txt->do_template($module, 'balance', $pageParams);
+$page->add('main', $r->txt->do_template($module, 'balance', $pageParams);
 $page['baseurl'] = $pageParams['baseurl'];
-print $runtime->txt->do_template($module, 'index', $page);
+print $r->txt->do_template($module, 'index', $page);
 
 ?>

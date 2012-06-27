@@ -34,8 +34,8 @@ $runtime->saveMoment('  fetched list of tickets from db');
   $pageParams['ticketstatuses'] = $statusoptions;
   $tickets2review = $runtime->s2a($module, 'ListTickets2Review', array('user_id' => $user_id));
   $pageParams['tickets2review'] = $tickets2review;
-  $pageParams['alltickets2review'] = $runtime->txt->do_template($module, 'tickets2review.list', $pageParams);
-  $reviewTab = $runtime->txt->do_template($module, 'mytickets.review', $pageParams);
+  $pageParams['alltickets2review'] = $r->txt->do_template($module, 'tickets2review.list', $pageParams);
+  $reviewTab = $r->txt->do_template($module, 'mytickets.review', $pageParams);
   $runtime->saveMoment('  prepared review tab');
   
   # Prepare Follow tab
@@ -55,8 +55,8 @@ $runtime->saveMoment('  fetched list of tickets from db');
   $statusoptions = $runtime->getSortedDictArr($module, 'status4creator');
   $pageParams['ticketstatuses'] = $statusoptions;
   $pageParams['tickets2follow'] = $tickets2follow;
-  $pageParams['alltickets2follow'] = $runtime->txt->do_template($module, 'tickets2follow.list', $pageParams);
-  $followTab = $runtime->txt->do_template($module, 'mytickets.follow', $pageParams);
+  $pageParams['alltickets2follow'] = $r->txt->do_template($module, 'tickets2follow.list', $pageParams);
+  $followTab = $r->txt->do_template($module, 'mytickets.follow', $pageParams);
   $runtime->saveMoment('  prepared follow tab');
 
   # Prepare Notifying tab
@@ -78,16 +78,16 @@ $runtime->saveMoment('  fetched list of tickets from db');
   $pageParams['tabcontrol'] = $tabMyTickets->getHTML();
   $runtime->saveMoment('  rendered tab control for mytickets');
   
-  $page['js'] .= $runtime->txt->do_template($module, 'tickets2follow.js', array('user_id' => $user_id));
-  $page['js'] .= $runtime->txt->do_template($module, 'tickets2review.js', array('user_id' => $user_id));
-  $page->add('css',  $runtime->txt->do_template($module, 'tickets.css');
-  $page['js'] .= $runtime->txt->do_template('main', 'tabcontrol.js');
-  $page->add('css',  $runtime->txt->do_template('main', 'tabcontrol.css');
-  $page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.mytickets', $pageParams);  
-  $page->add('main', $runtime->txt->do_template($module, 'mytickets.list', $pageParams);  
+  $page['js'] .= $r->txt->do_template($module, 'tickets2follow.js', array('user_id' => $user_id));
+  $page['js'] .= $r->txt->do_template($module, 'tickets2review.js', array('user_id' => $user_id));
+  $page->add('css',  $r->txt->do_template($module, 'tickets.css');
+  $page['js'] .= $r->txt->do_template('main', 'tabcontrol.js');
+  $page->add('css',  $r->txt->do_template('main', 'tabcontrol.css');
+  $page->add('title',  $pageParams['pagetitle'] = $r->txt->do_template($module, 'title.mytickets', $pageParams);  
+  $page->add('main', $r->txt->do_template($module, 'mytickets.list', $pageParams);  
 
-#  $page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.mytickets', $pageParams);  
-#  $page->add('main', $runtime->txt->do_template($module, 'mytickets.none', $pageParams);
+#  $page->add('title',  $pageParams['pagetitle'] = $r->txt->do_template($module, 'title.mytickets', $pageParams);  
+#  $page->add('main', $r->txt->do_template($module, 'mytickets.none', $pageParams);
 
 
 

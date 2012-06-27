@@ -32,11 +32,11 @@ if ($calendar_id > 0) {
           if ($answer == 'approve') {
             $objCal->approve_event(('id' => $id, 'editor' => $r['userID']));
             $tickets{$ticket_id}['approved'] += 1;
-            $tickets{$ticket_id}['details'] .= $runtime->txt->do_template($module, 'absencerequest.ticket.comment.approved', $eventInfo);
+            $tickets{$ticket_id}['details'] .= $r->txt->do_template($module, 'absencerequest.ticket.comment.approved', $eventInfo);
           } elseif ($answer == 'decline') {
             $objCal->decline_event(('id' => $id, 'editor' => $r['userID']));
             $tickets{$ticket_id}['declined'] += 1;
-            $tickets{$ticket_id}['details'] .= $runtime->txt->do_template($module, 'absencerequest.ticket.comment.declined', $eventInfo);
+            $tickets{$ticket_id}['details'] .= $r->txt->do_template($module, 'absencerequest.ticket.comment.declined', $eventInfo);
           }
         }
       }

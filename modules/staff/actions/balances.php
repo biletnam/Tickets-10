@@ -5,7 +5,7 @@ if ($id <> 0) {
   if ($office <> 0) {
     %pageParams = $runtime->s2r($module, 'GetOfficeDetails', array('office' => $office));
     if (count($pageParams) > 0) {
-      $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.balances', $pageParams);
+      $pageParams['pagetitle'] = $r->txt->do_template($module, 'title.balances', $pageParams);
       # Get year and month from request, or set current by default
       use Calendar;
       $today = Calendar::getTodayArr();
@@ -13,8 +13,8 @@ if ($id <> 0) {
       $M = lavnn('M') || $today['M'];
       $employees = $runtime->s2a($module, 'GetEmployeeBalances', array('office' => $id, 'Y' => $Y)); 
       $pageParams['employees'] = $employees;
-      $page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.balances', $pageParams);
-      $page->add('main', $runtime->txt->do_template($module, 'balances', $pageParams);
+      $page->add('title',  $pageParams['pagetitle'] = $r->txt->do_template($module, 'title.balances', $pageParams);
+      $page->add('main', $r->txt->do_template($module, 'balances', $pageParams);
     }  
   }
 }

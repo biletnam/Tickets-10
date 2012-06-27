@@ -39,7 +39,7 @@ if ($apiparams['client_id'] <> '' || $apiparams['contract_no'] <> '') {
   if (count($clientData) > 0) {
     $result = $runtime->($controller, 'ResetClientLogin', array('client_id' => $clientData['client_id']));
     if ($result > 0) {
-      $output = $runtime->$runtime->txt->do_template($controller, 'API.ResetClientLogin', $clientData);  
+      $output = $runtime->$r->txt->do_template($controller, 'API.ResetClientLogin', $clientData);  
     } else {
       $result = 'ERR'; 
       push @errors, $runtime->hash2ref( ('code' => 'ResetClientLogin.Failure', 'text' => 'Could not reset the login date') );
@@ -55,7 +55,7 @@ if ($apiparams['client_id'] <> '' || $apiparams['contract_no'] <> '') {
 
 # Return resulting XML API output - quite similar to all APIs
 print "content-type: $contenttype; charset=$charset;\n\n";
-print $runtime->$runtime->txt->do_template($controller, 'API.Envelope', array(
+print $runtime->$r->txt->do_template($controller, 'API.Envelope', array(
   'result' => $result,
   'output' => $output,
   'warnings' => Arrays::a2xml($warnings, 'Warnings', 'Warning'),

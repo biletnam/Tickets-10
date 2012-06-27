@@ -12,8 +12,8 @@ if ($poll <> 0) {
       $ids = join_column(',', 'lngId', $respondents);
     }
     # Create notification and send it
-    $subject = $runtime->txt->do_template($module, 'notification.subject', $pollInfo);
-    $digest = $runtime->txt->do_template($module, 'notification.digest', $pollInfo);
+    $subject = $r->txt->do_template($module, 'notification.subject', $pollInfo);
+    $digest = $r->txt->do_template($module, 'notification.digest', $pollInfo);
     use objNotification;
     $objN = new objNotification($r);
     $nid = $objN->add_notification('poll', $poll, $subject, $digest);

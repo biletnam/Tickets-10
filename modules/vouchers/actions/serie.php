@@ -19,11 +19,11 @@ if ($serie > 0) {
   $tabVoucherSerie->setDefaultTab(lavnn('tab') || 'vouchers');
   $serieInfo['tabcontrol'] = $tabVoucherSerie->getHTML();
   
-  $page['js'] = $runtime->txt->do_template('main', 'tabcontrol.js');
-  $page->add('css',  $runtime->txt->do_template('main', 'tabcontrol.css');
+  $page['js'] = $r->txt->do_template('main', 'tabcontrol.js');
+  $page->add('css',  $r->txt->do_template('main', 'tabcontrol.css');
 
-  $page->add('title',  $serieInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.serie', $serieInfo);
-  $page->add('main', $runtime->txt->do_template($module, 'serie', $serieInfo);
+  $page->add('title',  $serieInfo['pagetitle'] = $r->txt->do_template($module, 'title.serie', $serieInfo);
+  $page->add('main', $r->txt->do_template($module, 'serie', $serieInfo);
 }
 
 

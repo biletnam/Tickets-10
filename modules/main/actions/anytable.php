@@ -3,23 +3,23 @@
 $id = lavnn('id', $_REQUEST, 0);
 $tableInfo = array();
 
-$page->add('title',  $tableInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.anytable.tablelist');
+$page->add('title',  $tableInfo['pagetitle'] = $r->txt->do_template($module, 'title.anytable.tablelist');
 if ($id == 0) {
   $resources = $acc->list_access('editable', $r['userID']);
   $tables = array();
   if (count($resources) > 0) {
     @tables = $runtime->s2a($module, 'ListEditableTables', array('ids' => join_column(',', 'source_id', $resources)));
     $tableInfo['tables'] = $tables;
-    $page->add('main', $runtime->txt->do_template($module, 'anytable.tablelist', $tableInfo);
+    $page->add('main', $r->txt->do_template($module, 'anytable.tablelist', $tableInfo);
   } else {
-    $page->add('main', $runtime->txt->do_template($module, 'anytable.none', $tableInfo);
+    $page->add('main', $r->txt->do_template($module, 'anytable.none', $tableInfo);
   }
   
 } elseif ($id  > 0) {
   # Check access - user might have no rights to edit this table!
   if ($acc->check_access("editable:$id", $r['userID']) == 0) {
-    $page->add('title',  $tableInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.anytable.notallowed', $tableInfo);
-    $page->add('main', $runtime->txt->do_template($module, 'anytable.notallowed', $tableInfo);
+    $page->add('title',  $tableInfo['pagetitle'] = $r->txt->do_template($module, 'title.anytable.notallowed', $tableInfo);
+    $page->add('main', $r->txt->do_template($module, 'anytable.notallowed', $tableInfo);
   } else {
     # Gather metadata about table
     %tableInfo = $runtime->s2r($module, 'GetEditableTableInfo', $_REQUEST);
@@ -50,15 +50,15 @@ if ($id == 0) {
         push @newrowform, dot('anytable.newrowform.field', $column);
       }
     }
-    $rowtemplate  = $runtime->txt->do_template($module, 'anytable.rowtemplate', array('table_id' => $id, 'table_name' => $tableInfo['table_name'], 'columns' => join('', $templates))); 
-    $tableInfo['header'] = $runtime->txt->do_template($module, 'anytable.header', array('table_name' => $tableInfo['table_name'], 'columns' => join('', $headers)));
+    $rowtemplate  = $r->txt->do_template($module, 'anytable.rowtemplate', array('table_id' => $id, 'table_name' => $tableInfo['table_name'], 'columns' => join('', $templates))); 
+    $tableInfo['header'] = $r->txt->do_template($module, 'anytable.header', array('table_name' => $tableInfo['table_name'], 'columns' => join('', $headers)));
     $tableInfo['data'] = $txt->loopText($rowtemplate, @data);
-    $tableInfo['newrowform'] = $runtime->txt->do_template($module, 'anytable.newrowform', array('id' => $id, 'name' => $tableInfo['name'], 'fields' => join('', $newrowform)));
+    $tableInfo['newrowform'] = $r->txt->do_template($module, 'anytable.newrowform', array('id' => $id, 'name' => $tableInfo['name'], 'fields' => join('', $newrowform)));
     #print Dumper($data);
-    $page->add('title',  $tableInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.anytable.edit', $tableInfo);
-    $page->add('main', $runtime->txt->do_template($module, 'anytable', $tableInfo);
+    $page->add('title',  $tableInfo['pagetitle'] = $r->txt->do_template($module, 'title.anytable.edit', $tableInfo);
+    $page->add('main', $r->txt->do_template($module, 'anytable', $tableInfo);
   }
-  print $runtime->txt->do_template('main', 'index.wide', $page);
+  print $r->txt->do_template('main', 'index.wide', $page);
 }
 
 1;

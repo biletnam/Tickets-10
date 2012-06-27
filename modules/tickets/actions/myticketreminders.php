@@ -9,6 +9,6 @@ $ticketInfo = $runtime->s2r($module, 'GetTicketInfo', $_REQUEST);
 if (count($ticketInfo) > 0) {
   $reminders = $runtime->s2a($module, 'ListTicketReminders', array('user_id' => $r['userID'], 'ticket_id' => lavnn('id')));
   $ticketInfo['remindershistory'] = $reminders;
-  print $runtime->txt->do_template($module, 'viewticket.action.reminders', $ticketInfo);
+  print $r->txt->do_template($module, 'viewticket.action.reminders', $ticketInfo);
 }
 ?>

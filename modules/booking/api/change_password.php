@@ -56,14 +56,14 @@ if ($password == $newpassword) {
       $result = 'ERR'; 
       push @errors, $runtime->hash2ref( ('code' => 'ChangePassword.UpdateFailure', 'text' => 'Could not update the database') );
     } else {
-      $output = $runtime->$runtime->txt->do_template($controller, 'API.ChangePassword', $apiparams);
+      $output = $runtime->$r->txt->do_template($controller, 'API.ChangePassword', $apiparams);
     }  
   }
 }
 
 # Return resulting XML API output - quite similar to all APIs
 print "content-type: $contenttype; charset=$charset;\n\n";
-print $runtime->$runtime->txt->do_template($controller, 'API.Envelope', array(
+print $runtime->$r->txt->do_template($controller, 'API.Envelope', array(
   'result' => $result,
   'output' => $output,
   'warnings' => Arrays::a2xml($warnings, 'Warnings', 'Warning'),

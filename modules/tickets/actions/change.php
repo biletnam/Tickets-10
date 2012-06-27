@@ -260,7 +260,7 @@ if (count($ticketInfo) > 0) {
 
   # Refresh textual representation
   $ticketInfo = $runtime->s2r($module, 'GetTicketInfo', array('id' => $ticket_id));
-  $ticketInfo['explained'] = $runtime->txt->do_template($module, 'ticket.explain', $ticketInfo);
+  $ticketInfo['explained'] = $r->txt->do_template($module, 'ticket.explain', $ticketInfo);
   $runtime->db->sqlrun($module, 'UpdateTicketExplanation', $ticketInfo);
   $runtime->saveMoment('  ticket explanation updated');
 

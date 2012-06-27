@@ -14,8 +14,8 @@ if ($gen_user_id > 0) {
   $pageParams['hotels'] = arr2ref(s2a($module, 'ListBookingRequests', $sqlParams)); 
 }
 $page['baseurl'] = $pageParams['baseurl'];
-$page->add('main', $runtime->txt->do_template($module, 'listrequests', $pageParams);
-$page['css'] = $runtime->txt->do_template($module, 'listrequests.css', $pageParams);
-print $runtime->txt->do_template($module, 'index', $page);
+$page->add('main', $r->txt->do_template($module, 'listrequests', $pageParams);
+$page['css'] = $r->txt->do_template($module, 'listrequests.css', $pageParams);
+print $r->txt->do_template($module, 'index', $page);
 
 ?>

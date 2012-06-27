@@ -2,7 +2,7 @@
 use ctlDataGrid;
 
 $pageParams = array();  
-$page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.paronnage');
+$page->add('title',  $pageParams['pagetitle'] = $r->txt->do_template($module, 'title.paronnage');
 $report = lavnn('report') || 'ParonageReport';
 if ($report <> '' && $runtime->eqmod($module, $report)) {
   if ($report == 'ParonageClients') {
@@ -21,7 +21,7 @@ if ($report <> '' && $runtime->eqmod($module, $report)) {
 
     if (lavnn('sender') <> '') {
       $clientInfo = $runtime->s2r($module, 'GetClientInfo', array('id' => lavnn('sender')));
-      $page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.paronnage.client', $clientInfo);
+      $page->add('title',  $pageParams['pagetitle'] = $r->txt->do_template($module, 'title.paronnage.client', $clientInfo);
     }
 
   } elseif ($report == 'ParonageReport') {
@@ -35,13 +35,13 @@ if ($report <> '' && $runtime->eqmod($module, $report)) {
     $grid1->set_width('100%');
     $grid1->set_custom_template('datarow' => $runtime->gettmod($module, 'ParonageReport.listitem'));
     $grid1->set_custom_template('superheaders' => $runtime->gettmod($module, 'ParonageReport.superheaders'));
-    $pageParams['results'] = $runtime->txt->do_template($module, 'ParonageReport', array('datagrid' => $grid1->render()));
+    $pageParams['results'] = $r->txt->do_template($module, 'ParonageReport', array('datagrid' => $grid1->render()));
     $runtime->saveMoment('Finished rendering data grid');
   
   }
 }
 $pageParams['reportname'] = $report;
-$page->add('main', $runtime->txt->do_template($module, 'paronnage', $pageParams);
+$page->add('main', $r->txt->do_template($module, 'paronnage', $pageParams);
 
 
 

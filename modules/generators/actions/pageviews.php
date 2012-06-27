@@ -3,7 +3,7 @@
 use ctlDataGrid;
 
 $pageParams = array();  
-$page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.pageviews');
+$page->add('title',  $pageParams['pagetitle'] = $r->txt->do_template($module, 'title.pageviews');
 
 $basequery = $runtime->spreview($module, 'Pageviews', $_REQUEST); 
 $grid1 = new ctlDataGrid($r, 'pageviews', $basequery, $module);
@@ -16,6 +16,6 @@ $grid1->set_custom_template('datarow' => $runtime->gettmod($module, 'pageviews.l
 $pageParams['results'] = $grid1->render();
 $runtime->saveMoment('Finished rendering data grid');
 
-print $runtime->txt->do_template($module, 'pageviews', $pageParams);
+print $r->txt->do_template($module, 'pageviews', $pageParams);
 
 ?>

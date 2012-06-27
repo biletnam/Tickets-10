@@ -7,7 +7,7 @@ if ($id > 0) {
   $bookreqInfo = $runtime->s2r($module, 'GetRequestInfo', $_REQUEST);
   #print Dumper($bookreqInfo);
   if (count($bookreqInfo) > 0) {
-    $page->add('title',  $bookreqInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.view', $bookreqInfo);
+    $page->add('title',  $bookreqInfo['pagetitle'] = $r->txt->do_template($module, 'title.view', $bookreqInfo);
     # If client_id is not done, look up from contract
     if ($bookreqInfo['client_id'] == '' && $bookreqInfo['contract_id'] <> '') {
       $contractInfo = $objB->get_contract_info(('id' => $bookreqInfo['contract_id']));
@@ -25,12 +25,12 @@ if ($id > 0) {
     if ($status == 'NEW') {
       $offices = genOptions(arr2ref(s2a($module, 'ListBookreqOffices', $bookreqInfo)), 'office_id' , 'office_name');
       $bookreqInfo['offices'] = $offices;
-      $page->add('main',  $runtime->txt->do_template($module, 'view.new', $bookreqInfo);
+      $page->add('main',  $r->txt->do_template($module, 'view.new', $bookreqInfo);
     } else {
-      $page->add('main',  $runtime->txt->do_template($module, 'view', $bookreqInfo);
+      $page->add('main',  $r->txt->do_template($module, 'view', $bookreqInfo);
     }
   } else {
-    $page->add('main', $runtime->txt->do_template($module, 'view.notfound');    
+    $page->add('main', $r->txt->do_template($module, 'view.notfound');    
   }
 }
 

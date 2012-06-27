@@ -8,7 +8,7 @@ if ($id <> '') {
   $periods = $runtime->s2a($module, 'ListHotelPeriods', $_REQUEST);
   $ids = Arrays::cut_column($periods, 'id');
   # Generate the row header
-  $pageParams['rowheader'] = $runtime->txt->do_template($module, 'edithotelprices.headerrow', array('periods' => arr2ref(@periods)));
+  $pageParams['rowheader'] = $r->txt->do_template($module, 'edithotelprices.headerrow', array('periods' => arr2ref(@periods)));
   # Generate the data rows for both HB and SB
   $pageParams['hbrows'] = prepare_datarows($id, 'HB', @ids); # Look lib.pl
   $pageParams['sbrows'] = prepare_datarows($id, 'SB', @ids); # Look lib.pl
@@ -17,9 +17,9 @@ if ($id <> '') {
   $pageParams['hotelinfo'] = hash2ref(s2r($module, 'GetHotelInfo', array('id' => $id)));
 }
 
-$page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'edithotelprices.title', $pageParams);
-$page->add('css',  $runtime->txt->do_template($module, 'hotels.css');
-$page->add('main', $runtime->txt->do_template($module, 'edithotelprices', $pageParams);
+$page->add('title',  $pageParams['pagetitle'] = $r->txt->do_template($module, 'edithotelprices.title', $pageParams);
+$page->add('css',  $r->txt->do_template($module, 'hotels.css');
+$page->add('main', $r->txt->do_template($module, 'edithotelprices', $pageParams);
 
 
 

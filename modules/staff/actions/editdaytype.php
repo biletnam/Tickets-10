@@ -10,15 +10,15 @@ if ($id > 0) {
   $typeInfo['offices'] = arr2ref(genCheckboxes($alloffices, 'office', 'lngId', 'strName', $ids));
   $typeInfo['absenceoptions'] = arr2ref($runtime->getDictArr('main', 'yesno', $typeInfo['is_absence']));
   $typeInfo['paidoptions'] = arr2ref($runtime->getDictArr('main', 'yesno', $typeInfo['is_paid']));
-  $page->add('title',  $typeInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.settings.daytypes.edit');
+  $page->add('title',  $typeInfo['pagetitle'] = $r->txt->do_template($module, 'title.settings.daytypes.edit');
 } else {
   $typeInfo['offices'] = arr2ref(genCheckboxes($alloffices, 'office', 'lngId', 'strName', $ids));
   $typeInfo['absenceoptions'] = arr2ref($runtime->getDictArr('main', 'yesno'));
   $typeInfo['paidoptions'] = arr2ref($runtime->getDictArr('main', 'yesno'));
-  $page->add('title',  $typeInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.settings.daytypes.new');
+  $page->add('title',  $typeInfo['pagetitle'] = $r->txt->do_template($module, 'title.settings.daytypes.new');
 }
 
-$page->add('main', $runtime->txt->do_template($module, 'settings.daytypes.edit', $typeInfo);
+$page->add('main', $r->txt->do_template($module, 'settings.daytypes.edit', $typeInfo);
 
 
 

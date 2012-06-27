@@ -2,7 +2,7 @@
 
 $pageParams  = array();
 
-$page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.home');
+$page->add('title',  $pageParams['pagetitle'] = $r->txt->do_template($module, 'title.home');
 
 use ctlTab;
 $tabVouchers = new ctlTab($r, 'ctVouchers');
@@ -24,10 +24,10 @@ $tabVouchers->addTab('newserie', dot('home.tab.newserie'), dot('home.newserie', 
 $tabVouchers->setDefaultTab(lavnn('tab') || 'series');
 $pageParams['tabcontrol'] = $tabVouchers->getHTML();
 
-$page['js'] = $runtime->txt->do_template('main', 'tabcontrol.js');
-$page['css'] = $runtime->txt->do_template('main', 'tabcontrol.css');    
+$page['js'] = $r->txt->do_template('main', 'tabcontrol.js');
+$page['css'] = $r->txt->do_template('main', 'tabcontrol.css');    
 
-$page->add('main', $runtime->txt->do_template($module, 'home', $pageParams);
+$page->add('main', $r->txt->do_template($module, 'home', $pageParams);
 
 
 

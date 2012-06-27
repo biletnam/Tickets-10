@@ -42,7 +42,7 @@ $dob = $apiparams['date_of_birth'] || '';
 if ($contract <> '' && $dob <> '') {
   $memberData = $runtime->s2r($controller, 'CheckMemberPersonalDetails', $apiparams);
   if (count($memberData) > 0) {
-    $output = $runtime->$runtime->txt->do_template($controller, 'API.Login', $memberData);
+    $output = $runtime->$r->txt->do_template($controller, 'API.Login', $memberData);
   } else {
     $result = 'ERR'; 
     push @errors, $runtime->hash2ref( ('code' => 'RequestWebLogin.InvalidPassword', 'text' => 'Combination of username and password does not match to any member') );
@@ -54,7 +54,7 @@ if ($contract <> '' && $dob <> '') {
 
 # Return resulting XML API output - quite similar to all APIs
 print "content-type: $contenttype; charset=$charset;\n\n";
-print $runtime->$runtime->txt->do_template($controller, 'API.Envelope', array(
+print $runtime->$r->txt->do_template($controller, 'API.Envelope', array(
   'result' => $result,
   'output' => $output,
   'warnings' => Arrays::a2xml($warnings, 'Warnings', 'Warning'),

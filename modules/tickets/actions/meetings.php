@@ -1,5 +1,5 @@
 <?php
-$page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.meetings');
+$page->add('title',  $pageParams['pagetitle'] = $r->txt->do_template($module, 'title.meetings');
 $meetings = $runtime->s2a($module, 'ListMeetings', array('user_id' => $r['userID']));
 #print spreview($module, 'ListMeetings', array('user_id' => $r['userID']));
 $pageParams['meetings'] = $meetings; 
@@ -17,7 +17,7 @@ $pageParams['meetings'] = $meetings;
   $pageParams['datagrid'] = $grid1->render();
   $runtime->saveMoment('Finished rendering data grid');
 
-$page->add('main', $runtime->txt->do_template($module, 'meetings', $pageParams);
+$page->add('main', $r->txt->do_template($module, 'meetings', $pageParams);
 
 
 ?>

@@ -10,6 +10,7 @@ require $config['folders']['include'].'CRuntime.php';
 require $config['folders']['include'].'CDatabase.php';
 require $config['folders']['include'].'CTextProcessor.php';
 
+require $config['folders']['include'].'Misc.php';
 require $config['folders']['include'].'Arrays.php';
 
 $r = new CRuntime($config);

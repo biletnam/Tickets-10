@@ -4,5 +4,5 @@ $pageParams = array('n' => $n);
 $pageParams['relationships'] = arr2ref($runtime->getDictArr($module, 'relationship')); 
 $nationalities = $runtime->s2a($module, 'ListNationalities'); 
 $pageParams['nationalities'] = arr2ref(genOptions($nationalities, 'nationality_id', 'nationality_name'));
-print $runtime->txt->do_template($module, 'newrequest.addperson', $pageParams);
+print $r->txt->do_template($module, 'newrequest.addperson', $pageParams);
 ?>

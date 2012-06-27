@@ -29,10 +29,10 @@ if ($lang == 'ru') {
 $pageParams['countries'] = arr2ref(genOptions($arr, 'country_id', 'country_name'), $_REQUEST['country_id']);
 
 # render the form
-$page['js'] .= $runtime->txt->do_template($module, 'newrequest.addperson.js', $pageParams);
-$page['js'] .= $runtime->txt->do_template($module, 'newrequest.validation.js');
+$page['js'] .= $r->txt->do_template($module, 'newrequest.addperson.js', $pageParams);
+$page['js'] .= $r->txt->do_template($module, 'newrequest.validation.js');
 $page['baseurl'] = $pageParams['baseurl'];
-$page->add('main', $runtime->txt->do_template($module, 'newrequest', $pageParams);
-print $runtime->txt->do_template($module, 'index', $page);
+$page->add('main', $r->txt->do_template($module, 'newrequest', $pageParams);
+print $r->txt->do_template($module, 'index', $page);
 
 ?>

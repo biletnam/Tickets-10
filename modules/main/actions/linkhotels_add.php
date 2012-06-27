@@ -13,12 +13,12 @@ if ($type == 'location') {
 if ($sqlParams['link_type'] <> '') {
   $newid = $runtime->sid($module, 'AddHotelsLink', $sqlParams);
   if ($newid > 0) {
-    $_REQUEST['flash'] = $runtime->txt->do_template($module, 'ajaxmessage.flash', array('controlname' => $controlname, 'text' => 'Successfully added'));
+    $_REQUEST['flash'] = $r->txt->do_template($module, 'ajaxmessage.flash', array('controlname' => $controlname, 'text' => 'Successfully added'));
   } else {
-    $_REQUEST['error'] = $runtime->txt->do_template($module, 'ajaxmessage.error', array('controlname' => $controlname, 'text' => 'Adding failed'));
+    $_REQUEST['error'] = $r->txt->do_template($module, 'ajaxmessage.error', array('controlname' => $controlname, 'text' => 'Adding failed'));
   }
 }
-print $runtime->txt->do_template($module, 'linkhotels.add', $_REQUEST);
+print $r->txt->do_template($module, 'linkhotels.add', $_REQUEST);
 
 1;
 

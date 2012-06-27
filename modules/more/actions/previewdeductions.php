@@ -1,6 +1,6 @@
 <?php
 $pageParams = $_REQUEST;
-$page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.previewdeductions');
+$page->add('title',  $pageParams['pagetitle'] = $r->txt->do_template($module, 'title.previewdeductions');
 $amounts = lavnn('amounts');
 $months = $runtime->getDict('main', 'month');
 $month = lavnn('month'); $year = lavnn('year');
@@ -28,7 +28,7 @@ if (count($refs) > 0) {
   $pageParams['deductions'] = $deductions;
   $pageParams['refs'] = join(',', @refs);
 }
-$page->add('main', $runtime->txt->do_template($module, 'previewdeductions', $pageParams);
+$page->add('main', $r->txt->do_template($module, 'previewdeductions', $pageParams);
 
 
 

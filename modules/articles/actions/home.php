@@ -38,7 +38,7 @@ foreach $key (keys %articlesByBlock) {
       }
       # store generated block with its number 
       $blockInfo['block_content'] = loopt('blockarticle', @articles);
-      $blocks{$seqno} = $runtime->txt->do_template($module, 'home.block', $blockInfo); 
+      $blocks{$seqno} = $r->txt->do_template($module, 'home.block', $blockInfo); 
     } else {
       @noblock = array(@noblock, @articles); 
     }
@@ -57,9 +57,9 @@ foreach $key (sort keys %blocks) {
 $pageParams['blocks'] = join('', $sortedblocks);
 
 # Render page from all calculated parts
-$page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.home');
-$page->add('main',  $runtime->txt->do_template($module, 'home', $pageParams);
-$page->add('css',  $runtime->txt->do_template($module, 'css');
+$page->add('title',  $pageParams['pagetitle'] = $r->txt->do_template($module, 'title.home');
+$page->add('main',  $r->txt->do_template($module, 'home', $pageParams);
+$page->add('css',  $r->txt->do_template($module, 'css');
 
 
 

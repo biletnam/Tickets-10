@@ -34,11 +34,11 @@ $tcArticles->addTab('drafts', dot('myarticles.tab.drafts', $articleInfo), dot('m
 $tcArticles->addTab('deleted', dot('myarticles.tab.deleted', $articleInfo), dot('myarticles.deleted', $pageParams));
 $pageParams['tabcontrol'] = $tcArticles->getHTML();     
 
-$pageParams['pagetitle'] = $page->add('title',  $runtime->txt->do_template($module, 'title.myarticles');
-$page->add('main', $runtime->txt->do_template($module, 'myarticles', $pageParams);
+$pageParams['pagetitle'] = $page->add('title',  $r->txt->do_template($module, 'title.myarticles');
+$page->add('main', $r->txt->do_template($module, 'myarticles', $pageParams);
 
-$page['js'] .= $runtime->txt->do_template('main', 'tabcontrol.js');
-$page->add('css',  $runtime->txt->do_template('main', 'tabcontrol.css');
+$page['js'] .= $r->txt->do_template('main', 'tabcontrol.js');
+$page->add('css',  $r->txt->do_template('main', 'tabcontrol.css');
       
 
 

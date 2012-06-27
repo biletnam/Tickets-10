@@ -14,8 +14,8 @@ if ($type == 'followhotel') {
     $entities = $bytype{$type];
     $cnt = count($entities);
     $pageParams['accesses'] = render_entities($type, $cnt, join_column(',', 'source_id', $entities));
-    $page->add('title', $pageParams['pagetitle'] = $runtime->txt->do_template($module, "title.access.$type");
-    $page->add('main', $runtime->txt->do_template($module, "access.$type", $pageParams);
+    $page->add('title', $pageParams['pagetitle'] = $r->txt->do_template($module, "title.access.$type");
+    $page->add('main', $r->txt->do_template($module, "access.$type", $pageParams);
 } else {
     $accesses = array();
     foreach ($bytype as $type => $entities) {
@@ -28,9 +28,9 @@ if ($type == 'followhotel') {
 }
 #print Dumper($accesses);
 $pageParams['accesses'] = join('', $accesses);
-$pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.access');
+$pageParams['pagetitle'] = $r->txt->do_template($module, 'title.access');
 $page->add('title', $pageParams['pagetitle']);
-$page->add('main', $runtime->txt->do_template($module, 'access', $pageParams));
+$page->add('main', $r->txt->do_template($module, 'access', $pageParams));
 
 
 

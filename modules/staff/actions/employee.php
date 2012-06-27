@@ -25,7 +25,7 @@ if ($id <> '') {
       $isFired = array($personInfo['dateFired'] <> '');
       if (!$isFired) {
         $personInfo['firetypes'] = arr2ref($runtime->getDictArr($module, 'firetype'));
-        $personInfo['fireform'] = $runtime->txt->do_template($module, 'employee.edit.special.fireform', $personInfo);
+        $personInfo['fireform'] = $r->txt->do_template($module, 'employee.edit.special.fireform', $personInfo);
       }
 
       # Get list of offices 
@@ -54,7 +54,7 @@ if ($id <> '') {
       # Get avatar pictire, if any
       if ($personInfo['avatarfile'] <> '') {
         $imageInfo = $runtime->s2r('main', 'GetUploadedFileInfo', array('id' => $personInfo['avatarfile']));
-        $personInfo['avatarpicture'] = $runtime->txt->do_template($module, 'avatarimage', $imageInfo);
+        $personInfo['avatarpicture'] = $r->txt->do_template($module, 'avatarimage', $imageInfo);
       }
 
       # Get list of office calendars
@@ -74,7 +74,7 @@ if ($id <> '') {
       $existingdoctypes = Arrays::cut_column_unique($attachments, 'doctype');
       $missingdoctypes = Arrays::cut_column_unique($doctypes, 'id', 'except' => $existingdoctypes); 
       $missing = $runtime->s2a('admin', 'ListDocTypes', array('ids' => join(',', @missingdoctypes)));
-      $personInfo['missingdocs'] = $runtime->txt->do_template($module, 'employee.missing.doctypes', array('missing' => join_column(',', 'name', $missing))) if count($missing) > 0; 
+      $personInfo['missingdocs'] = $r->txt->do_template($module, 'employee.missing.doctypes', array('missing' => join_column(',', 'name', $missing))) if count($missing) > 0; 
 
       $personInfo['doctypeoptions'] = arr2ref(genOptions($doctypes, 'id', 'name'));
 
@@ -91,7 +91,7 @@ if ($id <> '') {
       
       # Show user password for superadmin
       if ($acc->is_superadmin()) {
-        $personInfo['show_password'] = $runtime->txt->do_template($module, 'employee.edit.showpassword', $personInfo);
+        $personInfo['show_password'] = $r->txt->do_template($module, 'employee.edit.showpassword', $personInfo);
       }
       
       use ctlTab;
@@ -108,12 +108,12 @@ if ($id <> '') {
       $tabEmployee->setDefaultTab(lavnn('tab') || 'personal');
       $personInfo['tabcontrol'] = $tabEmployee->getHTML();
       
-      $page['js'] = $runtime->txt->do_template('main', 'tabcontrol.js');
-      $page['css'] = $runtime->txt->do_template('main', 'tabcontrol.css');    
-      $page['js'] .= $runtime->txt->do_template($module, 'employeeteams.js');
+      $page['js'] = $r->txt->do_template('main', 'tabcontrol.js');
+      $page['css'] = $r->txt->do_template('main', 'tabcontrol.css');    
+      $page['js'] .= $r->txt->do_template($module, 'employeeteams.js');
 
-      $page->add('title',  $personInfo['pagetitle'] = $runtime->txt->do_template($module, 'person.title.edit', $personInfo);
-      $page->add('main', $runtime->txt->do_template($module, 'employee.edit', $personInfo);
+      $page->add('title',  $personInfo['pagetitle'] = $r->txt->do_template($module, 'person.title.edit', $personInfo);
+      $page->add('main', $r->txt->do_template($module, 'employee.edit', $personInfo);
       $runtime->saveMoment('  main part of the page rendered');
 
     } elseif ($acc->is_line_manager($id)) {
@@ -128,8 +128,8 @@ if ($id <> '') {
       # Get list of user contacts which are public and given
       $contacts = $objSM->get_employee_contact_info($id, '', 1, 1);
       $personInfo['contacts'] = $contacts;
-      $personInfo['calendarlink'] = $runtime->txt->do_template($module, 'employee.view.calendarlink', $personInfo);
-      $personInfo['calendarbalance'] = $runtime->txt->do_template($module, 'employee.view.calendarbalance', $personInfo);
+      $personInfo['calendarlink'] = $r->txt->do_template($module, 'employee.view.calendarlink', $personInfo);
+      $personInfo['calendarbalance'] = $r->txt->do_template($module, 'employee.view.calendarbalance', $personInfo);
 
       use ctlTab;
       $tabEmployee = new ctlTab($r, 'ctEmployee');
@@ -139,10 +139,10 @@ if ($id <> '') {
       $tabEmployee->setDefaultTab(lavnn('tab') || 'view');
       $personInfo['tabcontrol'] = $tabEmployee->getHTML();
       
-      $page['js'] = $runtime->txt->do_template('main', 'tabcontrol.js');
-      $page['css'] = $runtime->txt->do_template('main', 'tabcontrol.css');    
-      $page->add('title',  $personInfo['pagetitle'] = $runtime->txt->do_template($module, 'person.title.view', $personInfo);
-      $page->add('main', $runtime->txt->do_template($module, 'employee.edit', $personInfo);
+      $page['js'] = $r->txt->do_template('main', 'tabcontrol.js');
+      $page['css'] = $r->txt->do_template('main', 'tabcontrol.css');    
+      $page->add('title',  $personInfo['pagetitle'] = $r->txt->do_template($module, 'person.title.view', $personInfo);
+      $page->add('main', $r->txt->do_template($module, 'employee.edit', $personInfo);
       $runtime->saveMoment('  main part of the page rendered');
 
     } else {
@@ -150,13 +150,13 @@ if ($id <> '') {
       # Get list of user contacts which are public and given
       $contacts = $objSM->get_employee_contact_info($id, '', 1, 1);
       $personInfo['contacts'] = $contacts;
-      $page->add('title',  $personInfo['pagetitle'] = $runtime->txt->do_template($module, 'person.title.view', $personInfo);
-      $page->add('main', $runtime->txt->do_template($module, 'employee.view', $personInfo);
+      $page->add('title',  $personInfo['pagetitle'] = $r->txt->do_template($module, 'person.title.view', $personInfo);
+      $page->add('main', $r->txt->do_template($module, 'employee.view', $personInfo);
       
     }
   } else {
-    $page->add('title',  $personInfo['pagetitle'] = $runtime->txt->do_template($module, 'person.title.notfound');
-    $page->add('main', $runtime->txt->do_template($module, 'employee.notfound', $personInfo);
+    $page->add('title',  $personInfo['pagetitle'] = $r->txt->do_template($module, 'person.title.notfound');
+    $page->add('main', $r->txt->do_template($module, 'employee.notfound', $personInfo);
   }
 }
 

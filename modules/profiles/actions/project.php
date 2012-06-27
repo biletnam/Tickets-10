@@ -21,11 +21,11 @@ if ($id > 0) {
       'entity_id' => $id
     ));
     $projectInfo['attachments'] = $attachments; 
-    $page->add('title',  $projectInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.project', $projectInfo);
-    $page->add('main', $runtime->txt->do_template($module, 'project', $projectInfo);
+    $page->add('title',  $projectInfo['pagetitle'] = $r->txt->do_template($module, 'title.project', $projectInfo);
+    $page->add('main', $r->txt->do_template($module, 'project', $projectInfo);
   } else {
-    $page->add('title',  $projectInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.project.notfound');
-    $page->add('main', $runtime->txt->do_template($module, 'project.notfound', $projectInfo);
+    $page->add('title',  $projectInfo['pagetitle'] = $r->txt->do_template($module, 'title.project.notfound');
+    $page->add('main', $r->txt->do_template($module, 'project.notfound', $projectInfo);
   }
 }
 

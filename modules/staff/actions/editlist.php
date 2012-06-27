@@ -11,18 +11,18 @@ if ($id > 0) {
     $tabEmpList->addTab('members', dot('editlist.tab.members'), dot('editlist.wait.members', $listInfo));
     $tabEmpList->setDefaultTab(lavnn('tab') || 'members');
     $pageParams['tabcontrol'] = $tabEmpList->getHTML();
-    $page['js'] .= $runtime->txt->do_template('main', 'tabcontrol.js');
-    $page->add('css',  $runtime->txt->do_template('main', 'tabcontrol.css');
-    $page['js'] .= $runtime->txt->do_template('main', 'linkpeople.js');
-    $page->add('css',  $runtime->txt->do_template('main', 'linkpeople.css');
+    $page['js'] .= $r->txt->do_template('main', 'tabcontrol.js');
+    $page->add('css',  $r->txt->do_template('main', 'tabcontrol.css');
+    $page['js'] .= $r->txt->do_template('main', 'linkpeople.js');
+    $page->add('css',  $r->txt->do_template('main', 'linkpeople.css');
   } else {
-    $pageParams['tabcontrol'] = $runtime->txt->do_template($module, 'editlist.notfound');
+    $pageParams['tabcontrol'] = $r->txt->do_template($module, 'editlist.notfound');
   }
 } else {
-  $pageParams['tabcontrol'] = $runtime->txt->do_template($module, 'editlist.details');
+  $pageParams['tabcontrol'] = $r->txt->do_template($module, 'editlist.details');
 }
-$page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.editlist');
-$page->add('main', $runtime->txt->do_template($module, 'editlist', $pageParams);
+$page->add('title',  $pageParams['pagetitle'] = $r->txt->do_template($module, 'title.editlist');
+$page->add('main', $r->txt->do_template($module, 'editlist', $pageParams);
 
 
 

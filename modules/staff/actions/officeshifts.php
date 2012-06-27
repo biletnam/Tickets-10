@@ -9,7 +9,7 @@ $office = lavnn('office') || $r['userInfo']['lngWorkPlace'];
 if ($office <> 0) {
   %pageParams = $runtime->s2r($module, 'GetOfficeDetails', array('office' => $office)); 
   if (count($pageParams) > 0) {
-    $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.officeshifts', $pageParams);
+    $pageParams['pagetitle'] = $r->txt->do_template($module, 'title.officeshifts', $pageParams);
     # Get year and month from request, or set current by default
     $today = Calendar::getTodayArr();
     $Y = lavnn('Y') || $today['Y'];
@@ -34,7 +34,7 @@ if ($office <> 0) {
     $rows = array(); $birthdays = array();
     $firstDay = sprintf("%04s-%02s-01 00:00:00", $Y, $M);
     foreach ($ee as $departmentName => $staff) {
-      $departmentName ||= $runtime->txt->do_template($module, 'officeshifts.department.untitled');
+      $departmentName ||= $r->txt->do_template($module, 'officeshifts.department.untitled');
       $deprows = array(); 
       foreach ($staff as $employee) {
         $employee_id = $employee['ID'];
@@ -60,13 +60,13 @@ if ($office <> 0) {
 $runtime->db->sqlrun('main', 'RegisterPageview', array('entity_type' => 'officeabsebcecalendar', 'entity_id' => $office, 'viewer_type' => 'U', 'viewer_id' => $r['userID']));
 
 $pageParams['daytypes'] = arr2ref(s2a($module, 'ListCalendarDayTypes', array('office' => $office))); 
-$pageParams['pagetitle'] = $runtime->txt->do_template($module, 'pagetitle.officeshifts', $pageParams);
-$page->add('css',  $runtime->txt->do_template('main', 'monthmatrix.css');
-$page->add('css',  $runtime->txt->do_template('main', 'monthmatrix.legend.css', $pageParams);
+$pageParams['pagetitle'] = $r->txt->do_template($module, 'pagetitle.officeshifts', $pageParams);
+$page->add('css',  $r->txt->do_template('main', 'monthmatrix.css');
+$page->add('css',  $r->txt->do_template('main', 'monthmatrix.legend.css', $pageParams);
 $page->add('title', $pageParams['pagetitle']);  
-$page->add('main', $runtime->txt->do_template($module, 'officeshifts', $pageParams);
+$page->add('main', $r->txt->do_template($module, 'officeshifts', $pageParams);
 
-print $runtime->txt->do_template('main', 'index.wide', $page);
+print $r->txt->do_template('main', 'index.wide', $page);
 
 
 ?>

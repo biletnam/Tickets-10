@@ -57,7 +57,7 @@ if ($gen_user_id == 0) {
       $giftrows = $runtime->s2a($controller, 'ListContractGifts', array('id' => $contract_id));
       $c['payments'] = $payments;
       $c['giftrows'] = $giftrows;
-      push @entries, $runtime->$runtime->txt->do_template($controller, 'API.GetContract.listitem', ${$c});
+      push @entries, $runtime->$r->txt->do_template($controller, 'API.GetContract.listitem', ${$c});
     }
     $genUserInfo['contracts'] = $contractInfo;
     if ($genInfo['show_fu_comments'] == 1) {
@@ -67,7 +67,7 @@ if ($gen_user_id == 0) {
     }
     $firstentry = $contractInfo[0];
 
-    $output = $runtime->$runtime->txt->do_template($controller, 'API.GetContract', $genUserInfo);    
+    $output = $runtime->$r->txt->do_template($controller, 'API.GetContract', $genUserInfo);    
   } else {
     $result = 'ERR'; 
     push @errors, $runtime->hash2ref( ('code' => 'GetContract.NotFound', 'text' => 'Member data was not found') );
@@ -76,7 +76,7 @@ if ($gen_user_id == 0) {
 
 # Return resulting XML API output - quite similar to all APIs
 print "content-type: $contenttype; charset=$charset;\n\n";
-print $runtime->$runtime->txt->do_template($controller, 'API.Envelope', array(
+print $runtime->$r->txt->do_template($controller, 'API.Envelope', array(
   'result' => $result,
   'output' => $output,
   'warnings' => Arrays::a2xml($warnings, 'Warnings', 'Warning'),

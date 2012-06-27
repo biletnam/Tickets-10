@@ -6,5 +6,5 @@ if ($id > 0) {
 }
 $countryoptions = arr2ref(s2a($module, 'ListCountries'));
 $resortInfo['countryoptions'] = arr2ref(genOptions($countryoptions, 'country_id', 'country_name', $resortInfo['country']));
-print $runtime->txt->do_template($module, 'extresorttooltip', $resortInfo);
+print $r->txt->do_template($module, 'extresorttooltip', $resortInfo);
 ?>

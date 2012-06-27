@@ -21,7 +21,7 @@ foreach $date (sort (keys(%thisweek_byday))) {
   $dayreport = array('date' => $date);
   $dayreports = $thisweek_byday{$date];
   $dayreport['total'] = Arrays::sum_column($dayreports, 'total_minutes');
-  $dayreport['details'] = $runtime->txt->do_template($module, 'usertime.dayreport.list', array('reports' => $dayreports));
+  $dayreport['details'] = $r->txt->do_template($module, 'usertime.dayreport.list', array('reports' => $dayreports));
   unshift @thisweek, dot('usertime.day', $dayreport);
   $thisweek_totalminutes += $dayreport['total'];
 }
@@ -33,7 +33,7 @@ foreach $date (sort (keys(%lastweek_byday))) {
   $dayreport = array('date' => $date);
   $dayreports = $lastweek_byday{$date];
   $dayreport['total'] = Arrays::sum_column($dayreports, 'total_minutes');
-  $dayreport['details'] = $runtime->txt->do_template($module, 'usertime.dayreport.list', array('reports' => $dayreports));
+  $dayreport['details'] = $r->txt->do_template($module, 'usertime.dayreport.list', array('reports' => $dayreports));
   unshift @lastweek, dot('usertime.day', $dayreport);
   $lastweek_totalminutes += $dayreport['total'];
 }
@@ -44,9 +44,9 @@ $time_by_months = '';
 if (count($bymonth) > 0) {
   $byyear = slice_array($bymonth, 'Y'); 
   foreach $Y (reverse sort keys %byyear) {
-    $time_by_months .= $runtime->txt->do_template($module, 'usertime.year', array('year' => $Y, 'months' => loopt('usertime.year.month', $byyear{$Y}})));
+    $time_by_months .= $r->txt->do_template($module, 'usertime.year', array('year' => $Y, 'months' => loopt('usertime.year.month', $byyear{$Y}})));
   }
-  $time_by_months = $runtime->txt->do_template($module, 'usertime.bymonths', array('selector' => $time_by_months));
+  $time_by_months = $r->txt->do_template($module, 'usertime.bymonths', array('selector' => $time_by_months));
   
 }
 
@@ -57,14 +57,14 @@ $tabUserTime->addTab('bymonth', dot('usertime.bymonth.tabheader', $pageParams), 
 $tabUserTime->addTab('report', dot('usertime.report.tabheader', $pageParams), dot('usertime.report', $pageParams));
 $pageParams['tabcontrol'] = $tabUserTime->getHTML();
        
-$page['js'] = $runtime->txt->do_template('main', 'tabcontrol.js');
-$page['css'] = $runtime->txt->do_template('main', 'tabcontrol.css');
+$page['js'] = $r->txt->do_template('main', 'tabcontrol.js');
+$page['css'] = $r->txt->do_template('main', 'tabcontrol.css');
 if ($r['userID'] == $user_id) {
-  $page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.mytime', $pageParams);  
+  $page->add('title',  $pageParams['pagetitle'] = $r->txt->do_template($module, 'title.mytime', $pageParams);  
 } else {
-  $page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.usertime', $userInfo);  
+  $page->add('title',  $pageParams['pagetitle'] = $r->txt->do_template($module, 'title.usertime', $userInfo);  
 }
-$page->add('main', $runtime->txt->do_template($module, 'usertime', $pageParams);
+$page->add('main', $r->txt->do_template($module, 'usertime', $pageParams);
 
 
 ?>

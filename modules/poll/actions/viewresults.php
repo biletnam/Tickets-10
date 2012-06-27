@@ -12,16 +12,16 @@ if ($id <> '') {
     $can_view = $acc->check_resource("viewpoll:$id", $r['userID']);
     $can_edit = $acc->check_resource("editpoll:$id", $r['userID']);
     if ($can_view || $can_edit) {
-      $page->add('title',  $pollInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.viewresults', $pollInfo);
+      $page->add('title',  $pollInfo['pagetitle'] = $r->txt->do_template($module, 'title.viewresults', $pollInfo);
       $pollInfo['questions'] = $objP->render(('id' => $id, 'mode' => 'viewresults', 'user_type' => $user_type, 'user_id' => $user_id)) || 'None.';
-      $page->add('main', $runtime->txt->do_template($module, 'viewresults', $pollInfo);
+      $page->add('main', $r->txt->do_template($module, 'viewresults', $pollInfo);
     } else {
-      $page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.noaccess', $pageParams);
-      $page->add('main', $runtime->txt->do_template($module, 'noaccess', $pageParams);
+      $page->add('title',  $pageParams['pagetitle'] = $r->txt->do_template($module, 'title.noaccess', $pageParams);
+      $page->add('main', $r->txt->do_template($module, 'noaccess', $pageParams);
     } 
   } else {
-    $page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.notfound', $pageParams);
-    $page->add('main', $runtime->txt->do_template($module, 'notfound');
+    $page->add('title',  $pageParams['pagetitle'] = $r->txt->do_template($module, 'title.notfound', $pageParams);
+    $page->add('main', $r->txt->do_template($module, 'notfound');
   }
 
 } else {

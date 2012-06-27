@@ -1,3 +1,3 @@
 <?php
-print $runtime->txt->do_template($module, "4");
+print $r->txt->do_template($module, "4");
 ?>

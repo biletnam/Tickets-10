@@ -70,43 +70,43 @@ $searchInfo['attachmentoptions'] = $attachmentoptions;
 if ($notcreator <> '') {
   $creatorData = $runtime->s2r($module, 'GetEmployeeInfo', array('id' => $notcreator));
   $creatorData['formname'] = 'frmSearchTickets';
-  $searchInfo['creatorfilter'] = $runtime->txt->do_template($module, 'filter.creator.except', $creatorData);
+  $searchInfo['creatorfilter'] = $r->txt->do_template($module, 'filter.creator.except', $creatorData);
 } elseif ($creator == '') {
-  $searchInfo['creatorfilter'] = $runtime->txt->do_template($module, 'filter.creator.undefined');
+  $searchInfo['creatorfilter'] = $r->txt->do_template($module, 'filter.creator.undefined');
 } else {
   $creatorData = $runtime->s2r($module, 'GetEmployeeInfo', array('id' => $creator));
   $creatorData['formname'] = 'frmSearchTickets';
-  $searchInfo['creatorfilter'] = $runtime->txt->do_template($module, 'filter.creator.defined', $creatorData);
+  $searchInfo['creatorfilter'] = $r->txt->do_template($module, 'filter.creator.defined', $creatorData);
 }
 if ($notreviewer <> '') {
   $reviewerData = $runtime->s2r($module, 'GetEmployeeInfo', array('id' => $notreviewer));
   $reviewerData['formname'] = 'frmSearchTickets';
-  $searchInfo['reviewerfilter'] = $runtime->txt->do_template($module, 'filter.reviewer.except', $reviewerData);
+  $searchInfo['reviewerfilter'] = $r->txt->do_template($module, 'filter.reviewer.except', $reviewerData);
 } elseif ($reviewer == '') {
-  $searchInfo['reviewerfilter'] = $runtime->txt->do_template($module, 'filter.reviewer.undefined');
+  $searchInfo['reviewerfilter'] = $r->txt->do_template($module, 'filter.reviewer.undefined');
 } else {
   $reviewerData = $runtime->s2r($module, 'GetEmployeeInfo', array('id' => $reviewer));
   $reviewerData['formname'] = 'frmSearchTickets';
-  $searchInfo['reviewerfilter'] = $runtime->txt->do_template($module, 'filter.reviewer.defined', $reviewerData);
+  $searchInfo['reviewerfilter'] = $r->txt->do_template($module, 'filter.reviewer.defined', $reviewerData);
 }
 if ($nothandler <> '') {
   $handlerData = $runtime->s2r($module, 'GetEmployeeInfo', array('id' => $nothandler));
   $handlerData['formname'] = 'frmSearchTickets';
-  $searchInfo['handlerfilter'] = $runtime->txt->do_template($module, 'filter.handler.except', $handlerData);
+  $searchInfo['handlerfilter'] = $r->txt->do_template($module, 'filter.handler.except', $handlerData);
 } elseif ($handler == '') {
-  $searchInfo['handlerfilter'] = $runtime->txt->do_template($module, 'filter.handler.undefined');
+  $searchInfo['handlerfilter'] = $r->txt->do_template($module, 'filter.handler.undefined');
 } else {
   $handlerData = $runtime->s2r($module, 'GetEmployeeInfo', array('id' => $handler));
   $handlerData['formname'] = 'frmSearchTickets';
-  $searchInfo['handlerfilter'] = $runtime->txt->do_template($module, 'filter.handler.defined', $handlerData);
+  $searchInfo['handlerfilter'] = $r->txt->do_template($module, 'filter.handler.defined', $handlerData);
 }
 
 $folders = $runtime->s2a($module, 'ListTicketFolders', array('user_id' => $r['userID']));
 if (count($folders) > 0) {
   $searchInfo['folderoptions'] = arr2ref(genOptions($folders, 'id', 'name', lavnn('folder')));
-  $searchInfo['folderfilter'] = $runtime->txt->do_template($module, 'filter.folders', $searchInfo);
+  $searchInfo['folderfilter'] = $r->txt->do_template($module, 'filter.folders', $searchInfo);
 } else {
-  $searchInfo['folderfilter'] = $runtime->txt->do_template($module, 'filter.folder.none');
+  $searchInfo['folderfilter'] = $r->txt->do_template($module, 'filter.folder.none');
 }
 
 if (dot('search.checkfields', $_REQUEST) <> '') {
@@ -122,11 +122,11 @@ if (dot('search.checkfields', $_REQUEST) <> '') {
   $resultsHtml = $grid1->render();
   $resultsHtml = $grid1->render(('rowcount' => 'yes'));
 } elseif (exists($_REQUEST['id'])) {
-  $resultsHtml = $runtime->txt->do_template($module, 'search.noparameters');
+  $resultsHtml = $r->txt->do_template($module, 'search.noparameters');
 }
   
 $searchInfo['results'] = $resultsHtml;
-$page->add('main', $runtime->txt->do_template($module, 'search', $searchInfo);
+$page->add('main', $r->txt->do_template($module, 'search', $searchInfo);
 
 
 

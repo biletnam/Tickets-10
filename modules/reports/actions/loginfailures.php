@@ -3,7 +3,7 @@
 use ctlDataGrid;
 
 $pageParams = array();  
-$page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.loginfailures');
+$page->add('title',  $pageParams['pagetitle'] = $r->txt->do_template($module, 'title.loginfailures');
 
 @alltypes = $runtime->getSortedDictArr('main', 'pageviewer.type'); $ids = ''; 
 if (ref($_REQUEST['typeoption']) == 'ARRAY') {
@@ -25,9 +25,9 @@ $grid1->set_custom_template('datarow' => $runtime->gettmod($module, 'loginfailur
 $pageParams['results'] = $grid1->render();
 $runtime->saveMoment('Finished rendering data grid');
 
-$page->add('main', $runtime->txt->do_template($module, 'loginfailures', $pageParams);
+$page->add('main', $r->txt->do_template($module, 'loginfailures', $pageParams);
 
-$page['js'] .= $runtime->txt->do_template($module, 'pageviews.js');
+$page['js'] .= $r->txt->do_template($module, 'pageviews.js');
 
 
 

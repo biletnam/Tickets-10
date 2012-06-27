@@ -7,8 +7,8 @@ $pageParams['entitygroups'] = $entitygroups;
 $existingtypes = $runtime->s2a($module, 'ListExistingEntityGroups');
 $pageParams['existingtypes'] = arr2ref(genOptions($existingtypes, 'id', 'name'));
 
-$page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.list');
-$page->add('main', $runtime->txt->do_template($module, 'list', $pageParams);
+$page->add('title',  $pageParams['pagetitle'] = $r->txt->do_template($module, 'title.list');
+$page->add('main', $r->txt->do_template($module, 'list', $pageParams);
 
 
 

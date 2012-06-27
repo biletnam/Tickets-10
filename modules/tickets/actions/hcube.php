@@ -89,9 +89,9 @@ $cubeParams = array(
   'template_item' => $runtime->gettmod($module, 'hcube.list.item'),   # obsolete at the moment
 );
 $pageParams = array('cube' => $hcube->render($cubeParams));
-$pageParams['pagetitle'] = $page->add('title',  $runtime->txt->do_template($module, 'hcube.title');
-$page->add('main', $runtime->txt->do_template($module, 'hcube', $pageParams);
+$pageParams['pagetitle'] = $page->add('title',  $r->txt->do_template($module, 'hcube.title');
+$page->add('main', $r->txt->do_template($module, 'hcube', $pageParams);
 
-$page['css'] = $runtime->txt->do_template($module, 'hcube.css');
+$page['css'] = $r->txt->do_template($module, 'hcube.css');
 
 ?>

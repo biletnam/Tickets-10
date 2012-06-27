@@ -5,14 +5,14 @@ $priceInfo = array();
 if ($id > 0) {
   %priceInfo = $runtime->s2r($module, 'GetPriceInfo', array('id' => $id)); 
   $hotelid = $priceInfo['hotel_id'];
-  $priceInfo['formtitle'] = $runtime->txt->do_template($module, 'editprice.formtitle.edit');
+  $priceInfo['formtitle'] = $r->txt->do_template($module, 'editprice.formtitle.edit');
 } else {
   %priceInfo = array('hotel_id' => $hotelid);
-  $priceInfo['formtitle'] = $runtime->txt->do_template($module, 'editprice.formtitle.add');
+  $priceInfo['formtitle'] = $r->txt->do_template($module, 'editprice.formtitle.add');
 }
 if ($hotelid > 0) {
   $officeoptions = arr2ref(s2a($module, 'ListHotelBookingOffices', array('id' => $hotelid))); 
-  $priceInfo['alloffices'] = $runtime->txt->do_template($module, 'editprices.alloffices') if ($id == 0);
+  $priceInfo['alloffices'] = $r->txt->do_template($module, 'editprices.alloffices') if ($id == 0);
   $priceInfo['offices'] = arr2ref(genOptions($officeoptions, 'lngId', 'strName', $priceInfo['office_id'])); 
   $arrtypeoptions = arr2ref(s2a($module, 'ListAptTypes'));
   $priceInfo['blockpricetypes'] = arr2ref($runtime->getDictArr($module, 'BlockPriceType'));
@@ -24,6 +24,6 @@ if ($hotelid > 0) {
   $topccy = $existingcurrencies[0]; # Top currency is used for preselecting currency lists.
   $priceInfo['currencies'] = arr2ref(genOptions(arr2ref(s2a($module, 'ListCurrencies')), 'currency_id', 'currency_name', array($priceInfo['currency_id'] || $topccy['currency_id'])));  
   $priceInfo['realcurrencies'] = arr2ref(genOptions(arr2ref(s2a($module, 'ListCurrencies')), 'currency_id', 'currency_name', array($priceInfo['real_currency_id'] || $topccy['currency_id'])));  
-  print $runtime->txt->do_template($module, 'editprices.form', $priceInfo);
+  print $r->txt->do_template($module, 'editprices.form', $priceInfo);
 }
 ?>

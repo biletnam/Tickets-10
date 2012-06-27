@@ -1,7 +1,7 @@
 <?php
 $page['nextURL'] = lavnn('url');
-$page->add('title',  $page['pagetitle'] = $runtime->txt->do_template($module, 'title.login', $page);
-$page->add('main', $runtime->txt->do_template($module, 'login', $page);
+$page->add('title',  $page['pagetitle'] = $r->txt->do_template($module, 'title.login', $page);
+$page->add('main', $r->txt->do_template($module, 'login', $page);
 
 #use CMenu;
 #$menu = new CMenu($r);

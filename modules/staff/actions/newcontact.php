@@ -21,7 +21,7 @@ foreach $ctype ($all_by_type{$key}}) {
 }
 if (count($available) > 0) {
   $pageParams['all'] = arr2ref(genOptions($available, 'id', 'name'));
-  print $runtime->txt->do_template($module, 'employee.edit.contact.newitem', $pageParams);
+  print $r->txt->do_template($module, 'employee.edit.contact.newitem', $pageParams);
 }
 1;
 

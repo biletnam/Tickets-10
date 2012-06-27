@@ -10,10 +10,10 @@ $tabQueries->addTab('saved', dot('queries.tab.saved'), dot('queries.saved', $pag
 $tabQueries->addTab('build', dot('queries.tab.build'), dot('queries.build'));
 $pageParams['tabcontrol'] = $tabQueries->getHTML();
   
-$page['js'] = $runtime->txt->do_template('main', 'tabcontrol.js');
-$page['css'] = $runtime->txt->do_template('main', 'tabcontrol.css');
-$page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.queries');
-$page->add('main', $runtime->txt->do_template($module, 'queries', $pageParams);
+$page['js'] = $r->txt->do_template('main', 'tabcontrol.js');
+$page['css'] = $r->txt->do_template('main', 'tabcontrol.css');
+$page->add('title',  $pageParams['pagetitle'] = $r->txt->do_template($module, 'title.queries');
+$page->add('main', $r->txt->do_template($module, 'queries', $pageParams);
 
 
 

@@ -19,12 +19,12 @@ if ($hotel <> '') {
 }
 if ($id <> '') {
   # Editing local type 
-  $pageParams['pagetitle'] = $page->add('title',  $runtime->txt->do_template($module, 'title.localtype.edit', $pageParams);
-  $page->add('main', $runtime->txt->do_template($module, 'editlocaltype', $pageParams);
+  $pageParams['pagetitle'] = $page->add('title',  $r->txt->do_template($module, 'title.localtype.edit', $pageParams);
+  $page->add('main', $r->txt->do_template($module, 'editlocaltype', $pageParams);
 } else {
   # Just adding local type -> can't show anything but create form
-  $pageParams['pagetitle'] = $page->add('title',  $runtime->txt->do_template($module, 'title.localtype.add', $pageParams);
-  $page->add('main', $runtime->txt->do_template($module, 'editlocaltype', $pageParams);
+  $pageParams['pagetitle'] = $page->add('title',  $r->txt->do_template($module, 'title.localtype.add', $pageParams);
+  $page->add('main', $r->txt->do_template($module, 'editlocaltype', $pageParams);
 }
 
 

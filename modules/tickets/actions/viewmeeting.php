@@ -17,7 +17,7 @@ if ($id <> '') {
   $runtime->saveMoment('  access checked with result: '.$access);
 
   if ($access == 'none') {
-    $meetingInfo['tabcontrol'] = $runtime->txt->do_template($module, 'viewmeeting.noaccess');
+    $meetingInfo['tabcontrol'] = $r->txt->do_template($module, 'viewmeeting.noaccess');
   } elseif ($access == 'edit') { 
     # Prepare tab control with editing controls
     use ctlTab;
@@ -44,18 +44,18 @@ if ($id <> '') {
   } elseif ($access == 'view') {
     $issues = $runtime->s2a($module, 'ListMeetingTickets', $_REQUEST);
     $meetingInfo['issues'] = $issues;
-    $meetingInfo['tabcontrol'] = $runtime->txt->do_template($module, 'viewmeeting.issues.view', $meetingInfo);
+    $meetingInfo['tabcontrol'] = $r->txt->do_template($module, 'viewmeeting.issues.view', $meetingInfo);
   }   
 
   
-  $page->add('title',  $meetingInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.viewmeeting', $meetingInfo);
-  $page->add('main', $runtime->txt->do_template($module, 'viewmeeting', $meetingInfo);
-  $page['js'] .= $runtime->txt->do_template('main', 'tabcontrol.js');
-  $page->add('css',  $runtime->txt->do_template('main', 'tabcontrol.css');
-  $page['js'] .= $runtime->txt->do_template('main', 'linkpeople.js');
-  $page->add('css',  $runtime->txt->do_template('main', 'linkpeople.css');
+  $page->add('title',  $meetingInfo['pagetitle'] = $r->txt->do_template($module, 'title.viewmeeting', $meetingInfo);
+  $page->add('main', $r->txt->do_template($module, 'viewmeeting', $meetingInfo);
+  $page['js'] .= $r->txt->do_template('main', 'tabcontrol.js');
+  $page->add('css',  $r->txt->do_template('main', 'tabcontrol.css');
+  $page['js'] .= $r->txt->do_template('main', 'linkpeople.js');
+  $page->add('css',  $r->txt->do_template('main', 'linkpeople.css');
 } else {
-  $page->add('title',  $meetingInfo['pagetitle'] = $runtime->txt->do_template($module, 'title.viewmeeting.notfound');
+  $page->add('title',  $meetingInfo['pagetitle'] = $r->txt->do_template($module, 'title.viewmeeting.notfound');
 }
 
 

@@ -6,9 +6,9 @@ if (count($tickets2follow) > 0) {
   $pageParams['tickets2follow'] = $tickets2follow;
   $priorityoptions = $runtime->getSortedDictArr($module, 'priority');
   $pageParams['ticketpriorities'] = $priorityoptions;
-  print $runtime->txt->do_template($module, 'tickets2follow.list', $pageParams);
+  print $r->txt->do_template($module, 'tickets2follow.list', $pageParams);
 } else {
-  print $runtime->txt->do_template($module, 'tickets2follow.none');
+  print $r->txt->do_template($module, 'tickets2follow.none');
 }
 
 ?>

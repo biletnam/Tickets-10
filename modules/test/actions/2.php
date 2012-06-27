@@ -1,4 +1,4 @@
 <?php
 
-print $runtime->txt->do_template('test', '2');
+print $r->txt->do_template('test', '2');
 ?>

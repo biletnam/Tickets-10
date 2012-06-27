@@ -6,7 +6,7 @@ $pageParams = array('user_id' => $user_id);
 $userInfo = $runtime->s2r('staff', 'GetEmployeeDetails', array('id' => $user_id)); 
 
 if (count($userInfo) == 0) {
-  $page->add('main', $runtime->txt->do_template($module, 'usertickets.nouser');
+  $page->add('main', $r->txt->do_template($module, 'usertickets.nouser');
 } elseif ($user_id == $r['userID'] || $acc->is_superadmin() || $userInfo['deputy_staff'] == $r['userID'] || $userInfo['line_manager'] == $r['userID']) {
   
   # Render tickets
@@ -25,16 +25,16 @@ if (count($userInfo) == 0) {
   $runtime->saveMoment('Finished rendering data grid');
   
   if ($user_id == $r['userID']) {
-    $page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.mytickets2react', $pageParams);  
-    $page->add('main', $runtime->txt->do_template($module, 'mytickets2react', $pageParams);  
+    $page->add('title',  $pageParams['pagetitle'] = $r->txt->do_template($module, 'title.mytickets2react', $pageParams);  
+    $page->add('main', $r->txt->do_template($module, 'mytickets2react', $pageParams);  
   } else {
     # TODO check if this user is somehow related to this person (HR? LM? DS?) and restrict access
-    $page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.usertickets2react', $userInfo);  
-    $page->add('main', $runtime->txt->do_template($module, 'usertickets2react', $pageParams);  
+    $page->add('title',  $pageParams['pagetitle'] = $r->txt->do_template($module, 'title.usertickets2react', $userInfo);  
+    $page->add('main', $r->txt->do_template($module, 'usertickets2react', $pageParams);  
   }
 } else {
-  $page->add('title',  $pageParams['pagetitle'] = $runtime->txt->do_template($module, 'title.usertickets2react', $userInfo);  
-  $page->add('main', $runtime->txt->do_template($module, 'usertickets.denied', $pageParams);
+  $page->add('title',  $pageParams['pagetitle'] = $r->txt->do_template($module, 'title.usertickets2react', $userInfo);  
+  $page->add('main', $r->txt->do_template($module, 'usertickets.denied', $pageParams);
 }
 
 
